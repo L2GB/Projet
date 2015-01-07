@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 
-public class MainActivity extends ActionBarActivity {
+public class ConfigurationSemaine extends ActionBarActivity {
 
     public final static String EXTRA_MESSAGE = "com.example.pierre.myapplication.MESSAGE";
 
