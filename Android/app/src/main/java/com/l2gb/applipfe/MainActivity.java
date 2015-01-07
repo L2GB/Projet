@@ -6,34 +6,43 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 
 
-public class ConfigurationSemaine extends ActionBarActivity {
-
-    public final static String EXTRA_MESSAGE = "com.example.pierre.myapplication.MESSAGE";
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuration_semaine);
+        setContentView(R.layout.activity_main);
+        Button monBouton= (Button) this.findViewById(R.id.button4);
+        monBouton.setVisibility(View.GONE);
+    }
+
+    public void goScenario(View view){
+        Intent intent = new Intent(this, ScenarioActivity.class);
+        startActivity(intent);
+    }
+    public void goConsommation(View view){
+        Button monBouton= (Button) this.findViewById(R.id.button4);
+        if(monBouton.getVisibility()==View.VISIBLE) {
+            monBouton.setVisibility(View.GONE);
+        }else{
+            monBouton.setVisibility(View.VISIBLE);
+        }
+    }
+    public void goObjets(View view){
+
+    }
+    public void goPlanning(View view){
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_configuration_semaine, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    /** Called when the user clicks the Send button */
-    public void sauvegarder(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, Test.class);
-        EditText editText = (EditText) findViewById(R.id.edit_name_semaine);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
     }
 
     @Override

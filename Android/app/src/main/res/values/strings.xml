@@ -9,5 +9,9 @@
     <string name="type_semaine">Type de profil</string>
     <string name="scenario">Scenario</string>
     <string name="title_activity_test">Test</string>
+    <string name="title_activity_configuration_jour">ConfigurationJour</string>
+    <string name="title_activity_configuration_semaine">ConfigurationSemaine</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_scenario">ScenarioActivity</string>
 
 </resources>

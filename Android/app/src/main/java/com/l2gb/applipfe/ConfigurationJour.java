@@ -1,39 +1,25 @@
 package com.l2gb.applipfe;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 
 
-public class ConfigurationSemaine extends ActionBarActivity {
-
-    public final static String EXTRA_MESSAGE = "com.example.pierre.myapplication.MESSAGE";
+public class ConfigurationJour extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuration_semaine);
+        setContentView(R.layout.activity_configuration_jour);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_configuration_semaine, menu);
+        getMenuInflater().inflate(R.menu.menu_configuration_jour, menu);
         return true;
-    }
-
-    /** Called when the user clicks the Send button */
-    public void sauvegarder(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, Test.class);
-        EditText editText = (EditText) findViewById(R.id.edit_name_semaine);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
     }
 
     @Override

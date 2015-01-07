@@ -50,5 +50,12 @@
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
         <dex dex="/Users/Pierre/Documents/Cours/AndroidWorkspace/AppliPFE/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-76672311ca1d8d757c7eff9c27ba7074469ee8ce.jar" />
     </item>
+    <item
+        jar="/Users/Pierre/GitHub/L2GB 14.13.15/Android/app/libs/json-simple-1.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
+        <dex dex="/Users/Pierre/GitHub/L2GB 14.13.15/Android/app/build/intermediates/pre-dexed/debug/json-simple-1.1.1-9a6ad1e001ba676f4e516a71d9d50e335e47c95f.jar" />
+    </item>
 
 </items>
