@@ -1,0 +1,99 @@
+@startuml
+	package "Vue" #DDDDDD {
+		class Acceuil_Vue
+		class Identification_Vue
+		class Consommation_Vue
+	}
+
+	package "Model" #DDDDDD {
+		class Controlable_Model{
+			+void addConsommationListener(ConsommationListener_Model newListener)
+			+void removeConsommationListener(ConsommationListener_Model Listener)
+			+void addObjetListener(ObjetListener_Model newListener)
+			+void removeObjetListener(ObjetListener_Model Listener)
+		}
+		Interface ConsommationListener_Model{
+			+void consomationAChange(ConsommationHistorique_Model newConso)
+		}
+		class ConsommationHistorique_Model
+		
+		Controlable_Model -up-"0..*" ConsommationListener_Model
+		Controlable_Model -up- ConsommationHistorique_Model
+	}
+	
+	Consommation_Vue ..|>ConsommationListener_Model : implement
+	Acceuil_Vue ..|>ConsommationListener_Model : implement
+
+
+
+	
+	
+	
+	
+	package "Vue" #DDDDDD {
+		class ChoixObjet_Vue
+		class AjoutObjet_Vue
+		class ObjetProfil_Vue
+		class ModificationObjetProfil_Vue
+	}
+	package "Model" {
+		Interface ObjectListener_Model{
+			+objetAchange(ObjectState_Model ObjectState_Model newObjet)
+		}
+		class Objet_Model
+		class ObjectState_Model
+		class Objet_Model
+		class Piece_Model
+
+		Piece_Model -left-"0..*" Objet_Model
+		Controlable_Model -up- "0..*" ObjectState_Model
+		Controlable_Model -up- "0..*" ObjectListener_Model
+		Objet_Model -up-|> Controlable_Model
+		Piece_Model -up-|> Controlable_Model
+		
+		JoursType_Model -- "0..*" Objet_Model
+		JoursType_Model -up- "0..*" Piece_Model
+	}
+	
+	ChoixObjet_Vue ...|>ObjectListener_Model: implement
+	AjoutObjet_Vue ...|>ObjectListener_Model: implement
+	ObjetProfil_Vue ...|>ObjectListener_Model: implement
+	ModificationObjetProfil_Vue ...|>ObjectListener_Model: implement
+	
+	package "Vue" #DDDDDD {
+		class JoursScenario_Vue
+		class SemaineScenario_Vue
+		class MoisScenario_Vue
+		class Scenario_Vue
+		class ChoixProgrammationScenario_Vue
+
+	}
+	
+	package "Model" #DDDDDD {
+		Interface ScenarioListener_Model{
+			+scenarioAChange(ScenarioTable_Model newScenario)
+		}
+		class Scenario_Model{
+			+void addListener(ScenarioListener_Model newListener)
+			+void removeListener(ScenarioListener_Model Listener)
+		}
+		class ScenarioTable_Model		
+		class SemaineType_Model
+		class MoisType_Model
+		class JoursType_Model
+		
+		Scenario_Model -up--"0..*" ScenarioListener_Model
+		Scenario_Model -up-- ScenarioTable_Model	
+		Scenario_Model -- "0..*" JoursType_Model
+		Scenario_Model -- "0..*" SemaineType_Model
+		Scenario_Model -- "0..*" MoisType_Model
+		
+		
+
+	}
+	JoursScenario_Vue ...|>ScenarioListener_Model: implement
+	SemaineScenario_Vue ...|>ScenarioListener_Model: implement
+	MoisScenario_Vue ...|>ScenarioListener_Model: implement
+	ChoixProgrammationScenario_Vue...|>ScenarioListener_Model: implement
+	
+@enduml

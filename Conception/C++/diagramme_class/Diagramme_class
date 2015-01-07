@@ -1,0 +1,15 @@
+@startuml
+	Prise--|>Objet
+	Thermo--|>Objet
+	Chauffage--|>Objet
+	Objet "0..*"--Gestionnaire_Objet
+	Calculateur-- "1" Gestionnaire_Objet
+	Lecteur-right- "1"Big_Data
+	Calculateur-right- "1" Receptionneur_Consigne
+	Gestionnaire_Objet -- "1" Lecteur
+	Gestionnaire_Objet -up- "1" Ecrivain
+	Calculateur -- "1" Lecteur
+	Calculateur -- "1" Ecrivain
+	Objet -- "1" Communicateur_ZWave
+	Objet-- "1" Lecteur
+@enduml

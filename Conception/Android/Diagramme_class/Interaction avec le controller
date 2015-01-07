@@ -1,0 +1,28 @@
+@startuml
+	
+	package "Controler" {
+		class Consommation_Controler
+		class Scenario_Controler
+		class ObjetTable_Controler
+		Interface ObjetTableInterface_Controler
+		Interface ConsommationInterface_Controler 
+		Interface ScenarioInterface_Controler 
+	
+		Consommation_Controler -up-...|> ConsommationInterface_Controler: implement
+		Scenario_Controler -up-...|> ScenarioInterface_Controler: implement
+		ObjetTable_Controler -up-...|> ObjetTableInterface_Controler: implement	
+	}
+	Consommation_Controler -->"1..*" Consommation_Vue
+	Scenario_Controler -->"1..*" Scenario_Vue
+	ObjetTable_Controler -->"1..*" ChoixObjet_Vue
+	ObjetTable_Controler -->"1..*" AjoutObjet_Vue
+	ObjetTable_Controler -->"1..*" ObjetProfil_Vue
+	ObjetTable_Controler -->"1..*" ModificationObjetProfil_Vue
+	Consommation_Vue -->"1..*" ConsommationInterface_Controler
+	JoursScenario_Vue --> "1" ScenarioInterface_Controler
+	SemaineScenario_Vue --> "1" ScenarioInterface_Controler
+	MoisScenario_Vue --> "1" ScenarioInterface_Controler
+	
+@enduml
+
+

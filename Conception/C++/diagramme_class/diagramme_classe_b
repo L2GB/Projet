@@ -1,0 +1,66 @@
+@startuml
+
+class Transmitter
+class Object
+class ObjectManager
+class PowerPlug
+class Heater
+class Thermostat
+class OCC
+class ZWaveController
+class BDCC
+class RACC
+class Socket
+
+class Object{
+	void run()
+	abstract readFile()
+	abstract writeFile()
+}
+
+class ObjectManager{
+	void stop()
+}
+
+class Heater{
+	readFile()
+}	
+
+class Thermostat{
+	readFile()
+}
+
+class PowerPlug{
+	readFile()
+}
+
+class RACC{
+	void receiveOrder()
+}
+
+class Transmitter{
+	void executOrder()
+	void extractOrder()
+}
+
+Transmitter -up->ObjectManager
+ObjectManager -right->OCC
+OCC-right->ZWaveController
+ObjectManager-up->Object
+
+Object-up-|>Heater
+Object-up-|>PowerPlug
+Object-up-|>Thermostat
+
+Transmitter-left->BDCC
+BDCC--|>ObservableA
+ObservableA-->Transmitter
+
+Transmitter-right->RACC
+RACC--|>ObserverB
+RACC-->Socket
+Socket--|>ObservableB
+ObservableB-right->ObserverB
+RACC--|>ObservableA
+
+@enduml
