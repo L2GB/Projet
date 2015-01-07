@@ -11,11 +11,12 @@
 // Internal include
 #include "../../tools/server/NetworkServer.h"
 #include "../../tools/server/observer/DataObserver.h"
+#include "../Communicator.h"
 
 
 const int DEFAULT_PORT = 2048;
 
-class RACC : public DataObserver
+class RACC : public Communicator, DataObserver
 {
 	public:
 		RACC(const int _port = DEFAULT_PORT);

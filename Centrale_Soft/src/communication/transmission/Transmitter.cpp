@@ -10,27 +10,25 @@
 
 Transmitter::Transmitter()
 {
-
+	// TODO idem with BDCC
 }
 
-Transmitter::~Transmitter()
+Type Transmitter::getType(std::string _type)
 {
+	Type type;
 
+	//TODO return the type
+
+	return type;
 }
 
-std::string Transmitter::executeOrder(const json_t _json)
+void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient _idClient)
 {
-
-}
-
-void Transmitter::extractOrder(std::string _stringToParse)
-{
-	json_t *root;
-	root = json_loads(_stringToParse.c_str(), 0, NULL);
-
-	if(!json_is_object(root))
+	Type type = getType(_order);
+	// TODO call Request Object to execute order
+	switch (type)
 	{
-
+		default:
+			break;
 	}
 }
-

@@ -9,20 +9,31 @@
 #define COMMUNICATION_TRANSMISSION_TRANSMITTER_H_
 
 // Internal include
-#include "../android/RACC.h"
+#include "Transmission.h"
 #include "../../tools/json/jansson.h"
+#include "../../Object/ObjectManager.h"
+#include "../android/RACC.h"
 
-class Transmitter
+enum  Type{
+		TYPE1,
+		TYPE2
+};
+
+class Transmitter : public Transmission
 {
 	public:
 		Transmitter();
-		virtual ~Transmitter();
+		virtual ~Transmitter(){}
 
-		std::string executeOrder(const json_t _json);
-		void extractOrder(std::string _stringToParse);
+		void executeOrder(const std::string _order, json_t *_data, IdClient _idClient);
+
+	private :
+		Type getType(std::string _type);
 
 	private:
-		RACC appliTransmitter;
+		ObjectManager m_objectManager;
+		RACC m_racc;
+		// TODO add instance of requests
 };
 
 #endif /* COMMUNICATION_TRANSMISSION_TRANSMITTER_H_ */
