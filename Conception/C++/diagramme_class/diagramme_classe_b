@@ -39,11 +39,11 @@ class RACC{
 }
 
 class Transmitter{
-	void executOrder()
-	void extractOrder()
 }
 
-Transmitter -up->ObjectManager
+Transmitter <-down-ObjectManager
+Transmitter -up-> Request
+Request -right-> ObjectManager
 ObjectManager -right->OCC
 OCC-right->ZWaveController
 ObjectManager-up->Object
@@ -64,4 +64,5 @@ ObservableB-right->ObserverB
 RACC--|>ObservableA
 
 @enduml
+
 
