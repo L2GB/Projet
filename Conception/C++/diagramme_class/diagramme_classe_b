@@ -47,10 +47,6 @@ class Transmitter{
 	void executeOrder(string _order, json_t *data, IdClient _idClient)
 }
 
-abstract class Request{
-	{static} Type getType(string _type)
-}
-
 abstract class Communicator{
 	void attach(Transmission *_transmission)
 }
@@ -59,28 +55,33 @@ abstract class Transmission{
 	{abstract} void executeOrder(string _order, json_t *data, IdClient _idClient)
 }
 
-Transmitter -down-|> Transmission
-Communicator -up-> Transmission
-Transmitter <-down-ObjectManager
-Transmitter -up-> Request
-Request -right-> ObjectManager
-ObjectManager -right->OCC
-OCC-right->ZWaveController
+ObjectManager -->OCC
+OCC-->ZWaveController
 ObjectManager-up->Object
 
 Object-up-|>Heater
 Object-up-|>PowerPlug
 Object-up-|>Thermostat
 
-Transmitter-left->BDCC
-BDCC--|>Communicator
 
-Transmitter-right->RACC
+
+Transmitter -up-|> Transmission
+Communicator -right-> Transmission
+
+BDCC-up-|>Communicator
+RACC-up-|>Communicator
+ObjectManager -up-|> Communicator
+
+Transmitter -left-> BDCC
+Transmitter --> RACC
+Transmitter --> ObjectManager
+
 RACC--|>DataObserver
 RACC-->Socket
 Socket--|>DataObservable
-DataObservable-right->DataObserver
-RACC--|>Communicator
+DataObservable-->DataObserver
+
 
 @enduml
+
 
