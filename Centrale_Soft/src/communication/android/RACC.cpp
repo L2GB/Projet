@@ -44,15 +44,8 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 
 			type_string = json_string_value(type);
 			std::cout << "TYPE :" << type_string << std::endl;
-			// TODO Check if an exception is raised
-			try
-			{
-				data = json_object_get(request, "data");
-			}
-			catch(std::logic_error &e)
-			{
-				std::cout << "No data" << std::endl;
-			}
+
+			data = json_object_get(request, "data");
 			m_transmission->executeOrder(type_string, data, _idClient);
 		}
 		catch(std::logic_error &e)
