@@ -11,6 +11,7 @@
 
 // External include
 #include <iostream>
+#include <stdexcept>
 
 RACC::RACC(const int _port) : m_tcpServer(_port)
 {
@@ -28,20 +29,36 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 	json_t *type;
 	json_t *data;
 
+	std::string type_string;
+
 	// Parsing data
 	root = json_loads(_dataReceive.c_str(), 0, NULL);
-
-	if(!json_is_object(root))
+	std::cout << "Data parsé :" << std::endl;
+	if(json_is_object(root))
 	{
-		// the string is a json object.
-		request = json_object_get(root, "request");
-		type = json_object_get(request, "type");
+		try
+		{
+			// the string is a json object.
+			request = json_object_get(root, "request");
+			type = json_object_get(request, "type");
 
-		std::string type_string = json_string_value(type);
+			type_string = json_string_value(type);
+			std::cout << "TYPE :" << type_string << std::endl;
+			// TODO Check if an exception is raised
+			try
+			{
+				data = json_object_get(request, "data");
+			}
+			catch(std::logic_error &e)
+			{
+				std::cout << "No data" << std::endl;
+			}
+			m_transmission->executeOrder(type_string, data, _idClient);
+		}
+		catch(std::logic_error &e)
+		{
+			std::cout << "WTF?!" << std::endl;
+		}
 
-		// TODO Check if an exception is raised
-		data = json_object_get(request, "data");
-
-		m_transmission->executeOrder(type_string, data, _idClient);
 	}
 }

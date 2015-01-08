@@ -6,9 +6,21 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
+// External include
 #include <iostream>
+#include <unistd.h>
 
-int main() {
-	std::cout << "Salut Max qdf" << std::endl;
+// Internal include
+#include "communication/transmission/Transmitter.h"
+
+int main()
+{
+	Transmitter transmitter; //default TCP/IP port : 2048
+
+	while(1)
+	{
+		sleep(1);
+	}
+
 	return 0;
 }

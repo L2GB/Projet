@@ -10,24 +10,30 @@
 
 Transmitter::Transmitter()
 {
-	// TODO idem with BDCC
+	initializeMapping();
+	m_racc.attach(this);
+	m_objectManager.attach(this);
 }
 
-Type Transmitter::getType(std::string _type)
+void Transmitter::initializeMapping()
 {
-	Type type;
-
-	//TODO return the type
-
-	return type;
+	// TODO Complete the list
+	m_type["TYPE1"] = TYPE1;
+	m_type["TYPE2"] = TYPE2;
 }
 
 void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient _idClient)
 {
-	Type type = getType(_order);
 	// TODO call Request Object to execute order
-	switch (type)
+
+	std::cout << "Going to execute the order" << std::endl;
+	switch (m_type[_order])
 	{
+		case TYPE1:
+			std::cout << "IM THE BOSS" << std::endl;
+			break;
+		case TYPE2:
+			break;
 		default:
 			break;
 	}

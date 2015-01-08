@@ -14,6 +14,13 @@
 #include "../../Object/ObjectManager.h"
 #include "../android/RACC.h"
 
+// External include
+#include <map>
+
+//TODO complete the list
+/**
+ * Request type
+ */
 enum  Type{
 		TYPE1,
 		TYPE2
@@ -28,11 +35,12 @@ class Transmitter : public Transmission
 		void executeOrder(const std::string _order, json_t *_data, IdClient _idClient);
 
 	private :
-		Type getType(std::string _type);
+		void initializeMapping();
 
 	private:
+		std::map<std::string, Type> m_type;
 		ObjectManager m_objectManager;
-		RACC m_racc;
+		RACC m_racc; //default TCP/IP port : 2048
 		// TODO add instance of requests
 };
 
