@@ -26,11 +26,11 @@ public class ScenarioActivity extends ActionBarActivity {
         }
 
         public void goJours(View view) {
-            Intent intent = new Intent(this, ScenarioActivity.class);
+            Intent intent = new Intent(this, ConfigurationJour.class);
             startActivity(intent);
         }
-        public void goSemaine(View view) {
-            Intent intent = new Intent(this, ScenarioActivity.class);
+        public void goSemaines(View view) {
+            Intent intent = new Intent(this, ConfigurationSemaine.class);
             startActivity(intent);
         }
         @Override
