@@ -5,6 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="config_semaine">Configuration semaine</string>
+    <string name="config_jour">Configuration journée</string>
     <string name="name_semaine">Nom du profil</string>
     <string name="type_semaine">Type de profil</string>
     <string name="scenario">Scenario</string>
