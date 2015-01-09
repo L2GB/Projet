@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 
 public class ConfigurationJour extends ActionBarActivity {
 
-    private int crenauIndice=0;
+    private Integer crenauIndice=0;
     private LayoutParams layoutParams;
     private TableRow tr;
 
@@ -26,32 +27,31 @@ public class ConfigurationJour extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration_jour);
 
-
-
         this.layoutParams= new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
         this.layoutParams.setMargins(2, 2, 2, 2);
-
-
-        /*for(int i=0; i<crenauIndice; i++) {
-
-        }*/
     }
 
-    /** Called when the user clicks the Send button */
+    /** Called when the user clicks the Add button */
     public void addCreneau(View view) {
-        // Do something in response to button
-        crenauIndice++;
+        this.crenauIndice++;
         TableLayout tl = (TableLayout) findViewById(R.id.tablelayoutId);
         tr = new TableRow(this);
         tr.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        tr.addView(generateTextView("test", layoutParams));
+
+        /*** Affiche le numéro du créneau dans le tableau ***/
         tr.addView(generateTextView(String.valueOf(crenauIndice), layoutParams));
+
+        /*** Affiche le boutton de choix du début de créneau ***/
+        tr.addView(generateButton(layoutParams));
+        /*** Affiche le boutton de choix de fin de créneau ***/
+        tr.addView(generateButton(layoutParams));
+
         tl.addView(tr, layoutParams);
     }
 
     public TextView generateTextView(String texte, LayoutParams ly) {
         TextView result = new TextView(this);
-        result.setBackgroundColor(Color.LTGRAY);
+        result.setBackgroundColor(Color.WHITE);
         result.setTextColor(Color.DKGRAY);
         result.setGravity(Gravity.CENTER);
         result.setPadding(2, 2, 2, 2);
@@ -61,6 +61,21 @@ public class ConfigurationJour extends ActionBarActivity {
         result.setLayoutParams(ly);
         return result;
     }
+
+    public Button generateButton(LayoutParams ly){
+        Button boutton = new Button(this);
+        boutton.setBackgroundColor(Color.WHITE);
+        boutton.setTextColor(Color.DKGRAY);
+        boutton.setGravity(Gravity.CENTER);
+        boutton.setPadding(2,2,2,2);
+        boutton.setText("yo");
+        boutton.setTextSize(20);
+        boutton.setVisibility(View.VISIBLE);
+        boutton.setLayoutParams(ly);
+        return boutton;
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

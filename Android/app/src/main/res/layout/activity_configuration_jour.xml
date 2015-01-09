@@ -167,24 +167,32 @@
 
         <TableLayout android:layout_height="wrap_content"
             android:id="@+id/tablelayoutId"
-            android:layout_width="fill_parent"
-            android:background="#F87907"
+            android:layout_width="fill_parent">
+            //android:background="#F87907"
             >
 
             <TableRow>
+
                 <TextView android:id="@+id/l1r1"
-                    android:text="test1 "
+                    android:text="N°       "
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="#000000"
+                    />
+
+                <TextView android:id="@+id/l1r2"
+                    android:text="Début     "
                     android:textColor="#000000"
                     android:layout_gravity="center_horizontal"
                     />
-                <TextView android:id="@+id/l1r2"
-                    android:text="test2"
+                <TextView android:id="@+id/l1r3"
+                    android:text="Fin       "
                     android:layout_gravity="center_horizontal"
                     android:textColor="#000000"
                     />
 
             </TableRow>
         </TableLayout>
+
     </LinearLayout>
 
 
