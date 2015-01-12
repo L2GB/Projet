@@ -52,6 +52,5 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 		{
 			std::cout << "WTF?!" << std::endl;
 		}
-
 	}
 }

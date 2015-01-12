@@ -79,7 +79,7 @@ Transmitter --> ObjectManager
 RACC--|>DataObserver
 RACC-->Socket
 Socket--|>DataObservable
-DataObservable-->DataObserver
+DataObservable-right->DataObserver
 
 
 @enduml
