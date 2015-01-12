@@ -9,7 +9,7 @@ public class Objets {
     }
 
     public int getConsommatin() {
-        return consommatin;
+        return consommation;
     }
 
     public Type_Objet getType_objet() {
@@ -24,8 +24,8 @@ public class Objets {
         this.id_objet = id_objet;
     }
 
-    public void setConsommatin(int consommatin) {
-        this.consommatin = consommatin;
+    public void setConsommatin(int consommation) {
+        this.consommation = consommation;
     }
 
     public void setType_objet(Type_Objet type_objet) {
@@ -37,7 +37,7 @@ public class Objets {
     }
 
     private int id_objet;
-    private int consommatin;
+    private int consommation;
     private Type_Objet type_objet;
     private char piece;
 }
