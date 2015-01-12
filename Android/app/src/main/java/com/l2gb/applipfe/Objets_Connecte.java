@@ -3,7 +3,7 @@ package com.l2gb.applipfe;
 /**
  * Created by arthur on 12/01/2015.
  */
-public class Objets {
+public class Objets_Connecte {
     public int getId_objet() {
         return id_objet;
     }
