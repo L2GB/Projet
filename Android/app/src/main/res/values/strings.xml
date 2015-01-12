@@ -14,5 +14,6 @@
     <string name="title_activity_configuration_semaine">ConfigurationSemaine</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_scenario">ScenarioActivity</string>
+    <string name="title_activity_consommation">Consommation</string>
 
 </resources>

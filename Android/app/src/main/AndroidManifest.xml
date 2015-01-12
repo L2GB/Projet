@@ -27,7 +27,7 @@
         <activity
             android:name=".ConfigurationJour"
             android:label="@string/title_activity_configuration_jour"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
         </activity>
         <activity
             android:name=".ConfigurationSemaine"
@@ -36,7 +36,11 @@
         <activity
             android:name=".ScenarioActivity"
             android:label="@string/title_activity_scenario"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".Consommation_affichage"
+            android:label="@string/title_activity_consommation" >
         </activity>
     </application>
 

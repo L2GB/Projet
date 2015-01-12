@@ -24,18 +24,19 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
     public void goConsommation(View view){
+        Intent intent = new Intent(this, Consommation_affichage.class);
+        startActivity(intent);
+    }
+    public void goObjets(View view){
+
+    }
+    public void goPlanning(View view){
         Button monBouton= (Button) this.findViewById(R.id.button4);
         if(monBouton.getVisibility()==View.VISIBLE) {
             monBouton.setVisibility(View.GONE);
         }else{
             monBouton.setVisibility(View.VISIBLE);
         }
-    }
-    public void goObjets(View view){
-
-    }
-    public void goPlanning(View view){
-
     }
 
     @Override
