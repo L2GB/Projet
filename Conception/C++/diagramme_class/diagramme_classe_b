@@ -55,6 +55,21 @@ abstract class Transmission{
 	{abstract} void executeOrder(string _order, json_t *data, IdClient _idClient)
 }
 
+class LocalFileManager{
+		{static} string getDays();
+		{static} string getWeeks();
+		{static} string getObjects();
+		{static} string getRooms();
+		{static} void setDay(json_t *_day);
+		{static} void setWeek(json_t *_week);
+		{static} void setObject(json_t *_object);
+		{static} void setRoom(json_t *_room);
+		{static} void rmDay(json_t *_day);
+		{static} void rmWeek(json_t *_week);
+		{static} void rmObject(json_t *_object);
+		{static} void rmRoom(json_t *_room);
+}
+
 ObjectManager -->OCC
 OCC-->ZWaveController
 ObjectManager-up->Object
@@ -75,6 +90,7 @@ ObjectManager -up-|> Communicator
 Transmitter -left-> BDCC
 Transmitter --> RACC
 Transmitter --> ObjectManager
+Transmitter --> LocalFileManager
 
 RACC--|>DataObserver
 RACC-->Socket

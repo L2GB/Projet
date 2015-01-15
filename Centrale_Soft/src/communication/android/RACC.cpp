@@ -50,7 +50,7 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 		}
 		catch(std::logic_error &e)
 		{
-			std::cout << "WTF?!" << std::endl;
+			std::cout << "WTF?! " << e.what() << std::endl;
 		}
 	}
 }

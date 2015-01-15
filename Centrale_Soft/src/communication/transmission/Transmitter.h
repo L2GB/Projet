@@ -13,6 +13,7 @@
 #include "../../tools/json/jansson.h"
 #include "../../Object/ObjectManager.h"
 #include "../android/RACC.h"
+#include "../../localFile/LocalFileManager.h"
 
 // External include
 #include <map>
@@ -22,8 +23,9 @@
  * Request type
  */
 enum  Type{
-		TYPE1,
-		TYPE2
+		GET_PROFIL_JOUR,
+		SET_PROFIL_JOUR,
+		RM_PROFIL_JOUR
 };
 
 class Transmitter : public Transmission
