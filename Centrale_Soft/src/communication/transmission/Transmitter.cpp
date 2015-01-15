@@ -28,21 +28,31 @@ void Transmitter::initializeMapping()
 	m_type["GET_PROFIL_JOUR"] = GET_PROFIL_JOUR;
 	m_type["SET_PROFIL_JOUR"] = SET_PROFIL_JOUR;
 	m_type["RM_PROFIL_JOUR"] = RM_PROFIL_JOUR;
+	m_type["GET_PROFIL_SEMAINE"] = GET_PROFIL_SEMAINE;
+	m_type["SET_PROFIL_SEMAINE"] = SET_PROFIL_SEMAINE;
+	m_type["RM_PROFIL_SEMAINE"] = RM_PROFIL_SEMAINE;
+	m_type["GET_OBJETS"] = GET_OBJETS;
+	m_type["SET_OBJET"] = SET_OBJET;
+	m_type["RM_OBJET"] = RM_OBJET;
+	m_type["GET_PIECES"] = GET_PIECES;
+	m_type["SET_PIECE"] = SET_PIECE;
+	m_type["RM_PIECE"] = RM_PIECE;
 }
 
 void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient _idClient)
 {
 	// TODO call Request Object to execute order
-	std::string test;
+	std::string response;
 	std::cout << "Going to execute the order" << std::endl;
 	switch (m_type[_order])
 	{
 		case GET_PROFIL_JOUR:
 			try
 			{
-				test = LocalFileManager::getDays();
+				response = LocalFileManager::getDays();
 				std::cout << "Jours" << std::endl;
-				std::cout << test << std::endl;
+				std::cout << response << std::endl;
+				m_racc.sendData(response);
 			}
 			catch(NotFoundException &e)
 			{
@@ -62,7 +72,6 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				std::cout << e.what() << std::endl;
 			}
-
 			break;
 		case RM_PROFIL_JOUR:
 			try
@@ -79,6 +88,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			}
 			break;
 		default:
+			throw FormatException("Request type not identified");
 			break;
 	}
 }

@@ -8,18 +8,20 @@
 // Internal include
 #include "RACC.h"
 #include "../../tools/json/jansson.h"
+#include "../../tools/exceptions/FormatException.h"
 
 // External include
 #include <iostream>
 #include <stdexcept>
 
-RACC::RACC(const int _port) : m_tcpServer(_port)
+RACC::RACC(const int _port) : m_tcpServer(_port), m_client(0)
 {
 	m_tcpServer.attachInterface(this);
 }
 
 void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 {
+	m_client = _idClient;
 	std::cout << "Coucou from RACC" << std::endl;
 	std::cout << "Data receive :" << std::endl;
 	std::cout << _dataReceive << std::endl;
@@ -50,7 +52,16 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 		}
 		catch(std::logic_error &e)
 		{
-			std::cout << "WTF?! " << e.what() << std::endl;
+			std::cout << e.what() << std::endl;
+		}
+		catch(FormatException &e)
+		{
+			std::cout << e.what() << std::endl;
 		}
 	}
+}
+
+void RACC::sendData(const std::string _data)
+{
+	m_tcpServer.writeData(_data, m_client);
 }

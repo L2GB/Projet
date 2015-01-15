@@ -23,9 +23,11 @@ class RACC : public Communicator, DataObserver
 		virtual ~RACC() {}
 
 		void receiveOrder(const std::string _dataReceive, IdClient _idClient);
+		void sendData(const std::string _data);
 
 	private:
 		NetworkServer<TCP> m_tcpServer;
+		IdClient m_client;
 };
 
 #endif /* COMMUNICATION_ANDROID_RACC_H_ */
