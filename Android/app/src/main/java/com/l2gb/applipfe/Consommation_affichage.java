@@ -1,5 +1,6 @@
 package com.l2gb.applipfe;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,12 +13,13 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 
-public class Consommation_affichage extends ActionBarActivity {
+public class Consommation_affichage extends ActionBarActivity  {
 
+    private ListeObject listeObject;
     private Integer crenauIndice=0;
     private TableRow.LayoutParams layoutParams;
     private TableRow tr;
-
+    int x;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +35,25 @@ public class Consommation_affichage extends ActionBarActivity {
 
             /*** Affiche le numéro du créneau dans le tableau ***/
             tr.addView(generateTextView(String.valueOf(crenauIndice), layoutParams));
-
+/***        Affiche le boutton de choix du début de créneau ***/
+            tr.addView(generateTextView("Lampe",layoutParams));
             /*** Affiche le boutton de choix du début de créneau ***/
-            tr.addView(generateTextView("coucou",layoutParams));
+            tr.addView(generateTextView("Prise",layoutParams));
             /*** Affiche le boutton de choix de fin de créneau ***/
             tr.addView(generateTextView("ahahah",layoutParams));
 
             tl.addView(tr, layoutParams);
         }
+        Intent intent = getIntent();
+
+    }
+
+    public void ajouterListeObjet(ListeObject listeObject){
+        this.listeObject=listeObject;
+    }
+
+    public void ObjetAchanger(){
+
     }
 
     private TextView generateTextView(String texte, TableRow.LayoutParams ly) {
