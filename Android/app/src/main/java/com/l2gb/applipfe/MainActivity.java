@@ -8,9 +8,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity {
 
+    private Consommation_affichage consommation_affichage;
+
+    public final static ListeObject LISTE_OBJECT = null;
+    public ListeObject o;
+    public ArrayList<ListeObject> ppp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,14 +27,17 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void goScenario(View view){
+
         Intent intent = new Intent(this, ScenarioActivity.class);
         startActivity(intent);
     }
     public void goConsommation(View view){
         Intent intent = new Intent(this, Consommation_affichage.class);
+        intent.putExtra("coo",o);
         startActivity(intent);
     }
     public void goObjets(View view){
+        setContentView(R.layout.activity_configuration_jour);
 
     }
     public void goPlanning(View view){
