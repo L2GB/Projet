@@ -8,12 +8,12 @@
 // Internal include
 #include "BDCC.h"
 
-BDCC::BDCC() {
-	// TODO Auto-generated constructor stub
+BDCC::BDCC()
+{
 
 }
 
-BDCC::~BDCC() {
-	// TODO Auto-generated destructor stub
+BDCC::~BDCC()
+{
 }
 

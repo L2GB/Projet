@@ -53,7 +53,6 @@ class Transmitter : public Transmission
 		std::map<std::string, Type> m_type;
 		ObjectManager m_objectManager;
 		RACC m_racc; //default TCP/IP port : 2048
-		// TODO add instance of requests
 };
 
 #endif /* COMMUNICATION_TRANSMISSION_TRANSMITTER_H_ */
