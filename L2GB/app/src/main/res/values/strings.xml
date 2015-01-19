@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">L2GB</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_scenario__view">Scenario_View</string>
+    <string name="title_activity_semaine_list__view">SemaineList_View</string>
+    <string name="title_activity_semaine_configuration__view">SemaineConfiguration_View</string>
+    <string name="title_activity_jours_list__view">JoursList_View</string>
+    <string name="title_activity_jours_configuration__view">JoursConfiguration_View</string>
+    <string name="title_activity_planning__view">Planning_View</string>
+    <string name="title_activity_consommation__view">Consommation_View</string>
+    <string name="title_activity_view">View</string>
+
+</resources>
