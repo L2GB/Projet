@@ -11,12 +11,18 @@
 // Internal include
 #include "transmission/Transmission.h"
 
+/**
+ * Needed to instance the transmission.
+ */
 class Communicator
 {
 	public:
 		Communicator(){}
 		virtual ~Communicator(){}
 
+		/**
+		 * Attach a transmitter to a communicator.
+		 */
 		void attach(Transmission *_transmission);
 
 	protected :

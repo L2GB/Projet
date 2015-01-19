@@ -14,6 +14,9 @@
 // Internal include
 #include "../tools/json/jansson.h"
 
+/**
+ * Contains methods useful to write and read in the local configuration files.
+ */
 class LocalFileManager
 {
 	public:

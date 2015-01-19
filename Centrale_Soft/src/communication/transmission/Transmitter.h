@@ -38,16 +38,29 @@ enum  Type{
 		RM_PIECE
 };
 
+/**
+ * Used to transmit received data to the other devices.
+ */
 class Transmitter : public Transmission
 {
 	public:
 		Transmitter();
 		virtual ~Transmitter(){}
 
+		/**
+		 * Execute and transmit the order.
+		 */
 		void executeOrder(const std::string _order, json_t *_data, IdClient _idClient);
 
 	private :
+		/**
+		 * Associate a request to an enum.
+		 */
 		void initializeMapping();
+
+		/**
+		 * Create a message on a json format.
+		 */
 		std::string createMessage(const std::string _order, json_t *_data, std::string _message);
 
 	private:
