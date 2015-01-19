@@ -40,26 +40,29 @@ void Transmitter::initializeMapping()
 	m_type["RM_PIECE"] = RM_PIECE;
 }
 
+std::string Transmitter::createMessage(const std::string _order, json_t *_data, std::string _message)
+{
+	json_t *root = json_object();
+	json_t *message = json_object();
+	json_t *type = json_string(_order.c_str());
+
+	json_object_set(message, "type", type);
+	json_object_set(message, "data", _data);
+	json_object_set(root, _message.c_str(), message);
+
+	return json_dumps(root, 0);
+}
+
 void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient _idClient)
 {
 	// TODO call Request Object to execute order
 	std::string messageToSend;
 
-	json_t *root = json_object();
-	json_t *message = json_object();
-	json_t *type = json_string(_order.c_str());
-
 	std::cout << "Going to execute the order" << std::endl;
 	switch (m_type[_order])
 	{
 		case NEW_OBJET:
-
-			json_object_set(message, "type", type);
-			json_object_set(message, "data", _data);
-			json_object_set(root, "request", message);
-
-			messageToSend = json_dumps(root, 0);
-
+			messageToSend = createMessage(_order, _data, "request");
 			m_racc.sendData(messageToSend);
 			break;
 		case GET_OBJETS:
@@ -68,12 +71,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				std::string objets = LocalFileManager::getObjects();
 				json_t *data = json_loads(objets.c_str(), 0, NULL);
 
-				json_object_set(message, "type", type);
-				json_object_set(message, "data", data);
-				json_object_set(root, "response", message);
-
-				messageToSend = json_dumps(root, 0);
-
+				messageToSend = createMessage(_order, data, "response");
 				m_racc.sendData(messageToSend);
 			}
 			catch(NotFoundException &e)
@@ -115,12 +113,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				std::string jours = LocalFileManager::getDays();
 				json_t *data = json_loads(jours.c_str(), 0, NULL);
 
-				json_object_set(message, "type", type);
-				json_object_set(message, "data", data);
-				json_object_set(root, "response", message);
-
-				messageToSend = json_dumps(root, 0);
-
+				messageToSend = createMessage(_order, data, "response");
 				m_racc.sendData(messageToSend);
 			}
 			catch(NotFoundException &e)
@@ -162,12 +155,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				std::string semaines = LocalFileManager::getWeeks();
 				json_t *data = json_loads(semaines.c_str(), 0, NULL);
 
-				json_object_set(message, "type", type);
-				json_object_set(message, "data", data);
-				json_object_set(root, "response", message);
-
-				messageToSend = json_dumps(root, 0);
-
+				messageToSend = createMessage(_order, data, "response");
 				m_racc.sendData(messageToSend);
 			}
 			catch(NotFoundException &e)
@@ -209,12 +197,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				std::string pieces = LocalFileManager::getRooms();
 				json_t *data = json_loads(pieces.c_str(), 0, NULL);
 
-				json_object_set(message, "type", type);
-				json_object_set(message, "data", data);
-				json_object_set(root, "response", message);
-
-				messageToSend = json_dumps(root, 0);
-
+				messageToSend = createMessage(_order, data, "response");
 				m_racc.sendData(messageToSend);
 			}
 			catch(NotFoundException &e)

@@ -48,6 +48,7 @@ class Transmitter : public Transmission
 
 	private :
 		void initializeMapping();
+		std::string createMessage(const std::string _order, json_t *_data, std::string _message);
 
 	private:
 		std::map<std::string, Type> m_type;

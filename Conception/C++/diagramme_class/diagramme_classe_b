@@ -40,35 +40,37 @@ class PowerPlug{
 }
 
 class RACC{
-	void receiveOrder(string _dataReceive, IdClient _idClient)
-	void sendData(string _data)
+	+void receiveOrder(string _dataReceive, IdClient _idClient)
+	+void sendData(string _data)
 }
 
 class Transmitter{
-	void executeOrder(string _order, json_t *data, IdClient _idClient)
+	+void executeOrder(string _order, json_t *data, IdClient _idClient)
+	-void initializeMapping()
+	-string createMessage(string _order, json_t *_data, string _message)
 }
 
 abstract class Communicator{
-	void attach(Transmission *_transmission)
+	+void attach(Transmission *_transmission)
 }
 
 abstract class Transmission{
-	{abstract} void executeOrder(string _order, json_t *data, IdClient _idClient)
+	+{abstract} void executeOrder(string _order, json_t *data, IdClient _idClient)
 }
 
 class LocalFileManager{
-		{static} string getDays()
-		{static} string getWeeks()
-		{static} string getObjects()
-		{static} string getRooms()
-		{static} void setDay(json_t *_day)
-		{static} void setWeek(json_t *_week)
-		{static} void setObject(json_t *_object)
-		{static} void setRoom(json_t *_room)
-		{static} void rmDay(json_t *_day)
-		{static} void rmWeek(json_t *_week)
-		{static} void rmObject(json_t *_object)
-		{static} void rmRoom(json_t *_room)
+		+{static} string getDays()
+		+{static} string getWeeks()
+		+{static} string getObjects()
+		+{static} string getRooms()
+		+{static} void setDay(json_t *_day)
+		+{static} void setWeek(json_t *_week)
+		+{static} void setObject(json_t *_object)
+		+{static} void setRoom(json_t *_room)
+		+{static} void rmDay(json_t *_day)
+		+{static} void rmWeek(json_t *_week)
+		+{static} void rmObject(json_t *_object)
+		+{static} void rmRoom(json_t *_room)
 }
 
 ObjectManager -->OCC
