@@ -12,21 +12,21 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".View.Scenario_View"
-            android:label="@string/title_activity_scenario__view" >
+            android:label="@string/title_activity_scenario__view">
         </activity>
         <activity
-            android:name=".SemaineList_View"
-            android:label="@string/title_activity_semaine_list__view" >
+            android:name=".View.SemaineList_View"
+            android:label="@string/title_activity_semaine_list__view">
+
         </activity>
         <activity
             android:name=".View.SemaineConfiguration_View"
-            android:label="@string/title_activity_semaine_configuration__view" >
+            android:label="@string/title_activity_semaine_configuration__view">
         </activity>
         <activity
             android:name=".View.JoursList_View"
@@ -45,8 +45,9 @@
             android:label="@string/title_activity_consommation__view" >
         </activity>
         <activity
-            android:name=".View.ViewCreateur"
-            android:label="@string/title_activity_view" >
+            android:name=".View.ListeObjet_View"
+            android:label="@string/title_activity_liste_objet__view"
+            android:parentActivityName=".View.MainActivity" >
         </activity>
     </application>
 

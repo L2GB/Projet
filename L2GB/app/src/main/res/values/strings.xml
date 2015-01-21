@@ -12,5 +12,6 @@
     <string name="title_activity_planning__view">Planning_View</string>
     <string name="title_activity_consommation__view">Consommation_View</string>
     <string name="title_activity_view">View</string>
+    <string name="title_activity_liste_objet__view">ListeObjet_View</string>
 
 </resources>

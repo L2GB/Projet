@@ -1,32 +1,59 @@
 package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
-import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
+
+import java.util.ArrayList;
 
 public class Planning_View extends Activity {
 
-    MainActivity mainActivity = null;
-    Model model = null;
-
-    public Planning_View() {
-    }
-
-    public Planning_View(MainActivity mainActivity, Model model) {
-        this.mainActivity = mainActivity;
-        this.model = model;
-    }
+    final String NAME = "user_login";
+    private TableRow tr;
+    private TableRow.LayoutParams layoutParams;
+    ArrayList<String> listeJour = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.layoutParams= new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+        this.layoutParams.setMargins(2, 2, 2, 2);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning__view);
+
+        Intent intent = getIntent();
+        this.listeJour = new ArrayList<String>();
+        this.listeJour = getIntent().getStringArrayListExtra(MainActivity.NAME);
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        setContentView(textView);
+
+        ajouterJour();
     }
 
+
+    private void ajouterJour(){
+        TableLayout tl = (TableLayout) findViewById(R.id.tablelayoutId);
+        TableLayout t2 = new TableLayout(this);
+        t2.toString();
+        for(Integer i = 0 ; i < listeJour.size() ; i++) {
+            tr = new TableRow(this);
+            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            TextView textView = new TextView(this);
+            textView.setTextSize(40);
+            textView.setText(listeJour.get(i).toString());
+            /*** Affiche le numéro du créneau dans le tableau ***/
+            tr.addView(textView);
+            t2.addView(tr);
+            setContentView(t2);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

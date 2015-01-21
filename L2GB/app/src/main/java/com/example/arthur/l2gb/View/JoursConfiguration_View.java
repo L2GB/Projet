@@ -1,25 +1,16 @@
 package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
-import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
 public class JoursConfiguration_View extends Activity {
-
-    MainActivity mainActivity = null;
-    Model model = null;
-
-    public JoursConfiguration_View() {
-    }
-
-    public JoursConfiguration_View(MainActivity mainActivity, Model model) {
-        this.mainActivity = mainActivity;
-        this.model = model;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +18,22 @@ public class JoursConfiguration_View extends Activity {
         setContentView(R.layout.activity_jours_configuration__view);
     }
 
+    public void envoiDuNom(View view){
+        final EditText editTextNom = (EditText)findViewById(R.id.editTextNom);
+        // On vérifie que la taille de la chaine de retour est supèrieur à 0
+        if(editTextNom.getText().length() > 0) {
+            // Création de l'intent
+            Intent intent = new Intent();
+            // On rajoute le nom saisie dans l'intent
+            intent.putExtra("Nom", editTextNom.getText().toString());
+            // On retourne le résultat avec l'intent
+            setResult(RESULT_OK, intent);
+            // On termine cette activité
+            finish();
+
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
