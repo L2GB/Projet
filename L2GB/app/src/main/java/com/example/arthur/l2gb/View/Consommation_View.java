@@ -10,9 +10,14 @@ import com.example.arthur.l2gb.R;
 
 public class Consommation_View extends Activity {
 
+    MainActivity mainActivity = null;
     Model model = null;
 
-    public Consommation_View(Model model) {
+    public Consommation_View() {
+    }
+
+    public Consommation_View(MainActivity mainActivity, Model model) {
+        this.mainActivity = mainActivity;
         this.model = model;
     }
 

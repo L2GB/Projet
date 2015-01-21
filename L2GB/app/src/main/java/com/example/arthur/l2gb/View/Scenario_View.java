@@ -1,14 +1,28 @@
 package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
 
 public class Scenario_View extends Activity {
+
+    MainActivity mainActivity = null;
+    Model model = null;
+
+    public Scenario_View() {
+    }
+
+    public Scenario_View(MainActivity mainActivity, Model model) {
+        this.mainActivity = mainActivity;
+        this.model = model;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,5 +51,10 @@ public class Scenario_View extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goMenu(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

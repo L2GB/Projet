@@ -5,9 +5,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
 public class Planning_View extends Activity {
+
+    MainActivity mainActivity = null;
+    Model model = null;
+
+    public Planning_View() {
+    }
+
+    public Planning_View(MainActivity mainActivity, Model model) {
+        this.mainActivity = mainActivity;
+        this.model = model;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

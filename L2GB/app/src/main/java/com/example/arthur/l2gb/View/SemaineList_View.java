@@ -5,10 +5,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
 
 public class SemaineList_View extends Activity {
+
+    MainActivity mainActivity = null;
+    Model model = null;
+
+    public SemaineList_View() {
+    }
+
+    public SemaineList_View(MainActivity mainActivity, Model model) {
+        this.mainActivity = mainActivity;
+        this.model = model;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

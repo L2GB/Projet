@@ -8,30 +8,30 @@ import android.view.MenuItem;
 import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
-public class JoursList_View extends Activity {
+public class ListeObjet_View extends Activity {
 
     MainActivity mainActivity = null;
     Model model = null;
 
-    public JoursList_View() {
+    public ListeObjet_View() {
     }
 
-    public JoursList_View(MainActivity mainActivity, Model model) {
-        this.model = model;
+    public ListeObjet_View(MainActivity mainActivity, Model model) {
         this.mainActivity = mainActivity;
+        this.model = model;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jours_list__view);
+        setContentView(R.layout.activity_liste_objet__view);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_jours_list__view, menu);
+        getMenuInflater().inflate(R.menu.menu_liste_objet__view, menu);
         return true;
     }
 
