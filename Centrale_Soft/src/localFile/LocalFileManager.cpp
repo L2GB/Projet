@@ -145,7 +145,6 @@ void LocalFileManager::setDay(json_t *_day)
 		std::string newString = json_dumps(newRoot, 0);
 		write(fd, newString.c_str(), newString.size());
 		close(fd);
-		throw NotFoundException("L'objet \"jours\" n'est pas une liste ou n'existe pas");
 	}
 
 	int index;
@@ -192,6 +191,7 @@ void LocalFileManager::setDay(json_t *_day)
 	root = json_object();
 	json_object_set(root, "jours", jours);
 	std::string newString = json_dumps(root, 0);
+
 
 	write(fd, newString.c_str(), newString.size());
 	close(fd);

@@ -21,6 +21,7 @@ class Week
 		std::string getName() { return m_name; }
 		void setDays(std::vector<Day*> _days) { m_days = _days; }
 		std::vector<Day*> getDays(){return m_days;}
+		void print();
 
 	private:
 		std::string m_name;

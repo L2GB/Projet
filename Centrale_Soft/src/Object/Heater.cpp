@@ -15,3 +15,14 @@ Heater::~Heater()
 {
 }
 
+void Heater::print()
+{
+	std::cout << std::endl;
+	std::cout << "HEATER" << std::endl;
+	std::cout << "Name : " << this->getName() << std::endl;
+	std::cout << "Type : " << this->getType() << std::endl;
+	std::cout << "Tconfort : " << m_Tconfort << std::endl;
+	std::cout << "Teco : " << m_Teco << std::endl;
+	this->getPlanning()->print();
+	std::cout << std::endl;
+}

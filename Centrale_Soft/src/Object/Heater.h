@@ -20,6 +20,7 @@ class Heater : public Object
 		void setTeco(int _teco){m_Teco = _teco;}
 		int getTconfort(){return m_Tconfort;}
 		int getTeco(){return m_Teco;}
+		void print();
 
 	private:
 		int m_Tconfort;

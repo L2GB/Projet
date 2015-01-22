@@ -174,7 +174,6 @@ void ObjectManager::setObject(json_t *_object)
 	}
 	std::string type = json_string_value(typeObjet);
 
-	std::cout << "\n\n\nPASEXCEPTION\n\n\n" << std::endl;
 	switch (m_typeObjet[type])
 	{
 		case PRISE:
@@ -200,7 +199,6 @@ void ObjectManager::setObject(json_t *_object)
 				if(json_is_integer(tConfort))
 				{
 					int tconfort = json_integer_value(tConfort);
-					std::cout << "Tconfort" << tconfort << std::endl;
 					heater->setTconfort(tconfort);
 				}
 
@@ -208,7 +206,6 @@ void ObjectManager::setObject(json_t *_object)
 				if(json_is_integer(tEco))
 				{
 					int teco = json_integer_value(tEco);
-					std::cout << "Teco" << teco << std::endl;
 					heater->setTeco(teco);
 				}
 
@@ -254,8 +251,6 @@ Object *ObjectManager::getObject(std::string _name)
 	{
 		if(m_objects[i]->getName().compare(_name.c_str()) == 0)
 		{
-			std::cout << "NOM JOUR0 : " << m_objects[i]->getPlanning()->getDays()[0]->getName() << std::endl;
-			std::cout << "HEURE : " << m_objects[i]->getPlanning()->getDays()[0]->getTimeSlot()[0].getStart().tm_hour << std::endl;
 			return m_objects[i];
 		}
 	}

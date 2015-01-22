@@ -18,31 +18,38 @@ abstract class DataObserver
 abstract class DataObservable
 
 abstract class Object{
-	-Planning *m_planning
-	+void setPlanning(Planning &planning)
+	-string m_name
+	-Week *m_planning
+	-string m_type
+	+void setPlanning(Week *_planning)
 	void run()
-	abstract readFile()
-	abstract writeFile()
 }
 
 class ObjectManager{
-	+void day_set(json_t *_day)
-	+void day_del(json_t *_day)
-	+void week_set(json_t *_week)
-	+void week_del(json_t *_week)
-	void stop()
+	+void setDay(json_t *_day)
+	+void setWeek(json_t *_week)
+	+void setObject(json_t *_object)
+	+void loadDays(json_t *_days)
+	+void loadWeeks(json_t *_weeks)
+	+void loadObjects(json_t *_objects)
+	+Object *getObject(string _name)
+	-void initializeMapping()
+	-map<string, TypeObjet> m_typeObjet;
+	-vector<Object *> m_objects;
+	-PlanningManager m_planningManager;
 }
 
 class Heater{
-	readFile()
+	-int m_Tconfort
+	-int m_Teco
+	+void setTconfort(int _tconfort)
+	+void setTeco(int _teco)
 }	
 
 class Thermostat{
-	readFile()
 }
 
 class PowerPlug{
-	readFile()
 }
 
 class RACC{
@@ -52,8 +59,13 @@ class RACC{
 
 class Transmitter{
 	+void executeOrder(string _order, json_t *data, IdClient _idClient)
-	-void initializeMapping()
 	-string createMessage(string _order, json_t *_data, string _message)
+	-void initializeMapping()
+	-void loadData()
+	-map<string, Type> m_type
+	-ObjectManager m_objectManager
+	-PlanningManager m_planningManager
+	-RACC m_racc
 }
 
 abstract class Communicator{
@@ -80,31 +92,28 @@ class LocalFileManager{
 }
 
 class PlanningManager{
-	-vector<Planning> m_planning
-	-<vector> m_weeks
-	-<vector> m_days
+	-vector<Week> m_weeks
+	-vector<Day> m_days
 	
-	+Planning getPlanning(string _name)
 	+void day_set(string _name, vector<TimeSlot> _timeSlot)
+	+Day *day_get(string _name)
 	+void day_del(string _name)
 	+void week_set(string _name, vector<Day> _days)
+	+Day *week_get(string _name)
 	+void week_del(string _name)
-	+void planning_set(string _name, Week _week)
-	+void planning_del(string _name)
 }
 
-class Planning{
-	-Week m_week
- }
 
 class Week{
 	-string m_name
-	-vector<Day> m_days
+	-vector<Day *> m_days
+	+void setDays(vector<Day*> _days)
 }
 
 class Day{
 	-string m_name
 	-vector<TimeSlot> m_timeSlot
+	+vector<TimeSlot> getTimeSlot()
 }
 
 class TimeSlot{
@@ -141,13 +150,10 @@ Socket--|>DataObservable
 DataObservable-right->DataObserver
 
 ObjectManager --> PlanningManager
-PlanningManager "1" -down- "*" Planning
 PlanningManager "1" -down- "*" Week
 PlanningManager "1" -down- "*" Day
 PlanningManager -down- TimeSlot
-Planning "1" -left- "1" Week
 Week "1" -left- "7" Day
 Day -left- TimeSlot
-Object "1" -left- "1" Planning
 
 @enduml

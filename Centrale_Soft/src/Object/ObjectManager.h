@@ -38,9 +38,9 @@ class ObjectManager : public Communicator
 		void loadDays(json_t *_days);
 		void loadWeeks(json_t *_weeks);
 		void loadObjects(json_t *_objects);
+		Object *getObject(std::string _name);
 
 	private:
-		Object *getObject(std::string _name);
 		void initializeMapping();
 
 	private:

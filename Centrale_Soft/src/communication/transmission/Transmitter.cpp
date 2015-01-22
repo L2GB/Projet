@@ -10,6 +10,8 @@
 #include "../../tools/exceptions/FormatException.h"
 #include "../../tools/exceptions/NotFoundException.h"
 
+#include "../../Object/Heater.h"
+
 // Extrenal include
 #include <iostream>
 
@@ -105,6 +107,8 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				LocalFileManager::setObject(_data);
 				m_objectManager.setObject(_data);
+				Heater *h = (Heater *) m_objectManager.getObject("heater1");
+				h->print();
 			}
 			catch(NotFoundException &e)
 			{
@@ -147,6 +151,8 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			try
 			{
 				std::string jours = LocalFileManager::getDays();
+				std::cout << "LOAD JOURS :  " << std::endl;
+				std::cout << jours << std::endl;
 				json_t *data = json_loads(jours.c_str(), 0, NULL);
 				m_objectManager.loadDays(data);
 			}
@@ -160,6 +166,8 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				LocalFileManager::setDay(_data);
 				m_objectManager.setDay(_data);
+				Heater *h = (Heater *) m_objectManager.getObject("heater1");
+				h->print();
 			}
 			catch(NotFoundException &e)
 			{

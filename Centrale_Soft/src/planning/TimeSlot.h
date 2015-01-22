@@ -17,6 +17,7 @@ class TimeSlot
 		TimeSlot(bool m_permission, struct tm m_start, struct tm m_end);
 		virtual ~TimeSlot();
 		struct tm getStart(){return m_start;}
+		struct tm getEnd(){return m_end;}
 
 	private:
 		bool m_permission;
