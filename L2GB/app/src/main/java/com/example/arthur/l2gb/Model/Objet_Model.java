@@ -1,28 +1,27 @@
 package com.example.arthur.l2gb.Model;
 
-<<<<<<< .mine
-import android.os.Parcel;
-import android.os.Parcelable;
 
-=======
-import com.l2gb.applipfe.model.ProfilSemaine;
-
-import java.lang.Integer;
-import java.lang.String;
-
->>>>>>> .r56
 /**
- * Created by arthur on 15/01/2015.
+ * Created by pierrebaranger on 21/01/2015.
  */
-public class Objet_Model implements Parcelable {
+public class Objet_Model {
 
     private String name;
     private boolean connecte;
     private String type;
     private Integer temperature_confort;
     private Integer temperature_economique;
-    private ProfilSemaine profilSemaine;
+    private Semaine_Model profilSemaine;
 
+    public Objet_Model(String name)
+    {
+        this.profilSemaine = new Semaine_Model();
+        this.connecte = false;
+        this.name = name;
+        this.type = Constante.TYPE_CHAUFFAGE;
+        this.temperature_confort = Constante.TEMP_CONFORT;
+        this.temperature_economique = Constante.TEMP_ECO;
+    }
 
     public Integer getTemperature_economique() {
         return temperature_economique;
@@ -48,11 +47,11 @@ public class Objet_Model implements Parcelable {
         this.type = type;
     }
 
-    public ProfilSemaine getProfilSemaine() {
+    public Semaine_Model getProfilSemaine() {
         return profilSemaine;
     }
 
-    public void setProfilSemaine(ProfilSemaine profilSemaine) {
+    public void setProfilSemaine(Semaine_Model profilSemaine) {
         this.profilSemaine = profilSemaine;
     }
 
@@ -63,44 +62,6 @@ public class Objet_Model implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
-<<<<<<< .mine
-
-
-    protected Objet_Model(Parcel in) {
-        name = in.readString();
-        id = in.readInt();
-        piece = in.readString();
-        estConnecte = in.readByte() != 0x00;
-        semaine_model = (Semaine_Model) in.readValue(Semaine_Model.class.getClassLoader());
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeInt(id);
-        dest.writeString(piece);
-        dest.writeByte((byte) (estConnecte ? 0x01 : 0x00));
-        dest.writeValue(semaine_model);
-    }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Objet_Model> CREATOR = new Parcelable.Creator<Objet_Model>() {
-        @Override
-        public Objet_Model createFromParcel(Parcel in) {
-            return new Objet_Model(in);
-        }
-
-        @Override
-        public Objet_Model[] newArray(int size) {
-            return new Objet_Model[size];
-        }
-    };
-}=======
 
     public boolean getConnecte() {
         return this.connecte;
@@ -112,4 +73,3 @@ public class Objet_Model implements Parcelable {
 
 
 }
->>>>>>> .r56

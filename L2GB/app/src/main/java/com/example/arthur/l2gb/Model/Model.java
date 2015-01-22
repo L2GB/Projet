@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Model {
     private ArrayList<Objet_Model> objet_model;
     private ArrayList<Jours_Model> jours_Model;
-    private ArrayList<ProfilSemaine_Model> profilSemaine_model;
+    private ArrayList<Semaine_Model> profilSemaine_model;
 
     public ArrayList<Objet_Model> getObjet_model() {
         return objet_model;
@@ -26,11 +26,11 @@ public class Model {
         this.jours_Model = jours_Model;
     }
 
-    public ArrayList<ProfilSemaine_Model> getProfilSemaine_model() {
+    public ArrayList<Semaine_Model> getProfilSemaine_model() {
         return profilSemaine_model;
     }
 
-    public void setProfilSemaine_model(ArrayList<ProfilSemaine_Model> profilSemaine_model) {
+    public void setProfilSemaine_model(ArrayList<Semaine_Model> profilSemaine_model) {
         this.profilSemaine_model = profilSemaine_model;
     }
 }

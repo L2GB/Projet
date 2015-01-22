@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 
                 // On récupére le paramètre "Nom" de l'intent
                 String nom = data.getStringExtra("Nom");
-                this.test = nom;
+                this.listeJour.add(nom);
                 // On affiche le résultat
                 Toast.makeText(this, "Votre nom est : " + nom, Toast.LENGTH_LONG).show();
                 // Si l'activité est annulé
