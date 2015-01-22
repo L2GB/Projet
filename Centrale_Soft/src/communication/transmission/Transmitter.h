@@ -14,6 +14,7 @@
 #include "../../Object/ObjectManager.h"
 #include "../android/RACC.h"
 #include "../../localFile/LocalFileManager.h"
+#include "../../planning/PlanningManager.h"
 
 // External include
 #include <map>
@@ -24,13 +25,16 @@
  */
 enum  Type{
 		GET_PROFIL_JOUR,
+		LOAD_PROFIL_JOUR,
 		SET_PROFIL_JOUR,
 		RM_PROFIL_JOUR,
 		GET_PROFIL_SEMAINE,
+		LOAD_PROFIL_SEMAINE,
 		SET_PROFIL_SEMAINE,
 		RM_PROFIL_SEMAINE,
 		NEW_OBJET,
 		GET_OBJETS,
+		LOAD_OBJETS,
 		SET_OBJET,
 		RM_OBJET,
 		GET_PIECES,
@@ -39,6 +43,8 @@ enum  Type{
 };
 
 /**
+ * Central point of the application.
+ * Create all the objects needed to communicate.
  * Used to transmit received data to the other devices.
  */
 class Transmitter : public Transmission
@@ -57,6 +63,7 @@ class Transmitter : public Transmission
 		 * Associate a request to an enum.
 		 */
 		void initializeMapping();
+		void loadData();
 
 		/**
 		 * Create a message on a json format.
@@ -66,6 +73,7 @@ class Transmitter : public Transmission
 	private:
 		std::map<std::string, Type> m_type;
 		ObjectManager m_objectManager;
+		PlanningManager m_planningManager;
 		RACC m_racc; //default TCP/IP port : 2048
 };
 

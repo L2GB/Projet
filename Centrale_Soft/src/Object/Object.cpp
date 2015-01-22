@@ -7,12 +7,10 @@
 
 #include "Object.h"
 
-Object::Object() {
-	// TODO Auto-generated constructor stub
-
+Object::Object(std::string _name, Week *_planning, std::string _type) : m_name(_name), m_planning(_planning), m_type(_type)
+{
 }
 
-Object::~Object() {
-	// TODO Auto-generated destructor stub
+Object::~Object()
+{
 }
-

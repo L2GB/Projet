@@ -7,12 +7,11 @@
 
 #include "Heater.h"
 
-Heater::Heater() {
-	// TODO Auto-generated constructor stub
-
+Heater::Heater(std::string _name, Week *_planning, std::string _type, int _Tconfort, int _Teco) : Object(_name, _planning, _type), m_Tconfort(_Tconfort), m_Teco(_Teco)
+{
 }
 
-Heater::~Heater() {
-	// TODO Auto-generated destructor stub
+Heater::~Heater()
+{
 }
 

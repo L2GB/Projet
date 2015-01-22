@@ -36,11 +36,10 @@ class RACC : public Communicator, DataObserver
 		/**
 		 * Used to send data to the android application.
 		 */
-		void sendData(const std::string _data);
+		void sendData(const std::string _data, IdClient _idClient);
 
 	private:
 		NetworkServer<TCP> m_tcpServer;
-		IdClient m_client;
 };
 
 #endif /* COMMUNICATION_ANDROID_RACC_H_ */

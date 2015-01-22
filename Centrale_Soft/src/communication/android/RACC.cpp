@@ -14,14 +14,13 @@
 #include <iostream>
 #include <stdexcept>
 
-RACC::RACC(const int _port) : m_tcpServer(_port), m_client(0)
+RACC::RACC(const int _port) : m_tcpServer(_port)
 {
 	m_tcpServer.attachInterface(this);
 }
 
 void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 {
-	m_client = _idClient;
 	std::cout << "Coucou from RACC" << std::endl;
 	std::cout << "Data receive :" << std::endl;
 	std::cout << _dataReceive << std::endl;
@@ -61,7 +60,7 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 	}
 }
 
-void RACC::sendData(const std::string _data)
+void RACC::sendData(const std::string _data, IdClient _idClient)
 {
-	m_tcpServer.writeData(_data, m_client);
+	m_tcpServer.writeData(_data, _idClient);
 }
