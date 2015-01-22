@@ -8,12 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.l2gb.applipfe.model.TestCom;
+
 import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Consommation_affichage consommation_affichage;
+    private TestCom test;
 
     public final static ListeObject LISTE_OBJECT = null;
     public ListeObject o;
@@ -24,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Button monBouton= (Button) this.findViewById(R.id.button4);
         monBouton.setVisibility(View.GONE);
+        this.test = new TestCom();
     }
 
     public void goScenario(View view){

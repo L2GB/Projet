@@ -1,10 +1,11 @@
 package com.l2gb.applipfe;
 
-import android.content.Intent;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
+import com.l2gb.applipfe.R;
+import com.l2gb.applipfe.model.ProfilJour;
+import com.l2gb.applipfe.model.TestCom;
 
 
 public class ConfigurationJour extends ActionBarActivity {
@@ -21,6 +27,10 @@ public class ConfigurationJour extends ActionBarActivity {
     private Integer crenauIndice=0;
     private LayoutParams layoutParams;
     private TableRow tr;
+    private ProfilJour jour;
+    private Button saveBoutton;
+    private EditText edit_name_jour;
+    private TestCom testCom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,11 @@ public class ConfigurationJour extends ActionBarActivity {
 
         this.layoutParams= new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
         this.layoutParams.setMargins(2, 2, 2, 2);
+
+        Button saveBoutton = (Button) findViewById(R.id.save);
+        edit_name_jour = (EditText) findViewById(R.id.edit_name_jour);
+
+        this.testCom = new TestCom();
     }
 
     /** Called when the user clicks the Add button */
@@ -62,6 +77,11 @@ public class ConfigurationJour extends ActionBarActivity {
         return result;
     }
 
+    private void sauvegarde(){
+        jour = new ProfilJour();
+        jour.setName(edit_name_jour.getText().toString());
+
+    }
     public Button generateButton(LayoutParams ly){
         Button boutton = new Button(this);
         boutton.setBackgroundColor(Color.WHITE);
@@ -72,9 +92,57 @@ public class ConfigurationJour extends ActionBarActivity {
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
         boutton.setLayoutParams(ly);
+        boutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dispTimer(view);
+            }
+        });
         return boutton;
     }
 
+    /**
+     * \brief MÃ©thode d'affichage du pop-up de connexion
+     *
+     * AppelÃ©e lors du clic sur le bouton de configuration de la connexion.
+     */
+    public void dispTimer(View view)
+    {
+        //On instancie notre layout en tant que View
+        LayoutInflater factory = LayoutInflater.from(this);
+        final View timerPopUpView = factory.inflate(R.layout.activity_popup, null);
+
+        //CrÃ©ation de l'AlertDialog
+        AlertDialog.Builder timerPopUp = new AlertDialog.Builder(this);
+
+        //On affecte la vue personnalisÃ© que l'on a crÃ©e Ã  notre AlertDialog
+        timerPopUp.setView(timerPopUpView);
+
+        //On donne un titre Ã  l'AlertDialog
+        timerPopUp.setTitle("Test nigger");
+        final TimePicker timer = (TimePicker) timerPopUpView.findViewById(R.id.timePicker);
+        timerPopUp.show();
+    }
+
+
+    public void saveDisplay(View view)
+    {
+        //On instancie notre layout en tant que View
+        LayoutInflater fac = LayoutInflater.from(this);
+        final View testView = fac.inflate(R.layout.activity_test, null);
+
+        //CrÃ©ation de l'AlertDialog
+        AlertDialog.Builder testPopUp = new AlertDialog.Builder(this);
+
+        //On affecte la vue personnalisÃ© que l'on a crÃ©e Ã  notre AlertDialog
+        testPopUp.setView(testView);
+
+        //On donne un titre Ã  l'AlertDialog
+        testPopUp.setTitle("TEST");
+        //final TextView textp = (TextView) testView.findViewById(R.id.testTextView);
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

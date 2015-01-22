@@ -40,6 +40,11 @@ public class ScenarioActivity extends ActionBarActivity {
             return true;
         }
 
+        /** fonction test **/
+        public void test(){
+
+        }
+
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // Handle action bar item clicks here. The action bar will

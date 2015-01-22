@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.l2gb.applipfe.ConfigurationJour"
+    tools:context="com.l2gb.applipfe.view.ConfigurationJour"
     android:weightSum="1">
 
     <TextView android:text="@string/config_jour"
@@ -34,7 +34,7 @@
             android:id="@+id/name_s"
             android:textSize="15dp"/>
 
-        <EditText android:id="@+id/edit_name_semaine"
+        <EditText android:id="@+id/edit_name_jour"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:hint="nom"
@@ -43,9 +43,10 @@
         <Button
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:onClick="sauvegarder"
+            android:onClick="saveDisplay"
             android:text="sauvegarder"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:id="@+id/save" />
 
     </LinearLayout>
 
@@ -111,7 +112,7 @@
             android:id="@+id/edit_temp_confort"
             android:text="T°C"
             android:layout_marginRight="10dp"
-        />
+            />
 
         <TextView android:text="Economique"
             android:layout_width="wrap_content"

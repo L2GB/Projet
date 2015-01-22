@@ -1,53 +1,70 @@
 package com.example.arthur.l2gb.Model;
 
+import com.l2gb.applipfe.model.ProfilSemaine;
+
+import java.lang.Integer;
+import java.lang.String;
+
 /**
  * Created by arthur on 15/01/2015.
  */
 public class Objet_Model {
-    private String name;
-    private int id;
-    private String piece;
-    private boolean estConnecte;
-    private Semaine_Model semaine_model;
 
+    private String name;
+    private boolean connecte;
+    private String type;
+    private Integer temperature_confort;
+    private Integer temperature_economique;
+    private ProfilSemaine profilSemaine;
+
+
+    public Integer getTemperature_economique() {
+        return temperature_economique;
+    }
+
+    public void setTemperature_economique(Integer temperature_economique) {
+        this.temperature_economique = temperature_economique;
+    }
+
+    public Integer getTemperature_confort() {
+        return temperature_confort;
+    }
+
+    public void setTemperature_confort(Integer temperature_confort) {
+        this.temperature_confort = temperature_confort;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public ProfilSemaine getProfilSemaine() {
+        return profilSemaine;
+    }
+
+    public void setProfilSemaine(ProfilSemaine profilSemaine) {
+        this.profilSemaine = profilSemaine;
+    }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public boolean getConnecte() {
+        return this.connecte;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setConnecte(boolean connecte) {
+        this.connecte = connecte;
     }
 
-    public String getPiece() {
-        return piece;
-    }
 
-    public void setPiece(String piece) {
-        this.piece = piece;
-    }
-
-    public boolean isEstConnecte() {
-        return estConnecte;
-    }
-
-    public void setEstConnecte(boolean estConnecte) {
-        this.estConnecte = estConnecte;
-    }
-
-    public Semaine_Model getSemaine_model() {
-        return semaine_model;
-    }
-
-    public void setSemaine_model(Semaine_Model semaine_model) {
-        this.semaine_model = semaine_model;
-    }
 }

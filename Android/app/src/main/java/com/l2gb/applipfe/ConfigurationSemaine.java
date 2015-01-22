@@ -1,5 +1,4 @@
 package com.l2gb.applipfe;
-
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import com.l2gb.applipfe.R;
+import com.l2gb.applipfe.Test;
 
 
 public class ConfigurationSemaine extends ActionBarActivity {
