@@ -13,4 +13,10 @@ Object::Object(std::string _name, Week *_planning, std::string _type) : m_name(_
 
 Object::~Object()
 {
+
+}
+
+void Object::run()
+{
+
 }

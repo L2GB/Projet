@@ -10,8 +10,9 @@
 
 // Internal include
 #include "../planning/Week.h"
+#include "../tools/thread/Thread.h"
 
-class Object
+class Object : public Thread
 {
 	public:
 		Object(std::string _name, Week *_planning, std::string _type);
@@ -21,6 +22,8 @@ class Object
 		std::string getType(){return m_type;}
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
+
+		void run();
 
 	private:
 		std::string m_name;
