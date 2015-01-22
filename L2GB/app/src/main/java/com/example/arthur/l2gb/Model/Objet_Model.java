@@ -1,10 +1,13 @@
 package com.example.arthur.l2gb.Model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by pierrebaranger on 21/01/2015.
  */
-public class Objet_Model {
+public class Objet_Model implements Parcelable {
 
     private String name;
     private boolean connecte;
@@ -72,4 +75,51 @@ public class Objet_Model {
     }
 
 
+
+    protected Objet_Model(Parcel in) {
+        name = in.readString();
+        connecte = in.readByte() != 0x00;
+        type = in.readString();
+        temperature_confort = in.readByte() == 0x00 ? null : in.readInt();
+        temperature_economique = in.readByte() == 0x00 ? null : in.readInt();
+        profilSemaine = (Semaine_Model) in.readValue(Semaine_Model.class.getClassLoader());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeByte((byte) (connecte ? 0x01 : 0x00));
+        dest.writeString(type);
+        if (temperature_confort == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(temperature_confort);
+        }
+        if (temperature_economique == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(temperature_economique);
+        }
+        dest.writeValue(profilSemaine);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Objet_Model> CREATOR = new Parcelable.Creator<Objet_Model>() {
+        @Override
+        public Objet_Model createFromParcel(Parcel in) {
+            return new Objet_Model(in);
+        }
+
+        @Override
+        public Objet_Model[] newArray(int size) {
+            return new Objet_Model[size];
+        }
+    };
 }
