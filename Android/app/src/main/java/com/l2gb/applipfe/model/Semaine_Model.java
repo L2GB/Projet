@@ -5,36 +5,36 @@ import java.util.ArrayList;
 /**
  * Created by pierrebaranger1 on 21/01/2015.
  */
-public class ProfilSemaine {
+public class Semaine_Model {
 
     private String name;
-    private ArrayList<ProfilJour> profilJourList;
+    private ArrayList<Jours_Model> profilJourList;
 
-    public ProfilSemaine()
+    public Semaine_Model()
     {
         this.name = new String();
-        this.profilJourList = new ArrayList<ProfilJour>();
+        this.profilJourList = new ArrayList<Jours_Model>();
     }
 
-    public ProfilSemaine(String name)
+    public Semaine_Model(String name)
     {
         this.name = name;
-        this.profilJourList = new ArrayList<ProfilJour>();
+        this.profilJourList = new ArrayList<Jours_Model>();
     }
 
-    public ProfilSemaine(String name,ArrayList<ProfilJour> profilJourList)
+    public Semaine_Model(String name, ArrayList<Jours_Model> profilJourList)
     {
         this.name = name;
-        this.profilJourList = new ArrayList<ProfilJour>();
+        this.profilJourList = new ArrayList<Jours_Model>();
         this.profilJourList = profilJourList;
     }
 
-    public ArrayList<ProfilJour> getProfilJourList()
+    public ArrayList<Jours_Model> getProfilJourList()
     {
         return profilJourList;
     }
 
-    public void setProfilJourList(ArrayList<ProfilJour> profilJourList)
+    public void setProfilJourList(ArrayList<Jours_Model> profilJourList)
     {
         this.profilJourList = profilJourList;
     }

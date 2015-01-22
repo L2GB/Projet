@@ -17,8 +17,7 @@ import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.l2gb.applipfe.R;
-import com.l2gb.applipfe.model.ProfilJour;
+import com.l2gb.applipfe.model.Jours_Model;
 import com.l2gb.applipfe.model.TestCom;
 
 
@@ -27,7 +26,7 @@ public class ConfigurationJour extends ActionBarActivity {
     private Integer crenauIndice=0;
     private LayoutParams layoutParams;
     private TableRow tr;
-    private ProfilJour jour;
+    private Jours_Model jour;
     private Button saveBoutton;
     private EditText edit_name_jour;
     private TestCom testCom;
@@ -78,7 +77,7 @@ public class ConfigurationJour extends ActionBarActivity {
     }
 
     private void sauvegarde(){
-        jour = new ProfilJour();
+        jour = new Jours_Model();
         jour.setName(edit_name_jour.getText().toString());
 
     }

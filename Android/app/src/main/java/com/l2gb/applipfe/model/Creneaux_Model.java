@@ -5,7 +5,7 @@ import java.sql.Time;
 /**
  * Created by pierre on 12/01/2015.
  */
-public class Creneau {
+public class Creneaux_Model {
 
     private int hDebut;
     private int mDebut;
@@ -13,7 +13,7 @@ public class Creneau {
     private int mFin;
     private Boolean autorisation;
 
-    public Creneau(int hDebut, int mDebut, int hFin, int mFin, boolean autorisation)
+    public Creneaux_Model(int hDebut, int mDebut, int hFin, int mFin, boolean autorisation)
     {
         this.hDebut=hDebut;
         this.mDebut=mDebut;
@@ -22,7 +22,7 @@ public class Creneau {
         this.autorisation=autorisation;
     }
 
-    public Creneau(int hDebut, int hFin, boolean autorisation)
+    public Creneaux_Model(int hDebut, int hFin, boolean autorisation)
     {
         this.hDebut=hDebut;
         this.mDebut=00;
@@ -31,7 +31,7 @@ public class Creneau {
         this.autorisation=autorisation;
     }
 
-    public Creneau(int hDebut, int hFin)
+    public Creneaux_Model(int hDebut, int hFin)
     {
         this.hDebut=hDebut;
         this.mDebut=00;
@@ -40,7 +40,7 @@ public class Creneau {
         this.autorisation=true;
     }
 
-    public Creneau()
+    public Creneaux_Model()
     {
 
     }

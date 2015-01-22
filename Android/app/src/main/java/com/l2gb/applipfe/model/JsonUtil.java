@@ -1,7 +1,5 @@
 package com.l2gb.applipfe.model;
 
-import com.l2gb.applipfe.Constante;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +27,7 @@ public class JsonUtil {
      * @param pj le profilJour à envoyé
      * @return root une chaine de caractère
      */
-    public static String profilJourToString(ProfilJour pj){
+    public static String profilJourToString(Jours_Model pj){
         try {
             JSONObject root = new JSONObject();
             JSONObject request = new JSONObject();
@@ -85,7 +83,7 @@ public class JsonUtil {
      * @param ps le profilSemaine à envoyé
      * @return root une chaine de caractère
      */
-    public String profilSemaineToString(ProfilSemaine ps)
+    public String profilSemaineToString(Semaine_Model ps)
     {
         try {
             JSONObject root = new JSONObject();
@@ -117,9 +115,9 @@ public class JsonUtil {
      * @param chaine la chaine de charactère à transformer
      * @return une liste de profilJour
      */
-    public static ArrayList<ProfilJour> stringToProfilJour(String chaine)
+    public static ArrayList<Jours_Model> stringToProfilJour(String chaine)
     {
-        ArrayList<ProfilJour> profilJourList = new ArrayList<ProfilJour>();
+        ArrayList<Jours_Model> profilJourList = new ArrayList<Jours_Model>();
         try {
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
@@ -128,7 +126,7 @@ public class JsonUtil {
             JSONArray joursList = data.getJSONArray("jours");
             /** On parcours tous les jours de la chaine**/
             for(int j=0;j<joursList.length();j++) {
-                ProfilJour pJour = new ProfilJour();
+                Jours_Model pJour = new Jours_Model();
                 JSONObject jours = joursList.getJSONObject(j);
                 pJour.setName(jours.getString("nomProfil"));
 
@@ -140,7 +138,7 @@ public class JsonUtil {
                     JSONObject fin = jCreneaux.getJSONObject("fin");
 
                     /**Stock toutes les données d'un créneau**/
-                    Creneau creneau = new Creneau();
+                    Creneaux_Model creneau = new Creneaux_Model();
                     creneau.setAutorisation(jCreneaux.getBoolean("autorisation"));
                     creneau.sethDebut(debut.getInt("heure"));
                     creneau.setmDebut(debut.getInt("minute"));
@@ -166,9 +164,9 @@ public class JsonUtil {
      * @param chaine la chaine de charactère à transformer
      * @return une liste de ProfilSemaine
      */
-    public ArrayList<ProfilSemaine> stringToProfilSemaine(String chaine)
+    public ArrayList<Semaine_Model> stringToProfilSemaine(String chaine)
     {
-        ArrayList<ProfilSemaine> profilSemaineList = new ArrayList<ProfilSemaine>();
+        ArrayList<Semaine_Model> profilSemaineList = new ArrayList<Semaine_Model>();
         try{
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
@@ -179,7 +177,7 @@ public class JsonUtil {
             for(int j=0;j<semaineList.length();j++) {
                 JSONObject semaine = semaineList.getJSONObject(j);
 
-                ProfilSemaine profilSemaine = new ProfilSemaine();
+                Semaine_Model profilSemaine = new Semaine_Model();
                 profilSemaine.setName(semaine.getString("nomProfil"));
 
                 JSONArray jourList = semaineList.getJSONArray(j);
@@ -187,7 +185,7 @@ public class JsonUtil {
                 /** On ajoute tous les profilJour dans la semaine **/
                 for(int i=0;i<jourList.length();i++)
                 {
-                    ProfilJour profilJour = new ProfilJour(jourList.get(i).toString());
+                    Jours_Model profilJour = new Jours_Model(jourList.get(i).toString());
                   /** on ajoute le profil jour dans la liste de jours **/
                     profilSemaine.getProfilJourList().add(i,profilJour);
                 }
@@ -209,9 +207,9 @@ public class JsonUtil {
      * @param chaine :la chaine de charactère à transformer
      * @return une liste de ProfilObjet
      */
-    public ArrayList<ProfilObjet> stringToProfilObjet(String chaine)
+    public ArrayList<Objet_Model> stringToProfilObjet(String chaine)
     {
-        ArrayList<ProfilObjet> profilObjetList = new ArrayList<ProfilObjet>();
+        ArrayList<Objet_Model> profilObjetList = new ArrayList<Objet_Model>();
         try{
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
@@ -224,7 +222,7 @@ public class JsonUtil {
                 JSONObject nomObjet = objet.getJSONObject("nomObjet");
                 JSONObject planning = objet.getJSONObject("planning");
 
-                ProfilObjet profilObjet = new ProfilObjet(nomObjet.getString("nomObjet"));
+                Objet_Model profilObjet = new Objet_Model(nomObjet.getString("nomObjet"));
                 profilObjet.getProfilSemaine().setName(planning.getString("planning"));
                 profilObjetList.add(j,profilObjet);
             }
@@ -242,7 +240,7 @@ public class JsonUtil {
      * @param pJour la profilJour à supprimer
      * @return none
      */
-    public void removeProfilJour(ProfilJour pJour)
+    public void removeProfilJour(Jours_Model pJour)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -263,7 +261,7 @@ public class JsonUtil {
      * @param pSemaine la profilSemaine à supprimer
      * @return none
      */
-    public void removeProfilSemaine(ProfilSemaine pSemaine)
+    public void removeProfilSemaine(Semaine_Model pSemaine)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();

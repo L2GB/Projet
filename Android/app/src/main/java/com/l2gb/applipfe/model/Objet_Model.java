@@ -5,18 +5,18 @@ import com.l2gb.applipfe.Constante;
 /**
  * Created by pierrebaranger on 21/01/2015.
  */
-public class ProfilObjet {
+public class Objet_Model {
 
     private String name;
     private boolean connecte;
     private String type;
     private Integer temperature_confort;
     private Integer temperature_economique;
-    private ProfilSemaine profilSemaine;
+    private Semaine_Model profilSemaine;
 
-    public ProfilObjet(String name)
+    public Objet_Model(String name)
     {
-        this.profilSemaine = new ProfilSemaine();
+        this.profilSemaine = new Semaine_Model();
         this.connecte = false;
         this.name = name;
         this.type = Constante.TYPE_CHAUFFAGE;
@@ -48,11 +48,11 @@ public class ProfilObjet {
         this.type = type;
     }
 
-    public ProfilSemaine getProfilSemaine() {
+    public Semaine_Model getProfilSemaine() {
         return profilSemaine;
     }
 
-    public void setProfilSemaine(ProfilSemaine profilSemaine) {
+    public void setProfilSemaine(Semaine_Model profilSemaine) {
         this.profilSemaine = profilSemaine;
     }
 
