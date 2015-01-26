@@ -81,6 +81,25 @@ void ObjectManager::loadObjects(json_t *_objects)
 	}
 }
 
+void ObjectManager::loadRooms(json_t *_rooms)
+{
+	json_t *pieces = json_object_get(_rooms, "pieces");
+	/* array is a JSON array */
+	size_t index;
+	json_t *value;
+	json_array_foreach(pieces, index, value)
+	{
+		try
+		{
+			addObjectToRoom(value);
+		}
+		catch(NotFoundException &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+}
+
 void ObjectManager::setDay(json_t *_day)
 {
 	json_t *name = json_object_get(_day, "nomProfil");
@@ -245,6 +264,37 @@ void ObjectManager::setObject(json_t *_object)
 */
 }
 
+void ObjectManager::addObjectToRoom(json_t *_room)
+{
+	json_t *nomPiece = json_object_get(_room, "nomPiece");
+	if(!json_is_string(nomPiece))
+	{
+		throw FormatException("addObjectToRoom : name format not accepted");
+	}
+	std::string nom = json_string_value(nomPiece);
+
+	json_t *objet = json_object_get(_room, "objet");
+	std::string nomObjet = json_string_value(objet);
+
+	if(!json_is_string(objet))
+	{
+		throw FormatException("addObjectToRoom : object format not accepted");
+	}
+
+	try
+	{
+		Room *room = getRoom(nom);
+		room->addObject(getObject(nomObjet));
+	}
+	catch(NotFoundException &e)
+	{
+		std::cout << e.what() << std::endl;
+		Room newRoom(nom);
+		newRoom.addObject(getObject(nomObjet));
+		m_rooms.push_back(&newRoom);
+	}
+}
+
 Object *ObjectManager::getObject(std::string _name)
 {
 	for(std::size_t i = 0 ; i < m_objects.size() ; i++)
@@ -258,3 +308,15 @@ Object *ObjectManager::getObject(std::string _name)
 	return NULL;
 }
 
+Room *ObjectManager::getRoom(std::string _name)
+{
+	for(std::size_t i = 0 ; i < m_rooms.size() ; i++)
+	{
+		if(m_rooms[i]->getName().compare(_name.c_str()) == 0)
+		{
+			return m_rooms[i];
+		}
+	}
+	throw NotFoundException("L'objet n'existe pas");
+	return NULL;
+}

@@ -17,6 +17,11 @@ class Socket
 abstract class DataObserver
 abstract class DataObservable
 
+class Room{
+
+}
+
+
 abstract class Object{
 	-string m_name
 	-Week *m_planning
@@ -36,6 +41,7 @@ class ObjectManager{
 	-void initializeMapping()
 	-map<string, TypeObjet> m_typeObjet;
 	-vector<Object *> m_objects;
+	-vector<Room *> m_rooms;
 	-PlanningManager m_planningManager;
 }
 
@@ -155,5 +161,8 @@ PlanningManager "1" -down- "*" Day
 PlanningManager -down- TimeSlot
 Week "1" -left- "7" Day
 Day -left- TimeSlot
+
+Room -up-> Object
+ObjectManager -left-> Room
 
 @enduml

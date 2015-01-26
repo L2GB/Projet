@@ -5,7 +5,11 @@
  *      Author: CAILLOT Kilian
  */
 
+// Internal include
 #include "Heater.h"
+
+// External include
+#include <unistd.h>
 
 Heater::Heater(std::string _name, Week *_planning, std::string _type, int _Tconfort, int _Teco) : Object(_name, _planning, _type), m_Tconfort(_Tconfort), m_Teco(_Teco)
 {
@@ -13,6 +17,43 @@ Heater::Heater(std::string _name, Week *_planning, std::string _type, int _Tconf
 
 Heater::~Heater()
 {
+}
+
+void Heater::run()
+{
+	while(isRunning())
+	{
+		switch(m_state)
+		{
+			case INIT:
+				// TODO
+				break;
+			case RUNNING:
+				getCurrentTemp();
+				getCurrentTime();
+
+
+
+				sleep(1);
+				break;
+		}
+	}
+}
+
+
+void Heater::switchON()
+{
+
+}
+
+void Heater::switchOFF()
+{
+
+}
+
+void Heater::getCurrentTemp()
+{
+	// TODO
 }
 
 void Heater::print()

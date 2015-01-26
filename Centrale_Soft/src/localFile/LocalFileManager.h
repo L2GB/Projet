@@ -33,7 +33,8 @@ class LocalFileManager
 		static void setDay(json_t *_day);
 		static void setWeek(json_t *_week);
 		static void setObject(json_t *_object);
-		static void setRoom(json_t *_room);
+		static void addObjectToRoom(json_t *_room);
+		static void remObjectToRoom(json_t *_room);
 		static void rmDay(json_t *_day);
 		static void rmWeek(json_t *_week);
 		static void rmObject(json_t *_object);

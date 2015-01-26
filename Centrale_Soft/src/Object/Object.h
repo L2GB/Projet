@@ -23,9 +23,12 @@ class Object : public Thread
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
 
-		void run();
+	protected:
+		virtual void run() = 0;
+		void getCurrentTime();
 
 	private:
+		struct tm *m_time;
 		std::string m_name;
 		Week *m_planning;
 		std::string m_type;

@@ -11,6 +11,11 @@
 // Internal include
 #include "Object.h"
 
+enum Heater_state{
+	INIT,
+	RUNNING,
+};
+
 class Heater : public Object
 {
 	public:
@@ -23,6 +28,14 @@ class Heater : public Object
 		void print();
 
 	private:
+		void run();
+		void getCurrentTemp();
+		void switchON();
+		void switchOFF();
+
+	private:
+		Heater_state m_state;
+		int m_currentTemp;
 		int m_Tconfort;
 		int m_Teco;
 };

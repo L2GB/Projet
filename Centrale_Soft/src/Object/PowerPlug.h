@@ -16,6 +16,9 @@ class PowerPlug : public Object
 	public:
 		PowerPlug(std::string _name, Week *_planning, std::string _type);
 		virtual ~PowerPlug();
+
+	private:
+		void run();
 };
 
 #endif /* OBJECT_POWERPLUG_H_ */

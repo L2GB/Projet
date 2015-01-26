@@ -16,3 +16,10 @@ PowerPlug::~PowerPlug()
 {
 }
 
+void PowerPlug::run()
+{
+	while(isRunning())
+	{
+
+	}
+}

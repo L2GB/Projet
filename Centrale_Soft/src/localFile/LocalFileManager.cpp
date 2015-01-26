@@ -377,7 +377,7 @@ void LocalFileManager::setObject(json_t *_object)
 	close(fd);
 }
 
-void LocalFileManager::setRoom(json_t *_room)
+void LocalFileManager::addObjectToRoom(json_t *_room)
 {
 	int fd = open(PATH_PIECES.c_str(),  O_CREAT|O_RDONLY, 0666);
 	char buf[SIZE + 1] = "";
@@ -410,7 +410,16 @@ void LocalFileManager::setRoom(json_t *_room)
 	{
 		json_t *newRoot = json_object();
 		json_t *newPieces = json_array();
-		json_array_append(newPieces, _room);
+		json_t *newRoom = json_object();
+		json_t *objects = json_array();
+		json_t *roomName = json_object_get(_room, "nomPiece");
+		json_object_set(newRoom, "nomPiece", roomName);
+
+		json_t *objet = json_object_get(_room, "objet");
+		json_array_append(objects, objet);
+		json_object_set(newRoom, "objets", objects);
+
+		json_array_append(newPieces, newRoom);
 		json_object_set(newRoot, "pieces", newPieces);
 		std::string newString = json_dumps(newRoot, 0);
 		write(fd, newString.c_str(), newString.size());
@@ -448,7 +457,12 @@ void LocalFileManager::setRoom(json_t *_room)
 
 			if(nomPiece.compare(nomNouveauPiece) == 0)
 			{
-				json_array_set(pieces, index, _room);
+				json_t *room = json_array_get(pieces, index);
+				json_t *objet = json_object_get(_room, "objet");
+				json_t *objects = json_object_get(room, "objets");
+				json_array_append(objects, objet);
+				json_object_set(room, "objets", objects);
+				json_array_set(pieces, index, room);
 				trouve = true;
 			}
 		}
@@ -456,7 +470,16 @@ void LocalFileManager::setRoom(json_t *_room)
 
 	if(!trouve)
 	{
-		json_array_append(pieces, _room);
+		json_t *newRoom = json_object();
+		json_t *objects = json_array();
+		json_t *roomName = json_object_get(_room, "nomPiece");
+		json_object_set(newRoom, "nomPiece", roomName);
+
+		json_t *objet = json_object_get(_room, "objet");
+		json_array_append(objects, objet);
+		json_object_set(newRoom, "objets", objects);
+
+		json_array_append(pieces, newRoom);
 	}
 
 	root = json_object();
@@ -467,6 +490,91 @@ void LocalFileManager::setRoom(json_t *_room)
 	close(fd);
 }
 
+void LocalFileManager::remObjectToRoom(json_t *_room)
+{
+	int fd = open(PATH_PIECES.c_str(),  O_RDONLY, 0666);
+
+	char buf[SIZE + 1] = "";
+
+	if(fd < 0)
+	{
+		throw NotFoundException("Impossible to open" + PATH_PIECES);
+	}
+
+	int ret = read(fd, buf, SIZE);
+
+	if(ret < 0)
+	{
+		throw NotFoundException("Impossible to read" + PATH_PIECES);
+	}
+
+	close(fd);
+
+	fd = open(PATH_PIECES.c_str(),  O_WRONLY|O_TRUNC);
+
+	if(fd < 0)
+	{
+		throw NotFoundException("Impossible to open" + PATH_PIECES);
+	}
+
+	json_t *root = json_loads(buf, 0, NULL);
+	json_t *pieces = json_object_get(root, "pieces");
+
+	if(!json_is_array(pieces))
+	{
+		close(fd);
+		throw NotFoundException("L'objet \"pieces\" n'est pas une liste ou n'existe pas");
+	}
+
+	int index;
+	bool trouve = false;
+	json_t *piece;
+	json_t *nom;
+	std::string nomPiece;
+	std::string nomNouveauPiece;
+
+	json_array_foreach(pieces, index, piece)
+	{
+		if(!trouve)
+		{
+			nom = json_object_get(piece, "nomPiece");
+
+			if(!json_is_string(nom))
+			{
+				throw FormatException("L'objet \"nom\" n'est pas de type string");
+			}
+
+			nomPiece = json_string_value(nom);
+			nom = json_object_get(_room, "nomPiece");
+
+			if(!json_is_string(nom))
+			{
+				throw FormatException("L'objet \"nom\" n'est pas de type string");
+			}
+
+			nomNouveauPiece = json_string_value(nom);
+
+			if(nomPiece.compare(nomNouveauPiece) == 0)
+			{
+				json_array_remove(pieces, index);
+				trouve = true;
+			}
+		}
+	}
+
+	if(!trouve)
+	{
+		close(fd);
+		throw FormatException("La piece n'a pas été trouvé");
+	}
+
+	root = json_object();
+	json_object_set(root, "pieces", pieces);
+	std::string newString = json_dumps(root, 0);
+
+	write(fd, newString.c_str(), newString.size());
+	close(fd);
+}
 
 void LocalFileManager::rmDay(json_t *_day)
 {

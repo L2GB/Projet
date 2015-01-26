@@ -40,7 +40,8 @@ void Transmitter::initializeMapping()
 	m_type["SET_OBJET"] = SET_OBJET;
 	m_type["RM_OBJET"] = RM_OBJET;
 	m_type["GET_PIECES"] = GET_PIECES;
-	m_type["SET_PIECE"] = SET_PIECE;
+	m_type["ADD_OBJET_PIECE"] = ADD_OBJET_PIECE;
+	m_type["REM_OBJET_PIECE"] = REM_OBJET_PIECE;
 	m_type["RM_PIECE"] = RM_PIECE;
 }
 
@@ -261,10 +262,37 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				std::cout << e.what() << std::endl;
 			}
 			break;
-		case SET_PIECE:
+		case LOAD_PIECES:
 			try
 			{
-				LocalFileManager::setRoom(_data);
+				std::string pieces = LocalFileManager::getRooms();
+				json_t *data = json_loads(pieces.c_str(), 0, NULL);
+				m_objectManager.loadRooms(data);
+			}
+			catch(NotFoundException &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			break;
+		case ADD_OBJET_PIECE:
+			try
+			{
+				LocalFileManager::addObjectToRoom(_data);
+				m_objectManager.addObjectToRoom(_data);
+			}
+			catch(NotFoundException &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			catch(FormatException &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			break;
+		case REM_OBJET_PIECE:
+			try
+			{
+				LocalFileManager::remObjectToRoom(_data);
 			}
 			catch(NotFoundException &e)
 			{
