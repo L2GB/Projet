@@ -7,6 +7,64 @@
     tools:context="com.example.arthur.l2gb.View.ListeObjet_View">
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button10"
+        android:layout_marginTop="83dp"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:onClick="popUp"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Switch"
+        android:id="@+id/switch1"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:checked="true"
+        android:textOff="NON"
+        android:textOn="OUI"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton"
+        android:layout_alignTop="@+id/button10"
+        android:layout_alignParentStart="true"
+        android:textOff="ddddd"
+        android:textOn="coucou"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button11"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button12"
+        android:layout_below="@+id/button11"
+        android:layout_toStartOf="@+id/button10"
+        android:layout_marginTop="84dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button13"
+        android:layout_alignTop="@+id/button11"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
