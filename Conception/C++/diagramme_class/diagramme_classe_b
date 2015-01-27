@@ -128,7 +128,7 @@ class TimeSlot{
 	-struct tm m_end
 }
 
-ObjectManager -->OCC
+Object -right->OCC
 OCC-->ZWaveController
 ObjectManager-up->Object
 
