@@ -34,7 +34,6 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.965993425" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
 							<tool command="g++ -std=c++11" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1080060567" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
 								<option id="gnu.cpp.link.option.libs.824643194" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="z"/>
 									<listOptionValue builtIn="false" value="zway"/>
 									<listOptionValue builtIn="false" value="zcommons"/>
@@ -45,6 +44,7 @@
 									<listOptionValue builtIn="false" value="v8"/>
 									<listOptionValue builtIn="false" value="ssl"/>
 									<listOptionValue builtIn="false" value="crypto"/>
+									<listOptionValue builtIn="false" value="pthread"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.2063449744" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/library/libzway}&quot;"/>
