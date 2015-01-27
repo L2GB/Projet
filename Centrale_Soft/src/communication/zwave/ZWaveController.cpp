@@ -11,6 +11,9 @@
 
 using namespace std;
 
+void print_D_I_CC_event(const ZWay zway, ZWDeviceChangeType type, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE command_id, void *arg);
+void print_zway_terminated(ZWay zway, void* arg);
+
 ZWaveController::ZWaveController() {
 	// TODO Auto-generated constructor stub
 
@@ -54,7 +57,7 @@ int ZWaveController::startNetwork() {
 	// S'il n'y a pas d'erreur, le Z-Way peut maintenant recevoir des paquets du réseaux (ceux-ci ne sont
 	// pour l'instant pas parsé (puisque les devices n'ont pas encore été découvert), tous les paquets
 	// reçu sont alors stockés pour ensuite être parsé lorsque la découverte des devices aura été effectuée
-	result = zway_start(zway, print_zway_terminated, NULL);
+	result = zway_start(zway, (ZTerminationCallback)print_zway_terminated, NULL);
 
 	// En cas d'erreur lors du démarrage du réseau on inscrit l'erreur dans les logs
 	if(result != NoError){
@@ -77,7 +80,7 @@ int ZWaveController::startNetwork() {
 	return resultStartNetworkMethod;
 }
 
-void ZWaveController::print_D_I_CC_event(const ZWay zway, ZWDeviceChangeType type, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE command_id, void *arg)
+void print_D_I_CC_event(const ZWay zway, ZWDeviceChangeType type, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE command_id, void *arg)
 {
     switch (type)
     {
@@ -107,7 +110,7 @@ void ZWaveController::print_D_I_CC_event(const ZWay zway, ZWDeviceChangeType typ
     }
 }
 
-void ZWaveController::print_zway_terminated(ZWay zway, void* arg){
+void print_zway_terminated(ZWay zway, void* arg){
 	zway_log(zway, Information, ZSTR("Z-Way terminated"));
 
 }

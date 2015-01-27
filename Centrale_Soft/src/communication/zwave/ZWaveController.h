@@ -26,8 +26,6 @@ public:
 	ZWaveController();
 	virtual ~ZWaveController();
 	int startNetwork();
-	void print_D_I_CC_event(const ZWay zway, ZWDeviceChangeType type, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE command_id, void *arg);
-	void print_zway_terminated(ZWay zway, void* arg);
 };
 
 #endif /* COMMUNICATION_ZWAVE_ZWAVECONTROLLER_H_ */
