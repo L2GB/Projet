@@ -2,28 +2,36 @@ package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.arthur.l2gb.Model.Jours_Model;
+import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
 public class JoursList_View extends Activity {
+
+    Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jours_list__view);
         Button boutonValider = (Button)findViewById(R.id.ButtonValider);
-        final EditText editTextNom = (EditText)findViewById(R.id.editTextNom);
     }
 
     public void AjoutObjet(View view){
         Intent intent = new Intent(this, JoursConfiguration_View.class);
+        intent.putExtra("MODEL",this.model);
         startActivityForResult(intent, MainActivity.CODE_RETOUR);
     }
 
@@ -35,7 +43,35 @@ public class JoursList_View extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_jours_list__view, menu);
+        this.model = getIntent().getExtras().getParcelable("MODEL");
+
+
+        TableLayout jourTableau = (TableLayout) findViewById(R.id.tableauJour);
+        TableRow tr;
+
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
+        layoutParams.setMargins(2, 2, 2, 2);
+
+        for(int i = 0 ; i < this.model.getJours_Model().size() ; i++){
+            tr = new TableRow(this);
+            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tr.addView(generateTextView(this.model.getJours_Model().get(i).getName(), layoutParams));
+            jourTableau.addView(tr, layoutParams);
+        }
         return true;
+    }
+
+    public TextView generateTextView(String texte, TableRow.LayoutParams ly) {
+        TextView result = new TextView(this);
+        result.setBackgroundColor(Color.LTGRAY);
+        result.setTextColor(Color.DKGRAY);
+        result.setGravity(Gravity.CENTER);
+        result.setPadding(2, 2, 2, 2);
+        result.setText(texte);
+        result.setTextSize(20);
+        result.setVisibility(View.VISIBLE);
+        result.setLayoutParams(ly);
+        return result;
     }
 
     @Override
@@ -45,17 +81,20 @@ public class JoursList_View extends Activity {
         if(requestCode == MainActivity.CODE_RETOUR) {
 
             // Vérifie que le résultat est OK
-            if(resultCode == RESULT_OK) {
+            if(resultCode == JoursConfiguration_View.NEWJOURS) {
                 // On récupére le paramètre "Nom" de l'intent
-                String nom = data.getStringExtra("Nom");
+                Jours_Model jour = data.getParcelableExtra("Jour");
                 // Création de l'intent
-                Intent intent = new Intent();
-                // On rajoute le nom saisie dans l'intent
-                intent.putExtra("Nom",nom);
-                // On retourne le résultat avec l'intent
-                setResult(RESULT_OK, intent);
-                // On termine cette activité
-                finish();
+                this.model.getJours_Model().add(jour);
+                TableLayout jourTableau = (TableLayout) findViewById(R.id.tableauJour);
+                TableRow tr;
+                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
+                layoutParams.setMargins(2, 2, 2, 2);
+                tr = new TableRow(this);
+                tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                tr.addView(generateTextView(jour.getName(), layoutParams));
+                jourTableau.addView(tr, layoutParams);
+
             } else if (resultCode == RESULT_CANCELED) {
                 // On affiche que l'opération est annulée
                 Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();

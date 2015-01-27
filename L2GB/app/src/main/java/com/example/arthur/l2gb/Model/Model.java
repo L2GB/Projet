@@ -13,6 +13,56 @@ public class Model implements Parcelable {
     private ArrayList<Jours_Model> jours_Model;
     private ArrayList<Semaine_Model> profilSemaine_model;
 
+    public Model(){
+       this.objet_model = new ArrayList<Objet_Model>();
+       this.jours_Model = new ArrayList<Jours_Model>();
+       this.profilSemaine_model = new ArrayList<Semaine_Model>();
+       creerfakeModel();
+    }
+
+    private void creerfakeModel(){
+        Creneaux_Model creneauxModelTravail1 = new Creneaux_Model(6,8);
+        Creneaux_Model creneauxModelTravail2 = new Creneaux_Model(16,21);
+
+        Creneaux_Model creneauxModelVacance1 = new Creneaux_Model(12,15);
+        Creneaux_Model creneauxModelVacance2 = new Creneaux_Model(20,23);
+
+        Jours_Model joursTravail = new Jours_Model("Travail");
+        joursTravail.getCreneauList().add(creneauxModelTravail1);
+        joursTravail.getCreneauList().add(creneauxModelTravail2);
+        this.jours_Model.add(joursTravail);
+
+
+        Jours_Model joursVacance = new Jours_Model("Vacance");
+        joursVacance.getCreneauList().add(creneauxModelVacance1);
+        joursVacance.getCreneauList().add(creneauxModelVacance2);
+        this.jours_Model.add(joursVacance);
+
+        Semaine_Model semaineClassique = new Semaine_Model("Semaine classique");
+        semaineClassique.getProfilJourList().add(joursTravail);
+        semaineClassique.getProfilJourList().add(joursTravail);
+        semaineClassique.getProfilJourList().add(joursTravail);
+        semaineClassique.getProfilJourList().add(joursTravail);
+        semaineClassique.getProfilJourList().add(joursTravail);
+        semaineClassique.getProfilJourList().add(joursVacance);
+        semaineClassique.getProfilJourList().add(joursVacance);
+        this.profilSemaine_model.add(semaineClassique);
+
+
+        Objet_Model lumiereSalon = new Objet_Model("Lumiere salon", semaineClassique);
+        lumiereSalon.setConsommation(100);
+        Objet_Model chauffageSalon = new Objet_Model("Chauffage salon", semaineClassique);
+        chauffageSalon.setConsommation(75);
+        Objet_Model chauffageChambre = new Objet_Model("chauffage chambre", semaineClassique);
+        chauffageChambre.setConsommation(50);
+        Objet_Model lumiereChambre = new Objet_Model("Lumiere chambre", semaineClassique);
+        lumiereChambre.setConsommation(10);
+        this.objet_model.add(lumiereSalon);
+        this.objet_model.add(chauffageSalon);
+        this.objet_model.add(chauffageChambre);
+        this.objet_model.add(lumiereChambre);
+    }
+
     public ArrayList<Objet_Model> getObjet_model() {
         return objet_model;
     }

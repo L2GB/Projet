@@ -15,6 +15,7 @@ public class Objet_Model implements Parcelable {
     private Integer temperature_confort;
     private Integer temperature_economique;
     private Semaine_Model profilSemaine;
+    private Integer consommation;
 
     public Objet_Model(String name)
     {
@@ -24,6 +25,28 @@ public class Objet_Model implements Parcelable {
         this.type = Constante.TYPE_CHAUFFAGE;
         this.temperature_confort = Constante.TEMP_CONFORT;
         this.temperature_economique = Constante.TEMP_ECO;
+    }
+
+    public Objet_Model(String name, Semaine_Model profilSemaine)
+    {
+        this.profilSemaine = profilSemaine;
+        this.connecte = false;
+        this.name = name;
+        this.type = Constante.TYPE_CHAUFFAGE;
+        this.temperature_confort = Constante.TEMP_CONFORT;
+        this.temperature_economique = Constante.TEMP_ECO;
+    }
+
+    public Integer getConsommation() {
+        return consommation;
+    }
+
+    public void setConsommation(Integer consommation) {
+        this.consommation = consommation;
+    }
+
+    public boolean isConnecte() {
+        return connecte;
     }
 
     public Integer getTemperature_economique() {
@@ -74,8 +97,6 @@ public class Objet_Model implements Parcelable {
         this.connecte = connecte;
     }
 
-
-
     protected Objet_Model(Parcel in) {
         name = in.readString();
         connecte = in.readByte() != 0x00;
@@ -83,6 +104,7 @@ public class Objet_Model implements Parcelable {
         temperature_confort = in.readByte() == 0x00 ? null : in.readInt();
         temperature_economique = in.readByte() == 0x00 ? null : in.readInt();
         profilSemaine = (Semaine_Model) in.readValue(Semaine_Model.class.getClassLoader());
+        consommation = in.readByte() == 0x00 ? null : in.readInt();
     }
 
     @Override
@@ -108,6 +130,12 @@ public class Objet_Model implements Parcelable {
             dest.writeInt(temperature_economique);
         }
         dest.writeValue(profilSemaine);
+        if (consommation == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(consommation);
+        }
     }
 
     @SuppressWarnings("unused")

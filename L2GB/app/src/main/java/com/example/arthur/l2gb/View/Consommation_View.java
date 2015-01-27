@@ -1,9 +1,16 @@
 package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TableRow.LayoutParams;
+import android.widget.TextView;
 
 import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
@@ -11,6 +18,8 @@ import com.example.arthur.l2gb.R;
 public class Consommation_View extends Activity {
 
     MainActivity mainActivity = null;
+    private TableRow tr;
+    private TableRow.LayoutParams layoutParams;
     Model model = null;
 
     public Consommation_View() {
@@ -25,8 +34,38 @@ public class Consommation_View extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consommation__view);
+
+        Model model = getIntent().getExtras().getParcelable("MODEL");
+
+
+        TableLayout consommationTableau = (TableLayout) findViewById(R.id.tableauConsommation);
+        TableRow tr;
+
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT);
+        layoutParams.setMargins(2, 2, 2, 2);
+
+        for(int i = 0 ; i < model.getObjet_model().size() ; i++){
+            tr = new TableRow(this);
+            tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+            tr.addView(generateTextView(model.getObjet_model().get(i).getName(), layoutParams));
+            tr.addView(generateTextView(String.valueOf(model.getObjet_model().get(i).getConsommation()), layoutParams));
+            consommationTableau.addView(tr, layoutParams);
+        }
     }
 
+
+    public TextView generateTextView(String texte, LayoutParams ly) {
+        TextView result = new TextView(this);
+        result.setBackgroundColor(Color.LTGRAY);
+        result.setTextColor(Color.DKGRAY);
+        result.setGravity(Gravity.CENTER);
+        result.setPadding(2, 2, 2, 2);
+        result.setText(texte);
+        result.setTextSize(20);
+        result.setVisibility(View.VISIBLE);
+        result.setLayoutParams(ly);
+        return result;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

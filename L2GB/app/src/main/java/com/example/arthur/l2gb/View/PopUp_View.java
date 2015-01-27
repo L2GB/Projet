@@ -1,36 +1,32 @@
 package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TimePicker;
 
-import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
-public class ListeObjet_View extends Activity {
+public class PopUp_View extends Activity {
 
-    MainActivity mainActivity = null;
-    Model model = null;
-    int hrs,min;
-
-    public ListeObjet_View() {
-    }
-
-    public ListeObjet_View(MainActivity mainActivity, Model model) {
-        this.mainActivity = mainActivity;
-        this.model = model;
-    }
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_objet__view);
+        setContentView(R.layout.activity_pop_up__view);
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_liste_objet__view, menu);
+        getMenuInflater().inflate(R.menu.menu_pop_up__view, menu);
+        Intent intent = getIntent();
+        this.id = intent.getIntExtra("Id",2048);
         return true;
     }
 
@@ -47,5 +43,24 @@ public class ListeObjet_View extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void okHeure(View view) {
+        TimePicker tp = (TimePicker) findViewById(R.id.timePicker);
+        int heure = tp.getCurrentHour();
+        int minute = tp.getCurrentMinute();
+        Intent intent = new Intent();
+        // On rajoute le nom saisie dans l'intent
+        intent.putExtra("heure", heure);
+        intent.putExtra("minute", minute);
+        intent.putExtra("Id", this.id);
+        // On retourne le résultat avec l'intent
+        setResult(RESULT_OK, intent);
+        // On termine cette activité
+        finish();
+    }
+
+    public void annulerHeure(View view){
+        finish();
     }
 }

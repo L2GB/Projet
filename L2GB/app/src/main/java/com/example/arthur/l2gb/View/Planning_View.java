@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.arthur.l2gb.R;
 
+import com.example.arthur.l2gb.Model.Model;
+
 import java.util.ArrayList;
 
 public class Planning_View extends Activity {
@@ -19,6 +21,7 @@ public class Planning_View extends Activity {
     private TableRow tr;
     private TableRow.LayoutParams layoutParams;
     ArrayList<String> listeJour = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +32,23 @@ public class Planning_View extends Activity {
 
         Intent intent = getIntent();
         this.listeJour = new ArrayList<String>();
-        this.listeJour = getIntent().getStringArrayListExtra(MainActivity.NAME);
+        Model model = getIntent().getExtras().getParcelable(NAME);
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         setContentView(textView);
-
-        ajouterJour();
+        ajouterJour(model);
     }
 
 
-    private void ajouterJour(){
+    private void ajouterJour(Model model){
         TableLayout tl = (TableLayout) findViewById(R.id.tablelayoutId);
         TableLayout t2 = new TableLayout(this);
-        t2.toString();
-        for(Integer i = 0 ; i < listeJour.size() ; i++) {
+        for(Integer i = 0 ; i < model.getJours_Model().size() ; i++) {
             tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             TextView textView = new TextView(this);
-            textView.setTextSize(40);
-            textView.setText(listeJour.get(i).toString());
+            textView.setTextSize(20);
+            textView.setText(model.getJours_Model().get(i).getName());
             /*** Affiche le numéro du créneau dans le tableau ***/
             tr.addView(textView);
             t2.addView(tr);

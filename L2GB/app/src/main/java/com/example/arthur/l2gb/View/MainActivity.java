@@ -35,19 +35,13 @@ public class MainActivity extends Activity {
         Retour.setVisibility(View.GONE);
         Jour.setVisibility(View.GONE);
         Semaine.setVisibility(View.GONE);
-        this.listeJour = new ArrayList<String>();
-        this.test = "Rien";
         this.creerMVC();
 
     }
 
-        private void creerMVC(){
-         this.model = new Model();
-        this.listeJour.add("1er jours");
-        this.listeJour.add("2er jours");
-        this.listeJour.add("3er jours");
-        this.listeJour.add("4er jours");
-     }
+    private void creerMVC(){
+        this.model = new Model();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -99,11 +93,13 @@ public class MainActivity extends Activity {
 
     public void goConsommation(View view){
         Intent intent = new Intent(this, Consommation_View.class);
+        intent.putExtra("MODEL",this.model);
         startActivity(intent);
     }
 
     public void goJours(View view){
         Intent intent = new Intent(this, JoursList_View.class);
+        intent.putExtra("MODEL",this.model);
         startActivityForResult(intent, CODE_RETOUR);
     }
 
@@ -137,8 +133,7 @@ public class MainActivity extends Activity {
 
     public void goPlanning(View view){
         Intent intent = new Intent(this, Planning_View.class);
-        String message = test.toString();
-        intent.putStringArrayListExtra(NAME, this.listeJour);
+        intent.putExtra(NAME, this.model);
         startActivity(intent);
     }
 
@@ -174,7 +169,5 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

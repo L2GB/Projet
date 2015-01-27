@@ -21,6 +21,23 @@ public class SemaineConfiguration_View extends Activity {
         this.model = model;
     }
 
+   /** public void envoiDuNom(View view){
+        final EditText editTextNom = (EditText)findViewById(R.id.editTextNom);
+        // On vérifie que la taille de la chaine de retour est supèrieur à 0
+        if(editTextNom.getText().length() > 0) {
+            // Création de l'intent
+            Intent intent = new Intent();
+            // On rajoute le nom saisie dans l'intent
+            intent.putExtra("Nom", editTextNom.getText().toString());
+            // On retourne le résultat avec l'intent
+            setResult(RESULT_OK, intent);
+            // On termine cette activité
+            finish();
+
+        }
+
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
