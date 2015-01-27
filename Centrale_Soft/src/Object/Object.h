@@ -12,6 +12,12 @@
 #include "../planning/Week.h"
 #include "../tools/thread/Thread.h"
 
+enum State
+{
+	INIT,
+	RUNNING,
+};
+
 class Object : public Thread
 {
 	public:

@@ -11,7 +11,7 @@
 // External include
 #include <unistd.h>
 
-Heater::Heater(std::string _name, Week *_planning, std::string _type, int _Tconfort, int _Teco) : Object(_name, _planning, _type), m_Tconfort(_Tconfort), m_Teco(_Teco)
+Heater::Heater(std::string _name, Week *_planning, std::string _type, int _Tconfort, int _Teco) : Object(_name, _planning, _type), m_state(HEATER_INIT), m_Tconfort(_Tconfort), m_Teco(_Teco)
 {
 }
 
@@ -25,14 +25,13 @@ void Heater::run()
 	{
 		switch(m_state)
 		{
-			case INIT:
-				// TODO
+			case HEATER_INIT:
+				// TODO trouver un copain thermostat dans la pièce
+				m_state = HEATER_RUNNING;
 				break;
-			case RUNNING:
+			case HEATER_RUNNING:
 				getCurrentTemp();
 				getCurrentTime();
-
-
 
 				sleep(1);
 				break;

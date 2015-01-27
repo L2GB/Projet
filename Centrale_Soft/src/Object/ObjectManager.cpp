@@ -289,9 +289,9 @@ void ObjectManager::addObjectToRoom(json_t *_room)
 	catch(NotFoundException &e)
 	{
 		std::cout << e.what() << std::endl;
-		Room newRoom(nom);
-		newRoom.addObject(getObject(nomObjet));
-		m_rooms.push_back(&newRoom);
+		Room *newRoom = new Room(nom);
+		newRoom->addObject(getObject(nomObjet));
+		m_rooms.push_back(newRoom);
 	}
 }
 

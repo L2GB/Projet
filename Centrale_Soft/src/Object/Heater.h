@@ -11,9 +11,10 @@
 // Internal include
 #include "Object.h"
 
-enum Heater_state{
-	INIT,
-	RUNNING,
+enum Heater_state
+{
+	HEATER_INIT,
+	HEATER_RUNNING,
 };
 
 class Heater : public Object

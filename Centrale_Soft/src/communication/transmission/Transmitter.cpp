@@ -279,6 +279,15 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				LocalFileManager::addObjectToRoom(_data);
 				m_objectManager.addObjectToRoom(_data);
+				try
+				{
+					std::cout << "TEST PIECE : " << m_objectManager.getRoom("Chambre de Tutur")->getName() << std::endl;
+				}
+				catch(NotFoundException &e)
+				{
+					std::cout << e.what() << std::endl;
+				}
+
 			}
 			catch(NotFoundException &e)
 			{
