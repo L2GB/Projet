@@ -41,7 +41,7 @@ class Object : public Thread
 		virtual void run() = 0;
 		void getCurrentTime();
 
-	private:
+	protected:
 		struct tm *m_time;
 		std::string m_name;
 		Week *m_planning;
