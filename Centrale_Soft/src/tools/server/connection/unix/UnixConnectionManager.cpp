@@ -41,7 +41,7 @@ void UnixConnectionManager::initSocket()
 
 void UnixConnectionManager::removeServer()
 {
-	if(m_socket != SOCKET_ERROR)
+	if(m_socket != SOCKET_ERR)
 	{
 		close(m_socket);
 		unlink(m_pathSocket.c_str());

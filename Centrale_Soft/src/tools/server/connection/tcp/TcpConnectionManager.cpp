@@ -31,7 +31,7 @@ void TcpConnectionManager::initSocket()
 
 void TcpConnectionManager::removeServer()
 {
-	if(m_socket != SOCKET_ERROR)
+	if(m_socket != SOCKET_ERR)
 	{
 		close(m_socket);
 	}
