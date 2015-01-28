@@ -24,7 +24,7 @@ template <typename T>
 class ConnectionManager : public Thread
 {
 	protected:
-		const int SOCKET_ERROR = -1;
+		const int SOCKET_ERR = -1;
 		const int NB_MAX_CLIENTS = 10;
 		const int TIMEOUT_SELECT = 2;     // 1s
 

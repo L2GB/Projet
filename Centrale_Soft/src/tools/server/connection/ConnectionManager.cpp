@@ -14,7 +14,7 @@
 #include <sys/select.h>
 
 template <typename T>
-ConnectionManager<T>::ConnectionManager() : m_socket(SOCKET_ERROR)
+ConnectionManager<T>::ConnectionManager() : m_socket(SOCKET_ERR)
 {
 	start();
 }
@@ -47,7 +47,7 @@ template <typename T>
 void ConnectionManager<T>::createSocket()
 {
 	m_socket = socket(m_domain, m_type, 0);
-	if(m_socket == SOCKET_ERROR)
+	if(m_socket == SOCKET_ERR)
 	{
 		throw NetworkException("Error creating socket");
 	}
@@ -56,12 +56,12 @@ void ConnectionManager<T>::createSocket()
 template <typename T>
 void ConnectionManager<T>::bindSocket()
 {
-	if(bind (m_socket, (sockaddr *) &m_server, sizeof m_server) == SOCKET_ERROR)
+	if(bind (m_socket, (sockaddr *) &m_server, sizeof m_server) == SOCKET_ERR)
 	{
 		throw NetworkException("Error binding socket");
 	}
 
-	if(listen(this->m_socket, NB_MAX_CLIENTS) == SOCKET_ERROR)
+	if(listen(this->m_socket, NB_MAX_CLIENTS) == SOCKET_ERR)
 	{
 		throw NetworkException("Error binding socket");
 	}
@@ -75,7 +75,7 @@ void ConnectionManager<T>::acceptClient()
 
 	int ret = accept(m_socket, (sockaddr *)&m_server, (socklen_t*)&size);
 
-	if(ret == SOCKET_ERROR)
+	if(ret == SOCKET_ERR)
 	{
 		throw NetworkException("Error accept client");
 	}
