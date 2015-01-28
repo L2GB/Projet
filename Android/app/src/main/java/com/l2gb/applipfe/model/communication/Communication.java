@@ -25,12 +25,11 @@ public class Communication {
 	 * --------------------------------------------------------------
 	 */
 
-    public boolean connecte = false;// indique si le Communication est connecte ou non
+    public boolean connecte = false;// indique si la Communication est connecte ou non
     public Socket socket = null;
     private PrintWriter out = null;
     public BufferedReader in = null;
     private String host = null;
-    public InputStream fluxEntree;
     private int port;
     private CommunicationEntree flux_entree;
     private Handler uiHandler;

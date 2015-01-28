@@ -42,4 +42,17 @@ public class CommunicationSortie extends OutputStream {
             e.printStackTrace();
         }
     }
+
+    /*
+    public void sendRequest(String chaine)
+    {
+        try{
+            //fluxSortie
+
+        } catch (IOException e) {
+            System.out.println("\nErreur: Envoi impossible\n");
+            e.printStackTrace();
+        }
+    }
+    */
 }

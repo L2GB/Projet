@@ -18,7 +18,7 @@ public class TestCom {
         this.profilJour = new Jours_Model();
         this.profilJour.setName("Lundi");
         this.profilJour.getCreneauList().add(0,creneau);
-        this.chaine=jsonUtil.profilJourToString(this.profilJour);
+        this.chaine=jsonUtil.joursModelToString(this.profilJour);
 
     }
 

@@ -5,6 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @file JsonUtil.java
@@ -15,19 +17,27 @@ import java.util.ArrayList;
  */
 public class JsonUtil {
 
-    /**
-     * TODO: faire une méthode créer requête qui prend le nom de la requête en paramètre
-     * et les data
-     */
+    private Map mapRequest;
 
+    public JsonUtil()
+    {
+        this.mapRequest =  new HashMap();
+        this.mapRequest.put(0,"GET_PROFIL_JOUR");
+        this.mapRequest.put(1,"GET_PROFIL_SEMAINE");
+        this.mapRequest.put(2,"GET_OBJETS");
+    }
+
+    public Map getMapRequest() {
+        return this.mapRequest;
+    }
 
     /**
-     * @brief Permet de transfomer un objet profilJour en chaine de charactère.
-     * @func profilJourToString(ProfilJour pj)
-     * @param pj le profilJour à envoyé
+     * @brief Permet de transfomer un objet Jours_Model en chaine de charactère.
+     * @func joursModelToString(ProfilJour pj)
+     * @param pj le Jours_Model à envoyé
      * @return root une chaine de caractère
      */
-    public static String profilJourToString(Jours_Model pj){
+    public static String joursModelToString(Jours_Model pj){
         try {
             JSONObject root = new JSONObject();
             JSONObject request = new JSONObject();
@@ -78,12 +88,12 @@ public class JsonUtil {
     }
 
     /**
-     * @brief Permet de transfomer un objet profilSemaine en chaine de charactère.
-     * @func profilSemaineToString(ProfilSemaine ps)
-     * @param ps le profilSemaine à envoyé
+     * @brief Permet de transfomer un objet Semaine_Model en chaine de charactère.
+     * @func semaineModelToString(ProfilSemaine ps)
+     * @param ps le Semaine_Model à envoyé
      * @return root une chaine de caractère
      */
-    public String profilSemaineToString(Semaine_Model ps)
+    public String semaineModelToString(Semaine_Model ps)
     {
         try {
             JSONObject root = new JSONObject();
@@ -110,12 +120,12 @@ public class JsonUtil {
     }
 
     /**
-     * @brief Permet de transfomer une chaine de charactère en liste d'objet profilJour.
-     * @func ArrayList<ProfilJour> stringToProfilJour(String chaine)
+     * @brief Permet de transfomer une chaine de charactère en liste d'objet Jours_Model.
+     * @func ArrayList<ProfilJour> stringToJoursModel(String chaine)
      * @param chaine la chaine de charactère à transformer
-     * @return une liste de profilJour
+     * @return une liste de Jours_Model
      */
-    public static ArrayList<Jours_Model> stringToProfilJour(String chaine)
+    public static ArrayList<Jours_Model> stringToJoursModel(String chaine)
     {
         ArrayList<Jours_Model> profilJourList = new ArrayList<Jours_Model>();
         try {
@@ -159,12 +169,12 @@ public class JsonUtil {
     }
 
     /**
-     * @brief Permet de transfomer une chaine de charactère en liste d'objet ProfilSemaine.
-     * @func ArrayList<ProfilSemaine> stringToProfilSemaine(String chaine)
+     * @brief Permet de transfomer une chaine de charactère en liste d'objet Semaine_Model.
+     * @func ArrayList<ProfilSemaine> stringToSemaineModel(String chaine)
      * @param chaine la chaine de charactère à transformer
      * @return une liste de ProfilSemaine
      */
-    public ArrayList<Semaine_Model> stringToProfilSemaine(String chaine)
+    public ArrayList<Semaine_Model> stringToSemaineModel(String chaine)
     {
         ArrayList<Semaine_Model> profilSemaineList = new ArrayList<Semaine_Model>();
         try{
@@ -203,11 +213,11 @@ public class JsonUtil {
 
     /**
      * @brief Permet de transfomer une chaine de charactère en liste d'objet ProfilObjet.
-     * @func ArrayList<ProfilObjet> stringToProfilObjet(String chaine)
+     * @func ArrayList<ProfilObjet> stringToObjetModel(String chaine)
      * @param chaine :la chaine de charactère à transformer
      * @return une liste de ProfilObjet
      */
-    public ArrayList<Objet_Model> stringToProfilObjet(String chaine)
+    public ArrayList<Objet_Model> stringToObjetModel(String chaine)
     {
         ArrayList<Objet_Model> profilObjetList = new ArrayList<Objet_Model>();
         try{
@@ -236,11 +246,11 @@ public class JsonUtil {
 
     /**
      * @brief Permet de supprimer un profilJour
-     * @func removeProfilJour(ProfilJour pJour)
+     * @func removeJoursModel(ProfilJour pJour)
      * @param pJour la profilJour à supprimer
      * @return none
      */
-    public void removeProfilJour(Jours_Model pJour)
+    public void removeJoursModel(Jours_Model pJour)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -257,11 +267,11 @@ public class JsonUtil {
 
     /**
      * @brief Permet de supprimer un profilSemaine
-     * @func removeProfilSemaine(ProfilSemaine pSemaine)
+     * @func removeSemaineModel(ProfilSemaine pSemaine)
      * @param pSemaine la profilSemaine à supprimer
      * @return none
      */
-    public void removeProfilSemaine(Semaine_Model pSemaine)
+    public void removeSemaineModel(Semaine_Model pSemaine)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -278,10 +288,10 @@ public class JsonUtil {
 
     /**
      * @brief permet de demander à la centrale les objets ProfilSemaine enregistrés
-     * @func getProfilSemaine()
+     * @func getSemaineModel()
      * @return none
      */
-    public void getProfilSemaine()
+    public String getSemaineModel()
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -291,14 +301,15 @@ public class JsonUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return root.toString();
     }
 
     /**
      * @brief permet de demander à la centrale les objets ProfilJour enregistrés
-     * @func getProfilJour()
+     * @func getJoursModel()
      * @return none
      */
-    public void getProfilJour()
+    public String getJoursModel()
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -308,14 +319,15 @@ public class JsonUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return root.toString();
     }
 
     /**
      * @brief permet de demander à la centrale les objets ProfilObjet enregistrés
-     * @func getProfilObjet()
+     * @func getObjetModel()
      * @return none
      */
-    public void getProfilObjet()
+    public String getObjetModel()
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -325,20 +337,42 @@ public class JsonUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return root.toString();
     }
 
-    public void readResponse(String chaine)
+    public int readResponse(String chaine)
     {
-
+        String requestType;
         try {
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
             JSONObject type  = response.getJSONObject("type");
+            requestType = type.getString("type");
+
+            /** Si la reponse est de type GET_PROFIL_JOUR**/
+            if(requestType.equals(mapRequest.get(0))){
+                //ArrayList<Jours_Model> joursList = new ArrayList<Jours_Model>();
+                return 1;
+            }
+
+            /** Si la reponse est de type GET_PROFIL_SEMAINE**/
+            else if(requestType.equals(mapRequest.get(1))){
+                //ArrayList<Semaine_Model> semaineList = new ArrayList<Semaine_Model>();
+                return 2;
+            }
+
+            /** Si la reponse est de type GET_OBJETS**/
+            else if(requestType.equals(mapRequest.get(2))){
+                //ArrayList<Objet_Model> objetList = new ArrayList<Objet_Model>();
+                return 3;
+            }
+
 
         }catch (JSONException e) {
             e.printStackTrace();
         }
 
+        return 0;
     }
 
 }
