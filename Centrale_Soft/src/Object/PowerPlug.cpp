@@ -40,25 +40,35 @@ void PowerPlug::run()
 
 void PowerPlug::checkLevel()
 {
-	/*std::size_t sizeMax = m_planning->getDays()[m_time->tm_wday]->getTimeSlot().size();
+	std::vector<TimeSlot> ts = m_planning->getDays()[m_time->tm_wday]->getTimeSlot();
 
-	for(std::size_t i = 0 ; i < sizeMax ; i++)
+	for(std::size_t i = 0 ; i < ts.size() ; i++)
 	{
-		TimeSlot *ts = m_planning->getDays()[m_time->tm_wday]->getTimeSlot()[i];
-		if(ts->getStart().tm_hour == m_time->tm_hour)
+		if(ts[i].getStart().tm_hour == m_time->tm_hour)
 		{
-			if(ts->getStart().tm_min == m_time->tm_min)
+			if(ts[i].getStart().tm_min == m_time->tm_min)
 			{
 				switchON();
 			}
 		}
 
-		if(ts->getEnd().tm_hour == m_time->tm_hour)
+		if(ts[i].getEnd().tm_hour == m_time->tm_hour)
 		{
-			if(ts->getEnd().tm_min == m_time->tm_min)
+			if(ts[i].getEnd().tm_min == m_time->tm_min)
 			{
 				switchOFF();
 			}
 		}
-	}*/
+	}
+}
+
+
+void PowerPlug::switchON()
+{
+// TODO connect with kilian
+}
+
+void PowerPlug::switchOFF()
+{
+// TODO connect with kilian
 }
