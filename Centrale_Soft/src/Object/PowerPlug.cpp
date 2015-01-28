@@ -26,7 +26,7 @@ void PowerPlug::run()
 		switch(m_state)
 		{
 			case POWERPLUG_INIT:
-				// TODO
+				// TODO par kilian
 				m_state = POWERPLUG_RUNNING;
 				break;
 			case POWERPLUG_RUNNING:
