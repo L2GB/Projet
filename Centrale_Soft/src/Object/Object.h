@@ -17,6 +17,12 @@ enum State
 	INIT,
 	RUNNING,
 };
+//-------------------------------------
+struct CommandClasse{
+	int commandClasseId;
+	std::string description;
+};
+
 
 class Object : public Thread
 {
@@ -28,6 +34,8 @@ class Object : public Thread
 		std::string getType(){return m_type;}
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
+		//--------------------------------------------------------
+		std::string guessType();
 
 	protected:
 		virtual void run() = 0;
@@ -38,6 +46,11 @@ class Object : public Thread
 		std::string m_name;
 		Week *m_planning;
 		std::string m_type;
+		//--------------------------------------------------------
+		std::string m_initName;
+		int m_deviceId;
+		int m_instanceNum;
+		std::vector<struct CommandClasse> m_commandClassesList;
 };
 
 #endif /* OBJECT_OBJECT_H_ */

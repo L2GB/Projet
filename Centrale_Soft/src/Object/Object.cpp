@@ -28,3 +28,9 @@ void Object::getCurrentTime()
 		 <<  m_time->tm_min
          << std::endl;*/
 }
+
+std::string Object::guessType(){
+
+}
+
+

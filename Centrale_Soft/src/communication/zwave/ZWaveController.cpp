@@ -248,3 +248,182 @@ void ZWaveController::printDeviceInfoLongVersion(){
 		printf(" No information found on device\n");
 	}
 }
+
+int ZWaveController::get_cc_presence(){
+
+	cout << endl;
+	cout << "Which Command class of which instance of which device would you like to know the name ?" << endl;
+	cout << "Device num : ";
+	int deviceNum;
+	cin >> deviceNum ;
+	cin.ignore();
+	cout << endl << "Instance : ";
+	int instanceNum;
+	cin >> instanceNum;
+	cin.ignore();
+	cout << endl << "Command class : ";
+	int commandClassNum;
+	cin >> commandClassNum ;
+	cin.ignore();
+	cout << "Quel est le nom de la data dont vous voulez vérifier l'existence d'un holder ? " << endl;
+	cout <<"> ";
+	string dataName("no name");
+	std::getline(cin,dataName);
+	cout << endl << "Vous voulez donc vérifier si la commande class " << "'" << commandClassNum << "'";
+	cout << " de l'instance " << "'" << instanceNum << "'" << " du device " << "'" << deviceNum << "'" << " posséde un data holder pour la variable ";
+	cout << "'" << dataName << "'" << endl;
+
+
+	zdata_acquire_lock(ZDataRoot(this->m_zway));
+
+	// Transformer le commandClassNum et le instanceNum en ZWBtyte
+
+	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str()); // dataName.c_str() //à la place du dernier arg
+
+	if(cc_holder){
+		cout << endl << " Il y a bien une donnée d'attachée à la cc " << commandClassNum << " de l'instance " << instanceNum;
+		cout << " du device " << deviceNum << endl;
+	}
+	else{
+		cout << endl << " Il n'y a pas de donnée attachée à la cc " << commandClassNum << " de l'instance " << instanceNum;
+		cout << " du device " << deviceNum << " dont le nom serait " << dataName << endl;
+	}
+	zdata_release_lock(ZDataRoot(this->m_zway));
+
+	return 0;
+
+}
+
+int ZWaveController::inclusion_mode_ON(){
+
+	zway_fc_add_node_to_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
+
+	cout << endl << "Inclusion ON " << endl;
+
+	return 0;
+}
+
+int ZWaveController::inclusion_mode_OFF(){
+
+	zway_fc_add_node_to_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
+
+	cout << endl << "Inclusion OFF" << endl;
+
+	return 0;
+}
+
+int ZWaveController::exclusion_mode_ON(){
+
+	zway_fc_remove_node_from_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
+
+	cout << endl <<"Exclusion ON " << endl;
+
+	return 0;
+}
+
+int ZWaveController::exclusion_mode_OFF(){
+
+	zway_fc_remove_node_from_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
+
+	cout << endl << "Exclusion OFF " << endl;
+
+	return 0;
+}
+
+/** Méthode permettant d'envoyée la commande set basic à une instance d'un device
+ * @param deviceNodeId : identifiant du device auquel on veut envoyer le basic set
+ * @param instanceId : identifiant de l'instance du device auquel on veut envoyer le basic set
+ * @valeur : valeur que l'on veut attribuer via le basic set
+ * @return result : 0 si la commande a bien été envoyé, -1 sinon
+ **/
+int ZWaveController::basic_set(int deviceNodeId, int instanceId, int valeur){
+
+	int result = -1;
+
+	if(zway_cc_basic_set(this->m_zway, deviceNodeId, instanceId, valeur, NULL, NULL, NULL) == NoError){
+		cout << endl << "La commande set a bien été envoyée " << endl << endl;
+		result = 0;
+	}
+	else{
+		cout << endl << "La commande set n'a pas été envoyée " << endl << endl;
+	}
+
+
+	return result;
+}
+
+std::vector<Object *> ZWaveController::getVisibleObjectsList(){
+
+	std::vector <Object *> objectsList;
+
+	int running = TRUE;
+
+	while(running){
+		if (!zway_is_running(this->m_zway)){
+			running = FALSE;
+			break;
+		}
+
+		if (!zway_is_idle(this->m_zway))
+		{
+			sleep_ms(10);
+			continue;
+		}
+
+		ZWDevicesList deviceList = zway_devices_list(this->m_zway);
+		if (deviceList != NULL) {
+			int i = 0;
+
+			while (deviceList[i]) {
+				printf("	Device %i :\n", deviceList[i]);
+				printDeviceInfoShortVersion(deviceList[i]);
+				ZWInstancesList instancesList = zway_instances_list(this->m_zway,deviceList[i]);
+
+				int k = 0;
+
+				cout << "		Instance 0 ";
+				ZWCommandClassesList commandClassesList = zway_command_classes_list(this->m_zway,deviceList[i],instancesList[k]);
+				cout << endl;
+				cout << "			Command Classes ";
+				int j = 0;
+				while(commandClassesList[j]){
+					printf("%i ",commandClassesList[j]);
+					j++;
+				}
+				zway_command_classes_list_free(commandClassesList);
+				cout << endl;
+
+				while(instancesList[k]){
+					printf("		Instance %i ", instancesList[k]);
+
+					ZWCommandClassesList commandClassesList = zway_command_classes_list(this->m_zway,deviceList[i],instancesList[k]);
+					cout << endl;
+					cout << "			Command Classes ";
+					int j = 0;
+					while(commandClassesList[j]){
+						printf("%i ",commandClassesList[j]);
+						j++;
+					}
+					zway_command_classes_list_free(commandClassesList);
+					cout << endl;
+					k++;
+				}
+				cout << "------------------------------------------------------" << endl;
+				i++;
+			}
+			zway_devices_list_free(deviceList);
+			cout << "	End of Devices list " << endl;
+		}
+
+		else{
+			printf("Error happened requesting devices list\n");
+			cout << " La liste de device est null or il devrait au moins il y avoir le controller " << endl;
+		}
+
+		running = FALSE;
+	}
+
+}
+
+	return objectsList;
+}
