@@ -328,7 +328,7 @@ int ZWaveController::exclusion_mode_OFF(){
 	return 0;
 }
 
-/** Méthode permettant d'envoyée la commande set basic à une instance d'un device
+/** Méthode permettant d'envoyer la commande set basic à une instance d'un device
  * @param deviceNodeId : identifiant du device auquel on veut envoyer le basic set
  * @param instanceId : identifiant de l'instance du device auquel on veut envoyer le basic set
  * @valeur : valeur que l'on veut attribuer via le basic set
@@ -384,4 +384,4 @@ void ZWaveController::zdata_mutex_unlock(){
 
 
 
-ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
+//ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());

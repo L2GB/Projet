@@ -8,7 +8,6 @@ class ObjectManager
 class PowerPlug
 class Heater
 class Thermostat
-class OCC
 class ZWaveController
 class BDCC
 class RACC
@@ -128,9 +127,9 @@ class TimeSlot{
 	-struct tm m_end
 }
 
-Object -right->OCC
-OCC-->ZWaveController
+Object -right->ZWaveController
 ObjectManager-up->Object
+ObjectManager-->ZWaveController
 
 Object-up-|>Heater
 Object-up-|>PowerPlug

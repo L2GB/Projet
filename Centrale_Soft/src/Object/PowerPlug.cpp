@@ -64,10 +64,10 @@ void PowerPlug::checkLevel()
 
 
 void PowerPlug::switchON(){
-	ZWaveController::basic_set(this->m_deviceId, this->m_instanceNum, 1);
+	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 1);
 }
 
 void PowerPlug::switchOFF()
 {
-	ZWaveController::basic_set(this->m_deviceId, this->m_instanceNum, 0);
+	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 0);
 }
