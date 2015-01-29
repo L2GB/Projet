@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,7 +36,7 @@ public class JoursConfiguration_View extends Activity {
     private int i=0;
     private Integer change = 0;
     Model model;
-    ArrayList<Creneaux_Model> listCreneaux;
+    public ArrayList<Creneaux_Model> listCreneaux;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class JoursConfiguration_View extends Activity {
     /** Called when the user clicks the Add button */
     public void addCreneau(View view) {
         this.crenauIndice++;
-        TableLayout tl = (TableLayout) findViewById(R.id.tablelayoutId);
+        TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
         tr = new TableRow(this);
         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -81,10 +80,9 @@ public class JoursConfiguration_View extends Activity {
 
     public TextView generateTextView(String texte, TableRow.LayoutParams ly) {
         TextView result = new TextView(this);
-        result.setBackgroundColor(Color.WHITE);
         result.setTextColor(Color.DKGRAY);
         result.setGravity(Gravity.CENTER);
-        result.setPadding(2, 2, 2, 2);
+        result.setPadding(10, 2, 10, 2);
         result.setText(texte);
         result.setTextSize(20);
         result.setVisibility(View.VISIBLE);
@@ -96,10 +94,9 @@ public class JoursConfiguration_View extends Activity {
         Button boutton = new Button(this);
         boutton.setId(this.i);
         this.i++;
-        boutton.setBackgroundColor(Color.WHITE);
         boutton.setTextColor(Color.DKGRAY);
         boutton.setGravity(Gravity.CENTER);
-        boutton.setPadding(2, 2, 2, 2);
+        boutton.setPadding(10, 2, 10, 2);
         boutton.setText("debut");
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
@@ -117,10 +114,9 @@ public class JoursConfiguration_View extends Activity {
         Button boutton = new Button(this);
         boutton.setId(this.i);
         this.i++;
-        boutton.setBackgroundColor(Color.WHITE);
         boutton.setTextColor(Color.DKGRAY);
         boutton.setGravity(Gravity.CENTER);
-        boutton.setPadding(2, 2, 2, 2);
+        boutton.setPadding(10, 2, 10, 2);
         boutton.setText("fin");
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
@@ -133,47 +129,40 @@ public class JoursConfiguration_View extends Activity {
         });
         return boutton;
     }
-/**
-    public Button generateButtonSupprimer(TableRow.LayoutParams ly){
+
+    public Button generateSwitchAutorisation(TableRow.LayoutParams ly){
         Button boutton = new Button(this);
         boutton.setId(this.i);
         this.i++;
-        boutton.setBackgroundColor(Color.WHITE);
         boutton.setTextColor(Color.DKGRAY);
         boutton.setGravity(Gravity.CENTER);
-        boutton.setPadding(2, 2, 2, 2);
-        boutton.setText("Supprimer");
+        boutton.setPadding(10, 2, 10, 2);
+        boutton.setText("OUI");
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
         boutton.setLayoutParams(ly);
         boutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                supprimerLigne(view);
+                Button but = (Button) findViewById(view.getId());
+                if(but.getText().equals("OUI")){
+                    but.setText("NON");
+                    listCreneaux.get((view.getId()-3)/3).setAutorisation(false);
+                }else{
+                    but.setText("OUI");
+                    listCreneaux.get((view.getId()-3)/3).setAutorisation(true);
+                }
             }
         });
         return boutton;
     }
-*/
-    public Switch generateSwitchAutorisation(TableRow.LayoutParams ly){
-        Switch switchAutorisation = new Switch(this);
-        switchAutorisation.setText("");
-        switchAutorisation.setLayoutParams(ly);
-        switchAutorisation.setId(this.i);
-        switchAutorisation.setChecked(true);
-        this.i++;
-        return switchAutorisation;
-    }
-
-    public void setChange(Integer change){
-        this.change=change;
-    }
 
     public void supprimerLigne(View view){
         if(this.i>1) {
-            TableLayout tl = (TableLayout) findViewById(R.id.tablelayoutId);
-            tl.removeViewAt((this.i - 1) / 3);// 4e boutton de la ligne
+            TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
+            tl.removeViewAt((this.i - 1) / 3);
             this.i = this.i-3;
+            this.listCreneaux.remove(listCreneaux.size()-1);
         }
     }
     /**
@@ -207,7 +196,7 @@ public class JoursConfiguration_View extends Activity {
                     this.listCreneaux.get(id / 3).sethFin(heure);
                     this.listCreneaux.get(id / 3).setmFin(min);
                 }
-                Toast.makeText(this, "bouton"+ (id-1)%3 + " lieu" + id/3 , Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "bouton"+ (id-1)%3 + " lieu" + id/3 , Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -246,17 +235,38 @@ public class JoursConfiguration_View extends Activity {
                 setResult(NEWJOURS, intent);
                 finish();
             }else{
-                //ajouterCrenaux(newJour);
+                if(crenauxEstRemplit(this.listCreneaux)) {
+                    newJour.setCreneauList(this.listCreneaux);
+                    Intent intent = new Intent();
+                    intent.putExtra("Jour",newJour);
+                    setResult(NEWJOURS, intent);
+                    finish();
+                }
             }
         }
     }
 
-    private boolean nomJournéeInexistant(String name){
-        for(int p = 0 ; p < this.model.getJours_Model().size() ; p++){
-            if(name.equals(this.model.getJours_Model().get(p).getName())){
-                Toast.makeText(this, "Le nom existe déja", Toast.LENGTH_SHORT).show();
+    private boolean crenauxEstRemplit(ArrayList<Creneaux_Model> listTest){
+        for(int t=0; t<listTest.size();t++){
+            if(listTest.get(t).gethDebut() == 25 || listTest.get(t).gethFin() == 25) {
+                Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean nomJournéeInexistant(String name){
+        if(name.length()>0) {
+            for (int p = 0; p < this.model.getJours_Model().size(); p++) {
+                if (name.equals(this.model.getJours_Model().get(p).getName())) {
+                    Toast.makeText(this, "Le nom existe déja", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            }
+        }else{
+            Toast.makeText(this, "Le champ nom est vide", Toast.LENGTH_LONG).show();
+            return false;
         }
         return true;
     }

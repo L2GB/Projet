@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -26,7 +25,6 @@ public class JoursList_View extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jours_list__view);
-        Button boutonValider = (Button)findViewById(R.id.ButtonValider);
     }
 
     public void AjoutObjet(View view){
@@ -94,6 +92,10 @@ public class JoursList_View extends Activity {
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
                 tr.addView(generateTextView(jour.getName(), layoutParams));
                 jourTableau.addView(tr, layoutParams);
+
+                Intent intent = new Intent();
+                intent.putExtra("Jours", jour);
+                setResult(MainActivity.JOURADD, intent);
 
             } else if (resultCode == RESULT_CANCELED) {
                 // On affiche que l'opération est annulée

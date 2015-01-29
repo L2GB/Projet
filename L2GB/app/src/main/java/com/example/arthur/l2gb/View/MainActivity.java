@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.arthur.l2gb.Model.Jours_Model;
 import com.example.arthur.l2gb.Model.Model;
+import com.example.arthur.l2gb.Model.Semaine_Model;
 import com.example.arthur.l2gb.R;
 
 import java.util.ArrayList;
@@ -19,6 +21,8 @@ public class MainActivity extends Activity {
 
     public final static String  NAME = "user_login";
     public static final int CODE_RETOUR = 0;
+    public static final int JOURADD = 23;
+    public static final int SEMAINEADD = 29;
     private String test;
     Model model = null;
     int menu = 1;
@@ -50,15 +54,15 @@ public class MainActivity extends Activity {
         if(requestCode == CODE_RETOUR) {
 
             // Vérifie que le résultat est OK
-            if(resultCode == RESULT_OK) {
-
+            if(resultCode == JOURADD) {
                 // On récupére le paramètre "Nom" de l'intent
-                String nom = data.getStringExtra("Nom");
-                this.listeJour.add(nom);
-                // On affiche le résultat
-                Toast.makeText(this, "Votre nom est : " + nom, Toast.LENGTH_LONG).show();
-                // Si l'activité est annulé
-            } else if (resultCode == RESULT_CANCELED) {
+                Jours_Model jour = data.getParcelableExtra("Jours");
+                this.model.getJours_Model().add(jour);
+            }if(resultCode == SEMAINEADD) {
+                // On récupére le paramètre "Nom" de l'intent
+                Semaine_Model semaine = data.getParcelableExtra("Semaine");
+                this.model.getProfilSemaine_model().add(semaine);
+            }else if (resultCode == RESULT_CANCELED) {
 
                 // On affiche que l'opération est annulée
                 Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();
@@ -103,9 +107,10 @@ public class MainActivity extends Activity {
         startActivityForResult(intent, CODE_RETOUR);
     }
 
-    public void goSemaine(View view){
-        Intent intent = new Intent(this, Scenario_View.class);
-        startActivity(intent);
+    public void goSemaines(View view){
+        Intent intent = new Intent(this, SemaineList_View.class);
+        intent.putExtra("MODEL",this.model);
+        startActivityForResult(intent, CODE_RETOUR);
     }
 
     public void goScenario(View view){
@@ -128,12 +133,13 @@ public class MainActivity extends Activity {
 
     public void goObjets(View view){
         Intent intent = new Intent(this, ListeObjet_View.class);
-        startActivity(intent);
+        intent.putExtra("MODEL",this.model);
+        startActivityForResult(intent, CODE_RETOUR);
     }
 
     public void goPlanning(View view){
         Intent intent = new Intent(this, Planning_View.class);
-        intent.putExtra(NAME, this.model);
+        intent.putExtra("MODEL",this.model);
         startActivity(intent);
     }
 

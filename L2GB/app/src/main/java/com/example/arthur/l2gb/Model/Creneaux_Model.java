@@ -43,7 +43,11 @@ public class Creneaux_Model implements Parcelable {
 
     public Creneaux_Model()
     {
-
+        this.hDebut=25;
+        this.mDebut=00;
+        this.hFin=25;
+        this.mFin=00;
+        this.autorisation=true;
     }
 
     public int gethDebut() {

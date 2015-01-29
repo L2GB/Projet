@@ -10,7 +10,21 @@ import android.os.Parcelable;
 public class Objet_Model implements Parcelable {
 
     private String name;
+
+    public boolean isInconnu() {
+        return inconnu;
+    }
+
+    public void setInconnu(boolean inconnu) {
+        this.inconnu = inconnu;
+    }
+
+    public static Creator<Objet_Model> getCreator() {
+        return CREATOR;
+    }
+
     private boolean connecte;
+    private boolean inconnu;
     private String type;
     private Integer temperature_confort;
     private Integer temperature_economique;
@@ -21,6 +35,7 @@ public class Objet_Model implements Parcelable {
     {
         this.profilSemaine = new Semaine_Model();
         this.connecte = false;
+        this.inconnu = false;
         this.name = name;
         this.type = Constante.TYPE_CHAUFFAGE;
         this.temperature_confort = Constante.TEMP_CONFORT;
@@ -97,9 +112,11 @@ public class Objet_Model implements Parcelable {
         this.connecte = connecte;
     }
 
+
     protected Objet_Model(Parcel in) {
         name = in.readString();
         connecte = in.readByte() != 0x00;
+        inconnu = in.readByte() != 0x00;
         type = in.readString();
         temperature_confort = in.readByte() == 0x00 ? null : in.readInt();
         temperature_economique = in.readByte() == 0x00 ? null : in.readInt();
@@ -116,6 +133,7 @@ public class Objet_Model implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeByte((byte) (connecte ? 0x01 : 0x00));
+        dest.writeByte((byte) (inconnu ? 0x01 : 0x00));
         dest.writeString(type);
         if (temperature_confort == null) {
             dest.writeByte((byte) (0x00));

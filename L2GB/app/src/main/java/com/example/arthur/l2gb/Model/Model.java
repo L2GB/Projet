@@ -38,7 +38,7 @@ public class Model implements Parcelable {
         joursVacance.getCreneauList().add(creneauxModelVacance2);
         this.jours_Model.add(joursVacance);
 
-        Semaine_Model semaineClassique = new Semaine_Model("Semaine classique");
+        Semaine_Model semaineClassique = new Semaine_Model("Classique");
         semaineClassique.getProfilJourList().add(joursTravail);
         semaineClassique.getProfilJourList().add(joursTravail);
         semaineClassique.getProfilJourList().add(joursTravail);
@@ -48,15 +48,51 @@ public class Model implements Parcelable {
         semaineClassique.getProfilJourList().add(joursVacance);
         this.profilSemaine_model.add(semaineClassique);
 
+        Semaine_Model semaineSpe = new Semaine_Model("Spécial");
+        semaineSpe.getProfilJourList().add(joursTravail);
+        semaineSpe.getProfilJourList().add(joursTravail);
+        semaineSpe.getProfilJourList().add(joursVacance);
+        semaineSpe.getProfilJourList().add(joursTravail);
+        semaineSpe.getProfilJourList().add(joursTravail);
+        semaineSpe.getProfilJourList().add(joursVacance);
+        semaineSpe.getProfilJourList().add(joursVacance);
+        this.profilSemaine_model.add(semaineSpe);
 
-        Objet_Model lumiereSalon = new Objet_Model("Lumiere salon", semaineClassique);
+        Semaine_Model semaineSki = new Semaine_Model("Ski");
+        semaineSki.getProfilJourList().add(joursTravail);
+        semaineSki.getProfilJourList().add(joursTravail);
+        semaineSki.getProfilJourList().add(joursTravail);
+        semaineSki.getProfilJourList().add(joursTravail);
+        semaineSki.getProfilJourList().add(joursTravail);
+        semaineSki.getProfilJourList().add(joursTravail);
+        semaineSki.getProfilJourList().add(joursTravail);
+        this.profilSemaine_model.add(semaineSki);
+
+
+        Objet_Model lumiereSalon = new Objet_Model("Lumiere salon", semaineSpe);
         lumiereSalon.setConsommation(100);
-        Objet_Model chauffageSalon = new Objet_Model("Chauffage salon", semaineClassique);
+        lumiereSalon.setInconnu(true);
+        lumiereSalon.setConnecte(true);
+        Objet_Model chauffageSalon = new Objet_Model("Chauffage salon", semaineSpe);
         chauffageSalon.setConsommation(75);
+        chauffageSalon.setInconnu(true);
+        chauffageSalon.setConnecte(true);
         Objet_Model chauffageChambre = new Objet_Model("chauffage chambre", semaineClassique);
         chauffageChambre.setConsommation(50);
-        Objet_Model lumiereChambre = new Objet_Model("Lumiere chambre", semaineClassique);
+        chauffageChambre.setInconnu(true);
+        chauffageChambre.setConnecte(true);
+        Objet_Model lumiereChambre = new Objet_Model("Lumiere chambre", semaineSki);
         lumiereChambre.setConsommation(10);
+        lumiereChambre.setInconnu(true);
+        lumiereChambre.setConnecte(true);
+        Objet_Model console = new Objet_Model("Console");
+        console.setInconnu(true);
+        console.setConnecte(false);
+        Objet_Model iDinconnu = new Objet_Model("F4F33F3F3F");
+        iDinconnu.setInconnu(false);
+        iDinconnu.setConnecte(false);
+        this.objet_model.add(console);
+        this.objet_model.add(iDinconnu);
         this.objet_model.add(lumiereSalon);
         this.objet_model.add(chauffageSalon);
         this.objet_model.add(chauffageChambre);
