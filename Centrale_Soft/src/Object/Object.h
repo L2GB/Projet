@@ -28,7 +28,7 @@ struct CommandClasse{
 class Object : public Thread
 {
 	public:
-		Object(std::string _name, Week *_planning, std::string _type);
+		Object(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController);
 		virtual ~Object();
 
 		std::string getName(){return m_name;}
@@ -52,6 +52,7 @@ class Object : public Thread
 		int m_deviceId;
 		int m_instanceNum;
 		std::vector<struct CommandClasse> m_commandClassesList;
+		ZWaveController *m_zwaveController;
 };
 
 #endif /* OBJECT_OBJECT_H_ */

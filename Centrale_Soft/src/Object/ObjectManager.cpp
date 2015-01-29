@@ -205,7 +205,7 @@ void ObjectManager::setObject(json_t *_object)
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
-				PowerPlug *newPowerPlug = new PowerPlug(nom, m_planningManager.week_get(planning), type);
+				PowerPlug *newPowerPlug = new PowerPlug(nom, m_planningManager.week_get(planning), type, m_zwaveController);
 				m_objects.push_back(newPowerPlug);
 			}
 			break;
@@ -247,7 +247,7 @@ void ObjectManager::setObject(json_t *_object)
 				}
 				int teco = json_integer_value(tEco);
 
-				Heater *newHeater = new Heater(nom, m_planningManager.week_get(planning), type, tconfort, teco);
+				Heater *newHeater = new Heater(nom, m_planningManager.week_get(planning), type, m_zwaveController, tconfort, teco);
 				m_objects.push_back(newHeater);
 			}
 			break;

@@ -11,7 +11,7 @@
 // External include
 #include <unistd.h>
 
-Heater::Heater(std::string _name, Week *_planning, std::string _type, int _Tconfort, int _Teco) : Object(_name, _planning, _type), m_state(HEATER_INIT), m_Tconfort(_Tconfort), m_Teco(_Teco)
+Heater::Heater(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController, int _Tconfort, int _Teco) : Object(_name, _planning, _type, _zwaveController), m_state(HEATER_INIT), m_Tconfort(_Tconfort), m_Teco(_Teco)
 {
 }
 

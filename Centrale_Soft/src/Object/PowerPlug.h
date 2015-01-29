@@ -27,7 +27,7 @@ enum PowerPlug_state
 class PowerPlug : public Object
 {
 	public:
-		PowerPlug(std::string _name, Week *_planning, std::string _type);
+		PowerPlug(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController);
 		virtual ~PowerPlug();
 		void switchON();
 		void switchOFF();

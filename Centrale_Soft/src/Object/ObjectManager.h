@@ -55,6 +55,7 @@ class ObjectManager : public Communicator
 		std::vector<Object *> m_objects;
 		std::vector<Room *> m_rooms;
 		PlanningManager m_planningManager;
+		ZWaveController m_zwaveController;
 };
 
 #endif /* OBJECT_OBJECTMANAGER_H_ */
