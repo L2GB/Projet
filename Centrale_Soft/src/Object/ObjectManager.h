@@ -45,6 +45,8 @@ class ObjectManager : public Communicator
 		void loadRooms(json_t *_rooms);
 		Object *getObject(std::string _name);
 		Room *getRoom(std::string _name);
+		void powerPlug_switchON(std::string _name);
+		void powerPlug_switchOFF(std::string _name);
 		//std::vector<Object *> getVisibleObjectsList();
 
 	private:

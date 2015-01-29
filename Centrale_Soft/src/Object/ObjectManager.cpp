@@ -193,6 +193,20 @@ void ObjectManager::setObject(json_t *_object)
 	}
 	std::string type = json_string_value(typeObjet);
 
+	json_t *deviceid = json_object_get(_object, "deviceId");
+	if(!json_is_integer(deviceid))
+	{
+		throw FormatException("setObject : deviceId format not accepted");
+	}
+	int deviceId = json_integer_value(deviceid);
+
+	json_t *instancenum = json_object_get(_object, "instanceNum");
+	if(!json_is_integer(instancenum))
+	{
+		throw FormatException("setObject : instanceNum format not accepted");
+	}
+	int instanceNum = json_integer_value(instancenum);
+
 	switch (m_typeObjet[type])
 	{
 		case PRISE:
@@ -205,7 +219,7 @@ void ObjectManager::setObject(json_t *_object)
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
-				PowerPlug *newPowerPlug = new PowerPlug(nom, m_planningManager.week_get(planning), type, &m_zwaveController);
+				PowerPlug *newPowerPlug = new PowerPlug(nom, m_planningManager.week_get(planning), type, &m_zwaveController, deviceId, instanceNum);
 				m_objects.push_back(newPowerPlug);
 			}
 			break;
@@ -247,7 +261,7 @@ void ObjectManager::setObject(json_t *_object)
 				}
 				int teco = json_integer_value(tEco);
 
-				Heater *newHeater = new Heater(nom, m_planningManager.week_get(planning), type, &m_zwaveController, tconfort, teco);
+				Heater *newHeater = new Heater(nom, m_planningManager.week_get(planning), type, &m_zwaveController, deviceId, instanceNum, tconfort, teco);
 				m_objects.push_back(newHeater);
 			}
 			break;
@@ -321,6 +335,16 @@ Room *ObjectManager::getRoom(std::string _name)
 	return NULL;
 }
 
+
+void ObjectManager::powerPlug_switchON(std::string _name)
+{
+
+}
+
+void ObjectManager::powerPlug_switchOFF(std::string _name)
+{
+
+}
 
 // TODO
 // Passe pas par ce que déplacée de ZWaveController à ObjectManager du coup

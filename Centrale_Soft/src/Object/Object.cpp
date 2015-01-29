@@ -7,7 +7,7 @@
 
 #include "Object.h"
 
-Object::Object(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController) : m_name(_name), m_planning(_planning), m_type(_type), m_zwaveController(_zwaveController)
+Object::Object(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController, int _deviceId, int _instanceNum) : m_name(_name), m_planning(_planning), m_type(_type), m_zwaveController(_zwaveController), m_deviceId(_deviceId), m_instanceNum(_instanceNum)
 {
 	start();
 }

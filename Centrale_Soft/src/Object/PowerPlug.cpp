@@ -11,7 +11,7 @@
 // External include
 #include "unistd.h"
 
-PowerPlug::PowerPlug(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController) : Object(_name, _planning, _type, _zwaveController), m_level(OFF), m_state(POWERPLUG_INIT)
+PowerPlug::PowerPlug(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController, int _deviceId, int _instanceNum) : Object(_name, _planning, _type, _zwaveController, _deviceId, _instanceNum), m_level(OFF), m_state(POWERPLUG_INIT)
 {
 }
 

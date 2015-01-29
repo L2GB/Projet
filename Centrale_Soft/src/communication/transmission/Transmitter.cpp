@@ -43,6 +43,8 @@ void Transmitter::initializeMapping()
 	m_type["ADD_OBJET_PIECE"] = ADD_OBJET_PIECE;
 	m_type["REM_OBJET_PIECE"] = REM_OBJET_PIECE;
 	m_type["RM_PIECE"] = RM_PIECE;
+	m_type["POWEROFF_PRISE"] = POWEROFF_PRISE;
+	m_type["POWERON_PRISE"] = POWERON_PRISE;
 }
 
 void Transmitter::loadData()
@@ -325,6 +327,10 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				std::cout << e.what() << std::endl;
 			}
+			break;
+		case POWERON_PRISE:
+			break;
+		case POWEROFF_PRISE:
 			break;
 		default:
 			throw FormatException("Request type not identified");
