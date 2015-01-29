@@ -11,6 +11,7 @@
 // Internal include
 #include "../planning/Week.h"
 #include "../tools/thread/Thread.h"
+#include "../communication/zwave/ZWaveController.h"
 
 enum State
 {
@@ -35,7 +36,7 @@ class Object : public Thread
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
 		//--------------------------------------------------------
-		std::string guessType();
+		//std::string guessType();
 
 	protected:
 		virtual void run() = 0;

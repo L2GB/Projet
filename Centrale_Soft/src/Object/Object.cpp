@@ -29,8 +29,8 @@ void Object::getCurrentTime()
          << std::endl;*/
 }
 
-std::string Object::guessType(){
-
-}
+//std::string Object::guessType(){
+//
+//}
 
 

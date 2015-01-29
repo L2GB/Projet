@@ -63,9 +63,8 @@ void PowerPlug::checkLevel()
 }
 
 
-void PowerPlug::switchON()
-{
-// TODO connect with kilian
+void PowerPlug::switchON(){
+	ZWaveController::basic_set(this->m_deviceId, this->m_instanceNum, 1);
 }
 
 void PowerPlug::switchOFF()

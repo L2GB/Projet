@@ -276,9 +276,7 @@ int ZWaveController::get_cc_presence(){
 
 	zdata_acquire_lock(ZDataRoot(this->m_zway));
 
-	// Transformer le commandClassNum et le instanceNum en ZWBtyte
-
-	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str()); // dataName.c_str() //à la place du dernier arg
+	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
 
 	if(cc_holder){
 		cout << endl << " Il y a bien une donnée d'attachée à la cc " << commandClassNum << " de l'instance " << instanceNum;
@@ -352,78 +350,35 @@ int ZWaveController::basic_set(int deviceNodeId, int instanceId, int valeur){
 	return result;
 }
 
-std::vector<Object *> ZWaveController::getVisibleObjectsList(){
+ZWay ZWaveController::get_zway(){
+	return this->m_zway;
+}
 
-	std::vector <Object *> objectsList;
+bool ZWaveController::zNetwork_is_idle(){
+	bool isIdle(false);
 
-	int running = TRUE;
-
-	while(running){
-		if (!zway_is_running(this->m_zway)){
-			running = FALSE;
-			break;
-		}
-
-		if (!zway_is_idle(this->m_zway))
-		{
-			sleep_ms(10);
-			continue;
-		}
-
-		ZWDevicesList deviceList = zway_devices_list(this->m_zway);
-		if (deviceList != NULL) {
-			int i = 0;
-
-			while (deviceList[i]) {
-				printf("	Device %i :\n", deviceList[i]);
-				printDeviceInfoShortVersion(deviceList[i]);
-				ZWInstancesList instancesList = zway_instances_list(this->m_zway,deviceList[i]);
-
-				int k = 0;
-
-				cout << "		Instance 0 ";
-				ZWCommandClassesList commandClassesList = zway_command_classes_list(this->m_zway,deviceList[i],instancesList[k]);
-				cout << endl;
-				cout << "			Command Classes ";
-				int j = 0;
-				while(commandClassesList[j]){
-					printf("%i ",commandClassesList[j]);
-					j++;
-				}
-				zway_command_classes_list_free(commandClassesList);
-				cout << endl;
-
-				while(instancesList[k]){
-					printf("		Instance %i ", instancesList[k]);
-
-					ZWCommandClassesList commandClassesList = zway_command_classes_list(this->m_zway,deviceList[i],instancesList[k]);
-					cout << endl;
-					cout << "			Command Classes ";
-					int j = 0;
-					while(commandClassesList[j]){
-						printf("%i ",commandClassesList[j]);
-						j++;
-					}
-					zway_command_classes_list_free(commandClassesList);
-					cout << endl;
-					k++;
-				}
-				cout << "------------------------------------------------------" << endl;
-				i++;
-			}
-			zway_devices_list_free(deviceList);
-			cout << "	End of Devices list " << endl;
-		}
-
-		else{
-			printf("Error happened requesting devices list\n");
-			cout << " La liste de device est null or il devrait au moins il y avoir le controller " << endl;
-		}
-
-		running = FALSE;
+	if(zway_is_idle(this->m_zway)){
+		isIdle = true;
 	}
 
+	return isIdle;
 }
 
-	return objectsList;
+bool ZWaveController::zNetwork_is_working(){
+	bool isWorking(false);
+
+	if(zway_is_running(this->m_zway)){
+			isWorking = true;
+	}
+
+	return isWorking;
 }
+
+void ZWaveController::zdata_mutex_lock(){
+	zdata_acquire_lock(ZDataRoot(this->m_zway));
+}
+
+void ZWaveController::zdata_mutex_unlock(){
+	zdata_release_lock(ZDataRoot(this->m_zway));
+}
+// TODO il faut que ce soit le ObjectManager qui créé une instance de ZWaveController et qu'on passe son instance à tous les objets

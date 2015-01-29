@@ -14,9 +14,11 @@
 #include "../planning/PlanningManager.h"
 #include "../Object/Object.h"
 #include "Room.h"
+#include "../communication/zwave/ZWaveController.h"
 
 // External include
 #include <map>
+#include <iostream>
 
 //TODO complete the list
 /**
@@ -43,6 +45,7 @@ class ObjectManager : public Communicator
 		void loadRooms(json_t *_rooms);
 		Object *getObject(std::string _name);
 		Room *getRoom(std::string _name);
+		//std::vector<Object *> getVisibleObjectsList();
 
 	private:
 		void initializeMapping();

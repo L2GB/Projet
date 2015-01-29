@@ -8,7 +8,6 @@
 #ifndef COMMUNICATION_ZWAVE_ZWAVECONTROLLER_H_
 #define COMMUNICATION_ZWAVE_ZWAVECONTROLLER_H_
 
-#include "../../Object/Object.h"
 #include <vector>
 
 #ifdef _cplusplus
@@ -36,10 +35,13 @@ public:
 	int inclusion_mode_OFF();
 	int exclusion_mode_ON();
 	int exclusion_mode_OFF();
-	std::vector<Object *> getVisibleObjectsList();
-	int basic_set(int deviceNodeId, int instanceId, int valeur);
-	//void print_zway_terminated(ZWay zway, void* arg);
-	//void print_D_I_CC_event(const ZWay zway, ZWDeviceChangeType type, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE command_id, void *arg);
+	static int basic_set(int deviceNodeId, int instanceId, int valeur);
+	ZWay get_zway();
+	bool zNetwork_is_working();
+	bool zNetwork_is_idle();
+	void zdata_mutex_lock();
+	void zdata_mutex_unlock();
+
 
 private:
 	ZWay m_zway;
