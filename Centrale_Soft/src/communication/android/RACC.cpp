@@ -46,7 +46,7 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 	std::string type_string;
 
 	// Parsing data
-	root = json_loads(_dataReceive.c_str(), 0, NULL);
+	root = json_loads(str.c_str(), 0, NULL);
 	std::cout << "Data parsé :" << std::endl;
 	if(json_is_object(root))
 	{
