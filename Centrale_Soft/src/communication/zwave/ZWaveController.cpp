@@ -7,7 +7,6 @@
 
 #include "ZWaveController.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -47,7 +46,7 @@ int ZWaveController::startNetwork() {
 	cout << "Programme de test ZWave en C++ " << endl;
 
 	// Création du contexte de logging
-	ZWLog logger = zlog_create(stdout, Debug);
+	ZWLog logger = zlog_create(NULL, Debug); //TODO remettre stdout à la place de NULL
 	cout << "Contexte des logs créé" << endl;
 
 	this->m_zway = NULL;
@@ -382,6 +381,22 @@ void ZWaveController::zdata_mutex_unlock(){
 	zdata_release_lock(ZDataRoot(this->m_zway));
 }
 
+bool ZWaveController::zNetwork_is_there_device_instance_cc_holder(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 
+	bool presence(false);
 
-//ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
+	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
+
+	if(cc_holder){
+		presence = true;
+	}
+
+	return presence;
+}
+
+//void ZWaveController::zNetwork_find_device_instance_cc_holder(){
+//	//ZWEXPORT ZWError zdata_get_type(const ZDataHolder data, ZWDataType *type);
+//	//ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
+//
+//}
+

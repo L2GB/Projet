@@ -9,6 +9,7 @@
 #define COMMUNICATION_ZWAVE_ZWAVECONTROLLER_H_
 
 #include <vector>
+#include <string>
 
 #ifdef _cplusplus
 	extern "C" {
@@ -41,6 +42,8 @@ public:
 	bool zNetwork_is_idle();
 	void zdata_mutex_lock();
 	void zdata_mutex_unlock();
+	bool zNetwork_is_there_device_instance_cc_holder(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
+
 
 
 private:
