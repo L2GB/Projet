@@ -11,6 +11,7 @@
 #include "../../tools/exceptions/NotFoundException.h"
 
 #include "../../Object/Heater.h"
+#include "../../Object/PowerPlug.h"
 
 // Extrenal include
 #include <iostream>
@@ -329,8 +330,19 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			}
 			break;
 		case POWERON_PRISE:
+			try{
+				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
+				powerPlug->switchON();
+			}
+			catch(NotFoundException &e){}
+
 			break;
 		case POWEROFF_PRISE:
+			try{
+				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
+				powerPlug->switchOFF();
+			}
+			catch(NotFoundException &e){}
 			break;
 		default:
 			throw FormatException("Request type not identified");

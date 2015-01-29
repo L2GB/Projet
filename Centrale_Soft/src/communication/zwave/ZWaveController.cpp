@@ -394,9 +394,4 @@ bool ZWaveController::zNetwork_is_there_device_instance_cc_holder(int deviceNum,
 	return presence;
 }
 
-//void ZWaveController::zNetwork_find_device_instance_cc_holder(){
-//	//ZWEXPORT ZWError zdata_get_type(const ZDataHolder data, ZWDataType *type);
-//	//ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
-//
-//}
 
