@@ -25,6 +25,18 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 	std::cout << "Data receive :" << std::endl;
 	std::cout << _dataReceive << std::endl;
 
+	// On cherche le \n pour réparer la merde dans la com
+
+	  // different member versions of find in the same order as above:
+	  std::size_t found = _dataReceive.find("\n");
+	  if (found!=std::string::npos)
+	    std::cout << "first '\n' found at: " << found << '\n';
+
+	  std::string str = _dataReceive;
+
+	  str[(int)found] = '\0';
+
+
 	json_t *root;
 	json_t *request;
 	json_t *type;
