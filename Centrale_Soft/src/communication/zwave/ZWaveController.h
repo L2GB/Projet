@@ -35,7 +35,7 @@ public:
 	int inclusion_mode_OFF();
 	int exclusion_mode_ON();
 	int exclusion_mode_OFF();
-	static int basic_set(int deviceNodeId, int instanceId, int valeur);
+	int basic_set(int deviceNodeId, int instanceId, int valeur);
 	ZWay get_zway();
 	bool zNetwork_is_working();
 	bool zNetwork_is_idle();

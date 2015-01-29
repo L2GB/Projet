@@ -381,4 +381,7 @@ void ZWaveController::zdata_mutex_lock(){
 void ZWaveController::zdata_mutex_unlock(){
 	zdata_release_lock(ZDataRoot(this->m_zway));
 }
-// TODO il faut que ce soit le ObjectManager qui créé une instance de ZWaveController et qu'on passe son instance à tous les objets
+
+
+
+ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
