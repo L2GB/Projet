@@ -115,51 +115,62 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/l5">
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout2"
+        android:layout_width="fill_parent" >
 
-        <TableLayout android:layout_height="wrap_content"
-            android:id="@+id/tablelayoutId"
-            android:layout_width="fill_parent">
-            //android:background="#F87907"
-            >
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-            <TableRow>
+            <TextView
+                android:id="@+id/textView6"
+                android:text="N°"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-                <TextView android:id="@+id/l1r1"
-                    android:text="N°       "
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="#000000"
-                    />
+            <TextView
+                android:id="@+id/textView16"
+                android:text="       Début            "
+                android:textColor="#000000"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-                <TextView android:id="@+id/l1r2"
-                    android:text="Début     "
-                    android:textColor="#000000"
-                    android:layout_gravity="center_horizontal"
-                    />
-                <TextView android:id="@+id/l1r3"
-                    android:text="Fin       "
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="#000000"
-                    />
+            <TextView
+                android:id="@+id/textView17"
+                android:text="      Fin              "
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:text="Autorisation"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="#000000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3" />
+            <TextView
+                android:id="@+id/textView18"
+                android:text="Autorisation"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3" />
+        </TableRow>
+    </TableLayout>
 
-            </TableRow>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2" >
+
+        <TableLayout
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout"
+            android:layout_width="fill_parent" >
+
         </TableLayout>
-
-    </LinearLayout>
-
+    </ScrollView>
 
 
 </LinearLayout>

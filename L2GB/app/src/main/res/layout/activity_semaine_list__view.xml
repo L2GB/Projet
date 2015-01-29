@@ -1,12 +1,79 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.arthur.l2gb.View.SemaineList_View">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:rowCount="3"
+    android:columnCount="4"
+    android:id="@+id/tableauSemaine">
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/ButtonValider"
+        android:text="Retour"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:onClick="RetourSemaine"
+        android:layout_gravity="center_horizontal"
+        android:layout_column="0"
+        android:layout_row="0" />
+
+    <Button
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:text="Ajout semaine"
+        android:id="@+id/button8"
+        android:onClick="AjoutSemaine"
+        android:layout_gravity="right"
+        android:layout_column="2"
+        android:layout_row="0" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Liste des semaines"
+        android:id="@+id/textView"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:gravity="center"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="455dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:id="@+id/tableauSemaineList">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Semaine"
+                android:id="@+id/textView7"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Voir"
+                android:id="@+id/textView8"
+                android:layout_column="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Modifier"
+                android:id="@+id/textView9"
+                android:layout_column="3" />
+        </TableRow>
+    </TableLayout>
+
+</GridLayout>

@@ -1,12 +1,276 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.arthur.l2gb.View.SemaineConfiguration_View">
+    android:orientation="vertical"
+    tools:context="com.l2gb.applipfe.view.ConfigurationSemaine"
+    android:weightSum="1">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="Configuration semaine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/config_s"
+        android:textSize="20dp"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l1"
+        android:layout_below="@+id/config_s"
+        android:layout_marginTop="30dp"
+        android:weightSum="1">
+
+        <TextView android:text="Semaine Nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/config_s"
+            android:id="@+id/name_s"
+            android:textSize="15dp"/>
+
+        <EditText android:id="@+id/edit_name_semaine"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="nom"
+            android:textSize="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sauvegarder"
+            android:text="sauvegarder"
+            android:layout_marginLeft="30dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="annuler"
+        android:text="Annuler"
+        android:layout_marginLeft="30dp"
+        android:layout_column="2"
+        android:id="@+id/AnnulerConfigSemaine"
+        android:layout_gravity="right" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l2"
+        android:layout_below="@+id/l1">
+
+        <TextView
+            android:text="Choix journée"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView12"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l3"
+        android:layout_marginTop="20dp">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Choix Lundi"
+                android:id="@+id/choixLundi"
+                android:onClick="choixLundi"
+                android:layout_gravity="right|center_vertical" />
+
+            <TextView android:text="Lundi"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/lundi_text"
+                android:textSize="20dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l4">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="choix mardi"
+                android:id="@+id/choixMardi"
+                android:onClick="choixMardi"
+                android:layout_gravity="right|center_vertical" />
+
+            <TextView android:text="Mardi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/mardi_text"
+                android:textSize="20dp"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l5">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView android:text="Mercredi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/mercredi_text"
+                android:textSize="20dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="choix mercredi"
+                android:id="@+id/choixMercredi"
+                android:onClick="choixMercredi"
+                android:layout_gravity="right|center_vertical" />
+        </FrameLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l6">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="choix jeudi"
+                android:id="@+id/choixJeudi"
+                android:onClick="choixJeudi"
+                android:layout_gravity="right|center_vertical" />
+
+            <TextView android:text="Jeudi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/jeudi_text"
+                android:textSize="20dp"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l7">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="choix vendredi"
+                android:id="@+id/choixVendredi"
+                android:onClick="choixVendredi"
+                android:layout_gravity="right|center_vertical" />
+
+            <TextView android:text="Vendredi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/vendredi_text"
+                android:textSize="20dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l8"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView android:text="Samedi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/samedi_text"
+                android:textSize="20dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="choix samedi"
+                android:id="@+id/choixSamedi"
+                android:layout_weight="0.20"
+                android:onClick="choixSamedi"
+                android:layout_gravity="right|center_vertical" />
+        </FrameLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l9">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="choix dimanche"
+                android:id="@+id/choixDimanche"
+                android:onClick="choixDimanche"
+                android:layout_gravity="right|center_vertical" />
+
+            <TextView android:text="Dimanche"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:id="@+id/dimanche_text"
+                android:textSize="20dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

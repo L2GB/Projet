@@ -21,7 +21,7 @@
     <Button
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="Ajout objet"
+        android:text="Ajout jour"
         android:id="@+id/button8"
         android:onClick="AjoutObjet"
         android:layout_gravity="right"
