@@ -28,9 +28,11 @@ struct CommandClasse{
 class Object : public Thread
 {
 	public:
-		Object(std::string _name, Week *_planning, std::string _type, ZWaveController *_zwaveController, int _deviceId, int instanceNum);
+		Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum);
 		virtual ~Object();
 
+		int getDeviceId(){return m_deviceId;}
+		int getInstanceNum(){return m_instanceNum;}
 		std::string getName(){return m_name;}
 		std::string getType(){return m_type;}
 		Week *getPlanning(){return m_planning;}
