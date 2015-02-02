@@ -10,6 +10,64 @@ import android.os.Parcelable;
 public class Objet_Model implements Parcelable {
 
     private String name;
+    private boolean connecte;
+    private boolean inconnu;
+    private String type;
+    private Integer temperature_confort;
+    private Integer temperature_economique;
+    private Semaine_Model profilSemaine;
+    private Integer instanceNum;
+    private Integer deviceId;
+    private Integer consommation;
+
+
+    public Objet_Model(String name)
+    {
+        this.profilSemaine = new Semaine_Model();
+        this.connecte = false;
+        this.inconnu = false;
+        this.instanceNum = 0;
+        this.deviceId = 0;
+        this.name = name;
+        this.type = Constante.TYPE_CHAUFFAGE;
+        this.temperature_confort = Constante.TEMP_CONFORT;
+        this.temperature_economique = Constante.TEMP_ECO;
+        this.consommation=0;
+    }
+
+
+    public Integer getInstanceNum() {
+        return instanceNum;
+    }
+
+    public void setObjet(Objet_Model objetModel){
+        this.profilSemaine = objetModel.profilSemaine;
+        this.connecte =   objetModel.connecte;
+        this.inconnu = objetModel.inconnu;
+        this.instanceNum = objetModel.instanceNum;
+        this.deviceId = objetModel.deviceId;
+        this.name = objetModel.name;
+        this.type = objetModel.type;
+        this.temperature_confort = objetModel.temperature_confort;
+        this.temperature_economique = objetModel.temperature_economique;
+        this.consommation=objetModel.consommation;
+    }
+
+    public void setInstanceNum(Integer instanceNum) {
+        this.instanceNum = instanceNum;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public static Creator<Objet_Model> getCreator() {
+        return CREATOR;
+    }
 
     public boolean isInconnu() {
         return inconnu;
@@ -19,28 +77,6 @@ public class Objet_Model implements Parcelable {
         this.inconnu = inconnu;
     }
 
-    public static Creator<Objet_Model> getCreator() {
-        return CREATOR;
-    }
-
-    private boolean connecte;
-    private boolean inconnu;
-    private String type;
-    private Integer temperature_confort;
-    private Integer temperature_economique;
-    private Semaine_Model profilSemaine;
-    private Integer consommation;
-
-    public Objet_Model(String name)
-    {
-        this.profilSemaine = new Semaine_Model();
-        this.connecte = false;
-        this.inconnu = false;
-        this.name = name;
-        this.type = Constante.TYPE_CHAUFFAGE;
-        this.temperature_confort = Constante.TEMP_CONFORT;
-        this.temperature_economique = Constante.TEMP_ECO;
-    }
 
     public Objet_Model(String name, Semaine_Model profilSemaine)
     {
@@ -121,6 +157,8 @@ public class Objet_Model implements Parcelable {
         temperature_confort = in.readByte() == 0x00 ? null : in.readInt();
         temperature_economique = in.readByte() == 0x00 ? null : in.readInt();
         profilSemaine = (Semaine_Model) in.readValue(Semaine_Model.class.getClassLoader());
+        instanceNum = in.readByte() == 0x00 ? null : in.readInt();
+        deviceId = in.readByte() == 0x00 ? null : in.readInt();
         consommation = in.readByte() == 0x00 ? null : in.readInt();
     }
 
@@ -148,6 +186,18 @@ public class Objet_Model implements Parcelable {
             dest.writeInt(temperature_economique);
         }
         dest.writeValue(profilSemaine);
+        if (instanceNum == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(instanceNum);
+        }
+        if (deviceId == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(deviceId);
+        }
         if (consommation == null) {
             dest.writeByte((byte) (0x00));
         } else {

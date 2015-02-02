@@ -33,7 +33,7 @@ public class Planning_View extends Activity {
 
         Intent intent = getIntent();
         this.model = getIntent().getExtras().getParcelable("MODEL");
-        ajouterJour(6);
+        ajouterJour(0);
     }
 
 
