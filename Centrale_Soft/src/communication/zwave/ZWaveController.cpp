@@ -468,42 +468,40 @@ std::string ZWaveController::zNetwork_get_string(int deviceNum, int instanceNum,
 	return value;
 }
 
-int ZWaveController::zNetwork_get_device_name(int deviceNum, char * nameInit){
-
+char * ZWaveController::zNetwork_get_device_name(int deviceNum){
+	std::string nameInitString;
 	if (deviceNum >= 0) {
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
 		struct _ZGuessedProduct * pProduct = *product;
 		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
-			nameInit = pProduct->file_name;
-			cout << "NameInit = " << nameInit << endl;
+			nameInitString = pProduct->file_name;
 			printf("Guessed product (%p): score=%d product=%s file_name=%s\n", pProduct, pProduct->score, pProduct->product, pProduct->file_name);
 		}
-
 		zway_device_guess_free(product);
 	} else {
-		printf(" No information found on device\n");
+		nameInitString = "DeviceNum inférieur à 0 ";
 	}
+	char * nameInit((char *)nameInitString.c_str());
+	cout << "NameInit = " << nameInit << endl;
 
-	return 0;
-
+	return nameInit;
 }
 
-int ZWaveController::zNetwork_get_device_type(int deviceNum, char * type){
-
+char * ZWaveController::zNetwork_get_device_type(int deviceNum){
+	std::string typeString;
 	if (deviceNum >= 0) {
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
 		struct _ZGuessedProduct * pProduct = *product;
 		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
-			type = pProduct->product;
-			cout << "Type = " << type << endl;
+			typeString = pProduct->product;
 			printf("Guessed product (%p): score=%d product=%s file_name=%s\n", pProduct, pProduct->score, pProduct->product, pProduct->file_name);
 		}
-
 		zway_device_guess_free(product);
 	} else {
-		printf(" No information found on device\n");
+		typeString = "DeviceNum inférieur à 0 ";
 	}
+	char * type ((char *) typeString.c_str());
+	cout << "Type = " << type << endl;
 
-	return 0;
-
+	return type;
 }
