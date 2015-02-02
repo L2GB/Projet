@@ -196,10 +196,9 @@ public class JoursConfiguration_View extends Activity {
                     this.listCreneaux.get(id / 3).sethFin(heure);
                     this.listCreneaux.get(id / 3).setmFin(min);
                 }
-                Toast.makeText(this, "bouton"+ (id-1)%3 + " lieu" + id/3 , Toast.LENGTH_LONG).show();
             }
         }
-    }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

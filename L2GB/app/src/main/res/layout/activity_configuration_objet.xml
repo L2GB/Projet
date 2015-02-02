@@ -1,0 +1,155 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.l2gb.applipfe.view.ConfigurationJour"
+    android:weightSum="1">
+
+    <TextView android:text="Configuration objet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/config_s"
+        android:textSize="20dp"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l1"
+        android:layout_below="@+id/config_s"
+        android:layout_marginTop="10dp"
+        android:weightSum="1">
+
+        <TextView android:text="Nom du Jour : "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/config_s"
+            android:id="@+id/name_s"
+            android:textSize="15dp"
+            android:layout_gravity="left|center_vertical" />
+
+        <EditText android:id="@+id/edit_name_objet"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="nom"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.09" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l2"
+        android:layout_below="@+id/l1">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l3"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:text="Temperature confort : "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/config_s"
+            android:id="@+id/textView2"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editTextTemperatureConfort"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:hint="T°C"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:text="Temperature economique : "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/config_s"
+            android:id="@+id/textView10"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editTextTemperatureEco"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:hint="T°C"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout3"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:text="Semaine programmé    "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/config_s"
+            android:id="@+id/textView5"
+            android:textSize="15dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/semaineListe"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="saveObjet"
+            android:text="sauvegarder"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/saveObjet"
+            android:layout_gravity="center_vertical|bottom|left|right" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="RetourObjetConfig"
+            android:text="Annuler"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="right|bottom"
+            android:id="@+id/AnnulerConfigJour"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -65,6 +65,10 @@
             android:name=".View.ListeObjetInconnu_View"
             android:label="@string/title_activity_liste_objet_inconnu__view" >
         </activity>
+        <activity
+            android:name=".View.ConfigurationObjet"
+            android:label="@string/title_activity_configuration_objet" >
+        </activity>
     </application>
 
 </manifest>

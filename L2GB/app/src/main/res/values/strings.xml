@@ -13,5 +13,10 @@
     <string name="title_activity_consommation__view">Consommation_View</string>
     <string name="title_activity_view">View</string>
     <string name="title_activity_liste_objet__view">ListeObjet_View</string>
+    <string name="title_activity_pop_up__view">PopUp_View</string>
+    <string name="title_activity_pop_up_choixjour">Pop_up_choixjour</string>
+    <string name="title_activity_liste_objet_connecte__view">ListeObjetConnecte_View</string>
+    <string name="title_activity_liste_objet_inconnu__view">ListeObjetInconnu_View</string>
+    <string name="title_activity_configuration_objet">ConfigurationObjet</string>
 
 </resources>
