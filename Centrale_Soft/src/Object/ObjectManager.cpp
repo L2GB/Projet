@@ -207,6 +207,10 @@ void ObjectManager::setObject(json_t *_object)
 					std::string nom = json_string_value(name);
 					powerPlug->setName(nom);
 				}
+				else
+				{
+					json_object_set(_object, "nomObjet", json_string(powerPlug->getName().c_str()));
+				}
 
 				json_t *planning_json = json_object_get(_object, "planning");
 				if(json_is_string(planning_json))
@@ -214,6 +218,13 @@ void ObjectManager::setObject(json_t *_object)
 					std::string planning = json_string_value(planning_json);
 					powerPlug->setPlanning(m_planningManager.week_get(planning));
 				}
+				else
+				{
+					json_object_set(_object, "planning", json_string(powerPlug->getPlanning()->getName().c_str()));
+				}
+
+				json_object_set(_object, "connecte", json_boolean(powerPlug->isConnected()));
+				json_object_set(_object, "inconnu", json_boolean(powerPlug->isUnknown()));
 			}
 			catch(NotFoundException &e)
 			{
@@ -232,12 +243,20 @@ void ObjectManager::setObject(json_t *_object)
 					int tconfort = json_integer_value(tConfort);
 					heater->setTconfort(tconfort);
 				}
+				else
+				{
+					json_object_set(_object, "Tconfort", json_integer(heater->getTconfort()));
+				}
 
 				json_t *tEco = json_object_get(_object, "Teco");
 				if(json_is_integer(tEco))
 				{
 					int teco = json_integer_value(tEco);
 					heater->setTeco(teco);
+				}
+				else
+				{
+					json_object_set(_object, "Teco", json_integer(heater->getTeco()));
 				}
 
 				json_t *name = json_object_get(_object, "nomObjet");
@@ -246,6 +265,10 @@ void ObjectManager::setObject(json_t *_object)
 					std::string nom = json_string_value(name);
 					heater->setName(nom);
 				}
+				else
+				{
+					json_object_set(_object, "nomObjet", json_string(heater->getName().c_str()));
+				}
 
 				json_t *planning_json = json_object_get(_object, "planning");
 				if(json_is_string(planning_json))
@@ -253,6 +276,13 @@ void ObjectManager::setObject(json_t *_object)
 					std::string planning = json_string_value(planning_json);
 					heater->setPlanning(m_planningManager.week_get(planning));
 				}
+				else
+				{
+					json_object_set(_object, "planning", json_string(heater->getPlanning()->getName().c_str()));
+				}
+
+				json_object_set(_object, "connecte", json_boolean(heater->isConnected()));
+				json_object_set(_object, "inconnu", json_boolean(heater->isUnknown()));
 			}
 			catch(NotFoundException &e)
 			{

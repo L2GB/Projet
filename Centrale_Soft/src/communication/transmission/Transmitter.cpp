@@ -109,8 +109,8 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 		case SET_OBJET:
 			try
 			{
-				LocalFileManager::setObject(_data);
 				m_objectManager.setObject(_data);
+				LocalFileManager::setObject(_data);
 			}
 			catch(NotFoundException &e)
 			{
