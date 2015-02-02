@@ -52,7 +52,7 @@ int ZWaveController::startNetwork() {
 	this->m_zway = NULL;
 
 	// Création du contexte Z-Way
-	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "TestRpi", logger);
+	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", logger);
 	// En cas d'erreur lors de la création du contexte Z-Way on inscrit l'erreur dans les logs
 	if(result != NoError){
 		zway_log_error(m_zway, Critical, "Failed to init ZWay", result);
@@ -212,25 +212,30 @@ int ZWaveController::print_data_tree(){
 // Affiche la type de produit si la détection automatique à retourné une certitude de 10
 void ZWaveController::printDeviceInfoShortVersion(int deviceNodeId){
 	if (deviceNodeId >= 0) {
-		ZGuessedProduct * productsList = zway_device_guess(this->m_zway, deviceNodeId);
-		struct _ZGuessedProduct * pProduct = *productsList;
+		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNodeId);
+		struct _ZGuessedProduct * pProduct = *product;
 		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
 			printf(" %s ", pProduct->product);
 		}
 
-		zway_device_guess_free(productsList);
+		zway_device_guess_free(product);
 	} else {
 		printf(" No information found on device\n");
 	}
 }
 
+/**
+ * printDeviceInfoLongVersion
+ * Demande à l'utilisateur l'id du Device dont il souhaite afficher les informations
+ * et les lui affiche
+ */
 void ZWaveController::printDeviceInfoLongVersion(){
 	cout << "Quel est le device dont vous souhaitez afficher les informations ? " << endl;
 	cout << "> ";
 	int deviceNodeId = -1;
 	cin >> deviceNodeId;
 	cin.ignore();
-
+	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
 	if (deviceNodeId >= 0) {
 		ZGuessedProduct * productsList = zway_device_guess(this->m_zway, deviceNodeId);
 		struct _ZGuessedProduct * pProduct = *productsList;
@@ -241,7 +246,7 @@ void ZWaveController::printDeviceInfoLongVersion(){
 			cout << " File name : " << pProduct->file_name << endl;
 			printf("Guessed product (%p): score=%d product=%s file_name=%s\n", pProduct, pProduct->score, pProduct->product, pProduct->file_name);
 		}
-
+		zway_devices_list_free(deviceList);
 		zway_device_guess_free(productsList);
 	} else {
 		printf(" No information found on device\n");
@@ -504,4 +509,30 @@ char * ZWaveController::zNetwork_get_device_type(int deviceNum){
 	cout << "Type = " << type << endl;
 
 	return type;
+}
+/**
+ * zNetwork_get_nb_devices
+ * Récupère le nombre de devices appairés
+ */
+int ZWaveController::zNetwork_get_nb_devices(){
+	int i(0);
+	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
+	while (deviceList[i]) {
+		i++;
+	}
+	return i;
+}
+
+bool ZWaveController::zNetwork_is_device_paired(int deviceId){
+	bool isDevicePaired(false);
+	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
+	int i(0);
+	while(deviceList[i]){
+		int p = (int)deviceList[i];
+		if(p == deviceId){
+			isDevicePaired = true;
+		}
+		i++;
+	}
+	return isDevicePaired;
 }
