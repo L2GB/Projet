@@ -31,7 +31,6 @@ public:
 	void printDeviceInfoLongVersion();
 	void printDeviceInfoShortVersion(int deviceNodeId);
 	int print_data_tree();
-	int get_cc_presence();
 	int inclusion_mode_ON();
 	int inclusion_mode_OFF();
 	int exclusion_mode_ON();
@@ -43,7 +42,13 @@ public:
 	void zdata_mutex_lock();
 	void zdata_mutex_unlock();
 	bool zNetwork_is_there_device_instance_cc_holder(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
-
+	std::string zNetwork_get_holder_value_type(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
+	int zNetwork_get_integer(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
+	bool zNetwork_get_boolean(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
+	float zNetwork_get_float(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
+	std::string zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
+	int zNetwork_get_device_name(int deviceNum, char * nameInit);
+	int zNetwork_get_device_type(int deviceNum, char * type);
 
 
 private:

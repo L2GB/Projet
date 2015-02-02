@@ -47,7 +47,6 @@ class ObjectManager : public Communicator
 		Room *getRoom(std::string _name);
 		void powerPlug_switchON(std::string _name);
 		void powerPlug_switchOFF(std::string _name);
-		//std::vector<Object *> getVisibleObjectsList();
 
 	private:
 		void initializeMapping();

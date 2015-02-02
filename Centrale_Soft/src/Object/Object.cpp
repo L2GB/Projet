@@ -29,8 +29,9 @@ void Object::getCurrentTime()
          << std::endl;*/
 }
 
-//std::string Object::guessType(){
-//
-//}
+void Object::automatic_initName_setting(){
+
+	this->m_zwaveController->zNetwork_get_device_name(this->m_deviceId, this->m_initName);
+}
 
 

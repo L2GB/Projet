@@ -36,6 +36,7 @@ class Object : public Thread
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
 		//--------------------------------------------------------
+		void automatic_initName_setting();
 		//std::string guessType();
 
 	protected:
@@ -48,7 +49,7 @@ class Object : public Thread
 		Week *m_planning;
 		std::string m_type;
 		//--------------------------------------------------------
-		std::string m_initName;
+		char * m_initName;
 		int m_deviceId;
 		int m_instanceNum;
 		std::vector<struct CommandClasse> m_commandClassesList;

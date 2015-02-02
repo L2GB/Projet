@@ -248,51 +248,8 @@ void ZWaveController::printDeviceInfoLongVersion(){
 	}
 }
 
-int ZWaveController::get_cc_presence(){
-
-	cout << endl;
-	cout << "Which Command class of which instance of which device would you like to know the name ?" << endl;
-	cout << "Device num : ";
-	int deviceNum;
-	cin >> deviceNum ;
-	cin.ignore();
-	cout << endl << "Instance : ";
-	int instanceNum;
-	cin >> instanceNum;
-	cin.ignore();
-	cout << endl << "Command class : ";
-	int commandClassNum;
-	cin >> commandClassNum ;
-	cin.ignore();
-	cout << "Quel est le nom de la data dont vous voulez vérifier l'existence d'un holder ? " << endl;
-	cout <<"> ";
-	string dataName("no name");
-	std::getline(cin,dataName);
-	cout << endl << "Vous voulez donc vérifier si la commande class " << "'" << commandClassNum << "'";
-	cout << " de l'instance " << "'" << instanceNum << "'" << " du device " << "'" << deviceNum << "'" << " posséde un data holder pour la variable ";
-	cout << "'" << dataName << "'" << endl;
-
-
-	zdata_acquire_lock(ZDataRoot(this->m_zway));
-
-	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
-
-	if(cc_holder){
-		cout << endl << " Il y a bien une donnée d'attachée à la cc " << commandClassNum << " de l'instance " << instanceNum;
-		cout << " du device " << deviceNum << endl;
-	}
-	else{
-		cout << endl << " Il n'y a pas de donnée attachée à la cc " << commandClassNum << " de l'instance " << instanceNum;
-		cout << " du device " << deviceNum << " dont le nom serait " << dataName << endl;
-	}
-	zdata_release_lock(ZDataRoot(this->m_zway));
-
-	return 0;
-
-}
-
 int ZWaveController::inclusion_mode_ON(){
-
+	// Si passe pas comme ça y a une autre méthode
 	zway_fc_add_node_to_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
 
 	cout << endl << "Inclusion ON " << endl;
@@ -301,7 +258,7 @@ int ZWaveController::inclusion_mode_ON(){
 }
 
 int ZWaveController::inclusion_mode_OFF(){
-
+	// Si passe pas comme ça y a une autre méthode
 	zway_fc_add_node_to_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
 
 	cout << endl << "Inclusion OFF" << endl;
@@ -310,7 +267,7 @@ int ZWaveController::inclusion_mode_OFF(){
 }
 
 int ZWaveController::exclusion_mode_ON(){
-
+	// Si passe pas comme ça y a une autre méthode
 	zway_fc_remove_node_from_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
 
 	cout << endl <<"Exclusion ON " << endl;
@@ -319,7 +276,7 @@ int ZWaveController::exclusion_mode_ON(){
 }
 
 int ZWaveController::exclusion_mode_OFF(){
-
+	// Si passe pas comme ça y a une autre méthode
 	zway_fc_remove_node_from_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
 
 	cout << endl << "Exclusion OFF " << endl;
@@ -394,4 +351,159 @@ bool ZWaveController::zNetwork_is_there_device_instance_cc_holder(int deviceNum,
 	return presence;
 }
 
+std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 
+	std::string type("NOTINIT");
+	ZWDataType * holderValueType;
+
+	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+
+	if(holder != NULL){
+		if(zdata_get_type(holder, holderValueType) == NoError){
+			switch (*holderValueType){
+
+			case Empty:
+				type = "Empty";
+			break;
+
+			case Boolean:
+				type = "Boolean";
+			break;
+
+			case Integer:
+				type= "Integer";
+			break;
+
+			case Float:
+				type = "Float";
+			break;
+
+			case String:
+				type = "String";
+			break;
+
+			case Binary:
+				type = "Binary";
+			break;
+
+			case ArrayOfInteger:
+				type = "ArrayOfInteger";
+			break;
+
+			case ArrayOfFloat:
+				type = "ArrayOfFloat";
+			break;
+
+			case ArrayOfString:
+				type = "ArrayOfString";
+			break;
+
+			default:
+				type = "noHolderValueTypeFound";
+			break;
+			}
+		}
+		else{
+			type = "cantFindHolderValueType";
+		}
+	}
+	else{
+		type = "noHolder";
+	}
+
+	return type;
+}
+
+int ZWaveController::zNetwork_get_integer(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
+	int value(-123);
+
+	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+
+	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "Integer"){
+		zdata_get_integer(holder, &value);
+	}
+
+	return value;
+}
+
+bool ZWaveController::zNetwork_get_boolean(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
+	bool value(NULL);
+	ZWBOOL zValue;
+
+	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+
+	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "Boolean"){
+		zdata_get_boolean(holder, &zValue);
+		if(zValue == true){
+			value = true;
+		}
+		else{
+			value = false;
+		}
+	}
+	return value;
+}
+
+float ZWaveController::zNetwork_get_float(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
+	float value(-123.0);
+
+	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+
+	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "Float"){
+		zdata_get_float(holder, &value);
+	}
+
+	return value;
+}
+
+std::string ZWaveController::zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
+	const char * value;
+
+	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+
+	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "String"){
+		zdata_get_string(holder, &value);
+	}
+
+	return value;
+}
+
+int ZWaveController::zNetwork_get_device_name(int deviceNum, char * nameInit){
+
+	if (deviceNum >= 0) {
+		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
+		struct _ZGuessedProduct * pProduct = *product;
+		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
+			nameInit = pProduct->file_name;
+			cout << "NameInit = " << nameInit << endl;
+			printf("Guessed product (%p): score=%d product=%s file_name=%s\n", pProduct, pProduct->score, pProduct->product, pProduct->file_name);
+		}
+
+		zway_device_guess_free(product);
+	} else {
+		printf(" No information found on device\n");
+	}
+
+	return 0;
+
+}
+
+int ZWaveController::zNetwork_get_device_type(int deviceNum, char * type){
+
+	if (deviceNum >= 0) {
+		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
+		struct _ZGuessedProduct * pProduct = *product;
+		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
+			type = pProduct->product;
+			cout << "Type = " << type << endl;
+			printf("Guessed product (%p): score=%d product=%s file_name=%s\n", pProduct, pProduct->score, pProduct->product, pProduct->file_name);
+		}
+
+		zway_device_guess_free(product);
+	} else {
+		printf(" No information found on device\n");
+	}
+
+	return 0;
+
+}
