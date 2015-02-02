@@ -66,5 +66,5 @@ void RACC::sendData(const std::string _data, IdClient _idClient)
 
 	std::string str = _data + "\r\n";
 
-	m_tcpServer.writeData(_data, _idClient);
+	m_tcpServer.writeData(str, _idClient);
 }
