@@ -49,6 +49,8 @@ public:
 	std::string zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 	char * zNetwork_get_device_name(int deviceNum);
 	char * zNetwork_get_device_type(int deviceNum);
+	int zNetwork_get_nb_devices();
+	bool zNetwork_is_device_paired(int deviceId);
 
 
 private:

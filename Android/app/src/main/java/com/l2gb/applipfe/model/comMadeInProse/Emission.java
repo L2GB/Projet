@@ -1,6 +1,9 @@
 package com.l2gb.applipfe.model.comMadeInProse;
 
 
+import com.l2gb.applipfe.model.JsonUtil;
+import com.l2gb.applipfe.model.Objet_Model;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -25,6 +28,12 @@ public class Emission extends Thread {
     private String message;
 
     /**
+     * \var comJson
+     * Contient toutes les méthodes pour communiquer avec la centrale au format JSON.
+     */
+    private JsonUtil comJson;
+
+    /**
      * \brief Constructeur de l'Emission
      * <p/>
      * Prend en paramètre le socket et lance le thread d'émission.
@@ -34,6 +43,8 @@ public class Emission extends Thread {
     public Emission(Socket socket) {
         this.setName("ThreadEmission");
         this.mySocket = socket;
+        this.comJson = new JsonUtil();
+        this.message ="";
         this.start();
     }
 
@@ -49,20 +60,92 @@ public class Emission extends Thread {
 
             PrintWriter out = null;
             out = new PrintWriter(mySocket.getOutputStream());
-            out.println(message);
+            out.println(message+'\0');
             out.flush();
+            System.out.println("Thread emission" +message);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /***********************************************************
-     TODO: TOUTE les méthodes d'émission se trouve ici
-     Chaque méthode va modifier l'attibut message puis rappeler la méthode run, Afin d'envoyer la
-     requête.
+     Méthodes pour envoyer des messages à la centrale.
+
+     Chaque méthode va modifier l'attibut message puis rappeler la méthode run,
+     afin d'envoyer la requête à la centrale.
      ***********************************************************/
 
 
+    /**
+     * \brief Envoie le message JSON pour demander les objets enregistrés.
+     */
+    public void askObjetList()
+    {
+        System.out.println("emission ask objet list");
+        this.message = "";
+        this.message = comJson.getObjetModel();
+        run();
+    }
 
+    /**
+     * \brief Envoie le message JSON pour demander les profils jour enregistrés.
+     */
+    public void askJourList()
+    {
+        System.out.println("emission ask jour list");
+        this.message = "";
+        this.message = comJson.getJoursModel();
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour demander les profils semaine enregistrés.
+     */
+    public void askSemaineList()
+    {
+        System.out.println("emission ask semaine list");
+        this.message = "";
+        this.message = comJson.getSemaineModel();
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour demander la consommation de l'objet: "objet"
+     * \param objet : l'objet en question.
+     */
+    public void askConsommation(Objet_Model objet)
+    {
+        System.out.println("emission ask consommation");
+        this.message = "";
+        this.message = comJson.getConsommation(objet);
+        this.run();
+    }
+
+
+    /**
+     * \brief Envoie le message JSON pour éteindre la prise : "name".
+     * \param name : l'identifiant de la prise.
+     */
+    public void powerOff(String name)
+    {
+        System.out.println("emmission power off");
+        this.message = "";
+        this.message = comJson.prisePowerOff(name);
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour allumer la prise : "name".
+     * \param name : l'identifiant de la prise.
+     */
+    public void powerOn(String name)
+    {
+        System.out.println("Emmission power on");
+        this.message = "";
+        this.message = comJson.prisePowerOn(name);
+        this.run();
+
+    }
 
 }
