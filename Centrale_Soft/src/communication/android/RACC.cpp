@@ -25,19 +25,6 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 	std::cout << "Data receive :" << std::endl;
 	std::cout << _dataReceive << std::endl;
 
-	// On cherche le \n pour réparer la merde dans la com
-
-	// different member versions of find in the same order as above:
-	std::size_t found = _dataReceive.find("\n");
-	if (found!=std::string::npos)
-	std::cout << "first '\n' found at: " << found << '\n';
-
-	std::string str = _dataReceive;
-
-	str[(int)found] = '\0';
-
-	std::cout << "Nouvelle Chaine : " << str << std::endl;
-
 	json_t *root;
 	json_t *request;
 	json_t *type;
@@ -46,7 +33,7 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 	std::string type_string;
 
 	// Parsing data
-	root = json_loads(str.c_str(), 0, NULL);
+	root = json_loads(_dataReceive.c_str(), 0, NULL);
 	std::cout << "Data parsé :" << std::endl;
 	if(json_is_object(root))
 	{
@@ -75,5 +62,9 @@ void RACC::receiveOrder(const std::string _dataReceive, IdClient _idClient)
 
 void RACC::sendData(const std::string _data, IdClient _idClient)
 {
+	// Ajout de \r\n pour décoder la chaine en android
+
+	std::string str = _data + "\r\n";
+
 	m_tcpServer.writeData(_data, _idClient);
 }
