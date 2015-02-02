@@ -9,23 +9,53 @@ public class Objet_Model {
 
     private String name;
     private boolean connecte;
+    private boolean inconnu;
     private String type;
     private Integer temperature_confort;
     private Integer temperature_economique;
     private Semaine_Model profilSemaine;
+    private Integer instanceNum;
+    private Integer deviceId;
+    private Integer consommation;
+
 
     public Objet_Model(String name)
     {
         this.profilSemaine = new Semaine_Model();
         this.connecte = false;
+        this.inconnu = false;
+        this.instanceNum = 0;
+        this.deviceId = 0;
         this.name = name;
         this.type = Constante.TYPE_CHAUFFAGE;
         this.temperature_confort = Constante.TEMP_CONFORT;
         this.temperature_economique = Constante.TEMP_ECO;
     }
 
+    public Objet_Model(String name, Semaine_Model profilSemaine)
+    {
+        this.profilSemaine = new Semaine_Model();
+        this.profilSemaine = profilSemaine;
+        this.connecte = false;
+        this.inconnu = false;
+        this.instanceNum = 0;
+        this.deviceId = 0;
+        this.name = name;
+        this.type = Constante.TYPE_CHAUFFAGE;
+        this.temperature_confort = Constante.TEMP_CONFORT;
+        this.temperature_economique = Constante.TEMP_ECO;
+    }
+
+    public Integer getConsommation() {
+        return this.consommation;
+    }
+
+    public void setConsommation(Integer consommation) {
+        this.consommation = consommation;
+    }
+
     public Integer getTemperature_economique() {
-        return temperature_economique;
+        return this.temperature_economique;
     }
 
     public void setTemperature_economique(Integer temperature_economique) {
@@ -33,7 +63,7 @@ public class Objet_Model {
     }
 
     public Integer getTemperature_confort() {
-        return temperature_confort;
+        return this.temperature_confort;
     }
 
     public void setTemperature_confort(Integer temperature_confort) {
@@ -64,12 +94,36 @@ public class Objet_Model {
         this.name = name;
     }
 
-    public boolean getConnecte() {
-        return this.connecte;
-    }
-
     public void setConnecte(boolean connecte) {
         this.connecte = connecte;
+    }
+
+    public boolean isInconnu() {
+        return this.inconnu;
+    }
+
+    public void setInconnu(boolean inconnu) {
+        this.inconnu = inconnu;
+    }
+
+    public boolean isConnecte() {
+        return this. connecte;
+    }
+
+    public Integer getInstanceNum() {
+        return instanceNum;
+    }
+
+    public void setInstanceNum(Integer instanceNum) {
+        this.instanceNum = instanceNum;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
     }
 
 

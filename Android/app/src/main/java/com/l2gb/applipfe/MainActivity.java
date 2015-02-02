@@ -17,8 +17,9 @@ import java.util.ArrayList;
 public class MainActivity extends ActionBarActivity {
 
     private Consommation_affichage consommation_affichage;
-    private TestCom test;
+    private TestCom test1;
     private Model model;
+    boolean test = false;
 
     public final static ListeObject LISTE_OBJECT = null;
     public ListeObject o;
@@ -29,23 +30,44 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Button monBouton= (Button) this.findViewById(R.id.button4);
         monBouton.setVisibility(View.GONE);
-        this.test = new TestCom();
+        this.test1 = new TestCom();
         this.model = new Model();
+        //this.model.creerfakeModel();
     }
 
     public void goScenario(View view){
+        //Intent intent = new Intent(this, ScenarioActivity.class);
+        //startActivity(intent);
 
-        Intent intent = new Intent(this, ScenarioActivity.class);
-        startActivity(intent);
+        /** Vérification des chaine de charactere créée en JSON à partir du model **/
+        /**
+        System.out.println("test getJoursModel: "+this.model.getCommunication().getJoursModel());
+        System.out.println("test getSemaineModel: "+this.model.getCommunication().getSemaineModel());
+        System.out.println("test getObjetModel: "+this.model.getCommunication().getObjetModel());
+        System.out.println("test semainetostring: "+this.model.getCommunication().semaineModelToString(this.model.getProfilSemaine_model().get(0)));
+        System.out.println("test jourstostring: "+this.model.getCommunication().joursModelToString(this.model.getJours_Model().get(0)));
+        System.out.println("test objettostring: "+this.model.getCommunication().objetModelToString(this.model.getObjet_model().get(0)));
+        **/
+        this.model.askJourList();
     }
+
     public void goConsommation(View view){
-        Intent intent = new Intent(this, Consommation_affichage.class);
-        intent.putExtra("coo",o);
-        startActivity(intent);
+        if(test==false) {
+            //System.out.println("appuy conso " + this.test);
+            this.model.powerOn("prise1");
+            test = true;
+        }
+        else if(test==true)
+        {
+            //System.out.println("appuy conso " + this.test);
+            model.powerOff("prise1");
+            test=false;
+        }
+
     }
     public void goObjets(View view){
-        setContentView(R.layout.activity_configuration_jour);
-
+        //System.out.println("appuy objet");
+        this.model.askJourList();
     }
     public void goPlanning(View view){
         Button monBouton= (Button) this.findViewById(R.id.button4);

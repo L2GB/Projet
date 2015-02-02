@@ -2,6 +2,7 @@ package com.l2gb.applipfe.model.comMadeInProse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import android.os.Handler;
 
 import com.l2gb.applipfe.model.Jours_Model;
+import com.l2gb.applipfe.model.JsonUtil;
 import com.l2gb.applipfe.model.Objet_Model;
 import com.l2gb.applipfe.model.Semaine_Model;
 
@@ -33,9 +35,15 @@ public class Reception extends Thread {
 
     /**
      * \var buffer
-     * Contient les données sous forme de chaîne de caractères reçues par la centrale .
+     * Variable utilisée pour stocker les chaînes de caractères reçues par la centrale .
      */
     private String buffer;
+
+    /**
+     * \var comJson
+     * Contient toutes les méthodes pour communiquer avec la centrale au format JSON.
+     */
+    private JsonUtil comJson;
 
     /**
      * \var in
@@ -45,21 +53,33 @@ public class Reception extends Thread {
 
     /**
      * \var objetList
-     * Contient la liste d'objet enregistré dans centrale  .
+     * Variable pour stocker la liste d'objets enregistrés dans centrale  .
      */
     private ArrayList<Objet_Model> objetList;
 
     /**
      * \var profilJourList
-     * Contient la liste de profil jour enregistré dans centrale  .
+     * Variable pour stocker la liste de profil jour enregistré dans centrale  .
      */
     private ArrayList<Jours_Model> profilJourList;
 
     /**
      * \var profilSemaineList
-     * Contient la liste de semaine enregistré dans centrale  .
+     * Variable pour stocker la liste de semaine enregistré dans centrale  .
      */
     private ArrayList<Semaine_Model> profilSemaineList;
+
+    /**
+     * \var message
+     * Variable pour stocker les message en reception  .
+     */
+    private byte[] message = new byte[2048];
+
+    /**
+     * \var typeMsg
+     * Variable pour stocker le type de message à chaque reception  .
+     */
+    private Integer typeMsg = 0;
 
     /**
      * \brief Constructeur de Reception
@@ -79,8 +99,12 @@ public class Reception extends Thread {
         this.objetList = objetList;
         this.profilJourList = profilJourList;
         this.profilSemaineList = profilSemaineList;
+        this.buffer = null;
+        this.comJson = new JsonUtil();
         this.setName("ThreadReception");
-        buffer = "";
+
+        System.out.println("Creation du thread de reception");
+
         try {
             this.in = new BufferedReader(new InputStreamReader(this.mySocket.getInputStream()));
         } catch (IOException e) {
@@ -97,10 +121,14 @@ public class Reception extends Thread {
      * grâce au handler dans l'UI Thread.
      */
     public void run() {
-        while (true) {
+        while(true){
             try {
-                buffer = this.in.readLine();
+                int readBytes = mySocket.getInputStream().read(message, 0, 2048);
+                this.buffer = new String(message, 0, readBytes, "UTF-8");
+                System.out.println("Le buffer contient : "+buffer+"\n");
+                this.typeMsg = this.comJson.readResponse(buffer);
             } catch (IOException e) {
+                System.out.println("Exception catch \n");
                 e.printStackTrace();
             }
             myHandler.post(new Runnable() {
@@ -108,7 +136,6 @@ public class Reception extends Thread {
                 public void run() {
                     parseReceiveString(buffer);
                 }
-
             });
         }
     }
@@ -123,7 +150,28 @@ public class Reception extends Thread {
      * \param buffer Chaîne de caractère reçu.
      */
     private void parseReceiveString(String buffer) {
+        System.out.println("Ca parse!!!!");
+        int responseType=0;
+        responseType = this.comJson.readResponse(buffer);
 
+        /** ProfilJour**/
+        if(responseType == 1){
+            System.out.println(buffer);
+            profilJourList = this.comJson.stringToJoursModel(buffer);
+            System.out.println("Liste de profils jour reçues \n");
+            System.out.println("First jour : "+profilJourList.get(0).getName());
+        }
+        /** ProfilSemaine **/
+        else if(responseType == 2){
+            System.out.println(buffer);
+            profilSemaineList = this.comJson.stringToSemaineModel(buffer);
+        }
+        /** Profil objet **/
+        else if(responseType == 3){
+            System.out.println(buffer);
+            objetList = this.comJson.stringToObjetModel(buffer);
+
+        }
     }
 
 }
