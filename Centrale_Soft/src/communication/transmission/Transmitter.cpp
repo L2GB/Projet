@@ -327,18 +327,25 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			break;
 		case POWERON_PRISE:
 			try{
+				int instanceNum = json_integer_value(json_object_get(_data, "instanceNum"));
+				int deviceId  = json_integer_value(json_object_get(_data, "deviceId"));
+
+
 				// TODO modifier
-				//PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
-				//powerPlug->switchON();
+				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(instanceNum, deviceId);
+				powerPlug->switchON();
 			}
 			catch(NotFoundException &e){}
 
 			break;
 		case POWEROFF_PRISE:
 			try{
+				int instanceNum = json_integer_value(json_object_get(_data, "instanceNum"));
+				int deviceId  = json_integer_value(json_object_get(_data, "deviceId"));
 				// TODO modifier
-//				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
-//				powerPlug->switchOFF();
+
+				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(instanceNum, deviceId);
+				powerPlug->switchOFF();
 			}
 			catch(NotFoundException &e){}
 			break;

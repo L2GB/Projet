@@ -28,7 +28,8 @@ struct CommandClasse{
 class Object : public Thread
 {
 	public:
-		Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum);
+		Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_planning, bool _connected, bool _unknown);
+		Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~Object();
 
 		int getDeviceId(){return m_deviceId;}
@@ -50,12 +51,12 @@ class Object : public Thread
 
 	protected:
 		struct tm *m_time;
-		std::string m_name;
 		Week *m_planning;
 		std::string m_type;
 		ZWaveController *m_zwaveController;
 		int m_deviceId;
 		int m_instanceNum;
+		std::string m_name;
 		//--------------------------------------------------------
 		char * m_initName;
 		bool m_connected;

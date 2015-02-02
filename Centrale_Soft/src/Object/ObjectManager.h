@@ -36,15 +36,21 @@ class ObjectManager : public Communicator
 		virtual ~ObjectManager(){}
 
 		void addObjectToRoom(json_t *_room);
+		void addObjectToList(int _instanceNum, int _deviceId, const std::string _name, const std::string _typeObject);
 		void setDay(json_t *_day);
 		void setWeek(json_t *_week);
 		void setObject(json_t *_object);
 		void loadDays(json_t *_days);
 		void loadWeeks(json_t *_weeks);
+		void newInstanceObject(json_t *object);
 		void loadObjects(json_t *_objects);
 		void loadRooms(json_t *_rooms);
 		Object *getObject(int _deviceId, int _instanceNum);
 		Room *getRoom(std::string _name);
+
+		/*
+		 * Liste des commandes vers les objets.
+		 */
 		void powerPlug_switchON(std::string _name);
 		void powerPlug_switchOFF(std::string _name);
 

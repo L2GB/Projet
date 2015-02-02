@@ -20,7 +20,8 @@ enum Heater_state
 class Heater : public Object
 {
 	public:
-		Heater(ZWaveController *_zwaveController, int _deviceId, int instanceNum);
+		Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_week, bool _connected, bool _unknown, int _Tconfort, int _Teco);
+		Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~Heater();
 		void setTconfort(int _tconfort){m_Tconfort = _tconfort;}
 		void setTeco(int _teco){m_Teco = _teco;}

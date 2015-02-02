@@ -7,9 +7,14 @@
 
 #include "Object.h"
 
-Object::Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum) :  m_zwaveController(_zwaveController), m_deviceId(_deviceId), m_instanceNum(_instanceNum)
+Object::Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name) :  m_zwaveController(_zwaveController), m_deviceId(_deviceId), m_instanceNum(_instanceNum), m_name(_name)
 {
 	start();
+}
+
+Object::Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_planning, bool _connected, bool _unknown) : m_zwaveController(_zwaveController), m_deviceId(_deviceId), m_instanceNum(_instanceNum), m_name(_name), m_planning(_planning), m_connected(_connected), m_unknown(_unknown)
+{
+
 }
 
 Object::~Object()

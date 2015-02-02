@@ -12,10 +12,10 @@
 #include "../tools/exceptions/FormatException.h"
 #include "../tools/exceptions/NotFoundException.h"
 
-ObjectManager::ObjectManager() {
+ObjectManager::ObjectManager()
+{
 	initializeMapping();
 }
-
 
 void ObjectManager::initializeMapping()
 {
@@ -62,6 +62,132 @@ void ObjectManager::loadWeeks(json_t *_weeks)
 	}
 }
 
+void ObjectManager::newInstanceObject(json_t *_object)
+{
+	json_t *typeObjet = json_object_get(_object, "typeObjet");
+	if(!json_is_string(typeObjet))
+	{
+		throw FormatException("setObject : typeObjet format not accepted");
+	}
+	std::string type = json_string_value(typeObjet);
+
+	json_t *deviceid = json_object_get(_object, "deviceId");
+	if(!json_is_integer(deviceid))
+	{
+		throw FormatException("setObject : deviceId format not accepted");
+	}
+	int deviceId = json_integer_value(deviceid);
+
+	json_t *instancenum = json_object_get(_object, "instanceNum");
+	if(!json_is_integer(instancenum))
+	{
+		throw FormatException("setObject : instanceNum format not accepted");
+	}
+	int instanceNum = json_integer_value(instancenum);
+
+	switch (m_typeObjet[type])
+	{
+		case PRISE:
+			try
+			{
+				std::cout << "type : " << type << std::endl;
+				json_t *name = json_object_get(_object, "nomObjet");
+				if(!json_is_string(name))
+				{
+					throw FormatException("setObject : nomObjet format not accepted");
+				}
+				std::string nom = json_string_value(name);
+
+				json_t *planning_json = json_object_get(_object, "planning");
+				if(json_is_string(planning_json))
+				{
+					throw FormatException("setObject : planning format not accepted");
+				}
+				std::string planning = json_string_value(planning_json);
+
+				json_t *connecte_json = json_object_get(_object, "connecte");
+				if(json_is_boolean(connecte_json))
+				{
+					throw FormatException("setObject : connecte format not accepted");
+				}
+				bool connecte = json_boolean_value(connecte_json);
+
+				json_t *inconnu_json = json_object_get(_object, "inconnu");
+				if(json_is_boolean(inconnu_json))
+				{
+					throw FormatException("setObject : inconnu format not accepted");
+				}
+				bool inconnu = json_boolean_value(inconnu_json);
+
+				PowerPlug *powerPlug;
+				powerPlug = new PowerPlug(&m_zwaveController, deviceId, instanceNum, nom, m_planningManager.week_get(planning), connecte, inconnu);
+				m_objects.push_back(powerPlug);
+			}
+			catch(NotFoundException &e)
+			{
+				std::cout << e.what() <<std::endl;
+			}
+			break;
+		case CHAUFFAGE:
+			try
+			{
+				std::cout << "type : " << type << std::endl;
+				json_t *tConfort = json_object_get(_object, "Tconfort");
+				if(json_is_integer(tConfort))
+				{
+					throw FormatException("setObject : tconfort heater format not accepted");
+				}
+				int tconfort = json_integer_value(tConfort);
+
+				json_t *tEco = json_object_get(_object, "Teco");
+				if(json_is_integer(tEco))
+				{
+					throw FormatException("setObject : teco heater format not accepted");
+				}
+				int teco = json_integer_value(tEco);
+
+				json_t *name = json_object_get(_object, "nomObjet");
+				if(json_is_string(name))
+				{
+					throw FormatException("setObject : name heater format not accepted");
+				}
+				std::string nom = json_string_value(name);
+
+				json_t *planning_json = json_object_get(_object, "planning");
+				if(json_is_string(planning_json))
+				{
+					throw FormatException("setObject : planning heater format not accepted");
+				}
+				std::string planning = json_string_value(planning_json);
+
+				json_t *connecte_json = json_object_get(_object, "connecte");
+				if(json_is_boolean(connecte_json))
+				{
+					throw FormatException("setObject : connecte heater format not accepted");
+				}
+				bool connecte = json_boolean_value(connecte_json);
+
+				json_t *inconnu_json = json_object_get(_object, "inconnu");
+				if(json_is_boolean(inconnu_json))
+				{
+					throw FormatException("setObject : inconnu format not accepted");
+				}
+				bool inconnu = json_boolean_value(inconnu_json);
+
+				Heater *heater;
+				heater = new Heater(&m_zwaveController, deviceId, instanceNum, nom, m_planningManager.week_get(planning), connecte, inconnu, tconfort, teco);
+				m_objects.push_back(heater);
+				break;
+			}
+			catch(NotFoundException &e)
+			{
+				std::cout << e.what() <<std::endl;
+			}
+		default:
+			break;
+	}
+}
+
 void ObjectManager::loadObjects(json_t *_objects)
 {
 	json_t *objets = json_object_get(_objects, "objets");
@@ -72,9 +198,13 @@ void ObjectManager::loadObjects(json_t *_objects)
 	{
 		try
 		{
-			setObject(value);
+			newInstanceObject(value);
 		}
 		catch(NotFoundException &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		catch(FormatException &e)
 		{
 			std::cout << e.what() << std::endl;
 		}
@@ -170,6 +300,25 @@ void ObjectManager::setWeek(json_t *_week)
 	m_planningManager.week_set(nom, days);
 }
 
+void ObjectManager::addObjectToList(int _instanceNum, int _deviceId, const std::string _name, const std::string _typeObject)
+{
+	switch (m_typeObjet[_typeObject])
+	{
+		case PRISE:
+			PowerPlug *powerPlug;
+			powerPlug = new PowerPlug(&m_zwaveController, _deviceId, _instanceNum, _name);
+			m_objects.push_back(powerPlug);
+			break;
+		case CHAUFFAGE:
+			Heater *heater;
+			heater = new Heater(&m_zwaveController, _deviceId, _instanceNum, _name);
+			m_objects.push_back(heater);
+			break;
+		default:
+			break;
+	}
+}
+
 void ObjectManager::setObject(json_t *_object)
 {
 	json_t *typeObjet = json_object_get(_object, "typeObjet");
@@ -229,6 +378,7 @@ void ObjectManager::setObject(json_t *_object)
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
+				throw;
 			}
 			break;
 		case CHAUFFAGE:
@@ -287,6 +437,7 @@ void ObjectManager::setObject(json_t *_object)
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
+				throw;
 			}
 			break;
 	}
