@@ -111,8 +111,6 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				LocalFileManager::setObject(_data);
 				m_objectManager.setObject(_data);
-				Heater *h = (Heater *) m_objectManager.getObject("heater1");
-				h->print();
 			}
 			catch(NotFoundException &e)
 			{
@@ -170,8 +168,6 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				LocalFileManager::setDay(_data);
 				m_objectManager.setDay(_data);
-				Heater *h = (Heater *) m_objectManager.getObject("heater1");
-				h->print();
 			}
 			catch(NotFoundException &e)
 			{
@@ -331,16 +327,18 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			break;
 		case POWERON_PRISE:
 			try{
-				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
-				powerPlug->switchON();
+				// TODO modifier
+				//PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
+				//powerPlug->switchON();
 			}
 			catch(NotFoundException &e){}
 
 			break;
 		case POWEROFF_PRISE:
 			try{
-				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
-				powerPlug->switchOFF();
+				// TODO modifier
+//				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject("prise1");
+//				powerPlug->switchOFF();
 			}
 			catch(NotFoundException &e){}
 			break;

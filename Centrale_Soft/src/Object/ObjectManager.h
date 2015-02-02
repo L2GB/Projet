@@ -43,7 +43,7 @@ class ObjectManager : public Communicator
 		void loadWeeks(json_t *_weeks);
 		void loadObjects(json_t *_objects);
 		void loadRooms(json_t *_rooms);
-		Object *getObject(std::string _name);
+		Object *getObject(int _deviceId, int _instanceNum);
 		Room *getRoom(std::string _name);
 		void powerPlug_switchON(std::string _name);
 		void powerPlug_switchOFF(std::string _name);

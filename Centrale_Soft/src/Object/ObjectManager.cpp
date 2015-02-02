@@ -172,20 +172,6 @@ void ObjectManager::setWeek(json_t *_week)
 
 void ObjectManager::setObject(json_t *_object)
 {
-	json_t *name = json_object_get(_object, "nomObjet");
-	if(!json_is_string(name))
-	{
-		throw FormatException("setObject : name format not accepted");
-	}
-	std::string nom = json_string_value(name);
-
-	json_t *planning_json = json_object_get(_object, "planning");
-	if(!json_is_string(planning_json))
-	{
-		throw FormatException("setObject : planning format not accepted");
-	}
-	std::string planning = json_string_value(planning_json);
-
 	json_t *typeObjet = json_object_get(_object, "typeObjet");
 	if(!json_is_string(typeObjet))
 	{
@@ -213,21 +199,33 @@ void ObjectManager::setObject(json_t *_object)
 			std::cout << "type : " << type << std::endl;
 			try
 			{
-				PowerPlug *powerPlug = (PowerPlug *) getObject(nom);
-				powerPlug->setPlanning(m_planningManager.week_get(planning));
+				PowerPlug *powerPlug = (PowerPlug *) getObject(deviceId, instanceNum);
+
+				json_t *name = json_object_get(_object, "nomObjet");
+				if(json_is_string(name))
+				{
+					std::string nom = json_string_value(name);
+					powerPlug->setName(nom);
+				}
+
+				json_t *planning_json = json_object_get(_object, "planning");
+				if(json_is_string(planning_json))
+				{
+					std::string planning = json_string_value(planning_json);
+					powerPlug->setPlanning(m_planningManager.week_get(planning));
+				}
 			}
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
-				PowerPlug *newPowerPlug = new PowerPlug(nom, m_planningManager.week_get(planning), type, &m_zwaveController, deviceId, instanceNum);
-				m_objects.push_back(newPowerPlug);
 			}
 			break;
 		case CHAUFFAGE:
 			std::cout << "type : " << type << std::endl;
 			try
 			{
-				Heater *heater = (Heater *) getObject(nom);
+				Heater *heater = (Heater *) getObject(deviceId, instanceNum);
+
 				json_t *tConfort = json_object_get(_object, "Tconfort");
 				if(json_is_integer(tConfort))
 				{
@@ -242,27 +240,23 @@ void ObjectManager::setObject(json_t *_object)
 					heater->setTeco(teco);
 				}
 
-				heater->setPlanning(m_planningManager.week_get(planning));
+				json_t *name = json_object_get(_object, "nomObjet");
+				if(json_is_string(name))
+				{
+					std::string nom = json_string_value(name);
+					heater->setName(nom);
+				}
+
+				json_t *planning_json = json_object_get(_object, "planning");
+				if(json_is_string(planning_json))
+				{
+					std::string planning = json_string_value(planning_json);
+					heater->setPlanning(m_planningManager.week_get(planning));
+				}
 			}
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
-				json_t *tConfort = json_object_get(_object, "Tconfort");
-				if(!json_is_integer(tConfort))
-				{
-					throw FormatException("setObject : tConfort format not accepted");
-				}
-				int tconfort = json_integer_value(tConfort);
-
-				json_t *tEco = json_object_get(_object, "Teco");
-				if(!json_is_integer(tEco))
-				{
-					throw FormatException("setObject : tEco format not accepted");
-				}
-				int teco = json_integer_value(tEco);
-
-				Heater *newHeater = new Heater(nom, m_planningManager.week_get(planning), type, &m_zwaveController, deviceId, instanceNum, tconfort, teco);
-				m_objects.push_back(newHeater);
 			}
 			break;
 	}
@@ -295,25 +289,39 @@ void ObjectManager::addObjectToRoom(json_t *_room)
 		throw FormatException("addObjectToRoom : object format not accepted");
 	}
 
+	json_t *deviceid = json_object_get(_room, "deviceId");
+	if(!json_is_integer(deviceid))
+	{
+		throw FormatException("setObject : deviceId format not accepted");
+	}
+	int deviceId = json_integer_value(deviceid);
+
+	json_t *instancenum = json_object_get(_room, "instanceNum");
+	if(!json_is_integer(instancenum))
+	{
+		throw FormatException("setObject : instanceNum format not accepted");
+	}
+	int instanceNum = json_integer_value(instancenum);
+
 	try
 	{
 		Room *room = getRoom(nom);
-		room->addObject(getObject(nomObjet));
+		room->addObject(getObject(deviceId, instanceNum));
 	}
 	catch(NotFoundException &e)
 	{
 		std::cout << e.what() << std::endl;
 		Room *newRoom = new Room(nom);
-		newRoom->addObject(getObject(nomObjet));
+		newRoom->addObject(getObject(deviceId, instanceNum));
 		m_rooms.push_back(newRoom);
 	}
 }
 
-Object *ObjectManager::getObject(std::string _name)
+Object *ObjectManager::getObject(int _deviceId, int _instanceNum)
 {
 	for(std::size_t i = 0 ; i < m_objects.size() ; i++)
 	{
-		if(m_objects[i]->getName().compare(_name.c_str()) == 0)
+		if(m_objects[i]->getInstanceNum() == _instanceNum && m_objects[i]->getDeviceId())
 		{
 			return m_objects[i];
 		}

@@ -35,6 +35,7 @@ class Object : public Thread
 		int getInstanceNum(){return m_instanceNum;}
 		std::string getName(){return m_name;}
 		std::string getType(){return m_type;}
+		void setName(const std::string _name){m_name = _name;}
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
 		//--------------------------------------------------------
