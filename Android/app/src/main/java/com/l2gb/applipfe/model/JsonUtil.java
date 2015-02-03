@@ -1,5 +1,7 @@
 package com.l2gb.applipfe.model;
 
+import com.l2gb.applipfe.Constante;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,11 +55,9 @@ public class JsonUtil {
      * @brief Permet de transfomer une chaine de charactère en liste d'objet Jours_Model.
      * @func ArrayList<ProfilJour> stringToJoursModel(String chaine)
      * @param chaine la chaine de charactère à transformer
-     * @return une liste de Jours_Model
      */
-    public static ArrayList<Jours_Model> stringToJoursModel(String chaine)
+    public static void stringToJoursModel(String chaine, ArrayList<Jours_Model> profilJourList)
     {
-        ArrayList<Jours_Model> profilJourList = new ArrayList<Jours_Model>();
         try {
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
@@ -95,7 +95,6 @@ public class JsonUtil {
             e.printStackTrace();
         }
 
-        return profilJourList;
     }
     /**
      * @brief Permet de transfomer un objet Jours_Model en chaine de charactère.
@@ -144,7 +143,7 @@ public class JsonUtil {
     /**
      * @brief Permet de supprimer un profilJour
      * @func removeJoursModel(ProfilJour pJour)
-     * @param pJour la profilJour à supprimer
+     * @param pJour le profilJour à supprimer
      * @return none
      */
     public void removeJoursModel(Jours_Model pJour)
@@ -186,9 +185,9 @@ public class JsonUtil {
      * @param chaine la chaine de charactère à transformer
      * @return une liste de ProfilSemaine
      */
-    public ArrayList<Semaine_Model> stringToSemaineModel(String chaine)
+    public void stringToSemaineModel(String chaine, ArrayList<Semaine_Model> profilSemaineList )
     {
-        ArrayList<Semaine_Model> profilSemaineList = new ArrayList<Semaine_Model>();
+
         try{
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
@@ -202,23 +201,22 @@ public class JsonUtil {
                 Semaine_Model profilSemaine = new Semaine_Model();
                 profilSemaine.setName(semaine.getString("nomProfil"));
 
-                JSONArray jourList = semaineList.getJSONArray(j);
+                JSONArray jours = semaine.getJSONArray("jours");
 
                 /** On ajoute tous les profilJour dans la semaine **/
-                for(int i=0;i<jourList.length();i++)
+                for(int i=0;i<jours.length();i++)
                 {
-                    Jours_Model profilJour = new Jours_Model(jourList.get(i).toString());
+                    Jours_Model profilJour = new Jours_Model(jours.get(i).toString());
                     /** on ajoute le profil jour dans la liste de jours **/
                     profilSemaine.getProfilJourList().add(i,profilJour);
                 }
                 profilSemaineList.add(j,profilSemaine);
-
+                //System.out.println("JsonUtil "+profilSemaineList.get(j).getName());
             }
         }catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return profilSemaineList;
     }
 
     /**
@@ -299,9 +297,8 @@ public class JsonUtil {
      * @param chaine :la chaine de charactère à transformer
      * @return une liste de ProfilObjet
      */
-    public ArrayList<Objet_Model> stringToObjetModel(String chaine)
+    public void stringToObjetModel(String chaine,ArrayList<Objet_Model> profilObjetList)
     {
-        ArrayList<Objet_Model> profilObjetList = new ArrayList<Objet_Model>();
         try{
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
@@ -312,34 +309,26 @@ public class JsonUtil {
             for(int j=0;j<objetList.length();j++) {
                 JSONObject objet = objetList.getJSONObject(j);
 
-                JSONObject nomObjet = objet.getJSONObject("nomObjet");
-                JSONObject planning = objet.getJSONObject("planning");
-                JSONObject typeObjet = objet.getJSONObject("typeObjet");
-                JSONObject inconnu = objet.getJSONObject("inconnu");
-                JSONObject connecte = objet.getJSONObject("connecte");
-                JSONObject instanceNum = objet.getJSONObject("instanceNum");
-                JSONObject deviceId = objet.getJSONObject("deviceId");
-                JSONObject tConfort = objet.getJSONObject("Tconfort");
-                JSONObject tEco = objet.getJSONObject("Teco");
-
-                Objet_Model profilObjet = new Objet_Model(nomObjet.getString("nomObjet"));
-                profilObjet.getProfilSemaine().setName(planning.getString("planning"));
-                profilObjet.setType(typeObjet.getString("typeObjet"));
-                profilObjet.setInconnu(inconnu.getBoolean("inconnu"));
-                profilObjet.setConnecte(connecte.getBoolean("connecte"));
-                profilObjet.setInstanceNum(instanceNum.getInt("instanceNum"));
-                profilObjet.setDeviceId(deviceId.getInt("deviceId"));
-                profilObjet.setTemperature_confort(tConfort.getInt("Tconfort"));
-                profilObjet.setTemperature_economique(tEco.getInt("Teco"));
-
+                Objet_Model profilObjet = new Objet_Model(objet.getString("nomObjet"));
+                profilObjet.getProfilSemaine().setName(objet.getString("planning"));
+                profilObjet.setType(objet.getString("typeObjet"));
+                profilObjet.setInconnu(objet.getBoolean("inconnu"));
+                profilObjet.setConnecte(objet.getBoolean("connecte"));
+                profilObjet.setInstanceNum(objet.getInt("instanceNum"));
+                profilObjet.setDeviceId(objet.getInt("deviceId"));
+                profilObjet.setType(objet.getString("typeObjet"));
+                /** Si l'objet est de type chauffage on regarde les températures **/
+                if (objet.getString("typeObjet").equals(Constante.TYPE_CHAUFFAGE)) {
+                    profilObjet.setTemperature_confort(objet.getInt("Tconfort"));
+                    profilObjet.setTemperature_economique(objet.getInt("Teco"));
+                }
+                System.out.println("TEUUUUUUB");
                 profilObjetList.add(j,profilObjet);
             }
 
         }catch (JSONException e) {
             e.printStackTrace();
         }
-
-        return profilObjetList;
     }
 
 
@@ -513,13 +502,13 @@ public class JsonUtil {
 
     public int readResponse(String chaine)
     {
-        String type;
+        String type = "";
         try {
             JSONObject root = new JSONObject(chaine);
             JSONObject response = root.getJSONObject("response");
             type  = response.getString("type");
 
-            System.out.println("requestType: "+type);
+            //System.out.println("JsonUtil readResponse de type: "+type);
             /** Si la reponse est de type GET_PROFIL_JOUR**/
             if(type.equals("GET_PROFIL_JOUR")){
                 //ArrayList<Jours_Model> joursList = new ArrayList<Jours_Model>();
@@ -542,7 +531,7 @@ public class JsonUtil {
         }catch (JSONException e) {
             e.printStackTrace();
         }
-
+        System.out.println("JsonUtil readResponse si on a ca c'est que ca a chier: "+type);
         return 0;
     }
 

@@ -23,7 +23,8 @@ public class MainActivity extends ActionBarActivity {
 
     public final static ListeObject LISTE_OBJECT = null;
     public ListeObject o;
-    public ArrayList<ListeObject> ppp;
+
+    private int teub=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +49,33 @@ public class MainActivity extends ActionBarActivity {
         System.out.println("test jourstostring: "+this.model.getCommunication().joursModelToString(this.model.getJours_Model().get(0)));
         System.out.println("test objettostring: "+this.model.getCommunication().objetModelToString(this.model.getObjet_model().get(0)));
         **/
-        this.model.askJourList();
+        System.out.println(this.model.getJours_Model().get(0).getName());
+        System.out.println(this.model.getProfilSemaine_model().get(0).getName());
+        System.out.println(this.model.getObjet_model().get(0).getName());
+
+        //System.out.println("mouahahahahhhhhahhahahhahah");
     }
 
     public void goConsommation(View view){
-        if(test==false) {
+        if(teub==0) {
+            this.model.askObjetList();
+            teub =1;
+        }
+        else if(teub==1) {
+            this.model.askSemaineList();
+            teub=2;
+        }
+        else if(teub==2) {
+            this.model.askJourList();
+            teub =0;
+        }
+
+
+
+
+        //System.out.println("Objet 1 : "+model.getObjet_model().get(0));
+
+        /*if(test==false) {
             //System.out.println("appuy conso " + this.test);
             this.model.powerOn("prise1");
             test = true;
@@ -62,12 +85,13 @@ public class MainActivity extends ActionBarActivity {
             //System.out.println("appuy conso " + this.test);
             model.powerOff("prise1");
             test=false;
-        }
+        }*/
 
     }
     public void goObjets(View view){
         //System.out.println("appuy objet");
-        this.model.askJourList();
+
+        this.model.askSemaineList();
     }
     public void goPlanning(View view){
         Button monBouton= (Button) this.findViewById(R.id.button4);

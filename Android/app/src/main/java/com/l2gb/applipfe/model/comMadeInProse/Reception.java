@@ -150,27 +150,28 @@ public class Reception extends Thread {
      * \param buffer Chaîne de caractère reçu.
      */
     private void parseReceiveString(String buffer) {
-        System.out.println("Ca parse!!!!");
         int responseType=0;
         responseType = this.comJson.readResponse(buffer);
+        System.out.println("Parsage, la réponse est de type : "+responseType);
 
         /** ProfilJour**/
         if(responseType == 1){
             System.out.println(buffer);
-            profilJourList = this.comJson.stringToJoursModel(buffer);
+            this.comJson.stringToJoursModel(buffer,profilJourList);
             System.out.println("Liste de profils jour reçues \n");
-            System.out.println("First jour : "+profilJourList.get(0).getName());
         }
         /** ProfilSemaine **/
         else if(responseType == 2){
             System.out.println(buffer);
-            profilSemaineList = this.comJson.stringToSemaineModel(buffer);
+            this.comJson.stringToSemaineModel(buffer,profilSemaineList);
+            System.out.println("Liste de profils semaine reçues \n");
         }
         /** Profil objet **/
         else if(responseType == 3){
             System.out.println(buffer);
-            objetList = this.comJson.stringToObjetModel(buffer);
-
+            this.comJson.stringToObjetModel(buffer,objetList);
+            System.out.println("Liste des objets reçues \n");
+            System.out.println("First objet : "+objetList.get(0).getName());
         }
     }
 

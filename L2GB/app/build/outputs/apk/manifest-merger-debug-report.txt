@@ -36,21 +36,21 @@ ADDED from AndroidManifest.xml:14:17
 	android:name
 		ADDED from AndroidManifest.xml:14:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:15:17
+ADDED from AndroidManifest.xml:16:17
 	android:name
-		ADDED from AndroidManifest.xml:15:27
+		ADDED from AndroidManifest.xml:16:27
 activity#com.example.arthur.l2gb.View.Scenario_View
-ADDED from AndroidManifest.xml:18:9
+ADDED from AndroidManifest.xml:19:9
 	android:label
+		ADDED from AndroidManifest.xml:21:13
+	android:name
 		ADDED from AndroidManifest.xml:20:13
-	android:name
-		ADDED from AndroidManifest.xml:19:13
 activity#com.example.arthur.l2gb.View.SemaineList_View
-ADDED from AndroidManifest.xml:22:9
+ADDED from AndroidManifest.xml:23:9
 	android:label
-		ADDED from AndroidManifest.xml:24:13
+		ADDED from AndroidManifest.xml:25:13
 	android:name
-		ADDED from AndroidManifest.xml:23:13
+		ADDED from AndroidManifest.xml:24:13
 activity#com.example.arthur.l2gb.View.SemaineConfiguration_View
 ADDED from AndroidManifest.xml:27:9
 	android:label
@@ -89,6 +89,36 @@ ADDED from AndroidManifest.xml:47:9
 		ADDED from AndroidManifest.xml:50:13
 	android:name
 		ADDED from AndroidManifest.xml:48:13
+activity#com.example.arthur.l2gb.View.PopUp_View
+ADDED from AndroidManifest.xml:52:9
+	android:label
+		ADDED from AndroidManifest.xml:54:13
+	android:name
+		ADDED from AndroidManifest.xml:53:13
+activity#com.example.arthur.l2gb.View.Pop_up_choixjour
+ADDED from AndroidManifest.xml:56:9
+	android:label
+		ADDED from AndroidManifest.xml:58:13
+	android:name
+		ADDED from AndroidManifest.xml:57:13
+activity#com.example.arthur.l2gb.View.ListeObjetConnecte_View
+ADDED from AndroidManifest.xml:60:9
+	android:label
+		ADDED from AndroidManifest.xml:62:13
+	android:name
+		ADDED from AndroidManifest.xml:61:13
+activity#com.example.arthur.l2gb.View.ListeObjetInconnu_View
+ADDED from AndroidManifest.xml:64:9
+	android:label
+		ADDED from AndroidManifest.xml:66:13
+	android:name
+		ADDED from AndroidManifest.xml:65:13
+activity#com.example.arthur.l2gb.View.ConfigurationObjet
+ADDED from AndroidManifest.xml:68:9
+	android:label
+		ADDED from AndroidManifest.xml:70:13
+	android:name
+		ADDED from AndroidManifest.xml:69:13
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion
