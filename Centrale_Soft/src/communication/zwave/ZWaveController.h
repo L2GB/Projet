@@ -51,6 +51,8 @@ public:
 	std::string zNetwork_get_device_type(int deviceNum);
 	int zNetwork_get_nb_devices();
 	bool zNetwork_is_device_paired(int deviceId);
+	bool zNeztwork_is_device_connected(int deviceId, int instanceNum);
+	void zNetwork_wake_device_up(int deviceId);
 
 
 private:

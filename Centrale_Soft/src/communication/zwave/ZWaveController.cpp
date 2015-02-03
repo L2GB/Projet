@@ -50,7 +50,7 @@ int ZWaveController::startNetwork() {
 	this->m_zway = NULL;
 
 	// Création du contexte Z-Way
-	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", logger);
+	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", NULL); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
 	// En cas d'erreur lors de la création du contexte Z-Way on inscrit l'erreur dans les logs
 	if(result != NoError){
 		zway_log_error(m_zway, Critical, "Failed to init ZWay", result);
@@ -535,8 +535,34 @@ bool ZWaveController::zNetwork_is_device_paired(int deviceId){
 	return isDevicePaired;
 }
 
-//bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNum){
-//	bool isDeviceConnected(false);
-//
-//
-//}
+/**
+ * Méthode zNetwork_wake_device_up
+ * Force le réveil de la queue du device (dont l'id est deviceId)
+ * Renvoie le code d'erreur attribué par la libzway (ce code d'erreur
+ * peut être retrouvé dans le fichier ZErrors.h)
+ */
+void ZWaveController::zNetwork_wake_device_up(int deviceId){
+
+	zway_device_awake_queue(this->m_zway, deviceId);
+
+}
+
+
+
+ZWEXPORT void zway_device_awake_queue(const ZWay zway, ZWBYTE node_id);
+
+bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNum){
+	// Valeur de retour indiquant si l'object (dont l'id est deviceId et le numéro d'instance instanceNum est connecté ou non
+	bool isDeviceConnected(false);
+	// Variable de parcours de la liste des devices
+	int i(0);
+	// Variable de parcours de la liste des instances d'un devices
+	int k(0);
+	// Liste des devices connectés
+	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
+
+
+
+}
+
+
