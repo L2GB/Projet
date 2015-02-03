@@ -336,8 +336,10 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(instanceNum, deviceId);
 				powerPlug->switchON();
 			}
-			catch(NotFoundException &e){}
-
+			catch(NotFoundException &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 			break;
 		case POWEROFF_PRISE:
 			try{
@@ -348,7 +350,10 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(instanceNum, deviceId);
 				powerPlug->switchOFF();
 			}
-			catch(NotFoundException &e){}
+			catch(NotFoundException &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 			break;
 		default:
 			throw FormatException("Request type not identified");

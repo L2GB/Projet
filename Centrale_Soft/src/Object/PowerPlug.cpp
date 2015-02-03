@@ -106,12 +106,13 @@ PowerPlug_level PowerPlug::getScheduledLevel()
 	return OFF;
 }
 
-
 void PowerPlug::switchON(){
+	std::cout << "j allume la prise" << std::endl;
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 1);
 }
 
 void PowerPlug::switchOFF()
 {
+	std::cout << "je coupe la prise" << std::endl;
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 0);
 }
