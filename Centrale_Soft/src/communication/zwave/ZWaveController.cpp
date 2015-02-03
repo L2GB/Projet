@@ -19,8 +19,6 @@ ZWaveController::ZWaveController() {
 
 	this->m_zway = NULL;
 
-	returnValue = startNetwork();
-
 }
 
 ZWaveController::~ZWaveController() {
@@ -473,7 +471,7 @@ std::string ZWaveController::zNetwork_get_string(int deviceNum, int instanceNum,
 	return value;
 }
 
-char * ZWaveController::zNetwork_get_device_name(int deviceNum){
+std::string ZWaveController::zNetwork_get_device_name(int deviceNum){
 	std::string nameInitString;
 	if (deviceNum >= 0) {
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
@@ -489,10 +487,10 @@ char * ZWaveController::zNetwork_get_device_name(int deviceNum){
 	char * nameInit((char *)nameInitString.c_str());
 	cout << "NameInit = " << nameInit << endl;
 
-	return nameInit;
+	return nameInitString;
 }
 
-char * ZWaveController::zNetwork_get_device_type(int deviceNum){
+std::string ZWaveController::zNetwork_get_device_type(int deviceNum){
 	std::string typeString;
 	if (deviceNum >= 0) {
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
@@ -508,7 +506,7 @@ char * ZWaveController::zNetwork_get_device_type(int deviceNum){
 	char * type ((char *) typeString.c_str());
 	cout << "Type = " << type << endl;
 
-	return type;
+	return typeString;
 }
 /**
  * zNetwork_get_nb_devices
@@ -536,3 +534,9 @@ bool ZWaveController::zNetwork_is_device_paired(int deviceId){
 	}
 	return isDevicePaired;
 }
+
+//bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNum){
+//	bool isDeviceConnected(false);
+//
+//
+//}

@@ -47,8 +47,8 @@ public:
 	bool zNetwork_get_boolean(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 	float zNetwork_get_float(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 	std::string zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
-	char * zNetwork_get_device_name(int deviceNum);
-	char * zNetwork_get_device_type(int deviceNum);
+	std::string zNetwork_get_device_name(int deviceNum);
+	std::string zNetwork_get_device_type(int deviceNum);
 	int zNetwork_get_nb_devices();
 	bool zNetwork_is_device_paired(int deviceId);
 
