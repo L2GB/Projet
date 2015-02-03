@@ -58,7 +58,6 @@ public class ConfigurationObjet extends Activity {
         }
 
         ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,this.listeSemaine);
-        //dataAdapterR.add(this.model.getProfilSemaine_model().get(1).getName().toString());
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSemaine.setAdapter(dataAdapterR);
     }
@@ -70,8 +69,9 @@ public class ConfigurationObjet extends Activity {
         boolean nomexistant=true;
         EditText nom = (EditText) findViewById(R.id.edit_name_objet);
         if(nom.getText().length()>0) {
+
             for (int p = 0; p < this.model.getObjet_model().size(); p++) {
-                if (nom.getText().equals(this.model.getObjet_model().get(p).getName())) {
+                if (nom.getText().toString().equals(this.model.getObjet_model().get(p).getName())) {
                     nomexistant = false;
                 }
             }
