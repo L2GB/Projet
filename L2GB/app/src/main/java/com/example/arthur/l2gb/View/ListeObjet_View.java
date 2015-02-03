@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
@@ -25,7 +26,7 @@ public class ListeObjet_View extends TabActivity {
        // setContentView(R.layout.activity_liste_objet__view);
        // Intent intent = getIntent();
       //  this.model = getIntent().getExtras().getParcelable("MODEL");
-        //generateTableauObjet(this.model.getObjet_modelArrayList());
+        //generateTableauObjet(this.model.getObjet_model());
         this.model = getIntent().getExtras().getParcelable("MODEL");
         TabHost mTabHost = getTabHost();
         Intent intentConnu = new Intent(this  ,ListeObjetConnecte_View.class );
@@ -58,5 +59,27 @@ public class ListeObjet_View extends TabActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // Vérification du code de retour
+        if(requestCode == ListeObjetConnecte_View.OBJETMODIF) {
+
+            // Vérifie que le résultat est OK
+            if(resultCode == MainActivity.OBJETADD) {
+                // On récupére le paramètre "Nom" de l'intent
+                Model newModel = data.getParcelableExtra("Model");
+                Intent intent = new Intent();
+                intent.putExtra("Model", newModel);
+                setResult(MainActivity.OBJETADD, intent);
+                Toast.makeText(this, "Objet modifier", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                // On affiche que l'opération est annulée
+                Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 }

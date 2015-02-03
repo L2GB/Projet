@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
     public static final int CODE_RETOUR = 0;
     public static final int JOURADD = 23;
     public static final int SEMAINEADD = 29;
+    public static final int OBJETADD = 51;
     private String test;
     Model model = null;
     int menu = 1;
@@ -57,11 +58,17 @@ public class MainActivity extends Activity {
             if(resultCode == JOURADD) {
                 // On récupére le paramètre "Nom" de l'intent
                 Jours_Model jour = data.getParcelableExtra("Jours");
-                this.model.getJours_modelArrayList().add(jour);
+                this.model.getJours_Model().add(jour);
             }if(resultCode == SEMAINEADD) {
                 // On récupére le paramètre "Nom" de l'intent
                 Semaine_Model semaine = data.getParcelableExtra("Semaine");
-                this.model.getSemaine_modelArrayList().add(semaine);
+                this.model.getProfilSemaine_model().add(semaine);
+            }if(resultCode == OBJETADD) {
+                // On récupére le paramètre "Nom" de l'intent
+                Model newModel = data.getParcelableExtra("Objet");
+                this.model.setJours_Model( newModel.getJours_Model());
+                this.model.setObjet_model( newModel.getObjet_model());
+                this.model.setProfilSemaine_model( newModel.getProfilSemaine_model());
             }else if (resultCode == RESULT_CANCELED) {
 
                 // On affiche que l'opération est annulée
@@ -132,7 +139,7 @@ public class MainActivity extends Activity {
     }
 
     public void goObjets(View view){
-        Intent intent = new Intent(this, ListeObjet_View.class);
+        Intent intent = new Intent(this, ListeObjetConnecte_View.class);
         intent.putExtra("MODEL",this.model);
         startActivityForResult(intent, CODE_RETOUR);
     }

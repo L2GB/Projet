@@ -2,15 +2,14 @@ package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Model;
@@ -35,18 +34,16 @@ public class SemaineList_View extends Activity {
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < this.model.getSemaine_modelArrayList().size() ; i++){
+        for(int i = 0 ; i < this.model.getProfilSemaine_model().size() ; i++){
             tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tr.addView(generateTextView(this.model.getSemaine_modelArrayList().get(i).getName(), layoutParams));
+            tr.addView(generateTextView(this.model.getProfilSemaine_model().get(i).getName(), layoutParams));
             jourTSemaine.addView(tr, layoutParams);
         }
     }
 
-    public TextView generateTextView(String texte, TableRow.LayoutParams ly) {
-        TextView result = new TextView(this);
-        result.setBackgroundColor(Color.LTGRAY);
-        result.setTextColor(Color.DKGRAY);
+    public Button generateTextView(String texte, TableRow.LayoutParams ly) {
+        Button result = new Button(this);
         result.setGravity(Gravity.CENTER);
         result.setPadding(2, 2, 2, 2);
         result.setText(texte);
@@ -78,7 +75,7 @@ public class SemaineList_View extends Activity {
                 // On récupére le paramètre "Nom" de l'intent
                 Semaine_Model semaine = data.getParcelableExtra("Semaine");
                 // Création de l'intent
-                this.model.getSemaine_modelArrayList().add(semaine);
+                this.model.getProfilSemaine_model().add(semaine);
                 TableLayout jourTableau = (TableLayout) findViewById(R.id.tableauSemaineList);
                 TableRow tr;
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
