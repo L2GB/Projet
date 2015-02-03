@@ -202,6 +202,11 @@ void ObjectManager::newInstanceObject(json_t *_object)
 void ObjectManager::loadObjects(json_t *_objects)
 {
 	json_t *objets = json_object_get(_objects, "objets");
+	if(!json_is_object(_objects))
+	{
+		throw FormatException("loadObjects : _objects format not accepted");
+	}
+
 	/* array is a JSON array */
 	size_t index;
 	json_t *value;
@@ -213,11 +218,11 @@ void ObjectManager::loadObjects(json_t *_objects)
 		}
 		catch(NotFoundException &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cout << "e1" << e.what() << std::endl;
 		}
 		catch(FormatException &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cout << "e2" << e.what() << std::endl;
 		}
 	}
 }

@@ -98,6 +98,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 		case LOAD_OBJETS:
 			try
 			{
+				std::cout << "LOAD OBJECTS :  " << std::endl;
 				std::string objets = LocalFileManager::getObjects();
 				json_t *data = json_loads(objets.c_str(), 0, NULL);
 				m_objectManager.loadObjects(data);
