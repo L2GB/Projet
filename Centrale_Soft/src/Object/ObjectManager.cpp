@@ -202,7 +202,7 @@ void ObjectManager::newInstanceObject(json_t *_object)
 void ObjectManager::loadObjects(json_t *_objects)
 {
 	json_t *objets = json_object_get(_objects, "objets");
-	if(!json_is_object(_objects))
+	if(!json_is_array(_objects))
 	{
 		throw FormatException("loadObjects : _objects format not accepted");
 	}
