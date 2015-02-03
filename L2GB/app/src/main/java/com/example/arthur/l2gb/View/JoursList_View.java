@@ -2,15 +2,14 @@ package com.example.arthur.l2gb.View;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Jours_Model;
@@ -59,10 +58,8 @@ public class JoursList_View extends Activity {
         return true;
     }
 
-    public TextView generateTextView(String texte, TableRow.LayoutParams ly) {
-        TextView result = new TextView(this);
-        result.setBackgroundColor(Color.LTGRAY);
-        result.setTextColor(Color.DKGRAY);
+    public Button generateTextView(String texte, TableRow.LayoutParams ly) {
+        Button result = new Button(this);
         result.setGravity(Gravity.CENTER);
         result.setPadding(2, 2, 2, 2);
         result.setText(texte);
