@@ -22,6 +22,7 @@ Transmitter::Transmitter()
 	m_racc.attach(this);
 	m_objectManager.attach(this);
 	loadData();
+	m_objectManager.zwave_startNetwork();
 }
 
 void Transmitter::initializeMapping()

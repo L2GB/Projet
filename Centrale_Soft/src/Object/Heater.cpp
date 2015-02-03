@@ -23,6 +23,11 @@ Heater::~Heater()
 {
 }
 
+void Heater::init()
+{
+	// TODO
+}
+
 void Heater::run()
 {
 	while(isRunning())

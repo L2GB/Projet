@@ -35,6 +35,8 @@ class ObjectManager : public Communicator
 		ObjectManager();
 		virtual ~ObjectManager(){}
 
+		void zwave_startNetwork();
+		void init_objects();
 		void addObjectToRoom(json_t *_room);
 		void addObjectToList(int _instanceNum, int _deviceId, const std::string _name, const std::string _typeObject);
 		void setDay(json_t *_day);

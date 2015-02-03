@@ -24,6 +24,19 @@ void ObjectManager::initializeMapping()
 	m_typeObjet["CHAUFFAGE"] = CHAUFFAGE;
 }
 
+void ObjectManager::zwave_startNetwork()
+{
+	m_zwaveController.startNetwork();
+}
+
+void ObjectManager::init_objects()
+{
+	for(std::size_t i = 0 ; i < m_objects.size() ; i++)
+	{
+		m_objects[i]->launch();
+	}
+}
+
 void ObjectManager::loadDays(json_t *_days)
 {
 	json_t *jours = json_object_get(_days, "jours");

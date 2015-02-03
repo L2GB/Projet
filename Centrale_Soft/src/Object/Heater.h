@@ -23,6 +23,7 @@ class Heater : public Object
 		Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_week, bool _connected, bool _unknown, int _Tconfort, int _Teco);
 		Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~Heater();
+
 		void setTconfort(int _tconfort){m_Tconfort = _tconfort;}
 		void setTeco(int _teco){m_Teco = _teco;}
 		int getTconfort(){return m_Tconfort;}
@@ -31,6 +32,7 @@ class Heater : public Object
 
 	private:
 		void run();
+		void init();
 		void getCurrentTemp();
 		void switchON();
 		void switchOFF();

@@ -32,6 +32,7 @@ class Object : public Thread
 		Object(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~Object();
 
+		void launch();
 		int getDeviceId(){return m_deviceId;}
 		int getInstanceNum(){return m_instanceNum;}
 		bool isConnected(){return m_connected;}
@@ -47,6 +48,7 @@ class Object : public Thread
 
 	protected:
 		virtual void run() = 0;
+		virtual void init()= 0;
 		void getCurrentTime();
 
 	protected:

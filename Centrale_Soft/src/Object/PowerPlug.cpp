@@ -13,7 +13,6 @@
 
 PowerPlug::PowerPlug(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_week, bool _connected, bool _unknown) : Object(_zwaveController, _deviceId, _instanceNum, _name, _week, _connected, _unknown), m_state(POWERPLUG_INIT)
 {
-	// TODO init level en regardant le planning et allumer la prise s il le faut
 }
 
 PowerPlug::PowerPlug(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name) : Object(_zwaveController, _deviceId, _instanceNum, _name), m_level(OFF), m_state(POWERPLUG_INIT)
@@ -24,6 +23,21 @@ PowerPlug::~PowerPlug()
 {
 }
 
+void PowerPlug::init()
+{
+	// TODO when Kilian will have done his job
+	//m_connected = m_zwaveController->   IS CONNECTED?
+
+	if(getScheduledLevel() == ON)
+	{
+		switchON();
+	}
+	else
+	{
+		switchOFF();
+	}
+}
+
 void PowerPlug::run()
 {
 	while(isRunning())
@@ -31,40 +45,65 @@ void PowerPlug::run()
 		switch(m_state)
 		{
 			case POWERPLUG_INIT:
-				// TODO par kilian
+				init();
 				m_state = POWERPLUG_RUNNING;
 				break;
 			case POWERPLUG_RUNNING:
 				getCurrentTime();
-				checkLevel();
+				checkTime();
 				sleep(1);
 				break;
 		}
 	}
 }
 
-void PowerPlug::checkLevel()
+void PowerPlug::checkTime()
 {
 	std::vector<TimeSlot> ts = m_planning->getDays()[m_time->tm_wday]->getTimeSlot();
 
 	for(std::size_t i = 0 ; i < ts.size() ; i++)
 	{
-		if(ts[i].getStart().tm_hour == m_time->tm_hour)
+		if(ts[i].getStart().tm_hour == m_time->tm_hour
+		&& ts[i].getStart().tm_min == m_time->tm_min)
 		{
-			if(ts[i].getStart().tm_min == m_time->tm_min)
-			{
-				switchON();
-			}
+			switchON();
 		}
 
-		if(ts[i].getEnd().tm_hour == m_time->tm_hour)
+		if(ts[i].getEnd().tm_hour == m_time->tm_hour
+		&& ts[i].getEnd().tm_min == m_time->tm_min)
 		{
-			if(ts[i].getEnd().tm_min == m_time->tm_min)
-			{
-				switchOFF();
-			}
+			switchOFF();
 		}
 	}
+}
+
+PowerPlug_level PowerPlug::getScheduledLevel()
+{
+	std::vector<TimeSlot> ts = m_planning->getDays()[m_time->tm_wday]->getTimeSlot();
+
+	for(std::size_t i = 0 ; i < ts.size() ; i++)
+	{
+		if(ts[i].getStart().tm_hour >= m_time->tm_hour
+		&& ts[i].getStart().tm_min >= m_time->tm_min
+		&&ts[i].getEnd().tm_hour <= m_time->tm_hour
+		&& ts[i].getEnd().tm_min <= m_time->tm_min)
+		{
+			if(ts[i].getEnd().tm_hour == m_time->tm_hour
+			&& ts[i].getEnd().tm_min == m_time->tm_min)
+			{
+				return OFF;
+			}
+			else
+			{
+				return ON;
+			}
+		}
+		else
+		{
+			return OFF;
+		}
+	}
+	return OFF;
 }
 
 
