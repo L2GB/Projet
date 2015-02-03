@@ -123,21 +123,21 @@ void ObjectManager::newInstanceObject(json_t *_object)
 			nom = json_string_value(name);
 
 			planning_json = json_object_get(_object, "planning");
-			if(json_is_string(planning_json))
+			if(!json_is_string(planning_json))
 			{
 				throw FormatException("setObject : planning format not accepted");
 			}
 			planning = json_string_value(planning_json);
 
 			connecte_json = json_object_get(_object, "connecte");
-			if(json_is_boolean(connecte_json))
+			if(!json_is_boolean(connecte_json))
 			{
 				throw FormatException("setObject : connecte format not accepted");
 			}
 			connecte = json_boolean_value(connecte_json);
 
 			inconnu_json = json_object_get(_object, "inconnu");
-			if(json_is_boolean(inconnu_json))
+			if(!json_is_boolean(inconnu_json))
 			{
 				throw FormatException("setObject : inconnu format not accepted");
 			}
@@ -150,42 +150,42 @@ void ObjectManager::newInstanceObject(json_t *_object)
 		case CHAUFFAGE:
 			std::cout << "type : " << type << std::endl;
 			tConfort = json_object_get(_object, "Tconfort");
-			if(json_is_integer(tConfort))
+			if(!json_is_integer(tConfort))
 			{
 				throw FormatException("setObject : tconfort heater format not accepted");
 			}
 			tconfort = json_integer_value(tConfort);
 
 			tEco = json_object_get(_object, "Teco");
-			if(json_is_integer(tEco))
+			if(!json_is_integer(tEco))
 			{
 				throw FormatException("setObject : teco heater format not accepted");
 			}
 			teco = json_integer_value(tEco);
 
 			name = json_object_get(_object, "nomObjet");
-			if(json_is_string(name))
+			if(!json_is_string(name))
 			{
 				throw FormatException("setObject : name heater format not accepted");
 			}
 			nom = json_string_value(name);
 
 			planning_json = json_object_get(_object, "planning");
-			if(json_is_string(planning_json))
+			if(!json_is_string(planning_json))
 			{
 				throw FormatException("setObject : planning heater format not accepted");
 			}
 			planning = json_string_value(planning_json);
 
 			connecte_json = json_object_get(_object, "connecte");
-			if(json_is_boolean(connecte_json))
+			if(!json_is_boolean(connecte_json))
 			{
 				throw FormatException("setObject : connecte heater format not accepted");
 			}
 			connecte = json_boolean_value(connecte_json);
 
 			inconnu_json = json_object_get(_object, "inconnu");
-			if(json_is_boolean(inconnu_json))
+			if(!json_is_boolean(inconnu_json))
 			{
 				throw FormatException("setObject : inconnu format not accepted");
 			}
