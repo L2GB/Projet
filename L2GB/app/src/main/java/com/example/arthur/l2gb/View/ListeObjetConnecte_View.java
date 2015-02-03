@@ -44,6 +44,14 @@ public class ListeObjetConnecte_View extends Activity {
         }
     }
 
+    public void ajouterObjet(View view){
+
+    }
+
+    public void retour(View view){
+        finish();
+    }
+
     public Button generateTextView(String texte, TableRow.LayoutParams ly, final Model model,boolean connecte) {
         final Button result = new Button(this);
         if(connecte) {
@@ -97,10 +105,9 @@ public class ListeObjetConnecte_View extends Activity {
                 int id = data.getIntExtra("id",0);
                 Button but = (Button) findViewById(id);
                 but.setText(objet.getName().toString());
-               // Intent intent = new Intent();
-                // intent.putExtra("Semaine", semaine);
-                // setResult(MainActivity.SEMAINEADD, intent);
-
+                Intent intent = new Intent();
+                 intent.putExtra("Model", this.model);
+                 setResult(MainActivity.OBJETADD, intent);
             } else if (resultCode == RESULT_CANCELED) {
                 // On affiche que l'opération est annulée
                 Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();
