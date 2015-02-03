@@ -27,10 +27,9 @@ public class Model {
      * Instance de la classe Emission.
      */
     private Emission myEmission;
-    private Reception myReception;
+    //private Reception myReception;
     private String ipServeur;
     private int portServeur;
-    private Thread connexionThread;
     private JsonUtil communication;
 
     public JsonUtil getCommunication() {
@@ -264,7 +263,7 @@ public class Model {
         {
             Socket newSocket = SocketCreation.getSocket();
             this.myEmission = new Emission(newSocket);
-            this.myReception = new Reception(newSocket, myHandler,objet_modelArrayList,jours_modelArrayList,semaine_modelArrayList);
+            new Reception(newSocket, myHandler,objet_modelArrayList,jours_modelArrayList,semaine_modelArrayList);
         }
 
         if (SocketCreation.isConnected() == true)
