@@ -333,7 +333,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 
 
 				// TODO modifier
-				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(instanceNum, deviceId);
+				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(deviceId, instanceNum);
 				powerPlug->switchON();
 			}
 			catch(NotFoundException &e)
@@ -347,7 +347,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				int deviceId  = json_integer_value(json_object_get(_data, "deviceId"));
 				// TODO modifier
 
-				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(instanceNum, deviceId);
+				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(deviceId, instanceNum);
 				powerPlug->switchOFF();
 			}
 			catch(NotFoundException &e)
