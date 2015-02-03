@@ -257,8 +257,8 @@ public class JoursConfiguration_View extends Activity {
 
     private boolean nomJournéeInexistant(String name){
         if(name.length()>0) {
-            for (int p = 0; p < this.model.getJours_modelArrayList().size(); p++) {
-                if (name.equals(this.model.getJours_modelArrayList().get(p).getName())) {
+            for (int p = 0; p < this.model.getJours_Model().size(); p++) {
+                if (name.equals(this.model.getJours_Model().get(p).getName())) {
                     Toast.makeText(this, "Le nom existe déja", Toast.LENGTH_LONG).show();
                     return false;
                 }

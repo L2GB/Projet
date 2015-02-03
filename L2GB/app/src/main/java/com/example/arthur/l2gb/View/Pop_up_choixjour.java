@@ -32,10 +32,10 @@ public class Pop_up_choixjour extends Activity {
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < this.model.getJours_modelArrayList().size() ; i++){
+        for(int i = 0 ; i < this.model.getJours_Model().size() ; i++){
             tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tr.addView(generateTextView(this.model.getJours_modelArrayList().get(i).getName(), layoutParams,this.model));
+            tr.addView(generateTextView(this.model.getJours_Model().get(i).getName(), layoutParams,this.model));
             jourTableau.addView(tr, layoutParams);
         }
 
@@ -53,9 +53,9 @@ public class Pop_up_choixjour extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                for(int a=0;a<model.getJours_modelArrayList().size();a++) {
-                    if (result.getText().equals(model.getJours_modelArrayList().get(a).getName())){
-                        intent.putExtra("JourChoisi", model.getJours_modelArrayList().get(a));
+                for(int a=0;a<model.getJours_Model().size();a++) {
+                    if (result.getText().equals(model.getJours_Model().get(a).getName())){
+                        intent.putExtra("JourChoisi", model.getJours_Model().get(a));
                     }
                 }
                 setResult(SemaineConfiguration_View.OKJOUR, intent);

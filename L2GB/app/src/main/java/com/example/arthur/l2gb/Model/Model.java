@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 public class Model implements Parcelable {
 
-    private ArrayList<Objet_Model> objet_modelArrayList;
-    private ArrayList<Jours_Model> jours_modelArrayList;
-    private ArrayList<Semaine_Model> semaine_modelArrayList;
+    private ArrayList<Objet_Model> objet_model;
+    private ArrayList<Jours_Model> jours_Model;
+    private ArrayList<Semaine_Model> profilSemaine_model;
 
     Handler myHandler;
 
@@ -32,14 +32,15 @@ public class Model implements Parcelable {
     private JsonUtil communication;
 
     public Model(){
-       this.objet_modelArrayList = new ArrayList<Objet_Model>();
-       this.jours_modelArrayList = new ArrayList<Jours_Model>();
-       this.semaine_modelArrayList = new ArrayList<Semaine_Model>();
+       this.objet_model = new ArrayList<Objet_Model>();
+       this.jours_Model = new ArrayList<Jours_Model>();
+       this.profilSemaine_model = new ArrayList<Semaine_Model>();
        creerfakeModel();
 
         /** Mise en place de la communication **/
-        //boolean testconnection = setConnection(Constante.IP_SERVEUR,Constante.PORT_SERVEUR);
-        //System.out.println("Communication réussie ? " +testconnection);
+        /**
+        boolean testconnection = setConnection(Constante.IP_SERVEUR,Constante.PORT_SERVEUR);
+        System.out.println("Communication réussie ? " +testconnection);**/
     }
 
     private void creerfakeModel(){
@@ -52,13 +53,13 @@ public class Model implements Parcelable {
         Jours_Model joursTravail = new Jours_Model("Travail");
         joursTravail.getCreneauList().add(creneauxModelTravail1);
         joursTravail.getCreneauList().add(creneauxModelTravail2);
-        this.jours_modelArrayList.add(joursTravail);
+        this.jours_Model.add(joursTravail);
 
 
         Jours_Model joursVacance = new Jours_Model("Vacance");
         joursVacance.getCreneauList().add(creneauxModelVacance1);
         joursVacance.getCreneauList().add(creneauxModelVacance2);
-        this.jours_modelArrayList.add(joursVacance);
+        this.jours_Model.add(joursVacance);
 
         Semaine_Model semaineClassique = new Semaine_Model("Classique");
         semaineClassique.getProfilJourList().add(joursTravail);
@@ -68,7 +69,7 @@ public class Model implements Parcelable {
         semaineClassique.getProfilJourList().add(joursTravail);
         semaineClassique.getProfilJourList().add(joursVacance);
         semaineClassique.getProfilJourList().add(joursVacance);
-        this.semaine_modelArrayList.add(semaineClassique);
+        this.profilSemaine_model.add(semaineClassique);
 
         Semaine_Model semaineSpe = new Semaine_Model("Spécial");
         semaineSpe.getProfilJourList().add(joursTravail);
@@ -78,7 +79,7 @@ public class Model implements Parcelable {
         semaineSpe.getProfilJourList().add(joursTravail);
         semaineSpe.getProfilJourList().add(joursVacance);
         semaineSpe.getProfilJourList().add(joursVacance);
-        this.semaine_modelArrayList.add(semaineSpe);
+        this.profilSemaine_model.add(semaineSpe);
 
         Semaine_Model semaineSki = new Semaine_Model("Ski");
         semaineSki.getProfilJourList().add(joursTravail);
@@ -88,7 +89,7 @@ public class Model implements Parcelable {
         semaineSki.getProfilJourList().add(joursTravail);
         semaineSki.getProfilJourList().add(joursTravail);
         semaineSki.getProfilJourList().add(joursTravail);
-        this.semaine_modelArrayList.add(semaineSki);
+        this.profilSemaine_model.add(semaineSki);
 
 
         Objet_Model lumiereSalon = new Objet_Model("Lumiere salon", semaineSpe);
@@ -125,12 +126,12 @@ public class Model implements Parcelable {
         iDinconnu.setConnecte(false);
         iDinconnu.setDeviceId(3);
         iDinconnu.setInstanceNum(4);
-        this.objet_modelArrayList.add(console);
-        this.objet_modelArrayList.add(iDinconnu);
-        this.objet_modelArrayList.add(lumiereSalon);
-        this.objet_modelArrayList.add(chauffageSalon);
-        this.objet_modelArrayList.add(chauffageChambre);
-        this.objet_modelArrayList.add(lumiereChambre);
+        this.objet_model.add(console);
+        this.objet_model.add(iDinconnu);
+        this.objet_model.add(lumiereSalon);
+        this.objet_model.add(chauffageSalon);
+        this.objet_model.add(chauffageChambre);
+        this.objet_model.add(lumiereChambre);
     }
 
 
@@ -142,28 +143,28 @@ public class Model implements Parcelable {
         this.communication = communication;
     }
 
-    public ArrayList<Objet_Model> getObjet_modelArrayList() {
-        return objet_modelArrayList;
+    public ArrayList<Objet_Model> getObjet_model() {
+        return objet_model;
     }
 
-    public void setObjet_modelArrayList(ArrayList<Objet_Model> objet_modelArrayList) {
-        this.objet_modelArrayList = objet_modelArrayList;
+    public void setObjet_model(ArrayList<Objet_Model> objet_modelArrayList) {
+        this.objet_model = objet_modelArrayList;
     }
 
-    public ArrayList<Jours_Model> getJours_modelArrayList() {
-        return jours_modelArrayList;
+    public ArrayList<Jours_Model> getJours_Model() {
+        return jours_Model;
     }
 
-    public void setJours_modelArrayList(ArrayList<Jours_Model> jours_modelArrayList) {
-        this.jours_modelArrayList = jours_modelArrayList;
+    public void setJours_Model(ArrayList<Jours_Model> jours_modelArrayList) {
+        this.jours_Model = jours_modelArrayList;
     }
 
-    public ArrayList<Semaine_Model> getSemaine_modelArrayList() {
-        return this.semaine_modelArrayList;
+    public ArrayList<Semaine_Model> getProfilSemaine_model() {
+        return this.profilSemaine_model;
     }
 
-    public void setSemaine_modelArrayList(ArrayList<Semaine_Model> semaine_modelArrayList) {
-        this.semaine_modelArrayList = semaine_modelArrayList;
+    public void setProfilSemaine_model(ArrayList<Semaine_Model> semaine_modelArrayList) {
+        this.profilSemaine_model = semaine_modelArrayList;
     }
 
     public String getIpServeur() {
@@ -220,22 +221,22 @@ public class Model implements Parcelable {
     }
     protected Model(Parcel in) {
         if (in.readByte() == 0x01) {
-            objet_modelArrayList = new ArrayList<Objet_Model>();
-            in.readList(objet_modelArrayList, Objet_Model.class.getClassLoader());
+            objet_model = new ArrayList<Objet_Model>();
+            in.readList(objet_model, Objet_Model.class.getClassLoader());
         } else {
-            objet_modelArrayList = null;
+            objet_model = null;
         }
         if (in.readByte() == 0x01) {
-            jours_modelArrayList = new ArrayList<Jours_Model>();
-            in.readList(jours_modelArrayList, Jours_Model.class.getClassLoader());
+            jours_Model = new ArrayList<Jours_Model>();
+            in.readList(jours_Model, Jours_Model.class.getClassLoader());
         } else {
-            jours_modelArrayList = null;
+            jours_Model = null;
         }
         if (in.readByte() == 0x01) {
-            semaine_modelArrayList = new ArrayList<Semaine_Model>();
-            in.readList(semaine_modelArrayList, Semaine_Model.class.getClassLoader());
+            profilSemaine_model = new ArrayList<Semaine_Model>();
+            in.readList(profilSemaine_model, Semaine_Model.class.getClassLoader());
         } else {
-            semaine_modelArrayList = null;
+            profilSemaine_model = null;
         }
     }
 
@@ -266,7 +267,7 @@ public class Model implements Parcelable {
         {
             Socket newSocket = SocketCreation.getSocket();
             this.myEmission = new Emission(newSocket);
-            new Reception(newSocket, myHandler,objet_modelArrayList,jours_modelArrayList,semaine_modelArrayList);
+            new Reception(newSocket, myHandler,objet_model,jours_Model,profilSemaine_model);
         }
 
         if (SocketCreation.isConnected() == true)
@@ -286,23 +287,23 @@ public class Model implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        if (objet_modelArrayList == null) {
+        if (objet_model == null) {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
-            dest.writeList(objet_modelArrayList);
+            dest.writeList(objet_model);
         }
-        if (jours_modelArrayList == null) {
+        if (jours_Model == null) {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
-            dest.writeList(jours_modelArrayList);
+            dest.writeList(jours_Model);
         }
-        if (semaine_modelArrayList == null) {
+        if (profilSemaine_model == null) {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
-            dest.writeList(semaine_modelArrayList);
+            dest.writeList(profilSemaine_model);
         }
     }
 

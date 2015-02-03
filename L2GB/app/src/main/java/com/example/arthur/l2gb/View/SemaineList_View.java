@@ -35,10 +35,10 @@ public class SemaineList_View extends Activity {
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < this.model.getSemaine_modelArrayList().size() ; i++){
+        for(int i = 0 ; i < this.model.getProfilSemaine_model().size() ; i++){
             tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tr.addView(generateTextView(this.model.getSemaine_modelArrayList().get(i).getName(), layoutParams));
+            tr.addView(generateTextView(this.model.getProfilSemaine_model().get(i).getName(), layoutParams));
             jourTSemaine.addView(tr, layoutParams);
         }
     }
@@ -78,7 +78,7 @@ public class SemaineList_View extends Activity {
                 // On récupére le paramètre "Nom" de l'intent
                 Semaine_Model semaine = data.getParcelableExtra("Semaine");
                 // Création de l'intent
-                this.model.getSemaine_modelArrayList().add(semaine);
+                this.model.getProfilSemaine_model().add(semaine);
                 TableLayout jourTableau = (TableLayout) findViewById(R.id.tableauSemaineList);
                 TableRow tr;
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);

@@ -25,7 +25,7 @@ public class ListeObjet_View extends TabActivity {
        // setContentView(R.layout.activity_liste_objet__view);
        // Intent intent = getIntent();
       //  this.model = getIntent().getExtras().getParcelable("MODEL");
-        //generateTableauObjet(this.model.getObjet_modelArrayList());
+        //generateTableauObjet(this.model.getObjet_model());
         this.model = getIntent().getExtras().getParcelable("MODEL");
         TabHost mTabHost = getTabHost();
         Intent intentConnu = new Intent(this  ,ListeObjetConnecte_View.class );

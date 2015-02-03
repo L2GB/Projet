@@ -53,8 +53,8 @@ public class SemaineConfiguration_View extends Activity {
 
     private boolean semaineExistePas(String name){
         if(name.length()>0) {
-            for(int p = 0;p<this.model.getSemaine_modelArrayList().size();p++){
-                if(this.model.getSemaine_modelArrayList().get(p).getName().equals(name)){
+            for(int p = 0;p<this.model.getProfilSemaine_model().size();p++){
+                if(this.model.getProfilSemaine_model().get(p).getName().equals(name)){
                     Toast.makeText(this, "Le nom existe déja", Toast.LENGTH_LONG).show();
                     return false;
                 }
