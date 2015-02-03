@@ -44,12 +44,12 @@ public class Consommation_View extends Activity {
         LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < model.getObjet_model().size() ; i++){
-            if(model.getObjet_model().get(i).isConnecte()) {
+        for(int i = 0 ; i < model.getObjet_modelArrayList().size() ; i++){
+            if(model.getObjet_modelArrayList().get(i).isConnecte()) {
                 tr = new TableRow(this);
                 tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-                tr.addView(generateTextView(model.getObjet_model().get(i).getName(), layoutParams));
-                tr.addView(generateTextView(String.valueOf(model.getObjet_model().get(i).getConsommation()), layoutParams));
+                tr.addView(generateTextView(model.getObjet_modelArrayList().get(i).getName(), layoutParams));
+                tr.addView(generateTextView(String.valueOf(model.getObjet_modelArrayList().get(i).getConsommation()), layoutParams));
                 consommationTableau.addView(tr, layoutParams);
             }
         }

@@ -45,27 +45,27 @@ public class Planning_View extends Activity {
         boolean autorisation;
         TableRow tr;
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
-        for(Integer i = 0 ; i < model.getProfilSemaine_model().size() ; i++) {
+        for(Integer i = 0 ; i < model.getSemaine_modelArrayList().size() ; i++) {
             tr = new TableRow(this);
-            tr.addView(generateTextView30("Jour : " + model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getName() + "  (Semaine : "
-                    + model.getProfilSemaine_model().get(i).getName() + ")", layoutParams));
+            tr.addView(generateTextView30("Jour : " + model.getSemaine_modelArrayList().get(i).getProfilJourList().get(Jour).getName() + "  (Semaine : "
+                    + model.getSemaine_modelArrayList().get(i).getName() + ")", layoutParams));
             tableauPlaning.addView(tr, layoutParams);
-            for(int objet=0;objet<model.getObjet_model().size();objet++) {
-                if(model.getObjet_model().get(objet).getProfilSemaine().getName().equals(model.getProfilSemaine_model().get(i).getName())) {
+            for(int objet=0;objet<model.getObjet_modelArrayList().size();objet++) {
+                if(model.getObjet_modelArrayList().get(objet).getProfilSemaine().getName().equals(model.getSemaine_modelArrayList().get(i).getName())) {
                     tr = new TableRow(this);
                     tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    tr.addView(generateTextView20(" - "+model.getObjet_model().get(objet).getName(), layoutParams));
+                    tr.addView(generateTextView20(" - "+model.getObjet_modelArrayList().get(objet).getName(), layoutParams));
                     tableauPlaning.addView(tr, layoutParams);
                 }
 
             }
             //affiche les crenau
-            for(int crenau = 0; crenau< model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().size(); crenau++){
-                debutHeure = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).gethDebut();
-                debutMin = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getmDebut();
-                FinHeure = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).gethFin();
-                FintMin = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getmFin();
-                autorisation = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getAutorisation();
+            for(int crenau = 0; crenau< model.getObjet_modelArrayList().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().size(); crenau++){
+                debutHeure = model.getObjet_modelArrayList().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).gethDebut();
+                debutMin = model.getObjet_modelArrayList().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getmDebut();
+                FinHeure = model.getObjet_modelArrayList().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).gethFin();
+                FintMin = model.getObjet_modelArrayList().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getmFin();
+                autorisation = model.getObjet_modelArrayList().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getAutorisation();
                 if(autorisation){
                     tr = new TableRow(this);
                     tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));

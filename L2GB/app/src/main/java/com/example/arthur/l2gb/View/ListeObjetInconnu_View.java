@@ -28,11 +28,11 @@ public class ListeObjetInconnu_View extends Activity {
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < this.model.getObjet_model().size() ; i++){
-            if(!this.model.getObjet_model().get(i).isInconnu()) {
+        for(int i = 0 ; i < this.model.getObjet_modelArrayList().size() ; i++){
+            if(!this.model.getObjet_modelArrayList().get(i).isInconnu()) {
                 tr = new TableRow(this);
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model));
+                tr.addView(generateTextView(this.model.getObjet_modelArrayList().get(i).getName(), layoutParams, this.model));
                 jourTableau.addView(tr, layoutParams);
             }
         }

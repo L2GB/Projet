@@ -57,11 +57,11 @@ public class MainActivity extends Activity {
             if(resultCode == JOURADD) {
                 // On récupére le paramètre "Nom" de l'intent
                 Jours_Model jour = data.getParcelableExtra("Jours");
-                this.model.getJours_Model().add(jour);
+                this.model.getJours_modelArrayList().add(jour);
             }if(resultCode == SEMAINEADD) {
                 // On récupére le paramètre "Nom" de l'intent
                 Semaine_Model semaine = data.getParcelableExtra("Semaine");
-                this.model.getProfilSemaine_model().add(semaine);
+                this.model.getSemaine_modelArrayList().add(semaine);
             }else if (resultCode == RESULT_CANCELED) {
 
                 // On affiche que l'opération est annulée

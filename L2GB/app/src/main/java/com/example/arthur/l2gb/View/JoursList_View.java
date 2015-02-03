@@ -50,10 +50,10 @@ public class JoursList_View extends Activity {
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < this.model.getJours_Model().size() ; i++){
+        for(int i = 0 ; i < this.model.getJours_modelArrayList().size() ; i++){
             tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tr.addView(generateTextView(this.model.getJours_Model().get(i).getName(), layoutParams));
+            tr.addView(generateTextView(this.model.getJours_modelArrayList().get(i).getName(), layoutParams));
             jourTableau.addView(tr, layoutParams);
         }
         return true;
@@ -83,7 +83,7 @@ public class JoursList_View extends Activity {
                 // On récupére le paramètre "Nom" de l'intent
                 Jours_Model jour = data.getParcelableExtra("Jour");
                 // Création de l'intent
-                this.model.getJours_Model().add(jour);
+                this.model.getJours_modelArrayList().add(jour);
                 TableLayout jourTableau = (TableLayout) findViewById(R.id.tableauJour);
                 TableRow tr;
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);

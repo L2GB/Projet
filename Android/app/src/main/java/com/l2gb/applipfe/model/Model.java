@@ -7,8 +7,6 @@ import com.l2gb.applipfe.model.comMadeInProse.Emission;
 import com.l2gb.applipfe.model.comMadeInProse.Reception;
 import com.l2gb.applipfe.model.comMadeInProse.SocketCreation;
 
-
-import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 

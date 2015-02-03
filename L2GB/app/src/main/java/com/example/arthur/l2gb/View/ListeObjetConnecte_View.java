@@ -33,11 +33,11 @@ public class ListeObjetConnecte_View extends Activity {
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
         layoutParams.setMargins(2, 2, 2, 2);
 
-        for(int i = 0 ; i < this.model.getObjet_model().size() ; i++){
-            if(this.model.getObjet_model().get(i).isInconnu()) {
+        for(int i = 0 ; i < this.model.getObjet_modelArrayList().size() ; i++){
+            if(this.model.getObjet_modelArrayList().get(i).isInconnu()) {
                 tr = new TableRow(this);
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model,this.model.getObjet_model().get(i).isConnecte()));
+                tr.addView(generateTextView(this.model.getObjet_modelArrayList().get(i).getName(), layoutParams, this.model,this.model.getObjet_modelArrayList().get(i).isConnecte()));
                 jourTableau.addView(tr, layoutParams);
                 this.nb0bjetConnu++;
             }
@@ -68,9 +68,9 @@ public class ListeObjetConnecte_View extends Activity {
     public void goConfigurationObjet(View v, String nameBouton){
         Intent intent = new Intent(this, ConfigurationObjet.class);
         intent.putExtra("ListeObjet",this.model);
-        for(int i = 0;i<this.model.getObjet_model().size();i++){
-            if(this.model.getObjet_model().get(i).getName().equals(nameBouton)){
-                intent.putExtra("NewObjet",this.model.getObjet_model().get(i));
+        for(int i = 0;i<this.model.getObjet_modelArrayList().size();i++){
+            if(this.model.getObjet_modelArrayList().get(i).getName().equals(nameBouton)){
+                intent.putExtra("NewObjet",this.model.getObjet_modelArrayList().get(i));
                 intent.putExtra("id",v.getId());
             }
         }
@@ -87,10 +87,10 @@ public class ListeObjetConnecte_View extends Activity {
                 // On récupére le paramètre "Nom" de l'intent
                 Objet_Model objet = data.getParcelableExtra("Objet");
                 // Création de l'intent
-                for(int p = 0; p<this.model.getObjet_model().size();p++){
-                    if(objet.getDeviceId()==this.model.getObjet_model().get(p).getDeviceId() &&
-                       objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
-                        this.model.getObjet_model().get(p).setObjet(objet);
+                for(int p = 0; p<this.model.getObjet_modelArrayList().size();p++){
+                    if(objet.getDeviceId()==this.model.getObjet_modelArrayList().get(p).getDeviceId() &&
+                       objet.getInstanceNum()==this.model.getObjet_modelArrayList().get(p).getInstanceNum() ){
+                        this.model.getObjet_modelArrayList().get(p).setObjet(objet);
                     }
                 }
 

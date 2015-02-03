@@ -32,7 +32,7 @@ public class ConfigurationObjet extends Activity {
         this.model = getIntent().getExtras().getParcelable("ListeObjet");
         this.objet = getIntent().getExtras().getParcelable("NewObjet");
         this.idBouton= getIntent().getExtras().getInt("id");
-        this.model.getObjet_model().remove(this.objet);
+        this.model.getObjet_modelArrayList().remove(this.objet);
         afficherParamettreObjet();
         choixSemaineSpinner();
     }
@@ -51,14 +51,14 @@ public class ConfigurationObjet extends Activity {
 
     public void choixSemaineSpinner(){
         final Spinner spinnerSemaine = (Spinner) findViewById(R.id.semaineListe);
-        for(int i =0;i<this.model.getProfilSemaine_model().size();i++){
-            if(!this.model.getProfilSemaine_model().get(i).getName().equals(this.objet.getProfilSemaine().getName())) {
-                listeSemaine.add(this.model.getProfilSemaine_model().get(i).getName());
+        for(int i =0;i<this.model.getSemaine_modelArrayList().size();i++){
+            if(!this.model.getSemaine_modelArrayList().get(i).getName().equals(this.objet.getProfilSemaine().getName())) {
+                listeSemaine.add(this.model.getSemaine_modelArrayList().get(i).getName());
             }
         }
 
         ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,this.listeSemaine);
-        //dataAdapterR.add(this.model.getProfilSemaine_model().get(1).getName().toString());
+        //dataAdapterR.add(this.model.getSemaine_modelArrayList().get(1).getName().toString());
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSemaine.setAdapter(dataAdapterR);
     }
@@ -70,8 +70,8 @@ public class ConfigurationObjet extends Activity {
         boolean nomexistant=true;
         EditText nom = (EditText) findViewById(R.id.edit_name_objet);
         if(nom.getText().length()>0) {
-            for (int p = 0; p < this.model.getObjet_model().size(); p++) {
-                if (nom.getText().equals(this.model.getObjet_model().get(p).getName())) {
+            for (int p = 0; p < this.model.getObjet_modelArrayList().size(); p++) {
+                if (nom.getText().equals(this.model.getObjet_modelArrayList().get(p).getName())) {
                     nomexistant = false;
                 }
             }
@@ -83,9 +83,9 @@ public class ConfigurationObjet extends Activity {
                     nom = (EditText) findViewById(R.id.editTextTemperatureEco);
                     if (nom.getText().length() > 0) {
                         Spinner listeSemaine = (Spinner) findViewById(R.id.semaineListe);
-                        for(int i = 0;i<this.model.getProfilSemaine_model().size();i++){
-                            if(listeSemaine.getSelectedItem().equals(this.model.getProfilSemaine_model().get(i).getName())){
-                                this.objet.setProfilSemaine(this.model.getProfilSemaine_model().get(i));
+                        for(int i = 0;i<this.model.getSemaine_modelArrayList().size();i++){
+                            if(listeSemaine.getSelectedItem().equals(this.model.getSemaine_modelArrayList().get(i).getName())){
+                                this.objet.setProfilSemaine(this.model.getSemaine_modelArrayList().get(i));
                             }
                         }
                         this.objet.setTemperature_economique(Integer.valueOf(nom.getText().toString()));
