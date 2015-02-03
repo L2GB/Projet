@@ -190,12 +190,13 @@ void ObjectManager::newInstanceObject(json_t *_object)
 				Heater *heater;
 				heater = new Heater(&m_zwaveController, deviceId, instanceNum, nom, m_planningManager.week_get(planning), connecte, inconnu, tconfort, teco);
 				m_objects.push_back(heater);
-				break;
+				heater->print();
 			}
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() <<std::endl;
 			}
+			break;
 		default:
 			break;
 	}
