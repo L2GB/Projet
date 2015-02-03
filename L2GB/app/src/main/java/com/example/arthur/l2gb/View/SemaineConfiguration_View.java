@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.arthur.l2gb.Model.Jours_Model;
 import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.Model.Semaine_Model;
 import com.example.arthur.l2gb.R;
@@ -34,6 +34,7 @@ public class SemaineConfiguration_View extends Activity {
             if(crenauxEstRemplit()){
                 Intent intent = new Intent();
                 this.nouvelSemaine.setName(name);
+                ajouterJour();
                 intent.putExtra("Semaine",this.nouvelSemaine);
                 setResult(NEWSEMAINE, intent);
                 finish();
@@ -41,12 +42,86 @@ public class SemaineConfiguration_View extends Activity {
         }
     }
 
+    private void ajouterJour(){
+        Spinner listeSemaine = (Spinner) findViewById(R.id.spinnerLundi);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+        listeSemaine = (Spinner) findViewById(R.id.spinnerMardi);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+        listeSemaine = (Spinner) findViewById(R.id.spinnerMercredi);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+        listeSemaine = (Spinner) findViewById(R.id.spinnerJeudi);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+        listeSemaine = (Spinner) findViewById(R.id.spinnerVendredi);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+        listeSemaine = (Spinner) findViewById(R.id.spinnerSamedi);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+        listeSemaine = (Spinner) findViewById(R.id.spinnerDimanche);
+        for(int i = 0;i<this.model.getJours_Model().size();i++){
+            if(listeSemaine.getSelectedItem().equals(this.model.getJours_Model().get(i).getName())){
+                this.nouvelSemaine.getProfilJourList().add(this.model.getJours_Model().get(i));
+            }
+        }
+    }
+
     private boolean crenauxEstRemplit(){
-        for(int t=0; t<this.listBoolean.size();t++){
-            if(this.listBoolean.get(t).booleanValue()==false) {
+        Spinner listeJour = (Spinner) findViewById(R.id.spinnerLundi);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
                 Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
                 return false;
-            }
+        }
+        listeJour = (Spinner) findViewById(R.id.spinnerMardi);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        listeJour = (Spinner) findViewById(R.id.spinnerMercredi);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        listeJour = (Spinner) findViewById(R.id.spinnerJeudi);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        listeJour = (Spinner) findViewById(R.id.spinnerVendredi);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        listeJour = (Spinner) findViewById(R.id.spinnerSamedi);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        listeJour = (Spinner) findViewById(R.id.spinnerDimanche);
+        if(listeJour.getSelectedItem().equals("Choix jour")){
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
         }
         return true;
     }
@@ -66,106 +141,108 @@ public class SemaineConfiguration_View extends Activity {
         return true;
     }
 
-    public void choixLundi(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=0;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
-    }
-    public void choixMardi(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=1;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
-    }
-    public void choixMercredi(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=2;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
-    }
-    public void choixJeudi(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=3;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
-    }
-    public void choixVendredi(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=4;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
-    }
-    public void choixSamedi(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=5;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
-    }
-    public void choixDimanche(View view){
-        Intent intent = new Intent(this, Pop_up_choixjour.class);
-        intent.putExtra("JOUR",this.model);
-        this.vaChanger=6;
-        startActivityForResult(intent, MainActivity.CODE_RETOUR);
+    private void afficheSemaine(){
+        choixSemaineSpinnerLundi();
+        choixSemaineSpinnerMardi();
+        choixSemaineSpinnerMercredi();
+        choixSemaineSpinnerJeudi();
+        choixSemaineSpinnerVendredi();
+        choixSemaineSpinnerSamedi();
+        choixSemaineSpinnerDimanche();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Vérification du code de retour
-        if(requestCode == MainActivity.CODE_RETOUR) {
-            // Vérifie que le résultat est OK
-            if(resultCode == OKJOUR) {
-                // On récupére le paramètre "Nom" de l'intent
-                Jours_Model jour = new Jours_Model("merde");
-                jour = data.getParcelableExtra("JourChoisi");
-                this.nouvelSemaine.getProfilJourList().add(this.vaChanger, jour);
-                switch (vaChanger){
-                    case 0 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butLun = (Button) findViewById(R.id.choixLundi);
-                        butLun.setText(jour.getName());
-                        break;
-                    case 1 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butMar = (Button) findViewById(R.id.choixMardi);
-                        butMar.setText(jour.getName());
-                        break;
-                    case 2 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butMer = (Button) findViewById(R.id.choixMercredi);
-                        butMer.setText(jour.getName());
-                        break;
-                    case 3 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butJeu = (Button) findViewById(R.id.choixJeudi);
-                        butJeu.setText(jour.getName());
-                        break;
-                    case 4 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butVen = (Button) findViewById(R.id.choixVendredi);
-                        butVen.setText(jour.getName());
-                        break;
-                    case 5 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butSam = (Button) findViewById(R.id.choixSamedi);
-                        butSam.setText(jour.getName());
-                        break;
-                    case 6 :
-                        this.listBoolean.set(vaChanger,true);
-                        Button butDim = (Button) findViewById(R.id.choixDimanche);
-                        butDim.setText(jour.getName());
-                        break;
-                }
-                // Création de l'intent
-
-
-            } else if (resultCode == RESULT_CANCELED) {
-                // On affiche que l'opération est annulée
-                Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();
-            }
+    private void choixSemaineSpinnerLundi(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerLundi);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
 
         }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
     }
+
+    private void choixSemaineSpinnerMardi(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerMardi);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
+
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
+    }
+
+    private void choixSemaineSpinnerMercredi(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerMercredi);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
+
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
+    }
+
+    private void choixSemaineSpinnerJeudi(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerJeudi);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
+
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
+    }
+
+    private void choixSemaineSpinnerVendredi(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerVendredi);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
+
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
+    }
+
+    private void choixSemaineSpinnerSamedi(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerSamedi);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
+
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
+    }
+
+    private void choixSemaineSpinnerDimanche(){
+        ArrayList<String> listeJours = new ArrayList<String>();
+        listeJours.add("Choix jour");
+        final Spinner spinnerSemaine = (Spinner) findViewById(R.id.spinnerDimanche);
+        for(int i =0;i<this.model.getJours_Model().size();i++){
+            listeJours.add(this.model.getJours_Model().get(i).getName());
+
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listeJours);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSemaine.setAdapter(dataAdapterR);
+    }
+
+    public void annuler(View view){finish();}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +254,7 @@ public class SemaineConfiguration_View extends Activity {
         for(int top = 0; top<7;top++){
             this.listBoolean.add(false);
         }
+        afficheSemaine();
     }
 
 
