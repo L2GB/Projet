@@ -218,11 +218,11 @@ void ObjectManager::loadObjects(json_t *_objects)
 		}
 		catch(NotFoundException &e)
 		{
-			std::cout << "e1" << e.what() << std::endl;
+			std::cout << e.what() << std::endl;
 		}
 		catch(FormatException &e)
 		{
-			std::cout << "e2" << e.what() << std::endl;
+			std::cout << e.what() << std::endl;
 		}
 	}
 }
