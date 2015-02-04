@@ -99,15 +99,14 @@ public class ListeObjetConnecte_View extends Activity {
                         objet.setAllume(false);
                         result.setText("eteint");
                         result.setTextColor(0xff000000);
-                        eteindre(objet);
                     } else {
                         objet.setAllume(true);
                         result.setText("allume");
                         result.setTextColor(0xffFFCC00);
-                        allumer(objet);
                     }
                     intent.putExtra("state", objet);
                     setResult(MainActivity.OBJECHANGE, intent);
+                    finish();
                 }else{
                     pasConnecte();
                 }
@@ -116,12 +115,7 @@ public class ListeObjetConnecte_View extends Activity {
         return result;
     }
 
-    public void allumer(Objet_Model objet){
-        this.model.powerOn(objet);
-    }
-    public void eteindre(Objet_Model objet){
-        this.model.powerOff(objet);
-    }
+
 
     public void pasConnecte(){
         Toast.makeText(this, "Objet non connecté", Toast.LENGTH_SHORT).show();
