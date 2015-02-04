@@ -548,7 +548,7 @@ public class JsonUtil {
             JSONObject response = root.getJSONObject("response");
             type  = response.getString("type");
 
-            //System.out.println("JsonUtil readResponse de type: "+type);
+            System.out.println("JsonUtil readResponse de type: "+type);
             /** Si la reponse est de type GET_PROFIL_JOUR**/
             if(type.equals("GET_PROFIL_JOUR")){
                 return 1;

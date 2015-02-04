@@ -125,18 +125,22 @@ public class Reception extends Thread {
             try {
                 int readBytes = mySocket.getInputStream().read(message, 0, 2048);
                 this.buffer = new String(message, 0, readBytes, "UTF-8");
-                System.out.println("Le buffer contient : "+buffer+"\n");
-                this.typeMsg = this.comJson.readResponse(buffer);
+                System.out.println("Reception Le buffer contient : "+buffer+"\n");
+                //this.typeMsg = this.comJson.readResponse(buffer);
+                parseReceiveString(buffer);
             } catch (IOException e) {
-                System.out.println("Exception catch \n");
                 e.printStackTrace();
             }
-            myHandler.post(new Runnable() {
+
+
+            /*myHandler.post(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("Handler Le buffer contient : "+buffer+"\n");
                     parseReceiveString(buffer);
+
                 }
-            });
+            });*/
         }
     }
 

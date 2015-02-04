@@ -21,11 +21,11 @@ import com.example.arthur.l2gb.Model.Model;
 import com.example.arthur.l2gb.R;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class JoursConfiguration_View extends Activity {
 
-    public static final int HEURE = 1;
+    public static final int HEUREDEBUT = 1;
+    public static final int HEUREFIN = 2;
     public static final int NEWJOURS = 11;
     private Integer crenauIndice=0;
     private TableRow.LayoutParams layoutParams;
@@ -49,27 +49,33 @@ public class JoursConfiguration_View extends Activity {
         this.layoutParams= new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
         this.layoutParams.setMargins(2, 2, 2, 2);
 
-        Button saveBoutton = (Button) findViewById(R.id.save);
-        edit_name_jour = (EditText) findViewById(R.id.edit_name_jour);
+        this.jour = new Jours_Model();
+
         i=1;
     }
 
     /** Called when the user clicks the Add button */
     public void addCreneau(View view) {
-        this.crenauIndice++;
         TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
         tr = new TableRow(this);
         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
+
         /*** Affiche le numéro du créneau dans le tableau ***/
-        tr.addView(generateTextView(String.valueOf((this.i - 1) / 3), layoutParams));
+
+        Creneaux_Model newCrenau = new  Creneaux_Model();
+        newCrenau.sethFin(25);
+        newCrenau.sethDebut(25);
+        this.jour.getCreneauList().add(newCrenau);
+        Integer size = (Integer) this.jour.getCreneauList().size();
+        tr.addView(generateTextView(size.toString(), layoutParams));
 
         /*** Affiche le boutton de choix du début de créneau ***/
-        tr.addView(generateButtonDebut(layoutParams));
+        tr.addView(generateButtonDebut(layoutParams,this.jour));
         /*** Affiche le boutton de choix de fin de créneau ***/
-        tr.addView(generateButtonDFin(layoutParams));
+        tr.addView(generateButtonDFin(layoutParams,this.jour));
 
-        tr.addView(generateSwitchAutorisation(layoutParams));
+        tr.addView(generateSwitchAutorisation(layoutParams,this.jour));
 
         //tr.addView(generateButtonSupprimer(layoutParams));
 
@@ -90,115 +96,125 @@ public class JoursConfiguration_View extends Activity {
         return result;
     }
 
-    public Button generateButtonDebut(TableRow.LayoutParams ly){
-        Button boutton = new Button(this);
-        boutton.setId(this.i);
-        this.i++;
-        boutton.setTextColor(Color.DKGRAY);
+    public Button generateButtonDebut(TableRow.LayoutParams ly,final Jours_Model jour){
+        final Button boutton = new Button(this);
         boutton.setGravity(Gravity.CENTER);
         boutton.setPadding(10, 2, 10, 2);
         boutton.setText("debut");
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
         boutton.setLayoutParams(ly);
+        boutton.setId(i);
+        i++;
         boutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dispTimer(view);
+                heureDebutConfig(jour.getCreneauList().size()-1, boutton.getId());
             }
         });
         return boutton;
     }
+    public void heureDebutConfig(int crenaux, int id){
+        Intent intent = new Intent(this, PopUp_View.class);
+        intent.putExtra("crenau",crenaux);
+        intent.putExtra("id",id);
+        startActivityForResult(intent, HEUREDEBUT);
+    }
 
-    public Button generateButtonDFin(TableRow.LayoutParams ly){
-        Button boutton = new Button(this);
-        boutton.setId(this.i);
-        this.i++;
-        boutton.setTextColor(Color.DKGRAY);
+    public Button generateButtonDFin(TableRow.LayoutParams ly,final Jours_Model jour){
+        final Button boutton = new Button(this);
         boutton.setGravity(Gravity.CENTER);
         boutton.setPadding(10, 2, 10, 2);
         boutton.setText("fin");
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
         boutton.setLayoutParams(ly);
+        boutton.setId(i);
+        i++;
         boutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dispTimer(view);
+                heureFinConfig(jour.getCreneauList().size() - 1, boutton.getId());
             }
         });
         return boutton;
     }
+    public void heureFinConfig(int crenaux, int id){
+        Intent intent = new Intent(this, PopUp_View.class);
+        intent.putExtra("crenau",crenaux);
+        intent.putExtra("id",id);
+        startActivityForResult(intent, HEUREFIN);
+    }
 
-    public Button generateSwitchAutorisation(TableRow.LayoutParams ly){
-        Button boutton = new Button(this);
-        boutton.setId(this.i);
-        this.i++;
-        boutton.setTextColor(Color.DKGRAY);
+    public Button generateSwitchAutorisation(TableRow.LayoutParams ly,final Jours_Model jour){
+        final Button boutton = new Button(this);
         boutton.setGravity(Gravity.CENTER);
         boutton.setPadding(10, 2, 10, 2);
-        boutton.setText("OUI");
+        if(jour.getCreneauList().get(jour.getCreneauList().size() - 1).getAutorisation()) {
+            boutton.setText("oui");
+        }else{
+            boutton.setText("non");
+        }
         boutton.setTextSize(20);
         boutton.setVisibility(View.VISIBLE);
         boutton.setLayoutParams(ly);
         boutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Button but = (Button) findViewById(view.getId());
-                if(but.getText().equals("OUI")){
-                    but.setText("NON");
-                    listCreneaux.get((view.getId()-3)/3).setAutorisation(false);
+                if(boutton.getText().equals("oui")){
+                    boutton.setText("non");
+                    crenauAutorisation(false,jour.getCreneauList().size()-1);
                 }else{
-                    but.setText("OUI");
-                    listCreneaux.get((view.getId()-3)/3).setAutorisation(true);
+                    boutton.setText("oui");
+                    crenauAutorisation(true,jour.getCreneauList().size()-1);
                 }
             }
         });
         return boutton;
     }
 
-    public void supprimerLigne(View view){
-        if(this.i>1) {
-            TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
-            tl.removeViewAt((this.i - 1) / 3);
-            this.i = this.i-3;
-            this.listCreneaux.remove(listCreneaux.size()-1);
-        }
+    public void crenauAutorisation(boolean autorisation,int crenau){
+        this.jour.getCreneauList().get(crenau).setAutorisation(autorisation);
     }
-    /**
-     * \brief MÃ©thode d'affichage du pop-up de connexion
-     *
-     * AppelÃ©e lors du clic sur le bouton de configuration de la connexion.
-     */
-    public void dispTimer(View view)
-    {
-        Intent intent = new Intent(this, PopUp_View.class);
-        intent.putExtra("Id",view.getId());
-        startActivityForResult(intent, HEURE);
 
+    public void supprimerLigne(View view){
+        if(this.jour.getCreneauList().size()>0) {
+            TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
+            tl.removeViewAt(this.jour.getCreneauList().size() - 1);
+            this.jour.getCreneauList().remove(this.jour.getCreneauList().size() - 1);
+        }else {
+            Toast.makeText(this, "Pas de crenaux à supprimer", Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         // Vérification du code de retour
-        if(requestCode == HEURE) {
+        if(requestCode == HEUREDEBUT) {
             // Vérifie que le résultat est OK
             if(resultCode == RESULT_OK) {
                 int heure = data.getIntExtra("heure", 0);
                 int min = data.getIntExtra("minute",0);
-                int id = data.getIntExtra("Id",0);
+                int id = data.getIntExtra("id",0);
+                int crenau = data.getIntExtra("crenau",0);
                 Button but = (Button) findViewById(id);
                 but.setText(heure +":" + min );
-                if((id-1)%3==0) {
-                    this.listCreneaux.get(id / 3).sethDebut(heure);
-                    this.listCreneaux.get(id / 3).setmDebut(min);
-                }else{
-                    this.listCreneaux.get(id / 3).sethFin(heure);
-                    this.listCreneaux.get(id / 3).setmFin(min);
-                }
+                this.jour.getCreneauList().get(crenau).sethDebut(heure);
+                this.jour.getCreneauList().get(crenau).setmDebut(min);
+            }
+        }else if(requestCode == HEUREFIN){
+            if(resultCode == RESULT_OK) {
+                int heure = data.getIntExtra("heure", 0);
+                int min = data.getIntExtra("minute", 0);
+                int id = data.getIntExtra("id", 0);
+                int crenau = data.getIntExtra("crenau", 0);
+                Button but = (Button) findViewById(id);
+                but.setText(heure + ":" + min);
+                this.jour.getCreneauList().get(crenau).sethFin(heure);
+                this.jour.getCreneauList().get(crenau).setmFin(min);
             }
         }
-    };
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -226,18 +242,17 @@ public class JoursConfiguration_View extends Activity {
         EditText editText = (EditText) findViewById(R.id.edit_name_jour);
         String name = editText.getText().toString();
         if(nomJournéeInexistant(name)){
-            Jours_Model newJour = new Jours_Model(name);
-            if(this.i==1) {
+            this.jour.setName(name);
+            if(this.jour.getCreneauList().size()==0) {
                 Toast.makeText(this, "Jour ajouté sans  crenaux", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
-                intent.putExtra("Jour",newJour);
+                intent.putExtra("Jour",this.jour);
                 setResult(NEWJOURS, intent);
                 finish();
             }else{
-                if(crenauxEstRemplit(this.listCreneaux)) {
-                    newJour.setCreneauList(this.listCreneaux);
+                if(crenauxEstRemplit()) {
                     Intent intent = new Intent();
-                    intent.putExtra("Jour",newJour);
+                    intent.putExtra("Jour",this.jour);
                     setResult(NEWJOURS, intent);
                     finish();
                 }
@@ -245,9 +260,9 @@ public class JoursConfiguration_View extends Activity {
         }
     }
 
-    private boolean crenauxEstRemplit(ArrayList<Creneaux_Model> listTest){
-        for(int t=0; t<listTest.size();t++){
-            if(listTest.get(t).gethDebut() == 25 || listTest.get(t).gethFin() == 25) {
+    private boolean crenauxEstRemplit(){
+        for(int t=0; t<this.jour.getCreneauList().size();t++){
+            if(this.jour.getCreneauList().get(t).gethDebut() == 25 || this.jour.getCreneauList().get(t).gethFin() == 25) {
                 Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
                 return false;
             }
@@ -268,40 +283,6 @@ public class JoursConfiguration_View extends Activity {
             return false;
         }
         return true;
-    }
-
-    private void ajouterCrenaux(Jours_Model joursModel){
-        int nbCrenau = ((this.i-1)/3);
-        Toast.makeText(this, "Crenaux :"+nbCrenau, Toast.LENGTH_SHORT).show();
-        int heurePremier;
-        int minPremier;
-        int heureDeuxieme;
-        int minDeuxieme;
-        //for(int t = 0; t < nbCrenau; nbCrenau++){
-            Button buttonPremier = (Button) findViewById((0 * 3) + 1);
-            String inputPremier = buttonPremier.getText().toString();
-            Scanner premier = new Scanner(inputPremier).useDelimiter("\\s*:\\s*");
-            heurePremier = premier.nextInt();
-            minPremier = premier.nextInt();
-            Toast.makeText(this, "Premier crenau :"+heurePremier+":"+minPremier, Toast.LENGTH_SHORT).show();
-
-
-            buttonPremier = (Button) findViewById((0 * 3) + 2);
-            inputPremier = buttonPremier.getText().toString();
-            Scanner deuxieme = new Scanner(inputPremier).useDelimiter("\\s*:\\s*");
-            heureDeuxieme = premier.nextInt();
-            minDeuxieme = premier.nextInt();
-            Toast.makeText(this, "Deuxieme crenau :"+heurePremier+":"+minPremier, Toast.LENGTH_SHORT).show();
-
-        /**
-        Switch autorisationSwitch = (Switch) findViewById((((nbCrenau * 3) + 3)));
-        CharSequence toto = autorisationSwitch.getText();
-        if(toto.equals("OUI")){
-            Toast.makeText(this, "c'est oui", Toast.LENGTH_SHORT).show();
-
-        }
-        */
-        //}
     }
 
     public void RetourJourConfig(View view){
