@@ -29,6 +29,7 @@ class Heater : public Object
 		int getTconfort(){return m_Tconfort;}
 		int getTeco(){return m_Teco;}
 		void print();
+		json_t *json_object();
 
 	private:
 		void run();

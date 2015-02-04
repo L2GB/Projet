@@ -16,4 +16,3 @@ TimeSlot::TimeSlot(bool _permission, struct tm _start, struct tm _end) : m_permi
 TimeSlot::~TimeSlot()
 {
 }
-

@@ -27,6 +27,7 @@ class DataManager : public DataObservable, Thread
 		DataManager();
 		virtual ~DataManager();
 
+		void sendToAllClient(const std::string _stringToSend);
 		void sendToClient(const std::string _stringToSend, IdClient _idClient);
 		std::string readFromClient(IdClient _idClient);
 		void addConnection(const unsigned int _fd);

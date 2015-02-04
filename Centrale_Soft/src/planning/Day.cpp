@@ -15,4 +15,3 @@ Day::Day(std::string _name, std::vector<TimeSlot> _timeSlot) : m_name(_name), m_
 Day::~Day()
 {
 }
-

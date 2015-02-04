@@ -29,6 +29,13 @@ void ObjectManager::zwave_startNetwork()
 	m_zwaveController.startNetwork();
 }
 
+void ObjectManager::mode_inclusion()
+{
+	m_zwaveController.inclusion_mode_ON();
+	sleep(40);
+	m_zwaveController.inclusion_mode_OFF();
+}
+
 void ObjectManager::init_objects()
 {
 	for(std::size_t i = 0 ; i < m_objects.size() ; i++)
@@ -540,14 +547,21 @@ Room *ObjectManager::getRoom(std::string _name)
 	return NULL;
 }
 
-
-void ObjectManager::powerPlug_switchON(std::string _name)
+void ObjectManager::notifyObjectChanges(Object *_object)
 {
-
+	IdClient *id = NULL;
+	m_transmission->executeOrder("HASCHANGED_OBJET", _object->json_object(), *id);
 }
 
-void ObjectManager::powerPlug_switchOFF(std::string _name)
+void ObjectManager::powerPlug_switchON(int _deviceId, int _instanceNum)
 {
+	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
+	powerPlug->switchON();
+}
 
+void ObjectManager::powerPlug_switchOFF(int _deviceId, int _instanceNum)
+{
+	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
+	powerPlug->switchOFF();
 }
 

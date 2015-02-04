@@ -41,12 +41,15 @@ void Transmitter::initializeMapping()
 	m_type["LOAD_OBJETS"] = LOAD_OBJETS;
 	m_type["SET_OBJET"] = SET_OBJET;
 	m_type["RM_OBJET"] = RM_OBJET;
+	m_type["HASCHANGED_OBJET"] = HASCHANGED_OBJET;
 	m_type["GET_PIECES"] = GET_PIECES;
 	m_type["ADD_OBJET_PIECE"] = ADD_OBJET_PIECE;
-	m_type["REM_OBJET_PIECE"] = REM_OBJET_PIECE;
+	m_type["RM_OBJET_PIECE"] = RM_OBJET_PIECE;
 	m_type["RM_PIECE"] = RM_PIECE;
 	m_type["POWEROFF_PRISE"] = POWEROFF_PRISE;
 	m_type["POWERON_PRISE"] = POWERON_PRISE;
+	m_type["GET_CONSOMMATION"] = GET_CONSOMMATION;
+	m_type["MODE_INCLUSION"] = MODE_INCLUSION;
 }
 
 void Transmitter::loadData()
@@ -137,6 +140,11 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			{
 				std::cout << e.what() << std::endl;
 			}
+			break;
+		case HASCHANGED_OBJET:
+			LocalFileManager::setObject(_data);
+			messageToSend = createMessage(_order, _data ,"request");
+			m_racc.sendData(messageToSend, _idClient);
 			break;
 		case GET_PROFIL_JOUR:
 			try
@@ -300,7 +308,7 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 				std::cout << e.what() << std::endl;
 			}
 			break;
-		case REM_OBJET_PIECE:
+		case RM_OBJET_PIECE:
 			try
 			{
 				LocalFileManager::remObjectToRoom(_data);
@@ -329,14 +337,11 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			}
 			break;
 		case POWERON_PRISE:
-			try{
-				int instanceNum = json_integer_value(json_object_get(_data, "instanceNum"));
+			try
+			{
 				int deviceId  = json_integer_value(json_object_get(_data, "deviceId"));
-
-
-				// TODO modifier
-				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(deviceId, instanceNum);
-				powerPlug->switchON();
+				int instanceNum = json_integer_value(json_object_get(_data, "instanceNum"));
+				m_objectManager.powerPlug_switchON(deviceId, instanceNum);
 			}
 			catch(NotFoundException &e)
 			{
@@ -344,18 +349,22 @@ void Transmitter::executeOrder(const std::string _order, json_t *_data, IdClient
 			}
 			break;
 		case POWEROFF_PRISE:
-			try{
-				int instanceNum = json_integer_value(json_object_get(_data, "instanceNum"));
+			try
+			{
 				int deviceId  = json_integer_value(json_object_get(_data, "deviceId"));
-				// TODO modifier
-
-				PowerPlug *powerPlug = (PowerPlug *) m_objectManager.getObject(deviceId, instanceNum);
-				powerPlug->switchOFF();
+				int instanceNum = json_integer_value(json_object_get(_data, "instanceNum"));
+				m_objectManager.powerPlug_switchOFF(deviceId, instanceNum);
 			}
 			catch(NotFoundException &e)
 			{
 				std::cout << e.what() << std::endl;
 			}
+			break;
+		case GET_CONSOMMATION:
+			break;
+
+		case MODE_INCLUSION:
+			m_objectManager.mode_inclusion();
 			break;
 		default:
 			throw FormatException("Request type not identified");

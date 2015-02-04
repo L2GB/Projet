@@ -31,6 +31,15 @@ DataManager::~DataManager()
 	}
 }
 
+void DataManager::sendToAllClient(const std::string _stringToSend)
+{
+	for(std::size_t i = 0 ; i < m_socketClients.size() ; i++)
+	if(send(m_socketClients[i].getFd(), _stringToSend.c_str(), _stringToSend.size(), 0) < 0)
+	{
+		throw NetworkException("Error sending data to the client");
+	}
+}
+
 void DataManager::sendToClient(const std::string _stringToSend, IdClient _idClient)
 {
 	if(send(_idClient.getFd(), _stringToSend.c_str(), _stringToSend.size(), 0) < 0)

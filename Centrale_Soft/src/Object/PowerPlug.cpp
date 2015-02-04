@@ -23,10 +23,28 @@ PowerPlug::~PowerPlug()
 {
 }
 
+json_t *PowerPlug::json_object()
+{
+	json_t *object = json_object();
+	json_object_set(object, "typeObjet", json_string(m_type.c_str()));
+	json_object_set(object, "nomObjet", json_string(m_name.c_str()));
+	json_object_set(object, "planning", json_string(m_planning->getName().c_str()));
+	json_object_set(object, "instanceNum", json_integer(m_instanceNum));
+	json_object_set(object, "deviceId", json_integer(m_deviceId));
+	json_object_set(object, "inconnu", json_boolean(m_unknown));
+	json_object_set(object, "connecte", json_boolean(m_connected));
+	if(m_level == ON)
+		json_object_set(object, "allume", json_boolean(true));
+	else
+		json_object_set(object, "allume", json_boolean(false));
+
+	return object;
+}
+
 void PowerPlug::init()
 {
 	// TODO when Kilian will have done his job
-	//m_connected = m_zwaveController->   IS CONNECTED?
+	//m_connected = m_zwaveController->zNeztwork_is_device_connected(m_deviceId, m_instanceNum);
 
 	getCurrentTime();
 	if(getScheduledLevel() == ON)
@@ -109,9 +127,11 @@ PowerPlug_level PowerPlug::getScheduledLevel()
 
 void PowerPlug::switchON(){
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 1);
+	m_level = ON;
 }
 
 void PowerPlug::switchOFF()
 {
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 0);
+	m_level = OFF;
 }

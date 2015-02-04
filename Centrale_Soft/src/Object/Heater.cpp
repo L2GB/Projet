@@ -23,6 +23,22 @@ Heater::~Heater()
 {
 }
 
+json_t *Heater::json_object()
+{
+	json_t *object = json_object();
+	json_object_set(object, "typeObjet", json_string(m_type.c_str()));
+	json_object_set(object, "nomObjet", json_string(m_name.c_str()));
+	json_object_set(object, "planning", json_string(m_planning->getName().c_str()));
+	json_object_set(object, "instanceNum", json_integer(m_instanceNum));
+	json_object_set(object, "deviceId", json_integer(m_deviceId));
+	json_object_set(object, "inconnu", json_boolean(m_unknown));
+	json_object_set(object, "connecte", json_boolean(m_connected));
+	json_object_set(object, "Tconfort", json_integer(m_Tconfort));
+	json_object_set(object, "Teco", json_integer(m_Teco));
+
+	return object;
+}
+
 void Heater::init()
 {
 	// TODO

@@ -49,12 +49,14 @@ class ObjectManager : public Communicator
 		void loadRooms(json_t *_rooms);
 		Object *getObject(int _deviceId, int _instanceNum);
 		Room *getRoom(std::string _name);
+		void notifyObjectChanges(Object *_object);
 
 		/*
 		 * Liste des commandes vers les objets.
 		 */
-		void powerPlug_switchON(std::string _name);
-		void powerPlug_switchOFF(std::string _name);
+		void mode_inclusion();
+		void powerPlug_switchON(int _deviceId, int _instanceNum);
+		void powerPlug_switchOFF(int _deviceId, int _instanceNum);
 
 	private:
 		void initializeMapping();

@@ -11,6 +11,7 @@
 // Internal include
 #include "../planning/Week.h"
 #include "../tools/thread/Thread.h"
+#include "../tools/json/jansson.h"
 #include "../communication/zwave/ZWaveController.h"
 
 enum State
@@ -42,6 +43,7 @@ class Object : public Thread
 		void setName(const std::string _name){m_name = _name;}
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
+		virtual json_t *json_object() = 0;
 		//--------------------------------------------------------
 		void automatic_initName_setting();
 		//std::string guessType();
