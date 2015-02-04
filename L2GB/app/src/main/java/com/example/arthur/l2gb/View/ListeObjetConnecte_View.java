@@ -37,7 +37,7 @@ public class ListeObjetConnecte_View extends Activity {
             if(this.model.getObjet_model().get(i).isInconnu()) {
                 tr = new TableRow(this);
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model,this.model.getObjet_model().get(i).isConnecte()));
+                tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model, this.model.getObjet_model().get(i).isConnecte()));
                 tr.addView(generateBoutonallume(this.model.getObjet_model().get(i),layoutParams,this.model.getObjet_model().get(i).isAllume()));
                 jourTableau.addView(tr, layoutParams);
                 this.nb0bjetConnu++;
@@ -76,11 +76,15 @@ public class ListeObjetConnecte_View extends Activity {
 
     public Button generateBoutonallume(final Objet_Model objet,TableRow.LayoutParams ly,boolean allume) {
         final Button result = new Button(this);
-        if(allume) {
-            result.setTextColor(0xffFFCC00);
-            result.setText("allume");
+        if(objet.isConnecte()) {
+            if (allume) {
+                result.setTextColor(0xffFFCC00);
+                result.setText("allume");
+            } else {
+                result.setText("eteint");
+            }
         }else{
-            result.setText("etteint");
+            result.setText("-----");
         }
         result.setId(this.nb0bjetConnu);
         result.setGravity(Gravity.CENTER);
@@ -89,24 +93,30 @@ public class ListeObjetConnecte_View extends Activity {
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-
-                if(result.getText().equals("allume")){
-                    objet.setAllume(false);
-                    result.setText("etteint");
-                    result.setTextColor(0xff000000);
+                if(objet.isConnecte()) {
+                    Intent intent = new Intent();
+                    if (result.getText().equals("allume")) {
+                        objet.setAllume(false);
+                        result.setText("eteint");
+                        result.setTextColor(0xff000000);
+                    } else {
+                        objet.setAllume(true);
+                        result.setText("allume");
+                        result.setTextColor(0xffFFCC00);
+                    }
+                    intent.putExtra("state", objet);
+                    setResult(MainActivity.OBJECHANGE, intent);
                 }else{
-                    objet.setAllume(true);
-                    result.setText("allume");
-                    result.setTextColor(0xffFFCC00);
+                    pasConnecte();
                 }
-                intent.putExtra("state", objet);
-                setResult(MainActivity.OBJECHANGE, intent);
             }
         });
         return result;
     }
 
+    public void pasConnecte(){
+        Toast.makeText(this, "Objet non connecté", Toast.LENGTH_SHORT).show();
+    }
 
     public void goConfigurationObjet(View v, String nameBouton){
         Intent intent = new Intent(this, ConfigurationObjet.class);
