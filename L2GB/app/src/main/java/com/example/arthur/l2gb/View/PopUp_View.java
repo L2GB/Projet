@@ -13,6 +13,7 @@ import com.example.arthur.l2gb.R;
 public class PopUp_View extends Activity {
 
     private int id;
+    private int crenau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,8 @@ public class PopUp_View extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_pop_up__view, menu);
         Intent intent = getIntent();
-        this.id = intent.getIntExtra("Id",2048);
+        this.id = intent.getIntExtra("id",2048);
+        this.crenau = intent.getIntExtra("crenau",2048);
         return true;
     }
 
@@ -53,7 +55,8 @@ public class PopUp_View extends Activity {
         // On rajoute le nom saisie dans l'intent
         intent.putExtra("heure", heure);
         intent.putExtra("minute", minute);
-        intent.putExtra("Id", this.id);
+        intent.putExtra("id", this.id);
+        intent.putExtra("crenau",this.crenau);
         // On retourne le résultat avec l'intent
         setResult(RESULT_OK, intent);
         // On termine cette activité
