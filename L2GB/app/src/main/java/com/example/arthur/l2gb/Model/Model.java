@@ -206,26 +206,76 @@ public class Model implements Parcelable {
     public void addJour(Jours_Model jour)
     {
         //System.out.println("model add objett");
-        //this.myEmission.addJour(jour);
+        this.myEmission.addJourOnCentrale(jour);
     }
 
-    public void powerOn(String name)
+    public void addSemaine(Semaine_Model semaine)
+    {
+        //System.out.println("model add semaine");
+        this.myEmission.addSemaineOnCentrale(semaine);
+    }
+
+    public void removeJour(Jours_Model jour)
+    {
+        //System.out.println("model remove jour");
+        this.myEmission.removeJoursModel(jour);
+    }
+
+    public void removeSemaine(Semaine_Model semaine)
+    {
+        //System.out.println("model remove jour");
+        this.myEmission.removeSemaineModel(semaine);
+    }
+
+    public void removeObjet(Objet_Model objet)
+    {
+        //System.out.println("model remove jour");
+        this.myEmission.removeObjetModel(objet);
+    }
+
+    public void modifiedJour(Jours_Model jour)
+    {
+        //System.out.println("model modifier jour");
+        this.myEmission.modifiedJour(jour);
+    }
+
+    public void modifiedSemaine(Semaine_Model semaine)
+    {
+        //System.out.println("model modifier semaine");
+        this.myEmission.modifiedSemaine(semaine);
+    }
+
+    public void modifiedObjet(Objet_Model objet)
+     {
+         //System.out.println("model modifier objet");
+         this.myEmission.modifiedObjet(objet);
+     }
+
+    public void powerOn(Objet_Model objet)
     {
         //System.out.println("model power on");
-        this.myEmission.powerOn(name);
+        this.myEmission.powerOn(objet);
     }
 
-    public void powerOff(String name)
+    public void powerOff(Objet_Model objet)
     {
         //System.out.println("model power off");
-        this.myEmission.powerOff(name);
+        this.myEmission.powerOff(objet);
     }
 
-    public void askConsommation(String name)
+    public void askConsommation(Objet_Model objet)
     {
         //System.out.println("model ask consommation");
-        this.myEmission.powerOff(name);
+        this.myEmission.askConsommation(objet);
     }
+
+    public void inclusionMode()
+    {
+        //System.out.println("model ask consommation");
+        this.myEmission.inclusionMode();
+    }
+
+
     protected Model(Parcel in) {
         if (in.readByte() == 0x01) {
             objet_model = new ArrayList<Objet_Model>();

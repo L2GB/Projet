@@ -1,8 +1,10 @@
 package com.example.arthur.l2gb.Model.Communication;
 
 
+import com.example.arthur.l2gb.Model.Jours_Model;
 import com.example.arthur.l2gb.Model.JsonUtil;
 import com.example.arthur.l2gb.Model.Objet_Model;
+import com.example.arthur.l2gb.Model.Semaine_Model;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -122,30 +124,138 @@ public class Emission extends Thread {
         this.run();
     }
 
+    /**
+     * \brief Envoie le message JSON pour demander l'ajout d'un objet Jours_Model: "jour"
+     * \param jour : le jour en question.
+     */
+    public void addJourOnCentrale(Jours_Model jour)
+    {
+        System.out.println("emission add jour");
+        this.message = "";
+        this.message = comJson.joursModelToString(jour);
+        this.run();
+    }
 
     /**
-     * \brief Envoie le message JSON pour éteindre la prise : "name".
-     * \param name : l'identifiant de la prise.
+     * \brief Envoie le message JSON pour demander l'ajout d'un objet Semaine_Model: "semaine"
+     * \param semaine : le jour en question.
      */
-    public void powerOff(String name)
+    public void addSemaineOnCentrale(Semaine_Model semaine)
+    {
+        System.out.println("emission add semaine");
+        this.message = "";
+        this.message = comJson.semaineModelToString(semaine);
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour demander la suppression de l'objet jour: "jour"
+     * \param jour : l'objet jour en question.
+     */
+    public void removeJoursModel(Jours_Model jour)
+    {
+        System.out.println("emission ask consommation");
+        this.message = "";
+        this.message = comJson.removeJoursModel(jour);
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour demander la suppression de l'objet: "objet"
+     * \param objet : l'objet en question.
+     */
+    public void removeSemaineModel(Semaine_Model semaine)
+    {
+        System.out.println("emission ask consommation");
+        this.message = "";
+        this.message = comJson.removeSemaineModel(semaine);
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour demander la suppression de l'objet: "objet"
+     * \param objet : l'objet en question.
+     */
+    public void removeObjetModel(Objet_Model objet)
+    {
+        System.out.println("emission ask consommation");
+        this.message = "";
+        this.message = comJson.removeObjetModel(objet);
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour indiquer la modification d'un jour
+     * \param jour : l'objet jour en question.
+     */
+    public void modifiedJour(Jours_Model jour)
+    {
+        System.out.println("emission modifié jour");
+        this.message = "";
+        this.message = comJson.joursModelToString(jour);
+        this.run();
+    }
+
+    /**
+     * \brief Envoie le message JSON pour indiquer la modification d'une semaine
+     * \param semaine : l'objet semaine en question.
+     */
+    public void modifiedSemaine(Semaine_Model semaine)
+    {
+        System.out.println("emission modifié semaine");
+        this.message = "";
+        this.message = comJson.semaineModelToString(semaine);
+        this.run();
+    }
+    /**
+     * \brief Envoie le message JSON pour indiquer la modification d'un objet
+     * \param objet : l'objet en question.
+     */
+    public void modifiedObjet(Objet_Model objet)
+    {
+        System.out.println("emission modifié objet");
+        this.message = "";
+        this.message = comJson.objetModelToString(objet);
+        this.run();
+    }
+    /**
+     * \brief Envoie le message JSON pour éteindre la prise spécifiée.
+     * \param objet : l'objet que l'on veut éteindre.
+     */
+    public void powerOff(Objet_Model objet)
     {
         System.out.println("emmission power off");
         this.message = "";
-        this.message = comJson.prisePowerOff(name);
+        this.message = comJson.prisePowerOff(objet);
         this.run();
     }
 
     /**
-     * \brief Envoie le message JSON pour allumer la prise : "name".
-     * \param name : l'identifiant de la prise.
+     * \brief Envoie le message JSON pour allumer la prise spécifiée.
+     * \param objet : l'objet que l'on veut allumer.
      */
-    public void powerOn(String name)
+    public void powerOn(Objet_Model objet)
     {
         System.out.println("Emmission power on");
         this.message = "";
-        this.message = comJson.prisePowerOn(name);
+        this.message = comJson.prisePowerOn(objet);
         this.run();
 
     }
+
+    /**
+     * \brief Envoie le message JSON pour passer en mode inclusion.
+     */
+    public void inclusionMode()
+    {
+        System.out.println("Emmission inclusion mode");
+        this.message = "";
+        this.message = comJson.inclusionMode();
+        this.run();
+
+    }
+
+
+
 
 }

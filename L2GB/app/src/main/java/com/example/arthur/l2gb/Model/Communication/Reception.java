@@ -154,25 +154,37 @@ public class Reception extends Thread {
         responseType = this.comJson.readResponse(buffer);
         System.out.println("Parsage, la réponse est de type : "+responseType);
 
-        /** ProfilJour**/
+        /** Liste de jour**/
         if(responseType == 1){
-            System.out.println(buffer);
+            //System.out.println(buffer);
             this.comJson.stringToJoursModel(buffer,profilJourList);
             System.out.println("Liste de profils jour reçues \n");
         }
-        /** ProfilSemaine **/
+        /** Liste de semaine **/
         else if(responseType == 2){
-            System.out.println(buffer);
+            //System.out.println(buffer);
             this.comJson.stringToSemaineModel(buffer,profilSemaineList);
             System.out.println("Liste de profils semaine reçues \n");
         }
-        /** Profil objet **/
+        /** Liste d'objet **/
         else if(responseType == 3){
-            System.out.println(buffer);
+            //System.out.println(buffer);
             this.comJson.stringToObjetModel(buffer,objetList);
             System.out.println("Liste des objets reçues \n");
-            System.out.println("First objet : "+objetList.get(0).getName());
         }
+        /** nouvel objet **/
+        else if(responseType ==4){
+            //System.out.println(buffer);
+            this.comJson.stringToNewObjet(buffer,objetList);
+            System.out.println("Nouvel objet ajouté \n");
+        }
+        /** Consommation d'un objet **/
+        else if(responseType ==5){
+            //System.out.println(buffer);
+            this.comJson.stringToConsommation(buffer,objetList );
+            System.out.println("Consommation changée \n");
+        }
+
     }
 
 }

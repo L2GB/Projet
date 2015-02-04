@@ -26,6 +26,8 @@ public class JsonUtil {
         this.mapRequest.put(0,"GET_PROFIL_JOUR");
         this.mapRequest.put(1,"GET_PROFIL_SEMAINE");
         this.mapRequest.put(2,"GET_OBJETS");
+        this.mapRequest.put(3,"NEW_OBJET");
+        this.mapRequest.put(4,"GET_CONSOMMATION");
     }
 
     public Map getMapRequest() {
@@ -35,7 +37,7 @@ public class JsonUtil {
     /**
      * @brief permet de demander à la centrale les objets ProfilJour enregistrés
      * @func getJoursModel()
-     * @return none
+     * @return root
      */
     public String getJoursModel()
     {
@@ -143,9 +145,9 @@ public class JsonUtil {
      * @brief Permet de supprimer un profilJour
      * @func removeJoursModel(ProfilJour pJour)
      * @param pJour le profilJour à supprimer
-     * @return none
+     * @return root
      */
-    public void removeJoursModel(Jours_Model pJour)
+    public String removeJoursModel(Jours_Model pJour)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -158,6 +160,7 @@ public class JsonUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return root.toString();
     }
 
     /**
@@ -254,9 +257,9 @@ public class JsonUtil {
      * @brief Permet de supprimer un profilSemaine
      * @func removeSemaineModel(ProfilSemaine pSemaine)
      * @param pSemaine la profilSemaine à supprimer
-     * @return none
+     * @return root
      */
-    public void removeSemaineModel(Semaine_Model pSemaine)
+    public String removeSemaineModel(Semaine_Model pSemaine)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -269,6 +272,7 @@ public class JsonUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return root.toString();
     }
 
 
@@ -330,6 +334,30 @@ public class JsonUtil {
         }
     }
 
+    /**
+     * @brief requête de la centrale pour indiquer la présence d'un nouvel objet
+     * @func newObjet(Objet_Model objet)
+     * @return root
+     */
+    public void stringToNewObjet(String chaine,ArrayList<Objet_Model> objet_modelArrayList)
+    {
+        try {
+            JSONObject root = new JSONObject(chaine);
+            JSONObject request = root.getJSONObject("request");
+            JSONObject data = request.getJSONObject("data");
+            Integer instanceNum = data.getInt("instanceNum");
+
+            Objet_Model objet = new Objet_Model(instanceNum.toString());
+            objet.setType(data.getString("typeObjet"));
+            objet.setInstanceNum(data.getInt("instanceNum"));
+            objet.setDeviceId(data.getInt("deviceId"));
+
+            objet_modelArrayList.add(objet);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * @brief Permet de transfomer un Objet en chaine de charactère.
@@ -371,9 +399,9 @@ public class JsonUtil {
      * @brief Permet de supprimer un profilSemaine
      * @func removeObjetModel(Objet_Model objet)
      * @param objet l'objet à supprimer
-     * @return none
+     * @return root
      */
-    public void removeObjetModel(Objet_Model objet)
+    public String removeObjetModel(Objet_Model objet)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
@@ -388,22 +416,25 @@ public class JsonUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return root.toString();
     }
 
+
+
     /**
-     * @brief indique à la centrale l'ajout d'un nouvel objet
-     * @func newObjet(Objet_Model objet)
+     * @brief permet de demander à la centrale d'éteindre l'objet spécifié
+     * @func prisePowerOff(Objet_Model objet)
+     * @prama objet l'objet que l'on veut éteindre
      * @return root
      */
-    public String newObjet(Objet_Model objet)
+    public String prisePowerOff(Objet_Model objet)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
         JSONObject data = new JSONObject();
         try {
-            request.put("type", "NEW_OBJET");
-            data.put("typeObjet",objet.getType());
-            data.put("nomObjet", objet.getName());
+            request.put("type", "POWEROFF_PRISE");
+            data.put("nomObjet",objet.getName());
             data.put("instanceNum",objet.getInstanceNum());
             data.put("deviceId",objet.getDeviceId());
             request.put("data", data);
@@ -415,36 +446,22 @@ public class JsonUtil {
     }
 
     /**
-     * @brief permet de demander à la centrale d'éteindre la prise spécifiée par l'argument name
-     * @func prisePowerOff()
+     * @brief permet de demander à la centrale d'allumer l'objet spécifié
+     * @func prisePowerOn(Objet_Model objet)
+     * @param objet l'objet qu'on veut allumer
      * @return root
      */
-    public String prisePowerOff(String name)
+    public String prisePowerOn(Objet_Model objet)
     {
         JSONObject root = new JSONObject();
         JSONObject request = new JSONObject();
-        try {
-            request.put("type", "POWEROFF_PRISE");
-            request.put("nom", name);
-            root.put("request",request);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return root.toString();
-    }
-
-    /**
-     * @brief permet de demander à la centrale d'éteindre la prise spécifiée par l'argument name
-     * @func prisePowerOn()
-     * @return root
-     */
-    public String prisePowerOn(String name)
-    {
-        JSONObject root = new JSONObject();
-        JSONObject request = new JSONObject();
+        JSONObject data = new JSONObject();
         try {
             request.put("type", "POWERON_PRISE");
-            request.put("nom", name);
+            data.put("nomObjet",objet.getName());
+            data.put("instanceNum",objet.getInstanceNum());
+            data.put("deviceId",objet.getDeviceId());
+            request.put("data", data);
             root.put("request",request);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -455,6 +472,7 @@ public class JsonUtil {
     /**
      * @brief permet de demander à la centrale la consommation d'un objet spécifiée par l'argument name
      * @func getConsommation(Objet_Model objet)
+     * @param objet
      * @return root
      */
     public String getConsommation(Objet_Model objet)
@@ -475,7 +493,13 @@ public class JsonUtil {
         return root.toString();
     }
 
-    public void stringToConsommation(String chaine, ArrayList<Objet_Model> ObjetList)
+    /**
+     * @brief permet de changer la consommation d'un objet
+     * @func stringToConsommation(String chaine, ArrayList<Objet_Model> ObjetList)
+     * @param chaine la cchaine reçue par la centrale
+     * @param objetList la liste d'objet du model
+     */
+    public void stringToConsommation(String chaine, ArrayList<Objet_Model> objetList)
     {
         try{
             JSONObject root = new JSONObject(chaine);
@@ -485,9 +509,9 @@ public class JsonUtil {
             JSONObject consommation = data.getJSONObject("consommation");
 
             /** On regarde si on a le nom de l'objet dans notre liste **/
-            for (int i=0; i<ObjetList.size(); i++) {
-                if (nomObjet.getString("nomObjet").equals(ObjetList.get(i).getName())){
-                    ObjetList.get(i).setConsommation(consommation.getInt("consommation"));
+            for (int i=0; i<objetList.size(); i++) {
+                if (nomObjet.getString("nomObjet").equals(objetList.get(i).getName())){
+                    objetList.get(i).setConsommation(consommation.getInt("consommation"));
                 }
                 else System.out.println("Le nom de prise n'existe pas\n");
             }
@@ -497,6 +521,23 @@ public class JsonUtil {
         }
     }
 
+    /**
+     * @brief indique à la centrale le passage en mode inclusion (pour enregistrer un nouvel objet)
+     * @func inclusionMode()
+     * @return root
+     */
+    public String inclusionMode()
+    {
+        JSONObject root = new JSONObject();
+        JSONObject request = new JSONObject();
+        try {
+            request.put("type", "MODE_INCLUSION");
+            root.put("request",request);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return root.toString();
+    }
 
 
     public int readResponse(String chaine)
@@ -510,29 +551,36 @@ public class JsonUtil {
             //System.out.println("JsonUtil readResponse de type: "+type);
             /** Si la reponse est de type GET_PROFIL_JOUR**/
             if(type.equals("GET_PROFIL_JOUR")){
-                //ArrayList<Jours_Model> joursList = new ArrayList<Jours_Model>();
                 return 1;
             }
 
             /** Si la reponse est de type GET_PROFIL_SEMAINE**/
             else if(type.equals(mapRequest.get(1))){
-                //ArrayList<Semaine_Model> semaineList = new ArrayList<Semaine_Model>();
                 return 2;
             }
 
             /** Si la reponse est de type GET_OBJETS**/
             else if(type.equals(mapRequest.get(2))){
-                //ArrayList<Objet_Model> objetList = new ArrayList<Objet_Model>();
                 return 3;
             }
 
+            /** Si la reponse est de type NEW_OBJET**/
+            else if(type.equals(mapRequest.get(3))){
+                return 4;
+            }
+
+            /** Si la reponse est de type GET_CONSOMMATION**/
+            else if(type.equals(mapRequest.get(4))){
+                return 5;
+            }
 
         }catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.println("JsonUtil readResponse si on a ca c'est que ca a chier: "+type);
         return 0;
     }
+
+
 
 
 
