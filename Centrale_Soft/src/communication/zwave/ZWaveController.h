@@ -53,6 +53,7 @@ public:
 	bool zNetwork_is_device_paired(int deviceId);
 	bool zNeztwork_is_device_connected(int deviceId, int instanceNum);
 	void zNetwork_wake_device_up(int deviceId);
+	std::string zdata_get_holder_name(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 
 
 private:

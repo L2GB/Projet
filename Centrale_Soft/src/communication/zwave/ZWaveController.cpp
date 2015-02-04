@@ -382,20 +382,12 @@ std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int i
 	std::string type("NOTINIT");
 	ZWDataType holderValueType;
 
-	cout << " Test 1 " << endl;
-
 	this->zdata_mutex_lock();
-
-	cout << " Test 2 " << endl;
 
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 
-	cout << " Test 3 " << endl;
-
 	if(holder != NULL){
-		cout << " Test 3.5 " << endl;
 		if(zdata_get_type(holder, &holderValueType) == NoError){
-			cout << " Test 4 " << endl;
 			switch (holderValueType){
 
 			case Empty:
@@ -446,7 +438,6 @@ std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int i
 	else{
 		type = "noHolder";
 	}
-	cout << " Test 5 " << endl;
 	this->zdata_mutex_unlock();
 
 	return type;
@@ -455,11 +446,15 @@ std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int i
 int ZWaveController::zNetwork_get_integer(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 	int value(-123);
 
+	this->zdata_mutex_lock();
+
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 
 	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "Integer"){
 		zdata_get_integer(holder, &value);
 	}
+
+	this->zdata_mutex_unlock();
 
 	return value;
 }
@@ -467,6 +462,8 @@ int ZWaveController::zNetwork_get_integer(int deviceNum, int instanceNum, int co
 bool ZWaveController::zNetwork_get_boolean(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 	bool value(NULL);
 	ZWBOOL zValue;
+
+	this->zdata_mutex_lock();
 
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 
@@ -479,11 +476,15 @@ bool ZWaveController::zNetwork_get_boolean(int deviceNum, int instanceNum, int c
 			value = false;
 		}
 	}
+	this->zdata_mutex_unlock();
+
 	return value;
 }
 
 float ZWaveController::zNetwork_get_float(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 	float value(-123.0);
+
+	this->zdata_mutex_lock();
 
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 
@@ -491,17 +492,23 @@ float ZWaveController::zNetwork_get_float(int deviceNum, int instanceNum, int co
 		zdata_get_float(holder, &value);
 	}
 
+	this->zdata_mutex_unlock();
+
 	return value;
 }
 
 std::string ZWaveController::zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 	const char * value;
 
+	this->zdata_mutex_lock();
+
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 
 	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "String"){
 		zdata_get_string(holder, &value);
 	}
+
+	this->zdata_mutex_unlock();
 
 	return value;
 }
@@ -573,6 +580,7 @@ bool ZWaveController::zNetwork_is_device_paired(int deviceId){
 
 /**
  * Méthode zNetwork_wake_device_up
+//ZWEXPORT void zway_device_awake_queue(const ZWay zway, ZWBYTE node_id);
  * Force le réveil de la queue du device (dont l'id est deviceId)
  * Renvoie le code d'erreur attribué par la libzway (ce code d'erreur
  * peut être retrouvé dans le fichier ZErrors.h)
@@ -580,12 +588,24 @@ bool ZWaveController::zNetwork_is_device_paired(int deviceId){
 void ZWaveController::zNetwork_wake_device_up(int deviceId){
 
 	zway_device_awake_queue(this->m_zway, deviceId);
-
 }
 
+std::string ZWaveController::zdata_get_holder_name(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
+
+	std::string name("nameInit");
+
+	this->zdata_mutex_lock();
+
+	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+	name = (string)zdata_get_name(holder);
 
 
-//ZWEXPORT void zway_device_awake_queue(const ZWay zway, ZWBYTE node_id);
+	this->zdata_mutex_unlock();
+
+	return name;
+}
+
+// ZWEXPORT const char *zdata_get_name(const ZDataHolder data);
 
 bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNum){
 	// Valeur de retour indiquant si l'object (dont l'id est deviceId et le numéro d'instance instanceNum est connecté ou non
@@ -596,8 +616,6 @@ bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNu
 	int k(0);
 	// Liste des devices connectés
 	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
-
-
 
 }
 
