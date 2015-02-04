@@ -206,7 +206,7 @@ public class Model implements Parcelable {
     public void addJour(Jours_Model jour)
     {
         //System.out.println("model add objett");
-        this.myEmission.addJour(jour);
+        //this.myEmission.addJour(jour);
     }
 
     public void powerOn(String name)
