@@ -37,7 +37,10 @@ public class ListeObjetConnecte_View extends Activity {
             if(this.model.getObjet_model().get(i).isInconnu()) {
                 tr = new TableRow(this);
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model,this.model.getObjet_model().get(i).isConnecte()));
+                tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model, this.model.getObjet_model().get(i).isConnecte()));
+                if(this.model.getObjet_model().get(i).isConnecte()) {
+                    tr.addView(generateBoutonallume(this.model.getObjet_model().get(i),layoutParams, this.model.getObjet_model().get(i).isAllume()));
+                }
                 jourTableau.addView(tr, layoutParams);
                 this.nb0bjetConnu++;
             }
@@ -73,6 +76,39 @@ public class ListeObjetConnecte_View extends Activity {
         return result;
     }
 
+    public Button generateBoutonallume(final Objet_Model objet,TableRow.LayoutParams ly,boolean allume) {
+        final Button result = new Button(this);
+        if(allume) {
+            result.setTextColor(0xffFFCC00);
+            result.setText("allumé");
+        }else{
+            result.setText("etteint");
+        }
+        result.setId(this.nb0bjetConnu);
+        result.setGravity(Gravity.CENTER);
+        result.setTextSize(15);
+        result.setLayoutParams(ly);
+        result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+
+                if(result.getText().equals("allumé")){
+                    objet.setAllume(false);
+                    result.setText("etteint");
+                    result.setTextColor(0xff000000);
+                }else{
+                    objet.setAllume(true);
+                    result.setText("allumé");
+                    result.setTextColor(0xffFFCC00);
+                }
+                intent.putExtra("state", objet);
+                setResult(MainActivity.OBJECHANGE, intent);
+            }
+        });
+        return result;
+    }
+
     public void goConfigurationObjet(View v, String nameBouton){
         Intent intent = new Intent(this, ConfigurationObjet.class);
         intent.putExtra("ListeObjet",this.model);
@@ -97,7 +133,7 @@ public class ListeObjetConnecte_View extends Activity {
                 // Création de l'intent
                 for(int p = 0; p<this.model.getObjet_model().size();p++){
                     if(objet.getDeviceId()==this.model.getObjet_model().get(p).getDeviceId() &&
-                       objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
+                            objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
                         this.model.getObjet_model().get(p).setObjet(objet);
                     }
                 }
@@ -106,8 +142,8 @@ public class ListeObjetConnecte_View extends Activity {
                 Button but = (Button) findViewById(id);
                 but.setText(objet.getName().toString());
                 Intent intent = new Intent();
-                 intent.putExtra("Model", this.model);
-                 setResult(MainActivity.OBJETADD, intent);
+                intent.putExtra("Model", this.model);
+                setResult(MainActivity.OBJETADD, intent);
             } else if (resultCode == RESULT_CANCELED) {
                 // On affiche que l'opération est annulée
                 Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();
