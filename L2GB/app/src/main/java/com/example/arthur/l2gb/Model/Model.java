@@ -98,6 +98,7 @@ public class Model implements Parcelable {
         lumiereSalon.setConnecte(true);
         lumiereSalon.setDeviceId(0);
         lumiereSalon.setInstanceNum(0);
+        lumiereSalon.setAllume(true);
         Objet_Model chauffageSalon = new Objet_Model("Chauffage salon", semaineSpe);
         chauffageSalon.setConsommation(75);
         chauffageSalon.setInconnu(true);
@@ -200,6 +201,12 @@ public class Model implements Parcelable {
     {
         //System.out.println("model ask objet list");
         this.myEmission.askObjetList();
+    }
+
+    public void addJour(Jours_Model jour)
+    {
+        //System.out.println("model add objett");
+        this.myEmission.addJour(jour);
     }
 
     public void powerOn(String name)
