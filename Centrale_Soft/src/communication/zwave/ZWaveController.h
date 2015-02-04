@@ -49,7 +49,7 @@ public:
 	std::string zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 	std::string zNetwork_get_device_name(int deviceNum);
 	std::string zNetwork_get_device_type(int deviceNum);
-	int zNetwork_get_nb_devices();
+	int zNetwork_get_nb_devices_paired();
 	bool zNetwork_is_device_paired(int deviceId);
 	bool zNeztwork_is_device_connected(int deviceId, int instanceNum);
 	void zNetwork_wake_device_up(int deviceId);

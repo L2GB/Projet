@@ -15,18 +15,16 @@ void print_zway_terminated(ZWay zway, void* arg);
 
 ZWaveController::ZWaveController() {
 
-	int returnValue = -1;
-
 	this->m_zway = NULL;
+
+	this->startNetwork();
 
 }
 
 ZWaveController::~ZWaveController() {
 
-	int result = -1;
-
 	// On stop le réseau zwave
-	result = zway_stop(this->m_zway);
+	zway_stop(this->m_zway);
 
 	// On libére l'espace du alloué au zway
 	zway_terminate(&this->m_zway);
@@ -44,13 +42,13 @@ int ZWaveController::startNetwork() {
 	cout << "Programme de test ZWave en C++ " << endl;
 
 	// Création du contexte de logging
-	ZWLog logger = zlog_create(NULL, Debug); //TODO remettre stdout à la place de NULL
+	ZWLog logger = zlog_create(stdout, Debug); //TODO remettre stdout à la place de NULL
 	cout << "Contexte des logs créé" << endl;
 
 	this->m_zway = NULL;
 
 	// Création du contexte Z-Way
-	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", NULL); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
+	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", logger); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
 	// En cas d'erreur lors de la création du contexte Z-Way on inscrit l'erreur dans les logs
 	if(result != NoError){
 		zway_log_error(m_zway, Critical, "Failed to init ZWay", result);
@@ -209,7 +207,7 @@ int ZWaveController::print_data_tree(){
 
 // Affiche la type de produit si la détection automatique à retourné une certitude de 10
 void ZWaveController::printDeviceInfoShortVersion(int deviceNodeId){
-	if (deviceNodeId >= 0) {
+	if (deviceNodeId >= 1) {
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNodeId);
 		struct _ZGuessedProduct * pProduct = *product;
 		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
@@ -218,7 +216,7 @@ void ZWaveController::printDeviceInfoShortVersion(int deviceNodeId){
 
 		zway_device_guess_free(product);
 	} else {
-		printf(" No information found on device\n");
+		printf(" nodeIdNotValid\n");
 	}
 }
 
@@ -228,13 +226,13 @@ void ZWaveController::printDeviceInfoShortVersion(int deviceNodeId){
  * et les lui affiche
  */
 void ZWaveController::printDeviceInfoLongVersion(){
-	cout << "Quel est le device dont vous souhaitez afficher les informations ? " << endl;
+	cout << endl << "Quel est le device dont vous souhaitez afficher les informations ? " << endl;
 	cout << "> ";
 	int deviceNodeId = -1;
 	cin >> deviceNodeId;
 	cin.ignore();
 	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
-	if (deviceNodeId >= 0) {
+	if (deviceNodeId >= 1) {
 		ZGuessedProduct * productsList = zway_device_guess(this->m_zway, deviceNodeId);
 		struct _ZGuessedProduct * pProduct = *productsList;
 		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
@@ -253,36 +251,54 @@ void ZWaveController::printDeviceInfoLongVersion(){
 
 int ZWaveController::inclusion_mode_ON(){
 	// Si passe pas comme ça y a une autre méthode
-	zway_fc_add_node_to_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
+	ZWError zerror = zway_fc_add_node_to_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
+	if(zerror == NoError){
+		cout << endl << "Inclusion ON " << endl;
+	}
+	else{
+		cout << endl << "Inclusion activation failed " << endl;
+	}
 
-	cout << endl << "Inclusion ON " << endl;
 
 	return 0;
 }
 
 int ZWaveController::inclusion_mode_OFF(){
 	// Si passe pas comme ça y a une autre méthode
-	zway_fc_add_node_to_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
-
-	cout << endl << "Inclusion OFF" << endl;
+	ZWError zerror = zway_fc_add_node_to_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
+	if(zerror == NoError){
+		cout << endl << "Inclusion OFF " << endl;
+	}
+	else{
+		cout << endl << "Inclusion desactivation failed " << endl;
+	}
 
 	return 0;
+
 }
 
 int ZWaveController::exclusion_mode_ON(){
 	// Si passe pas comme ça y a une autre méthode
-	zway_fc_remove_node_from_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
-
-	cout << endl <<"Exclusion ON " << endl;
+	ZWError zerror = zway_fc_remove_node_from_network(this->m_zway, TRUE, TRUE, NULL, NULL, NULL);
+	if(zerror == NoError){
+		cout << endl << "Exclusion ON " << endl;
+	}
+	else{
+		cout << endl << "Exclusion activation failed " << endl;
+	}
 
 	return 0;
 }
 
 int ZWaveController::exclusion_mode_OFF(){
 	// Si passe pas comme ça y a une autre méthode
-	zway_fc_remove_node_from_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
-
-	cout << endl << "Exclusion OFF " << endl;
+	ZWError zerror = zway_fc_remove_node_from_network(this->m_zway, FALSE, TRUE, NULL, NULL, NULL);
+	if(zerror == NoError){
+		cout << endl << "Exclusion OFF " << endl;
+	}
+	else{
+		cout << endl << "Exclusion desactivation failed " << endl;
+	}
 
 	return 0;
 }
@@ -345,11 +361,18 @@ bool ZWaveController::zNetwork_is_there_device_instance_cc_holder(int deviceNum,
 
 	bool presence(false);
 
-	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str());
+	this->zdata_mutex_lock();
+
+	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str()); // dataName.c_str() //à la place du dernier arg
 
 	if(cc_holder){
 		presence = true;
 	}
+	else{
+		presence = false;
+	}
+
+	this->zdata_mutex_unlock();
 
 	return presence;
 }
@@ -357,13 +380,23 @@ bool ZWaveController::zNetwork_is_there_device_instance_cc_holder(int deviceNum,
 std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 
 	std::string type("NOTINIT");
-	ZWDataType * holderValueType;
+	ZWDataType holderValueType;
+
+	cout << " Test 1 " << endl;
+
+	this->zdata_mutex_lock();
+
+	cout << " Test 2 " << endl;
 
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 
+	cout << " Test 3 " << endl;
+
 	if(holder != NULL){
-		if(zdata_get_type(holder, holderValueType) == NoError){
-			switch (*holderValueType){
+		cout << " Test 3.5 " << endl;
+		if(zdata_get_type(holder, &holderValueType) == NoError){
+			cout << " Test 4 " << endl;
+			switch (holderValueType){
 
 			case Empty:
 				type = "Empty";
@@ -413,6 +446,8 @@ std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int i
 	else{
 		type = "noHolder";
 	}
+	cout << " Test 5 " << endl;
+	this->zdata_mutex_unlock();
 
 	return type;
 }
@@ -472,23 +507,26 @@ std::string ZWaveController::zNetwork_get_string(int deviceNum, int instanceNum,
 }
 
 std::string ZWaveController::zNetwork_get_device_name(int deviceNum){
-	std::string nameInitString;
+	cout << " On rentre dans la méthode get device name " << endl;
+	std::string nameInitString ("Chaine Initialisée");
+	cout << " Initialisation de la chaine nameInitString done " << endl;
 	if (deviceNum >= 0) {
+		cout << " On rentre dans le if car le deviceNum est sup à 0 " << endl;
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNum);
+		cout << " On vient d'effectuer le device guess " << endl;
 		struct _ZGuessedProduct * pProduct = *product;
+		cout << " On vient de créer pProduct pour pointer sur product" << endl;
 		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
-			nameInitString = pProduct->file_name;
 			printf("Guessed product (%p): score=%d product=%s file_name=%s\n", pProduct, pProduct->score, pProduct->product, pProduct->file_name);
 		}
 		zway_device_guess_free(product);
 	} else {
 		nameInitString = "DeviceNum inférieur à 0 ";
 	}
-	char * nameInit((char *)nameInitString.c_str());
-	cout << "NameInit = " << nameInit << endl;
 
 	return nameInitString;
 }
+
 
 std::string ZWaveController::zNetwork_get_device_type(int deviceNum){
 	std::string typeString;
@@ -503,8 +541,6 @@ std::string ZWaveController::zNetwork_get_device_type(int deviceNum){
 	} else {
 		typeString = "DeviceNum inférieur à 0 ";
 	}
-	char * type ((char *) typeString.c_str());
-	cout << "Type = " << type << endl;
 
 	return typeString;
 }
@@ -512,7 +548,7 @@ std::string ZWaveController::zNetwork_get_device_type(int deviceNum){
  * zNetwork_get_nb_devices
  * Récupère le nombre de devices appairés
  */
-int ZWaveController::zNetwork_get_nb_devices(){
+int ZWaveController::zNetwork_get_nb_devices_paired(){
 	int i(0);
 	ZWDevicesList deviceList = zway_devices_list(this->m_zway);
 	while (deviceList[i]) {
@@ -549,7 +585,7 @@ void ZWaveController::zNetwork_wake_device_up(int deviceId){
 
 
 
-ZWEXPORT void zway_device_awake_queue(const ZWay zway, ZWBYTE node_id);
+//ZWEXPORT void zway_device_awake_queue(const ZWay zway, ZWBYTE node_id);
 
 bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNum){
 	// Valeur de retour indiquant si l'object (dont l'id est deviceId et le numéro d'instance instanceNum est connecté ou non
