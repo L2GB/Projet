@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Jours_Model;
 import com.example.arthur.l2gb.Model.Model;
+import com.example.arthur.l2gb.Model.Objet_Model;
 import com.example.arthur.l2gb.Model.Semaine_Model;
 import com.example.arthur.l2gb.R;
 
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
     public static final int JOURADD = 23;
     public static final int SEMAINEADD = 29;
     public static final int OBJETADD = 51;
+    public static final int OBJECHANGE = 28;
     private String test;
     Model model = null;
     int menu = 1;
@@ -65,10 +67,22 @@ public class MainActivity extends Activity {
                 this.model.getProfilSemaine_model().add(semaine);
             }if(resultCode == OBJETADD) {
                 // On récupére le paramètre "Nom" de l'intent
-                Model newModel = data.getParcelableExtra("Objet");
-                this.model.setJours_Model( newModel.getJours_Model());
-                this.model.setObjet_model( newModel.getObjet_model());
-                this.model.setProfilSemaine_model( newModel.getProfilSemaine_model());
+                Objet_Model objet = data.getParcelableExtra("ObjetModif");
+                for(int p = 0; p<this.model.getObjet_model().size();p++){
+                    if(objet.getDeviceId()==this.model.getObjet_model().get(p).getDeviceId() &&
+                            objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
+                        this.model.getObjet_model().get(p).setObjet(objet);
+                    }
+                }
+            }
+            if(resultCode == OBJECHANGE) {
+                Objet_Model objet = data.getParcelableExtra("state");
+                for(int p = 0; p<this.model.getObjet_model().size();p++){
+                    if(objet.getDeviceId()==this.model.getObjet_model().get(p).getDeviceId() &&
+                            objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
+                        this.model.getObjet_model().get(p).setAllume(objet.isAllume());
+                    }
+                }
             }else if (resultCode == RESULT_CANCELED) {
 
                 // On affiche que l'opération est annulée
