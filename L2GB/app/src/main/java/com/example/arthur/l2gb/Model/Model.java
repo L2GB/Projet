@@ -38,9 +38,28 @@ public class Model implements Parcelable {
        creerfakeModel();
 
         /** Mise en place de la communication **/
-        /**
+        /*
         boolean testconnection = setConnection(Constante.IP_SERVEUR,Constante.PORT_SERVEUR);
-        System.out.println("Communication réussie ? " +testconnection);**/
+        System.out.println("Communication réussie ? " +testconnection);
+        askJourList();
+        try
+        {
+            // Met le thread en attente que la connexion s'établisse
+            Thread.sleep(1000);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        askSemaineList();
+        try
+        {
+            // Met le thread en attente que la connexion s'établisse
+            Thread.sleep(1000);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        askObjetList();*/
     }
 
     private void creerfakeModel(){
@@ -319,6 +338,7 @@ public class Model implements Parcelable {
         {
             e.printStackTrace();
         }
+
         // Si la connexion est correcte, on instancie les classes Emission et Reception
         if (SocketCreation.isConnected() == true)
         {

@@ -25,7 +25,7 @@ public class Objet_Model implements Parcelable {
     {
         this.profilSemaine = new Semaine_Model();
         this.connecte = false;
-        this.inconnu = false;
+        this.inconnu = true;
         this.instanceNum = 0;
         this.deviceId = 0;
         this.name = name;
