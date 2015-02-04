@@ -89,6 +89,9 @@ public class MainActivity extends Activity {
                         }else{
                             this.model.powerOff(this.model.getObjet_model().get(p));
                         }
+                        Intent intent = new Intent(this, ListeObjetConnecte_View.class);
+                        intent.putExtra("MODEL",this.model);
+                        startActivityForResult(intent, CODE_RETOUR);
                     }
                 }
             }else if (resultCode == RESULT_CANCELED) {
