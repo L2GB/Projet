@@ -34,7 +34,7 @@ public class ListeObjetConnecte_View extends Activity {
         layoutParams.setMargins(2, 2, 2, 2);
 
         for(int i = 0 ; i < this.model.getObjet_model().size() ; i++){
-            if(this.model.getObjet_model().get(i).isInconnu()) {
+            if(!this.model.getObjet_model().get(i).isInconnu()) {
                 tr = new TableRow(this);
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
                 tr.addView(generateTextView(this.model.getObjet_model().get(i).getName(), layoutParams, this.model, this.model.getObjet_model().get(i).isConnecte()));
