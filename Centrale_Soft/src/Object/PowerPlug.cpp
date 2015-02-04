@@ -28,6 +28,7 @@ void PowerPlug::init()
 	// TODO when Kilian will have done his job
 	//m_connected = m_zwaveController->   IS CONNECTED?
 
+	getCurrentTime();
 	if(getScheduledLevel() == ON)
 	{
 		switchON();
@@ -107,12 +108,10 @@ PowerPlug_level PowerPlug::getScheduledLevel()
 }
 
 void PowerPlug::switchON(){
-	std::cout << "j allume la prise" << std::endl;
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 1);
 }
 
 void PowerPlug::switchOFF()
 {
-	std::cout << "je coupe la prise" << std::endl;
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 0);
 }
