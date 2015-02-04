@@ -9,5 +9,24 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/tableauObjetConnu"></TableLayout>
+        android:id="@+id/tableauObjetConnu"
+        android:layout_below="@+id/button10"></TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="retour"
+        android:id="@+id/button10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:onClick="retour"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter objet"
+        android:id="@+id/button11"
+        android:layout_alignTop="@+id/button10"
+        android:layout_alignParentEnd="true"
+        android:onClick="ajouterObjet"/>
 </RelativeLayout>

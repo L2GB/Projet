@@ -86,20 +86,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Choix Lundi"
-                android:id="@+id/choixLundi"
-                android:onClick="choixLundi"
-                android:layout_gravity="right|center_vertical" />
-
             <TextView android:text="Lundi"
                 android:layout_width="78dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:id="@+id/lundi_text"
                 android:textSize="20dp"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerLundi"
+                android:layout_gravity="right|center_vertical" />
         </FrameLayout>
 
     </LinearLayout>
@@ -114,20 +112,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="choix mardi"
-                android:id="@+id/choixMardi"
-                android:onClick="choixMardi"
-                android:layout_gravity="right|center_vertical" />
-
             <TextView android:text="Mardi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:id="@+id/mardi_text"
                 android:textSize="20dp"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerMardi"
+                android:layout_gravity="right|center_vertical" />
 
         </FrameLayout>
 
@@ -150,13 +146,12 @@
                 android:id="@+id/mercredi_text"
                 android:textSize="20dp"/>
 
-            <Button
+            <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="choix mercredi"
-                android:id="@+id/choixMercredi"
-                android:onClick="choixMercredi"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerMercredi"
                 android:layout_gravity="right|center_vertical" />
+
         </FrameLayout>
 
     </LinearLayout>
@@ -170,14 +165,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="choix jeudi"
-                android:id="@+id/choixJeudi"
-                android:onClick="choixJeudi"
-                android:layout_gravity="right|center_vertical" />
-
             <TextView android:text="Jeudi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,6 +172,12 @@
                 android:id="@+id/jeudi_text"
                 android:textSize="20dp"
                 />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerJeudi"
+                android:layout_gravity="right|center_vertical" />
         </FrameLayout>
 
     </LinearLayout>
@@ -198,20 +191,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="choix vendredi"
-                android:id="@+id/choixVendredi"
-                android:onClick="choixVendredi"
-                android:layout_gravity="right|center_vertical" />
-
             <TextView android:text="Vendredi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:id="@+id/vendredi_text"
                 android:textSize="20dp"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerVendredi"
+                android:layout_gravity="right|center_vertical" />
         </FrameLayout>
 
     </LinearLayout>
@@ -233,14 +224,12 @@
                 android:id="@+id/samedi_text"
                 android:textSize="20dp"/>
 
-            <Button
+            <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="choix samedi"
-                android:id="@+id/choixSamedi"
-                android:layout_weight="0.20"
-                android:onClick="choixSamedi"
-                android:layout_gravity="right|center_vertical" />
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerSamedi"
+                android:layout_gravity="center_vertical|right" />
+
         </FrameLayout>
 
     </LinearLayout>
@@ -254,20 +243,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="choix dimanche"
-                android:id="@+id/choixDimanche"
-                android:onClick="choixDimanche"
-                android:layout_gravity="right|center_vertical" />
-
             <TextView android:text="Dimanche"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:id="@+id/dimanche_text"
                 android:textSize="20dp"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerDimanche"
+                android:layout_gravity="right|center_vertical" />
         </FrameLayout>
 
     </LinearLayout>
