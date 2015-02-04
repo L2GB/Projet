@@ -19,7 +19,7 @@ public class Objet_Model implements Parcelable {
     private Integer instanceNum;
     private Integer deviceId;
     private Integer consommation;
-
+    private boolean allume;
 
     public Objet_Model(String name)
     {
@@ -33,8 +33,16 @@ public class Objet_Model implements Parcelable {
         this.temperature_confort = Constante.TEMP_CONFORT;
         this.temperature_economique = Constante.TEMP_ECO;
         this.consommation=0;
+        this.allume=false;
     }
 
+    public boolean isAllume() {
+        return allume;
+    }
+
+    public void setAllume(boolean allume) {
+        this.allume = allume;
+    }
 
     public Integer getInstanceNum() {
         return instanceNum;
@@ -51,6 +59,7 @@ public class Objet_Model implements Parcelable {
         this.temperature_confort = objetModel.temperature_confort;
         this.temperature_economique = objetModel.temperature_economique;
         this.consommation=objetModel.consommation;
+        this.allume=objetModel.allume;
     }
 
     public void setInstanceNum(Integer instanceNum) {
@@ -63,10 +72,6 @@ public class Objet_Model implements Parcelable {
 
     public void setDeviceId(Integer deviceId) {
         this.deviceId = deviceId;
-    }
-
-    public static Creator<Objet_Model> getCreator() {
-        return CREATOR;
     }
 
     public boolean isInconnu() {
@@ -86,6 +91,7 @@ public class Objet_Model implements Parcelable {
         this.type = Constante.TYPE_CHAUFFAGE;
         this.temperature_confort = Constante.TEMP_CONFORT;
         this.temperature_economique = Constante.TEMP_ECO;
+        this.allume=false;
     }
 
     public Integer getConsommation() {
@@ -160,6 +166,7 @@ public class Objet_Model implements Parcelable {
         instanceNum = in.readByte() == 0x00 ? null : in.readInt();
         deviceId = in.readByte() == 0x00 ? null : in.readInt();
         consommation = in.readByte() == 0x00 ? null : in.readInt();
+        allume = in.readByte() != 0x00;
     }
 
     @Override
@@ -204,6 +211,7 @@ public class Objet_Model implements Parcelable {
             dest.writeByte((byte) (0x01));
             dest.writeInt(consommation);
         }
+        dest.writeByte((byte) (allume ? 0x01 : 0x00));
     }
 
     @SuppressWarnings("unused")
