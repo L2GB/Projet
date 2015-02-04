@@ -60,12 +60,13 @@ public class Planning_View extends Activity {
 
             }
             //affiche les crenau
-            for(int crenau = 0; crenau< model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().size(); crenau++){
-                debutHeure = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).gethDebut();
-                debutMin = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getmDebut();
-                FinHeure = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).gethFin();
-                FintMin = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getmFin();
-                autorisation = model.getObjet_model().get(i).getProfilSemaine().getProfilJourList().get(Jour).getCreneauList().get(crenau).getAutorisation();
+            for(int crenau = 0; crenau< model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getCreneauList().size(); crenau++){
+                debutHeure = model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getCreneauList().get(crenau).gethDebut();
+                debutMin =  model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getCreneauList().get(crenau).getmDebut();
+                FinHeure =  model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getCreneauList().get(crenau).gethFin();
+                FintMin =  model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getCreneauList().get(crenau).getmFin();
+                autorisation =  model.getProfilSemaine_model().get(i).getProfilJourList().get(Jour).getCreneauList().get(crenau).getAutorisation();
+
                 if(autorisation){
                     tr = new TableRow(this);
                     tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
