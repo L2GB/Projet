@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class JoursConfiguration_View extends Activity {
 
-    public static final int HEUREDEBUT = 1;
+    public static final int HEUREDEBUT = 11;
     public static final int HEUREFIN = 2;
     public static final int NEWJOURS = 11;
     private Integer crenauIndice=0;
