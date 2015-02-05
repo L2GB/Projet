@@ -55,6 +55,7 @@ public:
 	void zNetwork_wake_device_up(int deviceId);
 	std::string zdata_get_holder_name(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 	bool zNetwork_is_there_device_holder(int deviceNum, std::string dataName);
+	void zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback);
 
 
 private:

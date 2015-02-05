@@ -686,3 +686,22 @@ bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNu
 }
 
 
+void ZWaveController::zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback)
+{
+	ZDataHolder holder;
+
+	this->zdata_mutex_lock();
+
+	if(instanceNum == 0 && commandClassNum == 0){
+		holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
+	}
+	else{
+		holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+	}
+
+	if(holder != NULL)
+	{
+
+	}
+	zdata_add_callback(holder, callback, false, NULL);
+}
