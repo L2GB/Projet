@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Model;
@@ -35,6 +36,14 @@ public class ConfigurationObjet extends Activity {
         this.model.getObjet_model().remove(this.objet);
         afficherParamettreObjet();
         choixSemaineSpinner();
+        if(this.objet.getType().equals("PRISE")){
+            EditText saisi = (EditText) findViewById(R.id.editTextTemperatureConfort);
+            saisi.setVisibility(View.GONE);
+            saisi = (EditText) findViewById(R.id.editTextTemperatureEco);
+            TextView vu = (TextView) findViewById(R.id.textView10);
+            vu.setVisibility(View.GONE);
+            vu = (TextView) findViewById(R.id.textView2);
+        }
     }
 
     public void afficherParamettreObjet(){
