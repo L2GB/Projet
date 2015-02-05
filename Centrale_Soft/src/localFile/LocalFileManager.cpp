@@ -331,32 +331,22 @@ void LocalFileManager::setObject(json_t *_object)
 	int index;
 	bool trouve = false;
 	json_t *objet;
-	json_t *nom;
-	std::string nomObjet;
-	std::string nomNouveauObjet;
+	int instanceNum;
+	int deviceId;
+	int nouveauInstanceNum;
+	int nouveauDeviceId;
 
 	json_array_foreach(objets, index, objet)
 	{
 		if(!trouve)
 		{
-			nom = json_object_get(objet, "nomObjet");
+			instanceNum = json_integer_value(json_object_get(objet, "instanceNum"));
+			deviceId = json_integer_value(json_object_get(objet, "deviceId"));
 
-			if(!json_is_string(nom))
-			{
-				throw FormatException("L'objet \"nom\" n'est pas de type string");
-			}
+			nouveauInstanceNum = json_integer_value(json_object_get(_object, "instanceNum"));
+			nouveauDeviceId = json_integer_value(json_object_get(_object, "deviceId"));
 
-			nomObjet = json_string_value(nom);
-			nom = json_object_get(_object, "nomObjet");
-
-			if(!json_is_string(nom))
-			{
-				throw FormatException("L'objet \"nom\" n'est pas de type string");
-			}
-
-			nomNouveauObjet = json_string_value(nom);
-
-			if(nomObjet.compare(nomNouveauObjet) == 0)
+			if(instanceNum == nouveauInstanceNum && deviceId == nouveauDeviceId)
 			{
 				json_array_set(objets, index, _object);
 				trouve = true;
