@@ -33,6 +33,7 @@ class PowerPlug : public Object
 
 		void switchON();
 		void switchOFF();
+		PowerPlug_level getLevel();
 		json_t *json_object();
 
 	private:

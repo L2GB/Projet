@@ -48,7 +48,7 @@ int ZWaveController::startNetwork() {
 	this->m_zway = NULL;
 
 	// Création du contexte Z-Way
-	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", logger); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
+	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", NULL); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
 	// En cas d'erreur lors de la création du contexte Z-Way on inscrit l'erreur dans les logs
 	if(result != NoError){
 		zway_log_error(m_zway, Critical, "Failed to init ZWay", result);
@@ -210,8 +210,11 @@ void ZWaveController::printDeviceInfoShortVersion(int deviceNodeId){
 	if (deviceNodeId >= 1) {
 		ZGuessedProduct * product = zway_device_guess(this->m_zway, deviceNodeId);
 		struct _ZGuessedProduct * pProduct = *product;
-		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
-			printf(" %s ", pProduct->product);
+//		if(pProduct->score == 10 || (pProduct->score - 100) == 10){
+//			printf(" %s ", pProduct->product);
+//		}
+		if(pProduct->product){
+			cout << " " << pProduct->product << " ";
 		}
 
 		zway_device_guess_free(product);
@@ -364,6 +367,26 @@ bool ZWaveController::zNetwork_is_there_device_instance_cc_holder(int deviceNum,
 	this->zdata_mutex_lock();
 
 	ZDataHolder cc_holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum,instanceNum,commandClassNum,dataName.c_str()); // dataName.c_str() //à la place du dernier arg
+
+	if(cc_holder){
+		presence = true;
+	}
+	else{
+		presence = false;
+	}
+
+	this->zdata_mutex_unlock();
+
+	return presence;
+}
+
+bool ZWaveController::zNetwork_is_there_device_holder(int deviceNum, std::string dataName){
+
+	bool presence(false);
+
+	this->zdata_mutex_lock();
+
+	ZDataHolder cc_holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
 
 	if(cc_holder){
 		presence = true;
@@ -599,13 +622,22 @@ std::string ZWaveController::zdata_get_holder_name(int deviceNum, int instanceNu
 	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
 	name = (string)zdata_get_name(holder);
 
-
 	this->zdata_mutex_unlock();
 
 	return name;
 }
 
-// ZWEXPORT const char *zdata_get_name(const ZDataHolder data);
+
+
+// Search a Data holder by name starting from a defined Data holder
+//
+// @param: data
+// Root object instance
+//
+// @param: path
+// Path to search for (dot separated)
+//
+//ZWEXPORT ZDataHolder zdata_find(const ZDataHolder data, const char *path);
 
 bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNum){
 	// Valeur de retour indiquant si l'object (dont l'id est deviceId et le numéro d'instance instanceNum est connecté ou non

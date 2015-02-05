@@ -135,3 +135,19 @@ void PowerPlug::switchOFF()
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 0);
 	m_level = OFF;
 }
+
+PowerPlug_level PowerPlug::getLevel(){
+	PowerPlug_level level(OFF);
+
+	bool value(m_zwaveController->zNetwork_get_boolean(this->m_deviceId, m_instanceNum, 37, "level"));
+
+	if(value == true){
+		level = ON;
+	}
+	else{
+		level = OFF;
+	}
+
+	return level;
+}
+
