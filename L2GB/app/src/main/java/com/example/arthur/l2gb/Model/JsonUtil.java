@@ -28,6 +28,7 @@ public class JsonUtil {
         this.mapRequest.put(2,"GET_OBJETS");
         this.mapRequest.put(3,"NEW_OBJET");
         this.mapRequest.put(4,"GET_CONSOMMATION");
+        this.mapRequest.put(5,"HASCHANGED_OBJET");
     }
 
     public Map getMapRequest() {
@@ -362,6 +363,39 @@ public class JsonUtil {
         }
     }
 
+    public void objetHasChanged(String chaine,ArrayList<Objet_Model> objet_modelArrayList)
+    {
+        try {
+            JSONObject root = new JSONObject(chaine);
+            JSONObject response = root.getJSONObject("response");
+            JSONObject data = response.getJSONObject("data");
+
+            /** Parcours de la liste d'objet **/
+            for(int i = 0; i<objet_modelArrayList.size();i++){
+                if(objet_modelArrayList.get(i).getInstanceNum()==data.getInt("instanceNum")){
+                    if(objet_modelArrayList.get(i).getDeviceId()==data.getInt("deviceId")){
+                        objet_modelArrayList.get(i).getProfilSemaine().setName(data.getString("planning"));
+                        objet_modelArrayList.get(i).setInconnu(data.getBoolean("inconnu"));
+                        objet_modelArrayList.get(i).setConnecte(data.getBoolean("connecte"));
+                        objet_modelArrayList.get(i).setType(data.getString("typeObjet"));
+
+                        /** Si l'objet est de type chauffage on regarde les températures **/
+                        if (data.getString("typeObjet").equals(Constante.TYPE_CHAUFFAGE)) {
+                            objet_modelArrayList.get(i).setTemperature_confort(data.getInt("Tconfort"));
+                            objet_modelArrayList.get(i).setTemperature_economique(data.getInt("Teco"));
+                        /** Sinon on regarde s'il est allumé ou pas **/
+                        } else if (data.getString("typeObjet").equals(Constante.TYPE_PRISE)) {
+                            objet_modelArrayList.get(i).setAllume(data.getBoolean("allume"));
+                        }
+                    }
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * @brief Permet de transfomer un Objet en chaine de charactère.
@@ -581,6 +615,11 @@ public class JsonUtil {
             /** Si la reponse est de type GET_CONSOMMATION**/
             else if(type.equals(mapRequest.get(4))){
                 return 5;
+            }
+
+            /** Si la reponse est de type HASCHANGED_OBJET**/
+            else if(type.equals(mapRequest.get(5))){
+                return 6;
             }
 
         }catch (JSONException e) {

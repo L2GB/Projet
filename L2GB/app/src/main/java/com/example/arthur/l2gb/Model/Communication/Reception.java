@@ -76,12 +76,6 @@ public class Reception extends Thread {
     private byte[] message = new byte[2048];
 
     /**
-     * \var typeMsg
-     * Variable pour stocker le type de message à chaque reception  .
-     */
-    private Integer typeMsg = 0;
-
-    /**
      * \brief Constructeur de Reception
      * <p/>
      * Prend en paramètre le socket et le handler et lance la reception
@@ -126,7 +120,6 @@ public class Reception extends Thread {
                 int readBytes = mySocket.getInputStream().read(message, 0, 2048);
                 this.buffer = new String(message, 0, readBytes, "UTF-8");
                 System.out.println("Reception Le buffer contient : "+buffer+"\n");
-                //this.typeMsg = this.comJson.readResponse(buffer);
                 parseReceiveString(buffer);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -187,6 +180,13 @@ public class Reception extends Thread {
             //System.out.println(buffer);
             this.comJson.stringToConsommation(buffer,objetList );
             System.out.println("Consommation changée \n");
+        }
+
+        /** Modification de l'état d'un objet  **/
+        else if(responseType ==6){
+            //System.out.println(buffer);
+            this.comJson.objetHasChanged(buffer,objetList );
+            System.out.println("Objet modifié \n");
         }
 
     }
