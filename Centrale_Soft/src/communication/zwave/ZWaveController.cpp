@@ -686,7 +686,7 @@ bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNu
 }
 
 
-void ZWaveController::zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback)
+void ZWaveController::zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback, void *args)
 {
 	ZDataHolder holder;
 
@@ -701,7 +701,6 @@ void ZWaveController::zdata_set_callback(int deviceNum, int instanceNum, int com
 
 	if(holder != NULL)
 	{
-
+		zdata_add_callback(holder, callback, false, args);
 	}
-	zdata_add_callback(holder, callback, false, NULL);
 }

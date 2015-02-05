@@ -50,6 +50,7 @@ class ObjectManager : public Communicator
 		Object *getObject(int _deviceId, int _instanceNum);
 		Room *getRoom(std::string _name);
 		void notifyObjectChanges(Object *_object);
+		Object *getObjectToConfigure(){ return m_objectToConfigure;}
 
 		/*
 		 * Liste des commandes vers les objets.
@@ -60,6 +61,7 @@ class ObjectManager : public Communicator
 
 	private:
 		void initializeMapping();
+		void init_callback2(Object *_object);
 
 	private:
 		std::map<std::string, TypeObjet> m_typeObjet;
@@ -67,6 +69,7 @@ class ObjectManager : public Communicator
 		std::vector<Room *> m_rooms;
 		PlanningManager m_planningManager;
 		ZWaveController m_zwaveController;
+		Object *m_objectToConfigure;
 };
 
 #endif /* OBJECT_OBJECTMANAGER_H_ */

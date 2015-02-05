@@ -36,11 +36,34 @@ void ObjectManager::mode_inclusion()
 	m_zwaveController.inclusion_mode_OFF();
 }
 
+void powerPlug_callback_level(const ZDataRootObject root, ZWDataChangeType type, ZDataHolder data, void *args)
+{
+	ObjectManager *objectManager = (ObjectManager *)args;
+	PowerPlug *powerPlug = (PowerPlug *)objectManager->getObject(objectManager->getObjectToConfigure()->getDeviceId(), objectManager->getObjectToConfigure()->getInstanceNum());
+	powerPlug->getLevel();
+	objectManager->notifyObjectChanges(powerPlug);
+}
+
+void ObjectManager::init_callback2(Object *_object)
+{
+	switch(m_typeObjet[_object->getType()])
+	{
+		case CHAUFFAGE:
+			break;
+		case PRISE:
+			m_objectToConfigure = _object;
+			m_zwaveController.zdata_set_callback(_object->getDeviceId(), _object->getInstanceNum(), 37, "level", powerPlug_callback_level, this);
+			break;
+	}
+}
+
 void ObjectManager::init_objects()
 {
 	for(std::size_t i = 0 ; i < m_objects.size() ; i++)
 	{
+		init_callback2(m_objects[i]);
 		m_objects[i]->launch();
+
 	}
 }
 
@@ -564,4 +587,3 @@ void ObjectManager::powerPlug_switchOFF(int _deviceId, int _instanceNum)
 	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
 	powerPlug->switchOFF();
 }
-
