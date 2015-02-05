@@ -317,6 +317,7 @@ public class JsonUtil {
                 profilObjet.setType(objet.getString("typeObjet"));
                 profilObjet.setInconnu(objet.getBoolean("inconnu"));
                 profilObjet.setConnecte(objet.getBoolean("connecte"));
+
                 profilObjet.setInstanceNum(objet.getInt("instanceNum"));
                 profilObjet.setDeviceId(objet.getInt("deviceId"));
                 profilObjet.setType(objet.getString("typeObjet"));
@@ -324,6 +325,9 @@ public class JsonUtil {
                 if (objet.getString("typeObjet").equals(Constante.TYPE_CHAUFFAGE)) {
                     profilObjet.setTemperature_confort(objet.getInt("Tconfort"));
                     profilObjet.setTemperature_economique(objet.getInt("Teco"));
+                }
+                else if (objet.getString("typeObjet").equals(Constante.TYPE_PRISE)) {
+                    profilObjet.setAllume(objet.getBoolean("allume"));
                 }
                 System.out.println("TEUUUUUUB");
                 profilObjetList.add(j,profilObjet);
@@ -380,9 +384,14 @@ public class JsonUtil {
             data.put("connecte", objet.isConnecte());
             data.put("instanceNum",objet.getInstanceNum());
             data.put("devideId",objet.getDeviceId());
-            data.put("Tconfort",objet.getTemperature_confort());
-            data.put("Teco", objet.getTemperature_economique());
-
+            if(objet.getType().equals(Constante.TYPE_CHAUFFAGE)){
+                data.put("Tconfort",objet.getTemperature_confort());
+                data.put("Teco", objet.getTemperature_economique());
+            }
+            else if(objet.getType().equals(Constante.TYPE_PRISE)){
+                data.put("allume",objet.isAllume());
+            }
+           
             request.put("data",data);
             root.put("request",request);
             return root.toString();
