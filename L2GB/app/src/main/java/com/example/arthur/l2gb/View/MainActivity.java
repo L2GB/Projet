@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Jours_Model;
 import com.example.arthur.l2gb.Model.Model;
@@ -29,6 +28,7 @@ public class MainActivity extends Activity {
     private String test;
     Model model = null;
     int menu = 1;
+    String ip;
     ArrayList<String> listeJour = null;
 
     @Override
@@ -36,6 +36,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         menu = 1;
+        Intent intent = getIntent();
+        this.ip = getIntent().getExtras().getString("ip");
         Button Retour= (Button) this.findViewById(R.id.button7);
         Button Jour= (Button) this.findViewById(R.id.button5);
         Button Semaine= (Button) this.findViewById(R.id.button6);
@@ -47,7 +49,7 @@ public class MainActivity extends Activity {
     }
 
     private void creerMVC(){
-        this.model = new Model();
+        this.model = new Model(this.ip);
     }
 
     @Override
@@ -97,7 +99,7 @@ public class MainActivity extends Activity {
             }else if (resultCode == RESULT_CANCELED) {
 
                 // On affiche que l'opération est annulée
-                Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();
+
 
             }
 
