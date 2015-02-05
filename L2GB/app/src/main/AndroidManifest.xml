@@ -3,7 +3,8 @@
     package="com.example.arthur.l2gb" >
 
     <uses-sdk android:minSdkVersion="21" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".View.MainActivity"
-            android:label="@string/app_name" >
+            android:name=".View.IpConfig"
+            android:label="Configuration ip" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,49 +21,54 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".View.MainActivity"
+            android:label="Menu" >
+
+        </activity>
+        <activity
             android:name=".View.Scenario_View"
-            android:label="@string/title_activity_scenario__view" >
+            android:label="Scenario" >
         </activity>
         <activity
             android:name=".View.SemaineList_View"
-            android:label="@string/title_activity_semaine_list__view" >
+            android:label="Liste des semaines" >
         </activity>
         <activity
             android:name=".View.SemaineConfiguration_View"
-            android:label="@string/title_activity_semaine_configuration__view" >
+            android:label="Configuration d'une semaine" >
         </activity>
         <activity
             android:name=".View.JoursList_View"
-            android:label="@string/title_activity_jours_list__view" >
+            android:label="Liste des jours" >
         </activity>
         <activity
             android:name=".View.JoursConfiguration_View"
-            android:label="@string/title_activity_jours_configuration__view" >
+            android:label="Configuration d'un jour" >
         </activity>
         <activity
             android:name=".View.Planning_View"
-            android:label="@string/title_activity_planning__view" >
+            android:label="Planning" >
         </activity>
         <activity
             android:name=".View.Consommation_View"
-            android:label="@string/title_activity_consommation__view" >
+            android:label="Consommation" >
         </activity>
         <activity
             android:name=".View.ListeObjet_View"
-            android:label="@string/title_activity_liste_objet__view"
+            android:label="Liste des objet"
             android:parentActivityName=".View.MainActivity" >
         </activity>
         <activity
             android:name=".View.PopUp_View"
-            android:label="@string/title_activity_pop_up__view" >
+            android:label="Heure choix" >
         </activity>
         <activity
             android:name=".View.Pop_up_choixjour"
-            android:label="@string/title_activity_pop_up_choixjour" >
+            android:label="Choix jour" >
         </activity>
         <activity
             android:name=".View.ListeObjetConnecte_View"
-            android:label="@string/title_activity_liste_objet_connecte__view" >
+            android:label="Liste des objets" >
         </activity>
         <activity
             android:name=".View.ListeObjetInconnu_View"
@@ -70,8 +76,9 @@
         </activity>
         <activity
             android:name=".View.ConfigurationObjet"
-            android:label="@string/title_activity_configuration_objet" >
+            android:label="Configuration d'un objet" >
         </activity>
+
     </application>
 
 </manifest>
