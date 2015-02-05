@@ -1,0 +1,132 @@
+\documentclass[11pt,a4paper]{report} % Chaque document a une classe (ici report, peut aussi être article ...) définit le type de document. On y met aussi la taille de police en paramètre et le format
+
+\setcounter{tocdepth}{6} % Définit la profondeur du document (sections, lists, captions ...) (Notament pour l'index, savoir jusqu'ou on numérote part, chapter, section, subsection, subsubsection, paragraph ...)
+\usepackage[utf8]{inputenc} % Permet de rentrer des caractères directement depuis le clavier
+\usepackage[francais]{babel} % Permet a latex de savoir quelle ponctuation utiliser (en fonction de la langue, ex: pas d'espace avant un point et un espace après)
+\usepackage[sc]{mathpazo} % Font pour tout ce qui est formule mathématique
+\usepackage{amsmath} % Package simplifiant la saisie de fonction mathématique
+\usepackage{amsfonts} % Package rajoutant des fonts tenant compte des formules mathématiques
+\usepackage{amssymb} % Package permettant l'insertion de symbole mathématique
+\usepackage{makeidx} % Package permettant l'automatisation de l'insertion d'un index
+\usepackage[toc,page]{appendix} % Package permettant la gestion des annexes
+\usepackage{graphicx} % Package permettant l'insertion d'images
+\graphicspath{{pictures/}} % Permet de définir un sous dossier ou aller chercher les images à inclure si elles ne sont pas dans le répertoire courrant
+\usepackage{longtable} % Package permettant la création de tableaux sur plusieurs pages
+\usepackage{perpage} % Package permettant de faire des traitements par page, entre autre la remise à 0 du compteur d'index de footnote
+\usepackage{pdflscape}
+\usepackage[tight]{shorttoc} % Package permettant de créer une autre table des matière avec une autre profondeur (utile notament si le document est très long et need une table courte en début de document et une plus compléte à la fin par exemple)
+\usepackage[]{algorithm2e} % Package permettant l'insertion de bouts d'algo dans un fichier tex (formattage de l'insertion du code)
+\usepackage{array} % Permet notamment de modifier le format des colones de tableaux
+\usepackage{caption} % Pour faire des listes dans une légende
+\usepackage{placeins} % Package permettant de forcer le placement de flotant
+\usepackage{framed} % Pour mettre du texte ou autre dans des cadres
+\usepackage{float} % Pour créer les flottants (figure, tableau ou autre)
+\usepackage{hhline} % Ajoute une autre gestion des tableaux 
+\usepackage[table]{xcolor} % Permet de mettre de la couleur dans les tableaux 
+\usepackage[format=plain, labelfont=bf, textfont=it]{caption} % Pour modifier l'apparence des légende
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} % Définit le format du document
+\usepackage{hyperref} %Pour rendre les références clickable and linkable et pour définir leur apparence
+\hypersetup{ 
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\usepackage[toc]{glossaries} % Package permettant la création automatique de glossaire
+
+
+
+
+\usepackage{lscape}
+
+
+
+
+\usepackage{fancyhdr} % Package permettant la création de header et footer plus complexes (Y inclure une image par exemple)
+\pagestyle{fancy} % Change le syte des pages qui suivent cette instruction 
+\chead{Rapport Qualité Test}
+\rhead{}
+\lhead{\includegraphics[width=1.5cm]{./Picture/logoEseo}}
+\cfoot{\thepage}
+\rfoot{Baranger - Caillot - Chéreau}
+\lfoot{}
+
+\newcommand{\sommaire}{\shorttoc{Sommaire}{1}} 
+
+\author{L2GB Inc\\
+		ESEO option ASTRE\\
+		l2gb.inc@gmail.com
+		}
+
+\title{HSMS\\Heating Smart Managing Software  \\Software Conception\\L2GB}
+
+ 
+\makeglossaries % Génère le glossaire
+\makeindex % Génère l'index
+
+\MakePerPage{footnote} % Utilisation du package perPage pour ici remettre à 0 à chaque page la numérotation des notes de bas de pages
+\usepackage{hyperref} %Pour rendre les références clickable and linkable
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\setcounter{secnumdepth}{5} % Pour que les sections jusqu'au niveau 5 (paragraphe) soient numérotées
+\newcommand{\blank}[1]{\hspace*{#1}} % permet de faire des tabulations en tapant \blank
+\renewcommand{\figurename}{Illustration} % Permet de changer les légendes des figures, FIGURE <- Illustration
+
+\begin{document} % Début à proprement parler du document
+
+\maketitle % Commande indiquant à Latex d'imprimer le titre ici
+\sommaire % Commande indiquant à Latex d'imprimer le sommaire iciP
+
+	\chapter{Introduction}
+Ce dossier est rédigé par l’équipe de développement L2GB. Il est à l’intention de l’équipe de développement. Son contenu sera en cohérence avec le dossier de spécifications. 
+		\section{Objet}
+		
+L’objectif principal du dossier de conception est de permettre de formaliser les étapes préliminaires du développement du système afin de rendre ce développement conforme aux exigences du client. La phase de conception permet de décrire de manière non ambigüe, le plus souvent en utilisant un langage de modélisation, le fonctionnement futur du système afin d’en faciliter sa réalisation. Elle permettra aussi aux testeurs de vérifier le bon fonctionnement des composants du système. Ce document a aussi pour objectif de faciliter la compréhension du fonctionnement de chaque composant et de bien visualiser les connexions entre ces derniers. Il intervient avant la phase de réalisation. Cela s'explique par le fait que cette phase s’appuiera sur les résultats obtenus après la conception.
+
+		\chapter{Conception}
+		
+		\section{Diagramme de classe CentraleSoft}
+		\newpage
+		
+		\begin{landscape}
+		\section{Diagramme de classe Java}
+
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = 25cm ,height = 35cm,keepaspectratio]{./Picture/Diagramme de class java Model.png}
+			\caption{Diagramme de classe java Model} 
+			\label{diagClass}
+		\end{figure}
+		\newpage
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = 25cm ,height = 35cm,keepaspectratio]{./Picture/Diagramme de classe java View.png}
+			\caption{Diagramme de classe java View} 
+			\label{diagClass}
+		\end{figure}
+		\newpage
+		
+		
+		\end{landscape}
+		
+		\section{Principe de fonctionnement}		
+		
+		\section{Principe de fonctionnement}
+		
+		\section{Description des composants}
+		
+		
+		
+		\section{Protocole de communication}
+		
+		
+		
+\end{document}
