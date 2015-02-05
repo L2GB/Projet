@@ -87,6 +87,7 @@ public class MainActivity extends Activity {
                             objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
                         this.model.getObjet_model().get(p).setAllume(objet.isAllume());
                         if(objet.isAllume()){
+
                             this.model.powerOn(this.model.getObjet_model().get(p));
                         }else{
                             this.model.powerOff(this.model.getObjet_model().get(p));
