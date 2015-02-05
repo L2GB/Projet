@@ -56,6 +56,10 @@ public:
 	std::string zdata_get_holder_name(int deviceNum, int instanceNum, int commandClassNum, std::string dataName);
 	bool zNetwork_is_there_device_holder(int deviceNum, std::string dataName);
 	void zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback, void *args);
+	void zNetwork_get_thermostat_mode(int deviceId, int instanceNum);
+	void zNetwork_set_thermostat_mode(char deviceId, char instanceNum, char mode);
+	void zNetwork_get_capabilities(char deviceId, char instanceNum);
+	int basic_get(int deviceNodeId, int instanceId);
 
 
 private:
