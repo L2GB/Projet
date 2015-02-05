@@ -45,7 +45,7 @@
 
 \usepackage{fancyhdr} % Package permettant la création de header et footer plus complexes (Y inclure une image par exemple)
 \pagestyle{fancy} % Change le syte des pages qui suivent cette instruction 
-\chead{Rapport Qualité Test}
+\chead{Dossier de conception}
 \rhead{}
 \lhead{\includegraphics[width=1.5cm]{./Picture/logoEseo}}
 \cfoot{\thepage}
@@ -88,12 +88,22 @@ Ce dossier est rédigé par l’équipe de développement L2GB. Il est à l’in
 		\section{Objet}
 		
 L’objectif principal du dossier de conception est de permettre de formaliser les étapes préliminaires du développement du système afin de rendre ce développement conforme aux exigences du client. La phase de conception permet de décrire de manière non ambigüe, le plus souvent en utilisant un langage de modélisation, le fonctionnement futur du système afin d’en faciliter sa réalisation. Elle permettra aussi aux testeurs de vérifier le bon fonctionnement des composants du système. Ce document a aussi pour objectif de faciliter la compréhension du fonctionnement de chaque composant et de bien visualiser les connexions entre ces derniers. Il intervient avant la phase de réalisation. Cela s'explique par le fait que cette phase s’appuiera sur les résultats obtenus après la conception.
+\newpage
+
 
 		\chapter{Conception}
-		
 		\section{Diagramme de classe CentraleSoft}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = 18cm ,height = 30cm,keepaspectratio]{./Picture/Diagramme de class C++.png}
+			\caption{Diagramme de classe java Model} 
+			\label{diagClass}
+		\end{figure}
 		\newpage
 		
+		
+		
+
 		\begin{landscape}
 		\section{Diagramme de classe Java}
 
@@ -117,9 +127,15 @@ L’objectif principal du dossier de conception est de permettre de formaliser l
 		
 		\end{landscape}
 		
-		\section{Principe de fonctionnement}		
 		
 		\section{Principe de fonctionnement}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = 18cm ,height = 30cm,keepaspectratio]{./Picture/machine a etat java.png}
+			\caption{Machine à état de l'application Androïd} 
+			\label{diagClass}
+		\end{figure}
+		\newpage
 		
 		\section{Description des composants}
 		

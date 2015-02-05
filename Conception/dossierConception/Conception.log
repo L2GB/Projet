@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  5 FEB 2015 20:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 00:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -872,6 +872,9 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 76.
 
 LaTeX Warning: Label `diagClass' multiply defined.
 
+
+LaTeX Warning: Label `diagClass' multiply defined.
+
 )
 \openout1 = `Conception.aux'.
 
@@ -1065,45 +1068,61 @@ per-mettre de for-ma-li-ser les []etapes pr[]eliminaires
 
 ]
 Chapitre 2.
+
+LaTeX Warning: File `./Picture/Diagramme de class C++.png' not found on input l
+ine 98.
+
+<./Picture/Diagramme de class C++.png, id=51, 1393.205pt x 879.285pt>
+File: ./Picture/Diagramme de class C++.png Graphic file (type png)
+
+<use ./Picture/Diagramme de class C++.png>
+Package pdftex.def Info: ./Picture/Diagramme de class C++.png used on input lin
+e 98.
+(pdftex.def)             Requested size: 512.1402pt x 323.22392pt.
+
+Overfull \hbox (28.44333pt too wide) in paragraph at lines 98--99
+ [] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 99.
+
+LaTeX Font Warning: Font shape `OT1/pplx/bx/sc' undefined
+(Font)              using `OT1/pplx/bx/n' instead on input line 99.
+
+LaTeX Font Info:    Font shape `OT1/pplx/bx/sc' in size <10.95> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 99.
 [3
 
-]
+ <./Picture/Diagramme de class C++.png (PNG copy)>]
 
 LaTeX Warning: File `./Picture/Diagramme de class java Model.png' not found on 
-input line 103.
+input line 113.
 
 
-<./Picture/Diagramme de class java Model.png, id=59, 2726.185pt x 1151.30125pt>
+<./Picture/Diagramme de class java Model.png, id=58, 2726.185pt x 1151.30125pt>
 File: ./Picture/Diagramme de class java Model.png Graphic file (type png)
 <use ./Picture/Diagramme de class java Model.png>
 Package pdftex.def Info: ./Picture/Diagramme de class java Model.png used on in
-put line 103.
+put line 113.
 (pdftex.def)             Requested size: 711.32889pt x 300.40288pt.
-LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 104.
-
-
-LaTeX Font Warning: Font shape `OT1/pplx/bx/sc' undefined
-(Font)              using `OT1/pplx/bx/n' instead on input line 104.
-
-LaTeX Font Info:    Font shape `OT1/pplx/bx/sc' in size <10.95> not available
-(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 104.
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-01-26 23:10:59
+(epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 18:37:52
+(epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 107.
+(epstopdf)             \includegraphics on input line 117.
 Package epstopdf Info: Output file is already uptodate.
-<./Picture/logoEseo-eps-converted-to.pdf, id=60, 487.8225pt x 351.3125pt>
+
+<./Picture/logoEseo-eps-converted-to.pdf, id=59, 487.8225pt x 351.3125pt>
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 107.
+line 117.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
 
 
@@ -1118,63 +1137,95 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 odel.png (PNG copy)>]
 
 LaTeX Warning: File `./Picture/Diagramme de classe java View.png' not found on 
-input line 111.
+input line 121.
 
 
-<./Picture/Diagramme de classe java View.png, id=70, 2319.66624pt x 1073.00874p
+<./Picture/Diagramme de classe java View.png, id=68, 2319.66624pt x 1073.00874p
 t>
 File: ./Picture/Diagramme de classe java View.png Graphic file (type png)
  <use ./Picture/Diagramme de classe java View.png>
 Package pdftex.def Info: ./Picture/Diagramme de classe java View.png used on in
-put line 111.
+put line 121.
 (pdftex.def)             Requested size: 711.30217pt x 329.02725pt.
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-01-26 23:10:59
+(epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 18:37:52
+(epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 115.
+(epstopdf)             \includegraphics on input line 125.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 115.
+line 125.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
  [5 <./Picture/Diagramme de classe java View.png (PNG copy)>]
+
+LaTeX Warning: File `./Picture/machine a etat java.png' not found on input line
+ 134.
+
+<./Picture/machine a etat java.png, id=74, 874.26625pt x 804.00375pt>
+File: ./Picture/machine a etat java.png Graphic file (type png)
+
+<use ./Picture/machine a etat java.png>
+Package pdftex.def Info: ./Picture/machine a etat java.png used on input line 1
+34.
+(pdftex.def)             Requested size: 512.1574pt x 470.99666pt.
+
+Overfull \hbox (28.46053pt too wide) in paragraph at lines 134--135
+ [] 
+ []
+
+Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
+(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    size: 152543 bytes
+(epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    size: 52710 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
+verted-to.pdf ./Picture/logoEseo.eps>
+(epstopdf)             \includegraphics on input line 138.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
+<use ./Picture/logoEseo-eps-converted-to.pdf>
+Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
+line 138.
+(pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
+ [6
+
+ <./Picture/machine a etat java.png (PNG copy)>]
 
 Package glossaries Warning: No \printglossary or \printglossaries found.
 (Remove \makeglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-01-26 23:10:59
+(epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 18:37:52
+(epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 132.
+(epstopdf)             \includegraphics on input line 148.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 132.
+line 148.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
- [6
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
  (./Conception.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 132.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 132.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 148.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
 Package rerunfilecheck Info: File `Conception.out' has not changed.
-(rerunfilecheck)             Checksum: B4A54F36CEA50BEE10799633E4536260;579.
+(rerunfilecheck)             Checksum: BCD148E811C771495D95F8A70027F1DE;507.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1182,13 +1233,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 132.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
  ) 
 Here is how much of TeX's memory you used:
- 14913 strings out of 493117
- 219475 string characters out of 6135434
- 396679 words of memory out of 5000000
- 18031 multiletter control sequences out of 15000+600000
+ 14923 strings out of 493117
+ 219818 string characters out of 6135434
+ 396678 words of memory out of 5000000
+ 18038 multiletter control sequences out of 15000+600000
  23857 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,15n,75p,1752b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1196,10 +1247,10 @@ Here is how much of TeX's memory you used:
 exlive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/
 2014/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/te
 xmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Conception.pdf (7 pages, 465918 bytes).
+Output written on Conception.pdf (8 pages, 647124 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
- 19 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 105 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
+ 21 named destinations out of 1000 (max. 500000)
+ 90 words of extra memory for PDF output out of 10000 (max. 10000000)
 
