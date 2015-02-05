@@ -528,10 +528,16 @@ bool ZWaveController::zNetwork_get_boolean(int deviceNum, int instanceNum, int c
 
 float ZWaveController::zNetwork_get_float(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 	float value(-123.0);
+	ZDataHolder holder;
 
 	this->zdata_mutex_lock();
 
-	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+	if(instanceNum == 0 && commandClassNum == 0){
+		holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
+	}
+	else{
+		holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+	}
 
 	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "Float"){
 		zdata_get_float(holder, &value);
@@ -544,10 +550,16 @@ float ZWaveController::zNetwork_get_float(int deviceNum, int instanceNum, int co
 
 std::string ZWaveController::zNetwork_get_string(int deviceNum, int instanceNum, int commandClassNum, std::string dataName){
 	const char * value;
+	ZDataHolder holder;
 
 	this->zdata_mutex_lock();
 
-	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+	if(instanceNum == 0 && commandClassNum == 0){
+		holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
+	}
+	else{
+		holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+	}
 
 	if(holder != NULL && zNetwork_get_holder_value_type(deviceNum, instanceNum, commandClassNum, dataName) == "String"){
 		zdata_get_string(holder, &value);
