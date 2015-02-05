@@ -1,8 +1,7 @@
-/*
- * ZWaveController.cpp
+/* ZWaveController.cpp
  *
  *  Created on: 27 janv. 2015
- *      Author: CAILLOT Kilian
+ *    Author: CAILLOT Kilian
  */
 
 #include "ZWaveController.h"
@@ -24,9 +23,11 @@ ZWaveController::ZWaveController() {
 ZWaveController::~ZWaveController() {
 
 	// On stop le réseau zwave
+	cout << " On stoppe le réseau zwave " << endl;
 	zway_stop(this->m_zway);
 
 	// On libére l'espace du alloué au zway
+	cout << " On libére l'espace alloué au zway " << endl;
 	zway_terminate(&this->m_zway);
 }
 
@@ -48,7 +49,7 @@ int ZWaveController::startNetwork() {
 	this->m_zway = NULL;
 
 	// Création du contexte Z-Way
-	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB", NULL); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
+	ZWError result = zway_init(&m_zway, ZSTR("/dev/ttyAMA0"), configFolderPath, translationFolderPath, zddxFolderPath, "L2GB",NULL); //logger à la place de NULL (NULL pour ne pas avoir tous les logs dans la console)
 	// En cas d'erreur lors de la création du contexte Z-Way on inscrit l'erreur dans les logs
 	if(result != NoError){
 		zway_log_error(m_zway, Critical, "Failed to init ZWay", result);
@@ -262,7 +263,6 @@ int ZWaveController::inclusion_mode_ON(){
 		cout << endl << "Inclusion activation failed " << endl;
 	}
 
-
 	return 0;
 }
 
@@ -322,6 +322,22 @@ int ZWaveController::basic_set(int deviceNodeId, int instanceId, int valeur){
 	}
 	else{
 		cout << endl << "La commande set n'a pas été envoyée " << endl << endl;
+	}
+
+
+	return result;
+}
+
+// Méthode useless
+int ZWaveController::basic_get(int deviceNodeId, int instanceId){
+	int result(-666);
+
+	if(zway_cc_basic_get(this->m_zway, deviceNodeId, instanceId, NULL, NULL, NULL) == NoError){
+		cout << endl << "La commande get a bien été envoyée " << endl << endl;
+		result = 0;
+	}
+	else{
+		cout << endl << "La commande get n'a pas été envoyée " << endl << endl;
 	}
 
 
@@ -661,7 +677,40 @@ std::string ZWaveController::zdata_get_holder_name(int deviceNum, int instanceNu
 	return name;
 }
 
+void ZWaveController::zNetwork_get_thermostat_mode(int deviceId, int instanceNum){
 
+	zway_cc_thermostat_mode_get(this->m_zway, deviceId, instanceNum, NULL, NULL, NULL);
+}
+
+void ZWaveController::zNetwork_set_thermostat_mode(char deviceId, char instanceNum, char mode){
+
+	zway_cc_thermostat_mode_set(this->m_zway, deviceId, instanceNum, (ZWBYTE)mode, NULL, NULL, NULL);
+}
+
+void ZWaveController::zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback, void *args) {
+
+		ZDataHolder holder;
+
+		this->zdata_mutex_lock();
+
+		if(instanceNum == 0 && commandClassNum == 0){
+			holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
+		}
+		else{
+			holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+		}
+
+		if(holder != NULL) {
+			zdata_add_callback(holder, callback, false, args);
+		}
+
+		this->zdata_mutex_unlock();
+
+}
+
+void ZWaveController::zNetwork_get_capabilities(char deviceId, char instanceNum){
+	zway_cc_wakeup_capabilities_get(this->m_zway, deviceId, instanceNum, NULL, NULL, NULL);
+}
 
 // Search a Data holder by name starting from a defined Data holder
 //
@@ -685,22 +734,78 @@ bool ZWaveController::zNeztwork_is_device_connected(int deviceId, int instanceNu
 
 }
 
-
-void ZWaveController::zdata_set_callback(int deviceNum, int instanceNum, int commandClassNum, std::string dataName, ZDataChangeCallback callback, void *args)
-{
-	ZDataHolder holder;
-
-	this->zdata_mutex_lock();
-
-	if(instanceNum == 0 && commandClassNum == 0){
-		holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
-	}
-	else{
-		holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
-	}
-
-	if(holder != NULL)
-	{
-		zdata_add_callback(holder, callback, false, args);
-	}
-}
+//void ZWaveController::dump_zway_data_holder(){
+//
+//    char *path = zdata_get_path(data);
+//    ZWDataType type;
+//    zdata_get_type(data, &type);
+//
+//    ZWBOOL bool_val;
+//    int int_val;
+//    float float_val;
+//    ZWCSTR str_val;
+//    const ZWBYTE *binary;
+//    const int *int_arr;
+//    const float *float_arr;
+//    const ZWCSTR *str_arr;
+//    size_t len, i;
+//
+//    switch (type)
+//    {
+//        case Empty:
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = Empty"), path);
+//            break;
+//        case Boolean:
+//            zdata_get_boolean(data, &bool_val);
+//            if (bool_val)
+//                zway_log(this->m_zway, Debug, ZSTR("DATA %s = True"), path);
+//            else
+//                zway_log(this->m_zway, Debug, ZSTR("DATA %s = False"), path);
+//            break;
+//        case Integer:
+//            zdata_get_integer(data, &int_val);
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = %d (0x%08x)"), path, int_val, int_val);
+//            break;
+//        case Float:
+//            zdata_get_float(data, &float_val);
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = %f"), path, float_val);
+//            break;
+//        case String:
+//            zdata_get_string(data, &str_val);
+//            zway_log(zway, Debug, ZSTR("DATA %s = \"%s\""), path, str_val);
+//            break;
+//        case Binary:
+//            zdata_get_binary(data, &binary, &len);
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = byte[%d]"), path, len);
+//            zway_dump(this->m_zway, Debug, ZSTR("  "), len, binary);
+//            break;
+//        case ArrayOfInteger:
+//            zdata_get_integer_array(data, &int_arr, &len);
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = int[%d]"), path, len);
+//            for (i = 0; i < len; i++)
+//                zway_log(this->m_zway, Debug, ZSTR("  [%02d] %d"), i, int_arr[i]);
+//            break;
+//        case ArrayOfFloat:
+//            zdata_get_float_array(data, &float_arr, &len);
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = float[%d]"), path, len);
+//            for (i = 0; i < len; i++)
+//                zway_log(this->m_zway, Debug, ZSTR("  [%02d] %f"), i, float_arr[i]);
+//            break;
+//        case ArrayOfString:
+//            zdata_get_string_array(data, &str_arr, &len);
+//            zway_log(this->m_zway, Debug, ZSTR("DATA %s = string[%d]"), path, len);
+//            for (i = 0; i < len; i++)
+//                zway_log(this->m_zway, Debug, ZSTR("  [%02d] \"%s\""), i, str_arr[i]);
+//            break;
+//    }
+//    free(path);
+//
+//    ZDataIterator child = zdata_first_child(data);
+//    while (child != NULL)
+//    {
+//        path = zdata_get_path(child->data);
+//        zway_log(zway, Debug, ZSTR("CHILD %s"), path);
+//        free(path);
+//        child = zdata_next_child(child);
+//    }
+//}
