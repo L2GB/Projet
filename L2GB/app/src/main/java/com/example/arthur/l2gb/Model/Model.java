@@ -31,7 +31,7 @@ public class Model implements Parcelable {
     private int portServeur;
     private JsonUtil communication;
 
-    public Model(){
+    public Model(String ip){
        this.objet_model = new ArrayList<Objet_Model>();
        this.jours_Model = new ArrayList<Jours_Model>();
        this.profilSemaine_model = new ArrayList<Semaine_Model>();
@@ -39,7 +39,7 @@ public class Model implements Parcelable {
 
         /** Mise en place de la communication **/
 
-        boolean testconnection = setConnection(Constante.IP_SERVEUR,Constante.PORT_SERVEUR);
+        boolean testconnection = setConnection(ip,Constante.PORT_SERVEUR);
         System.out.println("Communication réussie ? " +testconnection);
         askJourList();
         try
