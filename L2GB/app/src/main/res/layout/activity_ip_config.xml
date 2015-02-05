@@ -27,5 +27,13 @@
             android:layout_gravity="center_horizontal|top"
             android:onClick="connection"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_gravity="center"
+            android:src="@drawable/tumblr_nj8r3r63il1qzy9ouo1_1280"/>
+
+
     </FrameLayout>
 </RelativeLayout>
