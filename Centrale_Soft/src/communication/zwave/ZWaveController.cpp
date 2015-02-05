@@ -407,7 +407,12 @@ std::string ZWaveController::zNetwork_get_holder_value_type(int deviceNum, int i
 
 	this->zdata_mutex_lock();
 
-	ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+//	if(instanceNum == 0 && commandClassNum == 0){
+//		ZDataHolder holder = zway_find_device_data(this->m_zway, deviceNum, dataName.c_str());
+//	}
+//	else{
+		ZDataHolder holder = zway_find_device_instance_cc_data(this->m_zway,deviceNum, instanceNum, commandClassNum, dataName.c_str());
+//	}
 
 	if(holder != NULL){
 		if(zdata_get_type(holder, &holderValueType) == NoError){
