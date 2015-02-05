@@ -23,7 +23,7 @@ PowerPlug::~PowerPlug()
 {
 }
 
-json_t *PowerPlug::json_object()
+json_t *PowerPlug::json_transform_object()
 {
 	json_t *object = json_object();
 	json_object_set(object, "typeObjet", json_string(m_type.c_str()));

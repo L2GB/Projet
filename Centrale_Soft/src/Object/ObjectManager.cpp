@@ -572,8 +572,8 @@ Room *ObjectManager::getRoom(std::string _name)
 
 void ObjectManager::notifyObjectChanges(Object *_object)
 {
-	IdClient *id = NULL;
-	m_transmission->executeOrder("HASCHANGED_OBJET", _object->json_object(), *id);
+	IdClient id(0);
+	m_transmission->executeOrder("HASCHANGED_OBJET", _object->json_transform_object(), id);
 }
 
 void ObjectManager::powerPlug_switchON(int _deviceId, int _instanceNum)

@@ -40,7 +40,7 @@ void ConnectionManager<T>::detachInterface(DataObserver *_dataObserver)
 template <typename T>
 void ConnectionManager<T>::writeData(std::string _dataTosend, IdClient _idClient)
 {
-	if(&_idClient != NULL)
+	if(_idClient.getFd() == 0)
 		m_dataManager.sendToClient(_dataTosend, _idClient);
 	else
 		m_dataManager.sendToAllClient(_dataTosend);

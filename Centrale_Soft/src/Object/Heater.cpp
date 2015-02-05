@@ -23,7 +23,7 @@ Heater::~Heater()
 {
 }
 
-json_t *Heater::json_object()
+json_t *Heater::json_transform_object()
 {
 	json_t *object = json_object();
 	json_object_set(object, "typeObjet", json_string(m_type.c_str()));
