@@ -3,10 +3,13 @@ package com.example.arthur.l2gb.View;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.arthur.l2gb.R;
@@ -14,12 +17,48 @@ import com.example.arthur.l2gb.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IpConfig extends Activity {
+public class IpConfig extends Activity implements GestureDetector.OnGestureListener {
+
+    private GestureDetector mGestureDetector;
+
+    public boolean onTouchEvent(MotionEvent event) {
+        return mGestureDetector.onTouchEvent(event);
+    }
+
+
+    public boolean onDown(MotionEvent arg0) {
+        // Don't forget to return true here to get the following touch events
+        return true;
+    }
+
+    public boolean onFling(MotionEvent arg0, MotionEvent arg1, float arg2, float arg3) {
+        return false;
+    }
+
+    public void onLongPress(MotionEvent arg0) {
+        ImageView im =(ImageView) findViewById(R.id.imageView);
+        im.setVisibility(View.GONE);
+    }
+
+    public boolean onScroll(MotionEvent arg0, MotionEvent arg1, float arg2, float arg3) {
+        // You can do here whatever you want to handle scrolling
+        return true;
+    }
+
+    public void onShowPress(MotionEvent arg0) {
+    }
+
+    public boolean onSingleTapUp(MotionEvent arg0) {
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ip_config);
+        ImageView im =(ImageView) findViewById(R.id.imageView);
+        im.setVisibility(View.GONE);
+        mGestureDetector = new GestureDetector(this);
     }
 
     public void connection(View v){
@@ -33,9 +72,13 @@ public class IpConfig extends Activity {
         }
 
     }
-    public static boolean validIP(String ip) {
+    public  boolean validIP(String ip) {
         if (ip == null || ip.isEmpty()) return false;
         ip = ip.trim();
+        if(ip.equals("42.51.69")){
+            ImageView im =(ImageView) findViewById(R.id.imageView);
+            im.setVisibility(View.VISIBLE);
+        }
         if ((ip.length() < 6) & (ip.length() > 15)) return false;
             Pattern pattern = Pattern.compile("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
             Matcher matcher = pattern.matcher(ip);
