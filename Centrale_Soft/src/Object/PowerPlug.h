@@ -31,16 +31,40 @@ class PowerPlug : public Object
 		PowerPlug(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~PowerPlug();
 
+		/**
+		 * Print details about the object.
+		 */
 		void print();
+
+		/**
+		 * Switch on the power plug.
+		 */
 		void switchON();
+
+		/**
+		 * Switch off the power pluf
+		 */
 		void switchOFF();
+
+		/**
+		 * Update the level.
+		 */
 		bool getLevel();
+
+		/**
+		 * Transform parameters in a json message
+		 */
 		json_t *json_transform_object();
 
 	private:
 		void run();
 		void init();
+
+		/**
+		 * Compare with the planning if the power plug need to be switched.
+		 */
 		void checkTime();
+
 		PowerPlug_level getScheduledLevel();
 
 	private:

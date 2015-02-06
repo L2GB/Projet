@@ -20,7 +20,14 @@ enum Heater_state
 class Heater : public Object
 {
 	public:
+		/**
+		 * Constructor for the loaded objects.
+		 */
 		Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_week, bool _connected, bool _unknown, int _Tconfort, int _Teco);
+
+		/**
+		 * Constructor for the new Objects added to the network.
+		 */
 		Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~Heater();
 
@@ -29,14 +36,28 @@ class Heater : public Object
 		int getTconfort(){return m_Tconfort;}
 		int getTeco(){return m_Teco;}
 		int getAllume(){return m_allume;}
+
+		/**
+		 * Print details about the object.
+		 */
 		void print();
+
+		/**
+		 * Transform parameters in a json message
+		 */
 		json_t *json_transform_object();
 
 	private:
 		void run();
 		void init();
+
+		/**
+		 * Get the current temperature.
+		 */
 		void getCurrentTemp();
+
 		void switchON();
+
 		void switchOFF();
 
 	private:

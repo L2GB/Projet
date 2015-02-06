@@ -35,7 +35,14 @@ class ObjectManager : public Communicator
 		ObjectManager();
 		virtual ~ObjectManager(){}
 
+		/**
+		 * Create the zwave network.
+		 */
 		void zwave_startNetwork();
+
+		/**
+		 * Associate callbacks to the objects and launch the object threads.
+		 */
 		void init_objects();
 		void addObjectToRoom(json_t *_room);
 		void addObjectToList(int _instanceNum, int _deviceId, const std::string _name, const std::string _typeObject);
@@ -49,7 +56,15 @@ class ObjectManager : public Communicator
 		void loadRooms(json_t *_rooms);
 		Object *getObject(int _deviceId, int _instanceNum);
 		Room *getRoom(std::string _name);
+
+		/**
+		 * Callback when an object changed.
+		 */
 		void notifyObjectChanges(Object *_object);
+
+		/**
+		 * Object to set callback, used to simplify the association.
+		 */
 		Object *getObjectToConfigure(){ return m_objectToConfigure;}
 
 		/*
