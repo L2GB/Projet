@@ -16,13 +16,6 @@ public class Scenario_View extends Activity {
     MainActivity mainActivity = null;
     Model model = null;
 
-    public Scenario_View() {
-    }
-
-    public Scenario_View(MainActivity mainActivity, Model model) {
-        this.mainActivity = mainActivity;
-        this.model = model;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +46,10 @@ public class Scenario_View extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Permet de revenir au menu.
+     * @param view
+     */
     public void goMenu(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
