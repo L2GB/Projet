@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 02:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.13)  6 FEB 2015 09:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Conception.tex
 (./Conception.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/report.cls
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 6 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size11.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -24,19 +24,19 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2014/04/30 v1.2b Input encoding file
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.dfu
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -186,7 +186,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ot1enc.dfu
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -217,7 +217,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omsenc.dfu
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -241,62 +241,57 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2014/03/24 3.9k The Babel package
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/12/03 3.9h The Babel package
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/babel-french/frenchb.ldf
-Language: frenchb 2014/04/18 v3.0c French support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/frenchb.ldf
+Language: frenchb 2013/12/30 v2.6g French support from the babel system
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2014/03/24 3.9k Babel common definitions
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/12/03 3.9h Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
-\l@acadian = a dialect from \language\l@french 
-\l@canadien = a dialect from \language\l@french 
-\FBcolonskip=\skip43
-\FBthinskip=\skip44
 \FB@interchartokenstateORI=\count89
-Package babel Info: Making : an active character on input line 371.
-Package babel Info: Making ; an active character on input line 372.
-Package babel Info: Making ! an active character on input line 373.
-Package babel Info: Making ? an active character on input line 374.
-\FBguillskip=\skip45
+Package babel Info: Making : an active character on input line 244.
+Package babel Info: Making ; an active character on input line 245.
+Package babel Info: Making ! an active character on input line 246.
+Package babel Info: Making ? an active character on input line 247.
 \FB@Mht=\dimen104
 \std@mcc=\count90
 \dec@mcc=\count91
-\listindentFB=\skip46
-\labelwidthFB=\skip47
-\leftmarginFB=\skip48
+\listindentFB=\skip43
+\labelwidthFB=\skip44
+\leftmarginFB=\skip45
 \parindentFFN=\dimen105
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/carlisle/scalefnt.sty)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/mathpazo.sty
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathpazo.sty
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup4
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip49
+\@mathmargin=\skip46
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks17
 \ex@=\dimen106
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count92
@@ -331,52 +326,52 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \totwidth@=\dimen113
 \lineht@=\dimen114
 \@envbody=\toks20
-\multlinegap=\skip50
-\multlinetaggap=\skip51
+\multlinegap=\skip47
+\multlinetaggap=\skip48
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/makeidx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/appendix/appendix.sty
+(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@pps=\count104
 \c@@ppsavesec=\count105
 \c@@ppsaveapp=\count106
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count107
@@ -384,12 +379,12 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen115
 \Gin@req@width=\dimen116
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/longtable.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip52
-\LTright=\skip53
-\LTpre=\skip54
-\LTpost=\skip55
+\LTleft=\skip49
+\LTright=\skip50
+\LTpre=\skip51
+\LTpost=\skip52
 \LTchunksize=\count108
 \LTcapwidth=\dimen117
 \LT@head=\box28
@@ -402,39 +397,39 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count112
 \LT@p@ftn=\toks22
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/bigfoot/perpage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/bigfoot/perpage.sty
 Package: perpage 2006/07/15 1.12 Reset/sort counters per page
 \c@abspage=\count113
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/lscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/shorttoc/shorttoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/shorttoc/shorttoc.sty
 Package: shorttoc 2002/08/20 v1.3 Short table of contents (JPFD)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2013/01/06 v5.00 algorithms environments
 \c@AlgoLine=\count114
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/xspace.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/relsize/relsize.sty
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
 ********************************************************
@@ -444,14 +439,14 @@ Package `algorithm2e' Release 5.0 -- january 06 2013 --
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 - Author: Christophe Fiorio (cfiorio@um2.fr)
 ********************************************************
-\skiptotal=\skip56
-\skiplinenumber=\skip57
-\skiprule=\skip58
-\skiphlne=\skip59
-\skiptext=\skip60
-\skiplength=\skip61
-\algomargin=\skip62
-\skipalgocfslide=\skip63
+\skiptotal=\skip53
+\skiplinenumber=\skip54
+\skiprule=\skip55
+\skiphlne=\skip56
+\skiptext=\skip57
+\skiplength=\skip58
+\algomargin=\skip59
+\skipalgocfslide=\skip60
 \algowidth=\dimen118
 \inoutsize=\dimen119
 \inoutindent=\dimen120
@@ -460,35 +455,35 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \interspacetitleboxruled=\dimen123
 \algocf@inoutbox=\box32
 \algocf@inputbox=\box33
-\AlCapSkip=\skip64
-\AlCapHSkip=\skip65
-\algoskipindent=\skip66
+\AlCapSkip=\skip61
+\AlCapHSkip=\skip62
+\algoskipindent=\skip63
 \algocf@nlbox=\box34
 \algocf@hangingbox=\box35
 \algocf@untilbox=\box36
-\algocf@skipuntil=\skip67
+\algocf@skipuntil=\skip64
 \algocf@capbox=\box37
-\algoheightruledefault=\skip68
-\algoheightrule=\skip69
-\algotitleheightruledefault=\skip70
-\algotitleheightrule=\skip71
+\algoheightruledefault=\skip65
+\algoheightrule=\skip66
+\algotitleheightruledefault=\skip67
+\algotitleheightrule=\skip68
 \c@algocfline=\count115
 \c@algocfproc=\count116
 \c@algocf=\count117
 \algocf@algoframe=\box38
 \algocf@algobox=\box39
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/tools/array.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen124
 \extrarowheight=\dimen125
 \NC@list=\toks23
-\extratabsurround=\skip72
-\backup@length=\skip73
+\extratabsurround=\skip69
+\backup@length=\skip70
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen126
@@ -502,21 +497,21 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \c@ContinuedFloat=\count118
 Package caption Info: longtable package is loaded.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/ltcaption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/placeins/placeins.sty
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/framed/framed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip74
+\OuterFrameSep=\skip71
 \fb@frw=\dimen133
 \fb@frh=\dimen134
 \FrameRule=\dimen135
 \FrameSep=\dimen136
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count119
 \float@exts=\toks24
@@ -524,21 +519,21 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks25
 \@floatcapt=\box41
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/hhline.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/hhline.sty
 Package: hhline 1994/05/23 v2.03 Table rule package (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/colortbl/colortbl.sty
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 \everycr=\toks26
-\minrowclearance=\skip75
+\minrowclearance=\skip72
 )
 \rownum=\count120
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
@@ -551,10 +546,10 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
@@ -571,14 +566,14 @@ Package ifvtex Info: VTeX not detected.
 \Gm@layoutvoffset=\dimen144
 \Gm@dimlist=\toks27
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -617,24 +612,24 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/auxhook.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen145
 \Hy@linkcounter=\count124
 \Hy@pagecounter=\count125
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/pd1enc.def
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count126
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -646,7 +641,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count127
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -671,39 +666,39 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count132
 \c@bookmark@seq@number=\count133
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip76
+\Hy@SectionHShift=\skip73
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 35.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/base/glossaries.sty
-Package: glossaries 2014/04/04 v4.07 (NLCT)
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+Package: glossaries 2014/01/20 v4.03 (NLCT)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2014/05/09 v2.6d package option processing (HA)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 \XKV@toks=\toks28
 \XKV@tempa@toks=\toks29
 \XKV@depth=\count134
-File: xkeyval.tex 2014/05/09 v2.6d key=value parser (HA)
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
 Package: mfirstuc 2013/11/04 v1.08 (NLCT)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/etex-pkg/etex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 \et@xins=\count135
 )
@@ -712,31 +707,31 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 \@glsmfirst=\toks30
 \@glsmrest=\toks31
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/textcase/textcase.sty
+(/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/xfor/xfor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xfor/xfor.sty
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/datatool/datatool-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-base.sty
 Package: datatool-base 2013/09/06 v2.18 (NLCT)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/substr/substr.sty
+(/usr/share/texlive/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
 \c@su@anzahl=\count137
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/datatool/datatool-fp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-fp.sty
 Package: datatool-fp 2013/08/29 v2.17 (NLCT)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
 
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/defpattern.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
 \actioncount=\count138
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-basic.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
 \FP@xs=\count139
 \FP@xia=\count140
@@ -748,37 +743,37 @@ Package: fp-basic 1996/05/13
 \FP@regs=\count146
 \FP@times=\count147
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-addons.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-snap.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-snap.sty
 Package: fp-snap 1995/04/05
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-exp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-exp.sty
 Package: fp-exp 1995/04/03
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-trigo.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-trigo.sty
 Package: fp-trigo 1995/04/14
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-pas.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-pas.sty
 Package: fp-pas 1994/08/29
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-random.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
 \FPseed=\count148
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-eqn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-upn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-upn.sty
 Package: fp-upn 1996/10/21
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fp/fp-eval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 )))
 \@dtl@toks=\toks32
 \@dtl@tmpcount=\count149
-\dtl@tmplength=\skip77
+\dtl@tmplength=\skip74
 \dtl@sortresult=\count150
 \@dtl@numgrpsepcount=\count151
 \@dtl@datatype=\count152
@@ -786,48 +781,43 @@ Package: fp-eval 1995/04/03
 \dtl@codeB=\count154
 \@dtl@foreach@level=\count155
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/base/glossaries-compat
-ible-307.sty
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-
+307.sty
 Package: glossaries-compatible-307 2013/11/14 v4.0 (NLCT)
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/beamer/translator/translator.sty
+) (/usr/share/texmf/tex/latex/beamer/base/translator/translator.sty
 Package: translator 2010/06/12 ver 1.10
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/beamer/translator/translator-lang
-uage-mappings.tex))
+(/usr/share/texmf/tex/latex/beamer/base/translator/translator-language-mappings
+.tex))
 \gls@level=\count156
 \@gls@tmpb=\toks33
-\gls@tmplen=\skip78
+\gls@tmplen=\skip75
+\glswrite=\write3
 \glskeylisttok=\toks34
 \glslabeltok=\toks35
 \glsshorttok=\toks36
 \glslongtok=\toks37
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/styles/glossary-hypern
-av.sty
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.st
+y
 Package: glossary-hypernav 2013/11/14 v4.0 (NLCT)
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/styles/glossary-list.s
-ty
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 Package: glossary-list 2013/11/14 v4.0 (NLCT)
-\glslistdottedwidth=\skip79
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/styles/glossary-long.s
-ty
+\glslistdottedwidth=\skip76
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
 Package: glossary-long 2013/11/14 v4.0 (NLCT)
-\glsdescwidth=\skip80
-\glspagelistwidth=\skip81
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/styles/glossary-super.
-sty
+\glsdescwidth=\skip77
+\glspagelistwidth=\skip78
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 Package: glossary-super 2013/11/14 v4.0 (NLCT)
- (/usr/local/texlive/2014/texmf-dist/tex/latex/supertabular/supertabular.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \c@tracingst=\count157
 \ST@wd=\dimen149
-\ST@rightskip=\skip82
-\ST@leftskip=\skip83
-\ST@parfillskip=\skip84
+\ST@rightskip=\skip79
+\ST@leftskip=\skip80
+\ST@parfillskip=\skip81
 \ST@pageleft=\dimen150
 \ST@headht=\dimen151
 \ST@tailht=\dimen152
@@ -840,22 +830,21 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \ST@dimen=\dimen159
 \ST@pbox=\box42
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/styles/glossary-tree.s
-ty
-Package: glossary-tree 2014/03/06 v4.04 (NLCT)
-\glstreeindent=\skip85
-)) (/usr/local/texlive/2014/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip86
-\f@ncyO@elh=\skip87
-\f@ncyO@erh=\skip88
-\f@ncyO@olh=\skip89
-\f@ncyO@orh=\skip90
-\f@ncyO@elf=\skip91
-\f@ncyO@erf=\skip92
-\f@ncyO@olf=\skip93
-\f@ncyO@orf=\skip94
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
+Package: glossary-tree 2013/11/14 v4.0 (NLCT)
+\glstreeindent=\skip82
+))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip83
+\f@ncyO@elh=\skip84
+\f@ncyO@erh=\skip85
+\f@ncyO@olh=\skip86
+\f@ncyO@orh=\skip87
+\f@ncyO@elf=\skip88
+\f@ncyO@erf=\skip89
+\f@ncyO@olf=\skip90
+\f@ncyO@orf=\skip91
 )
-\glswrite=\write3
 \glo@main@file=\write4
 \openout4 = `Conception.glo'.
 
@@ -897,7 +886,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
 LaTeX Font Info:    ... okay on input line 81.
 LaTeX Font Info:    Try loading font information for OT1+pplx on input line 81.
 
- (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1pplx.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
 LaTeX Info: Redefining \degres on input line 81.
@@ -905,14 +894,14 @@ LaTeX Info: Redefining \dots on input line 81.
 LaTeX Info: Redefining \up on input line 81.
 
 
-Package frenchb.ldf Warning: OT1 encoding should not be used for French.
+Package frenchb.ldf Warning: OT1 encoding should not be used for French. 
 (frenchb.ldf)                Add \usepackage[T1]{fontenc} to the preamble
 (frenchb.ldf)                of your document, on input line 81.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/hhline.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/hhline.sty
 Package: hhline 1994/05/23 v2.03 Table rule package (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count159
 \scratchdimen=\dimen160
@@ -925,10 +914,10 @@ Package: hhline 1994/05/23 v2.03 Table rule package (DPC)
 \MPnumerator=\count163
 \makeMPintoPDFobject=\count164
 \everyMPtoPDFconversion=\toks39
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
 Package grfext Info: Graphics extension search list:
@@ -936,7 +925,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -982,10 +971,10 @@ Package caption Info: End \AtBeginDocument code.
 
 \AtBeginShipoutBox=\box44
 Package hyperref Info: Link coloring ON on input line 81.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count165
@@ -999,32 +988,31 @@ LaTeX Info: Redefining \nameref on input line 81.
 \openout6 = `Conception.out'.
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/glossaries/dict/glossaries-dictio
-nary-English.dict
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/dict/glossaries-dictionary-
+English.dict
 Dictionary: glossaries-dictionary, Language: English 
 )
 LaTeX Font Info:    Try loading font information for OML+zplm on input line 84.
 
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omlzplm.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Try loading font information for OMS+zplm on input line 84.
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omszplm.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Try loading font information for OMX+zplm on input line 84.
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omxzplm.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Try loading font information for OT1+zplm on input line 84.
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -1043,7 +1031,7 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 
 \openout3 = `Conception.ist'.
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/pplx/b/n' tried instead on input line 84.
  (./Conception.toc
@@ -1084,20 +1072,16 @@ per-mettre de for-ma-li-ser les []etapes pr[]eliminaires
 
 ]
 Chapitre 2.
+<./Picture/Diagramme_de_class_C++.png, id=54, 1778.645pt x 1027.84pt>
+File: ./Picture/Diagramme_de_class_C++.png Graphic file (type png)
 
-LaTeX Warning: File `./Picture/Diagramme de class C++.png' not found on input l
-ine 98.
-
-<./Picture/Diagramme de class C++.png, id=54, 1393.205pt x 879.285pt>
-File: ./Picture/Diagramme de class C++.png Graphic file (type png)
-
-<use ./Picture/Diagramme de class C++.png>
-Package pdftex.def Info: ./Picture/Diagramme de class C++.png used on input lin
+<use ./Picture/Diagramme_de_class_C++.png>
+Package pdftex.def Info: ./Picture/Diagramme_de_class_C++.png used on input lin
 e 98.
-(pdftex.def)             Requested size: 512.1402pt x 323.22392pt.
+(pdftex.def)             Requested size: 512.12996pt x 295.94868pt.
 
-Overfull \hbox (28.44333pt too wide) in paragraph at lines 98--99
- [] 
+Overfull \hbox (28.43309pt too wide) in paragraph at lines 98--99
+ [][] 
  []
 
 
@@ -1108,35 +1092,31 @@ LaTeX Font Info:    Font shape `OT1/pplx/bx/sc' in size <10.95> not available
 (Font)              Font shape `OT1/pplx/b/n' tried instead on input line 99.
 [3
 
- <./Picture/Diagramme de class C++.png (PNG copy)>]
-
-LaTeX Warning: File `./Picture/Diagramme de class java Model.png' not found on 
-input line 113.
-
-
-<./Picture/Diagramme de class java Model.png, id=61, 2726.185pt x 1151.30125pt>
-File: ./Picture/Diagramme de class java Model.png Graphic file (type png)
-<use ./Picture/Diagramme de class java Model.png>
-Package pdftex.def Info: ./Picture/Diagramme de class java Model.png used on in
-put line 113.
+ <./Picture/Diagramme_de_class_C++.png (PNG copy)>]
+<./Picture/Diagramme_de_class_java_Model.png, id=61, 2726.185pt x 1151.30125pt>
+File: ./Picture/Diagramme_de_class_java_Model.png Graphic file (type png)
+<use ./Picture/Diagramme_de_class_java_Model.png>
+Package pdftex.def Info: ./Picture/Diagramme_de_class_java_Model.png used on in
+put line 118.
 (pdftex.def)             Requested size: 711.32889pt x 300.40288pt.
+
+
+LaTeX Warning: File `./Picture/logoEseo.eps' not found on input line 122.
+
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
-(epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-05 22:44:10
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 117.
+(epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
-
 <./Picture/logoEseo-eps-converted-to.pdf, id=62, 487.8225pt x 351.3125pt>
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 117.
+line 122.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
 
 
@@ -1147,94 +1127,88 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4
 
- <./Picture/logoEseo-eps-converted-to.pdf> <./Picture/Diagramme de class java M
+ <./Picture/logoEseo-eps-converted-to.pdf> <./Picture/Diagramme_de_class_java_M
 odel.png (PNG copy)>]
-
-LaTeX Warning: File `./Picture/Diagramme de classe java View.png' not found on 
-input line 121.
-
-
-<./Picture/Diagramme de classe java View.png, id=71, 2319.66624pt x 1073.00874p
+<./Picture/Diagramme_de_classe_java_View.png, id=71, 2319.66624pt x 1073.00874p
 t>
-File: ./Picture/Diagramme de classe java View.png Graphic file (type png)
- <use ./Picture/Diagramme de classe java View.png>
-Package pdftex.def Info: ./Picture/Diagramme de classe java View.png used on in
-put line 121.
+File: ./Picture/Diagramme_de_classe_java_View.png Graphic file (type png)
+ <use ./Picture/Diagramme_de_classe_java_View.png>
+Package pdftex.def Info: ./Picture/Diagramme_de_classe_java_View.png used on in
+put line 126.
 (pdftex.def)             Requested size: 711.30217pt x 329.02725pt.
+
+
+LaTeX Warning: File `./Picture/logoEseo.eps' not found on input line 130.
+
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
-(epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-05 22:44:10
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 125.
+(epstopdf)             \includegraphics on input line 130.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
-
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 125.
+line 130.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
- [5 <./Picture/Diagramme de classe java View.png (PNG copy)>]
+ [5 <./Picture/Diagramme_de_classe_java_View.png (PNG copy)>]
+<./Picture/machine_a_etat_java.png, id=77, 874.26625pt x 804.00375pt>
+File: ./Picture/machine_a_etat_java.png Graphic file (type png)
 
-LaTeX Warning: File `./Picture/machine a etat java.png' not found on input line
- 134.
-
-<./Picture/machine a etat java.png, id=77, 874.26625pt x 804.00375pt>
-File: ./Picture/machine a etat java.png Graphic file (type png)
-
-<use ./Picture/machine a etat java.png>
-Package pdftex.def Info: ./Picture/machine a etat java.png used on input line 1
-34.
+<use ./Picture/machine_a_etat_java.png>
+Package pdftex.def Info: ./Picture/machine_a_etat_java.png used on input line 1
+39.
 (pdftex.def)             Requested size: 512.1574pt x 470.99666pt.
 
-Overfull \hbox (28.46053pt too wide) in paragraph at lines 134--135
- [] 
+Overfull \hbox (28.46053pt too wide) in paragraph at lines 139--140
+ [][] 
  []
 
+
+LaTeX Warning: File `./Picture/logoEseo.eps' not found on input line 143.
+
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
-(epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-05 22:44:10
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 138.
+(epstopdf)             \includegraphics on input line 143.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 138.
+line 143.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
  [6
 
- <./Picture/machine a etat java.png (PNG copy)>]
+ <./Picture/machine_a_etat_java.png (PNG copy)>]
+
+LaTeX Warning: File `./Picture/logoEseo.eps' not found on input line 153.
+
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
-(epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-05 22:44:10
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 145.
+(epstopdf)             \includegraphics on input line 153.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
- <use ./Picture/logoEseo-eps-converted-to.pdf>
+<use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 145.
+line 153.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
- [7]
-(./Conception.toc)
+ [7] (./Conception.toc)
 \tf@toc=\write7
 \openout7 = `Conception.toc'.
 
  [8
 
-] (./Conception.lof)
+]
+(./Conception.lof)
 \tf@lof=\write8
 \openout8 = `Conception.lof'.
 
@@ -1247,17 +1221,16 @@ line 145.
 
 
 Package glossaries Warning: No \printglossary or \printglossaries found.
-(Remove \makeglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 157.
 [10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 157.
  (./Conception.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 149.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 149.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 157.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 157.
 Package rerunfilecheck Info: File `Conception.out' has not changed.
 (rerunfilecheck)             Checksum: E8E1C54ECC06C14D4D362B7177DF54B8;435.
 
@@ -1267,24 +1240,24 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 157.
  ) 
 Here is how much of TeX's memory you used:
- 14957 strings out of 493117
- 220260 string characters out of 6135434
- 396705 words of memory out of 5000000
- 18057 multiletter control sequences out of 15000+600000
+ 14694 strings out of 494958
+ 214743 string characters out of 6179212
+ 385551 words of memory out of 5000000
+ 17567 multiletter control sequences out of 15000+600000
  30564 words of font info for 83 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 46i,15n,75p,1752b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Conception.pdf (11 pages, 651233 bytes).
+ 36 hyphenation exceptions out of 8191
+ 46i,15n,75p,1705b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/palatino/uplri8a.pfb>
+Output written on Conception.pdf (11 pages, 652535 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 137 PDF objects out of 1000 (max. 8388607)
+ 113 compressed objects within 2 object streams
  26 named destinations out of 1000 (max. 500000)
  82 words of extra memory for PDF output out of 10000 (max. 10000000)
 

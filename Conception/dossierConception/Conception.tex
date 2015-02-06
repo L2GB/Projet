@@ -47,7 +47,7 @@
 \pagestyle{fancy} % Change le syte des pages qui suivent cette instruction 
 \chead{Dossier de conception}
 \rhead{}
-\lhead{\includegraphics[width=1.5cm]{./Picture/logoEseo}}
+\lhead{\includegraphics[width=1.5cm]{./Picture/logoEseo.eps}}
 \cfoot{\thepage}
 \rfoot{Baranger - Bouché- Caillot -Ménard}
 \lfoot{}
@@ -95,10 +95,15 @@ L’objectif principal du dossier de conception est de permettre de formaliser l
 		\section{Diagramme de classe CentraleSoft}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width = 18cm ,height = 30cm,keepaspectratio]{./Picture/Diagramme de class C++.png}
-			\caption{Diagramme de classe java Model} 
+			\includegraphics[width = 18cm ,height = 30cm,keepaspectratio]{./Picture/Diagramme_de_class_C++.png}
+			\caption{Diagramme de classe centraleSoft} 
 			\label{diagClass}
-		\end{figure}
+		
+			\end{figure}
+			
+La classe Transmitter est la classe centrale de l'application. Elle permet de rediriger les requêtes reçues vers les différents objets concernés.  
+
+Les classes RACC, BDCC et ZWaveController correspondent respectivement à l'interfaçage avec l'application android, le big data et les objets connectés.
 		\newpage
 		
 		
@@ -110,7 +115,7 @@ L’objectif principal du dossier de conception est de permettre de formaliser l
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width = 25cm ,height = 35cm,keepaspectratio]{./Picture/Diagramme de class java Model.png}
+			\includegraphics[width = 25cm ,height = 35cm,keepaspectratio]{./Picture/Diagramme_de_class_java_Model.png}
 			\caption{Diagramme de classe java Model} 
 			\label{diagClass}
 		\end{figure}
@@ -118,8 +123,8 @@ L’objectif principal du dossier de conception est de permettre de formaliser l
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width = 25cm ,height = 35cm,keepaspectratio]{./Picture/Diagramme de classe java View.png}
-			\caption{Diagramme de classe java View} 
+			\includegraphics[width = 25cm ,height = 35cm,keepaspectratio]{./Picture/Diagramme_de_classe_java_View.png}
+			\caption{Diagramme de classe java View}
 			\label{diagClass}
 		\end{figure}
 		\newpage
@@ -131,7 +136,7 @@ L’objectif principal du dossier de conception est de permettre de formaliser l
 		\section{Principe de fonctionnement}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width = 18cm ,height = 30cm,keepaspectratio]{./Picture/machine a etat java.png}
+			\includegraphics[width = 18cm ,height = 30cm,keepaspectratio]{./Picture/machine_a_etat_java.png}
 			\caption{Machine à état de l'application Androïd} 
 			\label{diagClass}
 		\end{figure}
@@ -141,7 +146,11 @@ L’objectif principal du dossier de conception est de permettre de formaliser l
 		
 		
 		\section{Protocole de communication}
+Le protocole de communication permet d'expliciter les requêtes et les réponses échangées entre l'application andoid et et la centrale.
+
+Pour lire le protocole de communication, merci d'ouvrir le fichier : \href{run:./Picture/Api_appli_pdf.pdf}{Api\_appli\_pdf.pdf}
 		
+\tableofcontents
 \listoffigures
 \listoftables
 		

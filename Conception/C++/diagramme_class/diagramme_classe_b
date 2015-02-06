@@ -180,9 +180,9 @@ DataObservable-right->DataObserver
 ObjectManager --> PlanningManager
 PlanningManager "1" -down- "*" Week
 PlanningManager "1" -down- "*" Day
-PlanningManager -down- TimeSlot
+PlanningManager "1" -down- "*" TimeSlot
 Week "1" -left- "7" Day
-Day -left- TimeSlot
+Day "1" -left- "*" TimeSlot
 
 Room -up-> Object
 ObjectManager -left-> Room
