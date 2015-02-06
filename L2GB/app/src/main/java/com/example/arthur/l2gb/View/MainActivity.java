@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.arthur.l2gb.Model.Jours_Model;
 import com.example.arthur.l2gb.Model.Model;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity {
     public static final int SEMAINEADD = 29;
     public static final int OBJETADD = 51;
     public static final int OBJECHANGE = 28;
+    public static final int OBJETADDINCLUSION = 42;
     private String test;
     Model model = null;
     int menu = 1;
@@ -48,6 +50,9 @@ public class MainActivity extends Activity {
 
     }
 
+    /**
+     * Permet la création du model pour stoker les information.
+     */
     private void creerMVC(){
         this.model = new Model(this.ip);
     }
@@ -59,7 +64,11 @@ public class MainActivity extends Activity {
         if(requestCode == CODE_RETOUR) {
 
             // Vérifie que le résultat est OK
-            if(resultCode == JOURADD) {
+            if(resultCode == OBJETADDINCLUSION) {
+                // On récupére le paramètre "Nom" de l'intent
+                this.model.inclusionMode();
+                Toast.makeText(this, "Vous pouvez ajouter un objet", Toast.LENGTH_LONG).show();
+            }if(resultCode == JOURADD) {
                 // On récupére le paramètre "Nom" de l'intent
                 Jours_Model jour = data.getParcelableExtra("Jours");
                 this.model.getJours_Model().add(jour);
@@ -92,9 +101,9 @@ public class MainActivity extends Activity {
                         }else{
                             this.model.powerOff(this.model.getObjet_model().get(p));
                         }
-                        Intent intent = new Intent(this, ListeObjetConnecte_View.class);
-                        intent.putExtra("MODEL",this.model);
-                        startActivityForResult(intent, CODE_RETOUR);
+                        Intent tetet = new Intent(this, ListeObjetConnecte_View.class);
+                        tetet.putExtra("MODEL",this.model);
+                        startActivityForResult(tetet, CODE_RETOUR);
                     }
                 }
             }else if (resultCode == RESULT_CANCELED) {
@@ -130,24 +139,40 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    /**
+     * Permet d'aller sur la vu consommation
+     * @param view sur appuis d'un bouton
+     */
     public void goConsommation(View view){
         Intent intent = new Intent(this, Consommation_View.class);
         intent.putExtra("MODEL",this.model);
         startActivity(intent);
     }
 
+    /**
+     * Permet d'aller sur la vu Jour
+     * @param view sur appuis d'un bouton
+     */
     public void goJours(View view){
         Intent intent = new Intent(this, JoursList_View.class);
         intent.putExtra("MODEL",this.model);
         startActivityForResult(intent, CODE_RETOUR);
     }
 
+    /**
+     * Permet d'aller sur la vu semaine
+     * @param view sur appuis d'un bouton
+     */
     public void goSemaines(View view){
         Intent intent = new Intent(this, SemaineList_View.class);
         intent.putExtra("MODEL",this.model);
         startActivityForResult(intent, CODE_RETOUR);
     }
 
+    /**
+     * affiche les deux bouton pour choisir jour ou semaine
+     * @param view sur appuis d'un bouton
+     */
     public void goScenario(View view){
         Button Scenario= (Button) this.findViewById(R.id.button);
         Button Objet= (Button) this.findViewById(R.id.button3);
@@ -166,18 +191,30 @@ public class MainActivity extends Activity {
         Semaine.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Permet d'aller sur la vu objet.
+     * @param view sur appuis d'un bouton
+     */
     public void goObjets(View view){
         Intent intent = new Intent(this, ListeObjetConnecte_View.class);
         intent.putExtra("MODEL",this.model);
         startActivityForResult(intent, CODE_RETOUR);
     }
 
+    /**
+     * Permet d'aller sur la vu plannning.
+     * @param view sur appuis d'un bouton
+     */
     public void goPlanning(View view){
         Intent intent = new Intent(this, Planning_View.class);
         intent.putExtra("MODEL",this.model);
         startActivity(intent);
     }
 
+    /**
+     * permet de réafficher les bouton du menu
+     * @param view sur appuis d'un bouton
+     */
     public void goMenu(View view){
         Button Retour= (Button) this.findViewById(R.id.button7);
         Button Jour= (Button) this.findViewById(R.id.button5);
