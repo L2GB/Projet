@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 02:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 08:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1068,22 +1068,29 @@ LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <14.4> not available
 [2
 
 ]
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <12> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 94.
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-06 02:19:35
 (epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-06 02:19:35
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 95.
+(epstopdf)             \includegraphics on input line 121.
 Package epstopdf Info: Output file is already uptodate.
- <./Picture/logoEseo-eps-converted-to.pdf, id=52, 487.8225pt x 351.3125pt>
+<./Picture/logoEseo-eps-converted-to.pdf, id=60, 487.8225pt x 351.3125pt>
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 95.
+line 121.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
 
 
@@ -1093,70 +1100,73 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3 <./Picture/logoEseo-eps-converted-to.pdf>]
-LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 98.
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-06 02:19:35
 (epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-06 02:19:35
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 104.
+(epstopdf)             \includegraphics on input line 152.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 104.
+line 152.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
  [4]
+Overfull \hbox (0.8893pt too wide) in paragraph at lines 157--158
+[]\OT1/pplx/m/n/10.95 R[]efl[]echir []a l'int[]egration d'un al-go-rithme pre-n
+ant en compte la consom-ma-tion propre de chaque
+ []
+
 
 Package glossaries Warning: No \printglossary or \printglossaries found.
 (Remove \makeglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 122.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-06 02:19:35
 (epstopdf)                    size: 152543 bytes
 (epstopdf)             Output file: <./Picture/logoEseo-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-02-05 20:58:59
+(epstopdf)                    date: 2015-02-06 02:19:35
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 122.
+(epstopdf)             \includegraphics on input line 176.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 122.
+line 176.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
  [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
  (./Avancement.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 122.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
 Package rerunfilecheck Info: File `Avancement.out' has not changed.
-(rerunfilecheck)             Checksum: EF850289F1540F4B7DE3A6987557345E;446.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 122.
+(rerunfilecheck)             Checksum: B8B24BF0C92570E5BFC47275F2731EF9;584.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
  ) 
 Here is how much of TeX's memory you used:
- 14899 strings out of 493117
- 219083 string characters out of 6135434
- 396582 words of memory out of 5000000
- 18023 multiletter control sequences out of 15000+600000
+ 14907 strings out of 493117
+ 219190 string characters out of 6135434
+ 399586 words of memory out of 5000000
+ 18029 multiletter control sequences out of 15000+600000
  30004 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,15n,48p,1752b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/
 2014/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on Avancement.pdf (6 pages, 90913 bytes).
+Output written on Avancement.pdf (6 pages, 95593 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 62 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 

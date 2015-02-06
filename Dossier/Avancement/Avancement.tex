@@ -91,20 +91,74 @@ Ce document à pour but d'informer les futurs personnes qui travailleront sur le
 
 		\section{Etat de l'art}
 		
+			\subsection{Centrale soft}
+			
+\begin{description}
+	\item[-] Communication avec android fonctionnelle.
+	\item[-] La majeure partie des classes sont créées.
+	\item[-] Création d'un réseau Zwave et ajout d'objets.
+	\item[-] Pilotage d'une prise et récupération de son état par callback.
+	\item[-] Respect d'un planning pour une prise.
+\end{description}
+
+
+
+			
+			
+			\subsection{Application Android}
+L'application fonctionne actuellement correctement et permet de faire les fonctionnalités de bases dans les cas idéaux:\newline
+\begin{description}
+	\item[-] Lecture et sauvegarde des données stockées sur la centrale
+	\item[-] Communication avec la centrale
+	\item[-] Configuration d'objet Prise ou chauffage
+	\item[-] Configuration du planning d'une journée
+	\item[-] Configuration du planning d'une semaine
+	\item[-] Affichage de la consommation des objets enregistrés
+	\item[-] Association d'un objet avec un planning semaine
+\end{description}
+
 	
 \newpage	
 		\section{Travai à faire }
 		
 			\subsection{Centrale soft}
-			
+\begin{description}
+	\item[-] Agrémenter le protocole de communication
+	\item[-] Implémenter toutes les requêtes du protocole.
+	\item[-] Utiliser le thermostat.
+	\item[-] Piloter des radiateurs.
+	\item[-] Définir la consigne d'effacement pouvant être reçue.
+	\item[-] Réagir à cette consigne.
+	\item[-] Améliorer la robustesse.
+	\item[-] Implémenter la communication vers une base de données.
+	\item[-] Gestion des objets par pièces.
+	
+\end{description}	
+
 			
 			\subsection{Application Android}
+
+\begin{description}
+	\item[-] Finir l'application en implémentant toutes les fonctionnalités spécifiées dans le dossier de spécifications. 
+	\item[-] Rendre l'application plus fiable, prévoir et agir en fonctions des imprévus.
+	\item[-] Tester la vue de consommation des objets une fois celle-ci implémentée sur la centrale.
+	\item[-] Implémenter la modification d'un jour.
+	\item[-] Implémenter la modification d'une semaine.
+	\item[-] Implémenter la gestion des objets par pièce.
+	\item[-] Changer la façon de passer d'une activité à une autre.
+\end{description}
 			
 			
 \newpage	
 		\section{Idées pour de futures implémentations}
 
-
+\begin{description}
+	\item[-] Implémenter l'utilisation d'autres objets connectés.
+	\item[-] Réfléchir à l'intégration d'un algorithme prenant en compte la consommation propre de chaque maison, et toutes les données qui peuvent être stockées sur le big data.
+	\item[-] Faire des tests de l'algorithme en utilisant la centrale et l'application.
+	\item[-] Nouveau design avec plus d'ergonomie.
+	\item[-] Mettre en place une interface pour l'agent de maintenance.
+\end{description}
 
 
 
