@@ -37,7 +37,7 @@ public class Model implements Parcelable {
        this.profilSemaine_model = new ArrayList<Semaine_Model>();
        //creerfakeModel();
 
-        /** Mise en place de la communication **/
+        /** Mise en place de la communication**/
 
         boolean testconnection = setConnection(ip,Constante.PORT_SERVEUR);
         System.out.println("Communication réussie ? " +testconnection);
@@ -112,37 +112,39 @@ public class Model implements Parcelable {
 
 
         Objet_Model lumiereSalon = new Objet_Model("Lumiere salon", semaineSpe);
+        lumiereSalon.setType("PRISE");
         lumiereSalon.setConsommation(100);
-        lumiereSalon.setInconnu(true);
+        lumiereSalon.setInconnu(false);
         lumiereSalon.setConnecte(true);
         lumiereSalon.setDeviceId(0);
         lumiereSalon.setInstanceNum(0);
         lumiereSalon.setAllume(true);
         Objet_Model chauffageSalon = new Objet_Model("Chauffage salon", semaineSpe);
         chauffageSalon.setConsommation(75);
-        chauffageSalon.setInconnu(true);
+        chauffageSalon.setInconnu(false);
         chauffageSalon.setConnecte(true);
         chauffageSalon.setDeviceId(0);
         chauffageSalon.setInstanceNum(1);
         Objet_Model chauffageChambre = new Objet_Model("chauffage chambre", semaineClassique);
         chauffageChambre.setConsommation(50);
-        chauffageChambre.setInconnu(true);
+        chauffageChambre.setInconnu(false);
         chauffageChambre.setConnecte(true);
         chauffageChambre.setDeviceId(1);
         chauffageChambre.setInstanceNum(1);
         Objet_Model lumiereChambre = new Objet_Model("Lumiere chambre", semaineSki);
+        lumiereChambre.setType("PRISE");
         lumiereChambre.setConsommation(10);
-        lumiereChambre.setInconnu(true);
+        lumiereChambre.setInconnu(false);
         lumiereChambre.setConnecte(true);
         lumiereChambre.setDeviceId(2);
         lumiereChambre.setInstanceNum(2);
         Objet_Model console = new Objet_Model("Console");
-        console.setInconnu(true);
+        console.setInconnu(false);
         console.setConnecte(false);
         console.setDeviceId(3);
         console.setInstanceNum(2);
         Objet_Model iDinconnu = new Objet_Model("F4F33F3F3F");
-        iDinconnu.setInconnu(false);
+        iDinconnu.setInconnu(true);
         iDinconnu.setConnecte(false);
         iDinconnu.setDeviceId(3);
         iDinconnu.setInstanceNum(4);
