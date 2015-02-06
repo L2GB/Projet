@@ -36,7 +36,7 @@ public class ConfigurationObjet extends Activity {
         this.idBouton= getIntent().getExtras().getInt("id");
         for (int p = 0; p < this.model.getObjet_model().size(); p++) {
             if (this.objet.getName().equals(this.model.getObjet_model().get(p).getName())) {
-               this.model.getObjet_model().remove(p);            }
+                this.model.getObjet_model().remove(p);            }
         }
         //this.model.getObjet_model().remove(this.objet);
         afficherParamettreObjet();

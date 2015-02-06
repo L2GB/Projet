@@ -41,6 +41,13 @@ public class Pop_up_choixjour extends Activity {
 
     }
 
+    /**
+     * Permet de generer un texte taille 20
+     * @param texte à generer
+     * @param ly
+     * @param model pour comparer
+     * @return text
+     */
     public Button generateTextView(String texte, TableRow.LayoutParams ly, final Model model) {
         final Button result = new Button(this);
         result.setTextColor(Color.DKGRAY);
@@ -65,6 +72,10 @@ public class Pop_up_choixjour extends Activity {
         return result;
     }
 
+    /**
+     * Permet de retourné à la vue précédente
+     * @param view sur appuis d'un bouton
+     */
     public void  retourConfigSemaine(View view){
         finish();
     }

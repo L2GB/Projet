@@ -27,6 +27,10 @@ public class SemaineConfiguration_View extends Activity {
     public static final int NEWSEMAINE = 11;
     ArrayList<Boolean> listBoolean;
 
+    /**
+     * Permet de sauvegarder la semaine si toute les condition sont remplit
+     * @param view sur appuis sur un bouton
+     */
     public void sauvegarder(View view){
         EditText editText = (EditText) findViewById(R.id.edit_name_semaine);
         String name = editText.getText().toString();
@@ -42,6 +46,9 @@ public class SemaineConfiguration_View extends Activity {
         }
     }
 
+    /**
+     * Permet la création des spinner avec les jours de la liste.
+     */
     private void ajouterJour(){
         Spinner listeSemaine = (Spinner) findViewById(R.id.spinnerLundi);
         for(int i = 0;i<this.model.getJours_Model().size();i++){
@@ -87,11 +94,15 @@ public class SemaineConfiguration_View extends Activity {
         }
     }
 
+    /**
+     * Permet de verifier si tous les crenau jour sont remplit
+     * @return oui si tous les crenau sont remplit
+     */
     private boolean crenauxEstRemplit(){
         Spinner listeJour = (Spinner) findViewById(R.id.spinnerLundi);
         if(listeJour.getSelectedItem().equals("Choix jour")){
-                Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
-                return false;
+            Toast.makeText(this, "Tous les creneaux ne sont pas rempli", Toast.LENGTH_LONG).show();
+            return false;
         }
         listeJour = (Spinner) findViewById(R.id.spinnerMardi);
         if(listeJour.getSelectedItem().equals("Choix jour")){
@@ -126,6 +137,11 @@ public class SemaineConfiguration_View extends Activity {
         return true;
     }
 
+    /**
+     * Permet de savoir si le nom de semaine est vide ou déja existant
+     * @param name nom à verifier
+     * @return oui si les condition sont remplit
+     */
     private boolean semaineExistePas(String name){
         if(name.length()>0) {
             for(int p = 0;p<this.model.getProfilSemaine_model().size();p++){
@@ -141,6 +157,9 @@ public class SemaineConfiguration_View extends Activity {
         return true;
     }
 
+    /**
+     * affiche tous les choix des spinner
+     */
     private void afficheSemaine(){
         choixSemaineSpinnerLundi();
         choixSemaineSpinnerMardi();
@@ -151,6 +170,9 @@ public class SemaineConfiguration_View extends Activity {
         choixSemaineSpinnerDimanche();
     }
 
+    /**
+     * Affiche le spinner Lundi.
+     */
     private void choixSemaineSpinnerLundi(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -164,6 +186,9 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Affiche le spinner Mardi.
+     */
     private void choixSemaineSpinnerMardi(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -177,6 +202,9 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Affiche le spinner Mercredi.
+     */
     private void choixSemaineSpinnerMercredi(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -190,6 +218,9 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Affiche le spinner Jeudi.
+     */
     private void choixSemaineSpinnerJeudi(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -203,6 +234,9 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Affiche le spinner Vendredi.
+     */
     private void choixSemaineSpinnerVendredi(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -216,6 +250,9 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Affiche le spinner Samedi.
+     */
     private void choixSemaineSpinnerSamedi(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -229,6 +266,9 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Affiche le spinner Dimanche.
+     */
     private void choixSemaineSpinnerDimanche(){
         ArrayList<String> listeJours = new ArrayList<String>();
         listeJours.add("Choix jour");
@@ -242,6 +282,10 @@ public class SemaineConfiguration_View extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Retour à la vue précédente.
+     * @param view sur appuis sur un bouton
+     */
     public void annuler(View view){finish();}
 
     @Override

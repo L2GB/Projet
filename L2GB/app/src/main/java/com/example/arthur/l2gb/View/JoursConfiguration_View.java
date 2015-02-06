@@ -54,7 +54,10 @@ public class JoursConfiguration_View extends Activity {
         i=1;
     }
 
-    /** Called when the user clicks the Add button */
+    /**
+     * Permet d'ajouter un crenau.
+     * @param view sur l'appuis d'un bouton
+     */
     public void addCreneau(View view) {
         TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
         tr = new TableRow(this);
@@ -84,6 +87,12 @@ public class JoursConfiguration_View extends Activity {
 
     }
 
+    /**
+     * Genere une text en fonction d'un string
+     * @param texte à generer
+     * @param ly
+     * @return le texte
+     */
     public TextView generateTextView(String texte, TableRow.LayoutParams ly) {
         TextView result = new TextView(this);
         result.setTextColor(Color.DKGRAY);
@@ -96,6 +105,12 @@ public class JoursConfiguration_View extends Activity {
         return result;
     }
 
+    /**
+     * Génère un bouton pour choisir le debut du crenau.
+     * @param ly
+     * @param jour auquel le crenau appartient
+     * @return le bouton
+     */
     public Button generateButtonDebut(TableRow.LayoutParams ly,final Jours_Model jour){
         final Button boutton = new Button(this);
         boutton.setGravity(Gravity.CENTER);
@@ -114,6 +129,12 @@ public class JoursConfiguration_View extends Activity {
         });
         return boutton;
     }
+
+    /**
+     * Envoie sur la vue pour choisir l'heure de debut.
+     * @param crenaux crenau ou mettre
+     * @param id du bouton pour le modifier plus tard
+     */
     public void heureDebutConfig(int crenaux, int id){
         Intent intent = new Intent(this, PopUp_View.class);
         intent.putExtra("crenau",crenaux);
@@ -121,6 +142,12 @@ public class JoursConfiguration_View extends Activity {
         startActivityForResult(intent, HEUREDEBUT);
     }
 
+    /**
+     * Génère un bouton pour choisir le fin du crenau.
+     * @param ly
+     * @param jour auquel le crenau appartient
+     * @return le bouton
+     */
     public Button generateButtonDFin(TableRow.LayoutParams ly,final Jours_Model jour){
         final Button boutton = new Button(this);
         boutton.setGravity(Gravity.CENTER);
@@ -139,6 +166,12 @@ public class JoursConfiguration_View extends Activity {
         });
         return boutton;
     }
+
+    /**
+     * Envoie sur la vue pour choisir l'heure de fin.
+     * @param crenaux crenau ou mettre
+     * @param id du bouton pour le modifier plus tard
+     */
     public void heureFinConfig(int crenaux, int id){
         Intent intent = new Intent(this, PopUp_View.class);
         intent.putExtra("crenau",crenaux);
@@ -146,6 +179,12 @@ public class JoursConfiguration_View extends Activity {
         startActivityForResult(intent, HEUREFIN);
     }
 
+    /**
+     * Genere un bouton pour pouvoir modifier l'autorisation de modification d'un crenau.
+     * @param ly
+     * @param jour auquel appartient
+     * @return
+     */
     public Button generateSwitchAutorisation(TableRow.LayoutParams ly,final Jours_Model jour){
         final Button boutton = new Button(this);
         boutton.setGravity(Gravity.CENTER);
@@ -173,10 +212,19 @@ public class JoursConfiguration_View extends Activity {
         return boutton;
     }
 
+    /**
+     * Change l'autorisation du crenau de jour
+     * @param autorisation
+     * @param crenau
+     */
     public void crenauAutorisation(boolean autorisation,int crenau){
         this.jour.getCreneauList().get(crenau).setAutorisation(autorisation);
     }
 
+    /**
+     * Supprile une ligne donc un crenau.
+     * @param view sur appusi d'un bouton
+     */
     public void supprimerLigne(View view){
         if(this.jour.getCreneauList().size()>0) {
             TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
@@ -238,6 +286,10 @@ public class JoursConfiguration_View extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Sauve cette nouvel journé
+     * @param view sur appuis sur un bouton
+     */
     public void saveDisplay(View view){
         EditText editText = (EditText) findViewById(R.id.edit_name_jour);
         String name = editText.getText().toString();
@@ -260,6 +312,10 @@ public class JoursConfiguration_View extends Activity {
         }
     }
 
+    /**
+     * Vérifie que tous les crenau sont bien remplit
+     * @return oui si tous les crenau sont rempli
+     */
     private boolean crenauxEstRemplit(){
         for(int t=0; t<this.jour.getCreneauList().size();t++){
             if(this.jour.getCreneauList().get(t).gethDebut() == 25 || this.jour.getCreneauList().get(t).gethFin() == 25) {
@@ -270,6 +326,11 @@ public class JoursConfiguration_View extends Activity {
         return true;
     }
 
+    /**
+     * Vérifie si le champ nom est vide ou si le nom existe déja
+     * @param name : nom de la journée
+     * @return oui si non vide et pas déja eistant
+     */
     private boolean nomJournéeInexistant(String name){
         if(name.length()>0) {
             for (int p = 0; p < this.model.getJours_Model().size(); p++) {
@@ -285,6 +346,10 @@ public class JoursConfiguration_View extends Activity {
         return true;
     }
 
+    /**
+     * Retourne à la vue suivante
+     * @param view sur appuis sur un bouton
+     */
     public void RetourJourConfig(View view){
         finish();
     }

@@ -19,6 +19,7 @@ import com.example.arthur.l2gb.R;
 public class ListeObjetConnecte_View extends Activity {
 
     public static final int OBJETMODIF = 1;
+
     Model model;
     int nb0bjetConnu;
 
@@ -45,14 +46,32 @@ public class ListeObjetConnecte_View extends Activity {
         }
     }
 
+    /**
+     * Permet d'ajouter un objet
+     * @param view sur appuis sur un bouton
+     */
     public void ajouterObjet(View view){
-
+        Intent intent = new Intent();
+        setResult(MainActivity.OBJETADDINCLUSION, intent);
+        finish();
     }
 
+    /**
+     * Permet le retour à la vue précédente.
+     * @param view sur appuis sur un bouton
+     */
     public void retour(View view){
         finish();
     }
 
+    /**
+     * Permet de generer un bouton pour l'objet.
+     * @param texte : text sur le bouton
+     * @param ly
+     * @param model : model pour comparer
+     * @param connecte : objet connecté ou non
+     * @return le bouton
+     */
     public Button generateTextView(String texte, TableRow.LayoutParams ly, final Model model,boolean connecte) {
         final Button result = new Button(this);
         if(connecte) {
@@ -74,6 +93,13 @@ public class ListeObjetConnecte_View extends Activity {
         return result;
     }
 
+    /**
+     * Genere un bouton pour l'allumage d'un objet
+     * @param objet objet lié au bouton
+     * @param ly
+     * @param allume : si allumé ou non
+     * @return le bouton
+     */
     public Button generateBoutonallume(final Objet_Model objet,TableRow.LayoutParams ly,boolean allume) {
         final Button result = new Button(this);
         if(objet.isConnecte()) {
@@ -116,11 +142,18 @@ public class ListeObjetConnecte_View extends Activity {
     }
 
 
-
+    /**
+     * Affiche un toast qui dis que l'objet est non connecté.
+     */
     public void pasConnecte(){
         Toast.makeText(this, "Objet non connecté", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Permet d'aller sur la vu pour configurer un objet
+     * @param v bouton sur lequel on a appuyé
+     * @param nameBouton nom du bouton
+     */
     public void goConfigurationObjet(View v, String nameBouton){
         Intent intent = new Intent(this, ConfigurationObjet.class);
         intent.putExtra("ListeObjet",this.model);
@@ -145,7 +178,7 @@ public class ListeObjetConnecte_View extends Activity {
                 // Création de l'intent
                 for(int p = 0; p<this.model.getObjet_model().size();p++){
                     if(objet.getDeviceId()==this.model.getObjet_model().get(p).getDeviceId() &&
-                       objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
+                            objet.getInstanceNum()==this.model.getObjet_model().get(p).getInstanceNum() ){
                         this.model.getObjet_model().get(p).setObjet(objet);
                     }
                 }
@@ -154,8 +187,8 @@ public class ListeObjetConnecte_View extends Activity {
                 Button but = (Button) findViewById(id);
                 but.setText(objet.getName().toString());
                 Intent intent = new Intent();
-                 intent.putExtra("ObjetModif", objet);
-                 setResult(MainActivity.OBJETADD, intent);
+                intent.putExtra("ObjetModif", objet);
+                setResult(MainActivity.OBJETADD, intent);
             } else if (resultCode == RESULT_CANCELED) {
                 // On affiche que l'opération est annulée
                 Toast.makeText(this, "Opération annulé", Toast.LENGTH_SHORT).show();

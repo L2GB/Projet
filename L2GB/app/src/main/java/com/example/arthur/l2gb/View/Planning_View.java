@@ -36,7 +36,10 @@ public class Planning_View extends Activity {
         ajouterJour(0);
     }
 
-
+    /**
+     * Permet d'afficher le planning en fonction du jour de la semaine
+     * @param Jour de la semaine
+     */
     private void ajouterJour(int Jour){
         int debutMin;
         int debutHeure;
@@ -83,42 +86,82 @@ public class Planning_View extends Activity {
         }
     }
 
+    /**
+     * Affiche le lundi
+     * @param view sur appuis d'un bouton
+     */
     public void Lundi(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(0);
     }
+
+    /**
+     * Affiche le Mardi.
+     * @param view sur appuis d'un bouton
+     */
     public void Mardi(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(1);
     }
+
+    /**
+     * Affiche le Mercredi.
+     * @param view sur appuis d'un bouton
+     */
     public void Mercredi(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(2);
     }
+
+    /**
+     * Affiche le Jeudi.
+     * @param view sur appuis d'un bouton
+     */
     public void Jeudi(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(3);
     }
+
+    /**
+     * Affiche le Vendredi.
+     * @param view sur appuis d'un bouton
+     */
     public void Vendredi(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(4);
     }
+
+    /**
+     * Affiche le Samedi.
+     * @param view sur appuis d'un bouton
+     */
     public void Samedi(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(5);
     }
+
+    /**
+     * Affiche le Dimanche.
+     * @param view sur appuis d'un bouton
+     */
     public void Dimanche(View view){
         TableLayout tableauPlaning = (TableLayout) findViewById(R.id.talbeauPlanning);
         tableauPlaning.removeAllViews();
         ajouterJour(6);
     }
 
+    /**
+     * Permet de generer un texte taille 20
+     * @param texte à generer
+     * @param ly
+     * @return text
+     */
     public TextView generateTextView30(String texte, TableRow.LayoutParams ly) {
         TextView result = new TextView(this);
         result.setTextColor(Color.DKGRAY);
@@ -129,6 +172,13 @@ public class Planning_View extends Activity {
         result.setLayoutParams(ly);
         return result;
     }
+
+    /**
+     * Permet de generer un texte taille 15
+     * @param texte à generer
+     * @param ly
+     * @return text
+     */
     public TextView generateTextView20(String texte, TableRow.LayoutParams ly) {
         TextView result = new TextView(this);
         result.setPadding(2, 2, 2, 2);
