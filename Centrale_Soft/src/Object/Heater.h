@@ -28,6 +28,7 @@ class Heater : public Object
 		void setTeco(int _teco){m_Teco = _teco;}
 		int getTconfort(){return m_Tconfort;}
 		int getTeco(){return m_Teco;}
+		int getAllume(){return m_allume;}
 		void print();
 		json_t *json_transform_object();
 
@@ -41,6 +42,7 @@ class Heater : public Object
 	private:
 		Heater_state m_state;
 		int m_currentTemp;
+		bool m_allume;
 		int m_Tconfort;
 		int m_Teco;
 };

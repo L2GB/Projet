@@ -420,6 +420,7 @@ void ObjectManager::setObject(json_t *_object)
 
 				json_object_set(_object, "connecte", json_boolean(powerPlug->isConnected()));
 				json_object_set(_object, "inconnu", json_boolean(powerPlug->isUnknown()));
+				json_object_set(_object, "allume", json_boolean(powerPlug->getLevel()));
 			}
 			catch(NotFoundException &e)
 			{
@@ -479,6 +480,7 @@ void ObjectManager::setObject(json_t *_object)
 
 				json_object_set(_object, "connecte", json_boolean(heater->isConnected()));
 				json_object_set(_object, "inconnu", json_boolean(heater->isUnknown()));
+				json_object_set(_object, "allume", json_boolean(heater->getAllume()));
 			}
 			catch(NotFoundException &e)
 			{

@@ -23,6 +23,19 @@ PowerPlug::~PowerPlug()
 {
 }
 
+void PowerPlug::print()
+{
+	std::cout << std::endl;
+	std::cout << "HEATER" << std::endl;
+	std::cout << "Name : " << m_name << std::endl;
+	std::cout << "Type : " << m_type << std::endl;
+	std::cout << "Connecté : " << m_connected << std::endl;
+	std::cout << "Inconnu : " << m_unknown << std::endl;
+	std::cout << "Allumé : " << m_level << std::endl;
+	m_planning->print();
+	std::cout << std::endl;
+}
+
 json_t *PowerPlug::json_transform_object()
 {
 	json_t *object = json_object();
@@ -127,16 +140,14 @@ PowerPlug_level PowerPlug::getScheduledLevel()
 
 void PowerPlug::switchON(){
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 1);
-	m_level = ON;
 }
 
 void PowerPlug::switchOFF()
 {
 	m_zwaveController->basic_set(this->m_deviceId, this->m_instanceNum, 0);
-	m_level = OFF;
 }
 
-void PowerPlug::getLevel(){
+bool PowerPlug::getLevel(){
 
 	bool value(m_zwaveController->zNetwork_get_boolean(this->m_deviceId, m_instanceNum, 37, "level"));
 
@@ -146,5 +157,6 @@ void PowerPlug::getLevel(){
 	else{
 		m_level = OFF;
 	}
+	return value;
 }
 

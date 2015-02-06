@@ -31,9 +31,10 @@ class PowerPlug : public Object
 		PowerPlug(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name);
 		virtual ~PowerPlug();
 
+		void print();
 		void switchON();
 		void switchOFF();
-		void getLevel();
+		bool getLevel();
 		json_t *json_transform_object();
 
 	private:
