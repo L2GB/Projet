@@ -95,8 +95,11 @@ Ce document à pour but d'informer les futurs personnes qui travailleront sur le
 			
 \begin{description}
 	\item[-] Communication avec android fonctionnelle.
-	\item[-] La majeure partie des classes sont créées.
+	\item[-] La majeure partie des classes sont créées. (Seules les classes des nouveaux objets connectés sont encore à créer)\footnote{Les classes correspondant aux objets de type thermostat ou binary switch sont déjà implémentées}
 	\item[-] Création d'un réseau Zwave et ajout d'objets.
+	\item[-] Récupération des devices sur le réseau
+	\item[-] Récupération des différentes instances des devices connectés
+	\item[-] Récupération des différentes commande classe (fonctionnalités) des différentes instances des objets connectés
 	\item[-] Pilotage d'une prise et récupération de son état par callback.
 	\item[-] Respect d'un planning pour une prise.
 \end{description}
@@ -119,19 +122,21 @@ L'application fonctionne actuellement correctement et permet de faire les foncti
 
 	
 \newpage	
-		\section{Travai à faire }
+		\section{Travail à faire }
 		
 			\subsection{Centrale soft}
 \begin{description}
 	\item[-] Agrémenter le protocole de communication
-	\item[-] Implémenter toutes les requêtes du protocole.
-	\item[-] Utiliser le thermostat.
-	\item[-] Piloter des radiateurs.
-	\item[-] Définir la consigne d'effacement pouvant être reçue.
-	\item[-] Réagir à cette consigne.
-	\item[-] Améliorer la robustesse.
-	\item[-] Implémenter la communication vers une base de données.
-	\item[-] Gestion des objets par pièces.
+	\item[-] Implémenter toutes les requêtes du protocole
+	\item[-] Finir l'implémentation de la classe PowerPlug (prise) (attacher les callbacks pour réagir aux événements voulus)
+	\item[-] Implémenter l'instanciation et l'initialisation d'un nouvel objet lorsque celui-ci vient d'être ajouté au réseau
+	\item[-] Implémenter les classes relatives à l'utilisation d'autres objets (alarme, porte de garage, tête de chauffage ....)
+	\item[-] Utiliser le thermostat
+	\item[-] Piloter des radiateurs
+	\item[-] Réagir à une modification du scénario en cours 
+	\item[-] Améliorer la robustesse
+	\item[-] Implémenter la communication vers une base de données
+	\item[-] Gestion des objets par pièces
 	
 \end{description}	
 
