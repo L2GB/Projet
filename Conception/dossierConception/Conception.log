@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 00:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 01:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -875,6 +875,9 @@ LaTeX Warning: Label `diagClass' multiply defined.
 
 LaTeX Warning: Label `diagClass' multiply defined.
 
+
+LaTeX Warning: Label `diagClass' multiply defined.
+
 )
 \openout1 = `Conception.aux'.
 
@@ -1043,10 +1046,23 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/pplx/b/n' tried instead on input line 84.
-
-No file Conception.toc.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+ (./Conception.toc
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 3.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 3.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 3.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.86 	\chapter
@@ -1072,7 +1088,7 @@ Chapitre 2.
 LaTeX Warning: File `./Picture/Diagramme de class C++.png' not found on input l
 ine 98.
 
-<./Picture/Diagramme de class C++.png, id=51, 1393.205pt x 879.285pt>
+<./Picture/Diagramme de class C++.png, id=54, 1393.205pt x 879.285pt>
 File: ./Picture/Diagramme de class C++.png Graphic file (type png)
 
 <use ./Picture/Diagramme de class C++.png>
@@ -1084,8 +1100,6 @@ Overfull \hbox (28.44333pt too wide) in paragraph at lines 98--99
  [] 
  []
 
-LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 99.
 
 LaTeX Font Warning: Font shape `OT1/pplx/bx/sc' undefined
 (Font)              using `OT1/pplx/bx/n' instead on input line 99.
@@ -1100,7 +1114,7 @@ LaTeX Warning: File `./Picture/Diagramme de class java Model.png' not found on
 input line 113.
 
 
-<./Picture/Diagramme de class java Model.png, id=58, 2726.185pt x 1151.30125pt>
+<./Picture/Diagramme de class java Model.png, id=61, 2726.185pt x 1151.30125pt>
 File: ./Picture/Diagramme de class java Model.png Graphic file (type png)
 <use ./Picture/Diagramme de class java Model.png>
 Package pdftex.def Info: ./Picture/Diagramme de class java Model.png used on in
@@ -1117,7 +1131,7 @@ verted-to.pdf ./Picture/logoEseo.eps>
 (epstopdf)             \includegraphics on input line 117.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Picture/logoEseo-eps-converted-to.pdf, id=59, 487.8225pt x 351.3125pt>
+<./Picture/logoEseo-eps-converted-to.pdf, id=62, 487.8225pt x 351.3125pt>
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Picture/logoEseo-eps-converted-to.pdf>
@@ -1140,7 +1154,7 @@ LaTeX Warning: File `./Picture/Diagramme de classe java View.png' not found on
 input line 121.
 
 
-<./Picture/Diagramme de classe java View.png, id=68, 2319.66624pt x 1073.00874p
+<./Picture/Diagramme de classe java View.png, id=71, 2319.66624pt x 1073.00874p
 t>
 File: ./Picture/Diagramme de classe java View.png Graphic file (type png)
  <use ./Picture/Diagramme de classe java View.png>
@@ -1168,7 +1182,7 @@ line 125.
 LaTeX Warning: File `./Picture/machine a etat java.png' not found on input line
  134.
 
-<./Picture/machine a etat java.png, id=74, 874.26625pt x 804.00375pt>
+<./Picture/machine a etat java.png, id=77, 874.26625pt x 804.00375pt>
 File: ./Picture/machine a etat java.png Graphic file (type png)
 
 <use ./Picture/machine a etat java.png>
@@ -1198,12 +1212,6 @@ line 138.
  [6
 
  <./Picture/machine a etat java.png (PNG copy)>]
-
-Package glossaries Warning: No \printglossary or \printglossaries found.
-(Remove \makeglossaries if you don't want any glossaries.)
-This document will not have a glossary.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
 Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
 (epstopdf)                    date: 2015-02-05 20:58:59
 (epstopdf)                    size: 152543 bytes
@@ -1212,20 +1220,46 @@ Package epstopdf Info: Source file: <./Picture/logoEseo.eps>
 (epstopdf)                    size: 52710 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Picture/logoEseo-eps-con
 verted-to.pdf ./Picture/logoEseo.eps>
-(epstopdf)             \includegraphics on input line 148.
+(epstopdf)             \includegraphics on input line 145.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Picture/logoEseo-eps-converted-to.pdf Graphic file (type pdf)
-<use ./Picture/logoEseo-eps-converted-to.pdf>
+ <use ./Picture/logoEseo-eps-converted-to.pdf>
 Package pdftex.def Info: ./Picture/logoEseo-eps-converted-to.pdf used on input 
-line 148.
+line 145.
 (pdftex.def)             Requested size: 42.67912pt x 30.73225pt.
  [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
+(./Conception.toc)
+\tf@toc=\write7
+\openout7 = `Conception.toc'.
+
+ [8
+
+] (./Conception.lof)
+\tf@lof=\write8
+\openout8 = `Conception.lof'.
+
+ [9
+
+] (./Conception.lot)
+\tf@lot=\write9
+\openout9 = `Conception.lot'.
+
+
+
+Package glossaries Warning: No \printglossary or \printglossaries found.
+(Remove \makeglossaries if you don't want any glossaries.)
+This document will not have a glossary.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
+[10
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
  (./Conception.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 148.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 149.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 149.
 Package rerunfilecheck Info: File `Conception.out' has not changed.
-(rerunfilecheck)             Checksum: BCD148E811C771495D95F8A70027F1DE;507.
+(rerunfilecheck)             Checksum: E8E1C54ECC06C14D4D362B7177DF54B8;435.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1233,24 +1267,24 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
  ) 
 Here is how much of TeX's memory you used:
- 14923 strings out of 493117
- 219818 string characters out of 6135434
- 396678 words of memory out of 5000000
- 18038 multiletter control sequences out of 15000+600000
- 23857 words of font info for 63 fonts, out of 8000000 for 9000
+ 14957 strings out of 493117
+ 220260 string characters out of 6135434
+ 396691 words of memory out of 5000000
+ 18057 multiletter control sequences out of 15000+600000
+ 30564 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,15n,75p,1752b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/
 2014/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/te
 xmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Conception.pdf (8 pages, 647124 bytes).
+Output written on Conception.pdf (11 pages, 651159 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 
