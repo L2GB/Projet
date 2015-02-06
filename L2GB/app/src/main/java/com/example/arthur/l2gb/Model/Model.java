@@ -20,7 +20,7 @@ public class Model implements Parcelable {
     private ArrayList<Jours_Model> jours_Model;
     private ArrayList<Semaine_Model> profilSemaine_model;
 
-    Handler myHandler;
+    private Handler myHandler;
 
     /**
      * \var myEmission
@@ -41,6 +41,14 @@ public class Model implements Parcelable {
 
         boolean testconnection = setConnection(ip,Constante.PORT_SERVEUR);
         System.out.println("Communication réussie ? " +testconnection);
+        try
+        {
+            // Met le thread en attente que la connexion s'établisse
+            Thread.sleep(1000);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
         askJourList();
         try
         {
