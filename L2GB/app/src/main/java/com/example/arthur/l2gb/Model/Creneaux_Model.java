@@ -4,8 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by pierre on 12/01/2015.
- * Class qui permet de créer les créneaux horraires
+ * @date Created by pierre on 12/01/2015.
+ * @brief Class qui permet de créer les créneaux horraires
+ * @author pierrebaranger1
  */
 public class Creneaux_Model implements Parcelable {
 
@@ -61,6 +62,9 @@ public class Creneaux_Model implements Parcelable {
         this.autorisation=true;
     }
 
+    /**
+     * @brief Constructeur de la classe
+     */
     public Creneaux_Model()
     {
         this.hDebut=25;
@@ -69,6 +73,10 @@ public class Creneaux_Model implements Parcelable {
         this.mFin=00;
         this.autorisation=true;
     }
+
+    /*****************************************************************
+     * Getter et setter
+     *****************************************************************/
 
     public int gethDebut() {
         return hDebut;
@@ -110,6 +118,10 @@ public class Creneaux_Model implements Parcelable {
         this.autorisation = autorisation;
     }
 
+
+    /*****************************************************************
+     * Methodes utilisées pour la serialisation des objets du model
+     *****************************************************************/
 
     protected Creneaux_Model(Parcel in) {
         hDebut = in.readInt();

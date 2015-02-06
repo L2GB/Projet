@@ -6,7 +6,10 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
- * Created by pierre on 12/01/2015.
+ * @file Jours_Model
+ * @brief 
+ * @date Createdon 12/01/2015.
+ * @author pierrebaranger1
  */
 public class Jours_Model implements Parcelable {
 
