@@ -22,39 +22,62 @@ class Room{
 
 
 abstract class Object{
-	-string m_name
+	-struct tm *m_time
 	-Week *m_planning
 	-string m_type
-	+void setPlanning(Week *_planning)
-	void run()
+	-ZWaveController *m_zwaveController
+	-int m_deviceId
+	-int m_instanceNum
+	-bool m_connected
+	-bool m_unknown
+	string m_name
+	+{abstract}void print()
+	+{abstract}json_t *json_transform_object()
+	+{abstract}void run()
 }
 
 class ObjectManager{
-	+void setDay(json_t *_day)
-	+void setWeek(json_t *_week)
-	+void setObject(json_t *_object)
-	+void loadDays(json_t *_days)
-	+void loadWeeks(json_t *_weeks)
-	+void loadObjects(json_t *_objects)
 	+Object *getObject(string _name)
+	+void notifyObjectChanges(Object *_object)
+	+void mode_inclusion()
+	+void powerPlug_switchON(int _deviceId, int _instanceNum)
+	+void powerPlug_switchOFF(int _deviceId, int _instanceNum)
 	-void initializeMapping()
-	-map<string, TypeObjet> m_typeObjet;
-	-vector<Object *> m_objects;
-	-vector<Room *> m_rooms;
-	-PlanningManager m_planningManager;
+	-map<string, TypeObjet> m_typeObjet
+	-vector<Object *> m_objects
+	-vector<Room *> m_rooms
+	-PlanningManager m_planningManager
+	-ZWaveController m_zwaveController
 }
 
 class Heater{
+	-Heater_state m_state
+	-int m_currentTemp
+	-bool m_allume
 	-int m_Tconfort
 	-int m_Teco
-	+void setTconfort(int _tconfort)
-	+void setTeco(int _teco)
+	+void print()
+	+json_t *json_transform_object()
+	-void getCurrentTemp()
+	-void run()
+	-void init()
 }	
 
 class Thermostat{
 }
 
 class PowerPlug{
+	-PowerPlug_level m_level
+	-PowerPlug_state m_state
+	+bool getLevel()
+	+void switchON()
+	+void switchOFF()
+	+void print()
+	+json_t *json_transform_object()
+	-void run()
+	-void init()
+	-void checkTime()
+	-PowerPlug_level getScheduledLevel()
 }
 
 class RACC{
@@ -127,13 +150,13 @@ class TimeSlot{
 	-struct tm m_end
 }
 
-Object -right->ZWaveController
-ObjectManager-up->Object
-ObjectManager-->ZWaveController
+Object -right-> ZWaveController
+ObjectManager -up-> Object
+ObjectManager --> ZWaveController
 
-Object-up-|>Heater
-Object-up-|>PowerPlug
-Object-up-|>Thermostat
+Heater -up-|> Object
+PowerPlug -up-|> Object
+Thermostat -up-|> Object
 
 
 
