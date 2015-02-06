@@ -8,37 +8,37 @@ import java.io.IOException;
 import java.net.Socket;
 
 /**
- * \brief Classe singleton qui implémente la création du socket
+ * @brief Classe singleton qui implémente la création du socket
  */
 public class SocketCreation extends Thread
 {
 
     /**
-     * \var ipServeur
+     * ipServeur
      */
     private String ipServeur;
     /**
-     * \var portServeur
+     * portServeur
      */
     private int portServeur;
     /**
-     * \var mySocket
+     * mySocket
      * Socket privé qui sert à ouvrir la connexion
      */
     private static Socket mySocket;
     /**
-     * \var isConnected
+     * isConnected
      * Enregistre localement l'état de la connexion
      */
     private static boolean isConnected;
 
     /**
-     * \brief Constructeur de SocketCreation
+     * \@rief Constructeur de SocketCreation
      *
      * Prends en compte l'IP et le port donnés par l'utilisateur et ouvre un socket.
      *
-     * \param ip IP du robot renseigné par l'utilisateur
-     * \param port Port du robot renseigné par l'utilisateur
+     * @param ip IP du robot renseigné par l'utilisateur
+     * @param port Port du robot renseigné par l'utilisateur
      */
     public SocketCreation(String ip, int port)
     {
@@ -49,7 +49,7 @@ public class SocketCreation extends Thread
 
     @Override
     /**
-     * \brief Méthode appelée au lancement du Thread
+     * @brief Méthode appelée au lancement du Thread
      *
      * Méthode appelée par le constructeur de SocketCreation et qui ouvre le socket.
      * Il récupère également un booléen qui indique si la connexion a réussi.
@@ -68,7 +68,7 @@ public class SocketCreation extends Thread
     }
 
     /**
-     * \brief Fermeture du socket
+     * @brief Fermeture du socket
      */
     public static void socketClosing()
     {
@@ -84,8 +84,8 @@ public class SocketCreation extends Thread
     }
 
     /**
-     * \brief retourne l'IP de l'instance donnée de SocketCreation
-     * \return ipServeur
+     * @brief retourne l'IP de l'instance donnée de SocketCreation
+     * @return ipServeur
      */
     public String getIP()
     {
@@ -93,8 +93,8 @@ public class SocketCreation extends Thread
     }
 
     /**
-     * \brief retourne le port de l'instance donnée de SocketCreation
-     * \return portServeur
+     * @brief retourne le port de l'instance donnée de SocketCreation
+     * @return portServeur
      */
     public int getPort()
     {
@@ -102,8 +102,8 @@ public class SocketCreation extends Thread
     }
 
     /**
-     * \brief retourne le booleen de connexion
-     * \return isConnected
+     * @brief retourne le booleen de connexion
+     * @return isConnected
      */
     public static boolean isConnected()
     {
@@ -111,7 +111,7 @@ public class SocketCreation extends Thread
     }
 
     /**
-     * \brief Permet de récupérer le socket créé
+     * @brief Permet de récupérer le socket créé
      */
     public static Socket getSocket()
     {

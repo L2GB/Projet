@@ -7,31 +7,58 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
- * Created by pierrebaranger1 on 21/01/2015.
+ * @file Semaine_Model
+ * @brief Classe qui permet de définir une semaine
+ * @date Created on 21/01/2015.
+ * @author pierrebaranger1
  */
 public class Semaine_Model implements Parcelable {
 
+    /**
+     * name
+     * le nom de la semaine
+     */
     private String name;
+    /**
+     * profilJourList
+     * la liste de jour contenue dans la semaine
+     */
     private ArrayList<Jours_Model> profilJourList;
 
+    /**
+     * @brief Constructeur de la class
+     */
     public Semaine_Model()
     {
         this.name = new String();
         this.profilJourList = new ArrayList<Jours_Model>();
     }
 
+    /**
+     * @brief Constructeur de la class
+     * @param name
+     */
     public Semaine_Model(String name)
     {
         this.name = name;
         this.profilJourList = new ArrayList<Jours_Model>();
     }
 
+    /**
+     * @brief Constructeur de la class
+     * @param name
+     * @param profilJourList
+     */
     public Semaine_Model(String name, ArrayList<Jours_Model> profilJourList)
     {
         this.name = name;
         this.profilJourList = new ArrayList<Jours_Model>();
         this.profilJourList = profilJourList;
     }
+
+    /*****************************************************************
+     * Getter et setter
+     *****************************************************************/
 
     public ArrayList<Jours_Model> getProfilJourList()
     {
@@ -53,6 +80,10 @@ public class Semaine_Model implements Parcelable {
         this.name = name;
     }
 
+
+    /*****************************************************************
+     * Methodes utilisées pour la serialisation des objets du package model
+     *****************************************************************/
 
     protected Semaine_Model(Parcel in) {
         name = in.readString();

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 /**
  * @file Jours_Model
- * @brief 
- * @date Createdon 12/01/2015.
+ * @brief Classe qui permet la création d'un objet jour
+ * @date Created on 12/01/2015.
  * @author pierrebaranger1
  */
 public class Jours_Model implements Parcelable {
@@ -16,17 +16,29 @@ public class Jours_Model implements Parcelable {
     private ArrayList<Creneaux_Model> creneauList;
     private String name;
 
+    /**
+     * @brief Constructeur du Jours_Model
+     */
     public Jours_Model() {
         this.name = null;
         this.creneauList = new ArrayList<Creneaux_Model>();
     }
 
+    /**
+     * @brief Constructeur du Jours_Model
+     * @param name
+     */
     public Jours_Model(String name)
     {
         this.name = name;
         this.creneauList = new ArrayList<Creneaux_Model>();
     }
 
+    /**
+     * @brief Constructeur du Jours_Model
+     * @param name
+     * @param creneauList
+     */
     public Jours_Model(String name, ArrayList<Creneaux_Model> creneauList)
     {
         this.name = name;
@@ -34,7 +46,9 @@ public class Jours_Model implements Parcelable {
         this.creneauList = creneauList;
     }
 
-
+    /*****************************************************************
+     * Getter et setter
+     *****************************************************************/
 
     public ArrayList<Creneaux_Model> getCreneauList()
     {
@@ -55,6 +69,11 @@ public class Jours_Model implements Parcelable {
     {
         this.name = name;
     }
+
+
+    /*****************************************************************
+     * Methodes utilisées pour la serialisation des objets du package model
+     *****************************************************************/
 
     protected Jours_Model(Parcel in) {
         if (in.readByte() == 0x01) {

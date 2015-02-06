@@ -12,35 +12,34 @@ import java.net.Socket;
 
 
 /**
- * \brief Classe qui implémente l'émission de notre transmission
- *
+ * @file Emission.java
+ * @brief Classe qui implémente l'émission de notre transmission
+ * @author pierreBaranger
  */
 public class Emission extends Thread {
 
     /**
-     * \var mySocket
+     * mySocket
      * Socket utilisé pour envoyer les données.
      */
     private Socket mySocket;
 
     /**
-     * \var message
+     * message
      * La chaîne de charactère à envoyé a chaque lancement du thread.
      */
     private String message;
 
     /**
-     * \var comJson
+     * comJson
      * Contient toutes les méthodes pour communiquer avec la centrale au format JSON.
      */
     private JsonUtil comJson;
 
     /**
-     * \brief Constructeur de l'Emission
-     * <p/>
+     * @brief Constructeur de l'Emission
      * Prend en paramètre le socket et lance le thread d'émission.
-     * <p/>
-     * \param socket Socket utilisé pour envoyer les données.
+     * @param socket Socket utilisé pour envoyer les données.
      */
     public Emission(Socket socket) {
         this.setName("ThreadEmission");
@@ -52,7 +51,7 @@ public class Emission extends Thread {
 
     @Override
     /**
-     * \brief Méthode appelée au lancement du Thread
+     * @brief Méthode appelée au lancement du Thread
      *
      * A chaque fois qu'une donnée est à envoyée au robot, la méthode est appelée par l'objet
      * qui s'occupe du changement en question.
@@ -80,7 +79,7 @@ public class Emission extends Thread {
 
 
     /**
-     * \brief Envoie le message JSON pour demander les objets enregistrés.
+     * @brief Envoie le message JSON pour demander les objets enregistrés.
      */
     public void askObjetList()
     {
@@ -91,7 +90,7 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander les profils jour enregistrés.
+     * @brief Envoie le message JSON pour demander les profils jour enregistrés.
      */
     public void askJourList()
     {
@@ -102,7 +101,7 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander les profils semaine enregistrés.
+     * @brief Envoie le message JSON pour demander les profils semaine enregistrés.
      */
     public void askSemaineList()
     {
@@ -113,7 +112,7 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander la consommation de l'objet: "objet"
+     * @brief Envoie le message JSON pour demander la consommation de l'objet: "objet"
      * \param objet : l'objet en question.
      */
     public void askConsommation(Objet_Model objet)
@@ -125,8 +124,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander l'ajout d'un objet Jours_Model: "jour"
-     * \param jour : le jour en question.
+     * @brief Envoie le message JSON pour demander l'ajout d'un objet Jours_Model: "jour"
+     * @param jour : le jour en question.
      */
     public void addJourOnCentrale(Jours_Model jour)
     {
@@ -137,8 +136,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander l'ajout d'un objet Semaine_Model: "semaine"
-     * \param semaine : le jour en question.
+     * @brief Envoie le message JSON pour demander l'ajout d'un objet Semaine_Model: "semaine"
+     * @param semaine : le jour en question.
      */
     public void addSemaineOnCentrale(Semaine_Model semaine)
     {
@@ -149,8 +148,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander la suppression de l'objet jour: "jour"
-     * \param jour : l'objet jour en question.
+     * @brief Envoie le message JSON pour demander la suppression de l'objet jour: "jour"
+     * @param jour : l'objet jour en question.
      */
     public void removeJoursModel(Jours_Model jour)
     {
@@ -161,8 +160,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander la suppression de l'objet: "objet"
-     * \param objet : l'objet en question.
+     * @brief Envoie le message JSON pour demander la suppression de la semaine: "semaine"
+     * @param semaine : l'objet semaine en question.
      */
     public void removeSemaineModel(Semaine_Model semaine)
     {
@@ -173,8 +172,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour demander la suppression de l'objet: "objet"
-     * \param objet : l'objet en question.
+     * @brief Envoie le message JSON pour demander la suppression de l'objet: "objet"
+     * @param objet : l'objet en question.
      */
     public void removeObjetModel(Objet_Model objet)
     {
@@ -185,8 +184,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour indiquer la modification d'un jour
-     * \param jour : l'objet jour en question.
+     * @brief Envoie le message JSON pour indiquer la modification d'un jour
+     * @param jour : l'objet jour en question.
      */
     public void modifiedJour(Jours_Model jour)
     {
@@ -197,8 +196,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour indiquer la modification d'une semaine
-     * \param semaine : l'objet semaine en question.
+     * @brief Envoie le message JSON pour indiquer la modification d'une semaine
+     * @param semaine : l'objet semaine en question.
      */
     public void modifiedSemaine(Semaine_Model semaine)
     {
@@ -208,8 +207,8 @@ public class Emission extends Thread {
         this.run();
     }
     /**
-     * \brief Envoie le message JSON pour indiquer la modification d'un objet
-     * \param objet : l'objet en question.
+     * @brief Envoie le message JSON pour indiquer la modification d'un objet
+     * @param objet : l'objet en question.
      */
     public void modifiedObjet(Objet_Model objet)
     {
@@ -219,8 +218,8 @@ public class Emission extends Thread {
         this.run();
     }
     /**
-     * \brief Envoie le message JSON pour éteindre la prise spécifiée.
-     * \param objet : l'objet que l'on veut éteindre.
+     * @brief Envoie le message JSON pour éteindre la prise spécifiée.
+     * @param objet : l'objet que l'on veut éteindre.
      */
     public void powerOff(Objet_Model objet)
     {
@@ -231,8 +230,8 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour allumer la prise spécifiée.
-     * \param objet : l'objet que l'on veut allumer.
+     * @brief Envoie le message JSON pour allumer la prise spécifiée.
+     * @param objet : l'objet que l'on veut allumer.
      */
     public void powerOn(Objet_Model objet)
     {
@@ -244,7 +243,7 @@ public class Emission extends Thread {
     }
 
     /**
-     * \brief Envoie le message JSON pour passer en mode inclusion.
+     * @brief Envoie le message JSON pour passer en mode inclusion.
      */
     public void inclusionMode()
     {

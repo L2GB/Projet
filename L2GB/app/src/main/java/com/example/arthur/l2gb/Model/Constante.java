@@ -2,6 +2,7 @@ package com.example.arthur.l2gb.Model;
 
 /**
  * Created by pierrebaranger1 on 19/01/2015.
+ * Classe contenant toutes les constantes utilisées par le package model
  */
 public class Constante {
 

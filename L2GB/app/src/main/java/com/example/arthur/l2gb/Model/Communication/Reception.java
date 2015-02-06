@@ -21,70 +21,68 @@ import com.example.arthur.l2gb.Model.Semaine_Model;
 public class Reception extends Thread {
 
     /**
-     * \var myHandler
+     * myHandler
      * Handler qui sert de boîte aux lettres pour afficher les données reçues
      */
     private Handler myHandler;
 
     /**
-     * \var mySocket
+     * mySocket
      * Socket utilisé pour envoyer les données.
      */
     private Socket mySocket;
 
 
     /**
-     * \var buffer
+     * buffer
      * Variable utilisée pour stocker les chaînes de caractères reçues par la centrale .
      */
     private String buffer;
 
     /**
-     * \var comJson
+     * comJson
      * Contient toutes les méthodes pour communiquer avec la centrale au format JSON.
      */
     private JsonUtil comJson;
 
     /**
-     * \var in
+     * in
      * variable pour envoyer des chaines de charactère par socket.
      */
     private BufferedReader in = null;
 
     /**
-     * \var objetList
+     * objetList
      * Variable pour stocker la liste d'objets enregistrés dans centrale  .
      */
     private ArrayList<Objet_Model> objetList;
 
     /**
-     * \var profilJourList
+     * profilJourList
      * Variable pour stocker la liste de profil jour enregistré dans centrale  .
      */
     private ArrayList<Jours_Model> profilJourList;
 
     /**
-     * \var profilSemaineList
+     * profilSemaineList
      * Variable pour stocker la liste de semaine enregistré dans centrale  .
      */
     private ArrayList<Semaine_Model> profilSemaineList;
 
     /**
-     * \var message
+     * message
      * Variable pour stocker les message en reception  .
      */
     private byte[] message = new byte[2048];
 
     /**
-     * \brief Constructeur de Reception
-     * <p/>
+     * @brief Constructeur de Reception
      * Prend en paramètre le socket et le handler et lance la reception
-     * <p/>
-     * \param socket
-     * \param handler
-     * \param objetList
-     * \param profilSemaineList
-     * \param profilJourList
+     * @param socket
+     * @param handler
+     * @param objetList
+     * @param profilSemaineList
+     * @param profilJourList
      */
     public Reception(Socket socket, Handler handler, ArrayList<Objet_Model> objetList,
                      ArrayList<Jours_Model> profilJourList, ArrayList<Semaine_Model> profilSemaineList) {
@@ -109,7 +107,7 @@ public class Reception extends Thread {
 
     @Override
     /**
-     * \brief Méthode appelée au lancement du Thread
+     * @brief Méthode appelée au lancement du Thread
      *
      * A chaque fois qu'une donnée est reçu de la centrale, récupère la chaine de charactère et le retourne
      * grâce au handler dans l'UI Thread.
@@ -139,12 +137,10 @@ public class Reception extends Thread {
 
 
     /**
-     * \brief Analyse la chaîne de caractère reçu pour identifier le message
-     * <p/>
+     * @brief Analyse la chaîne de caractère reçu pour identifier le message
      * Récupère la chaîne de caractère reçu de la centrale et l'analyse pour modifier
      * les objets concernés.
-     * <p/>
-     * \param buffer Chaîne de caractère reçu.
+     * @param buffer Chaîne de caractère reçu.
      */
     private void parseReceiveString(String buffer) {
         int responseType=0;

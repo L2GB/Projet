@@ -12,25 +12,55 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * Created by arthur on 15/01/2015.
+ * @file Model.java
+ * @brief Cette est "la base donnée" de notre application
+ * @date Created on 15/01/2015.
+ * @author Arthur
  */
 public class Model implements Parcelable {
 
+    /**
+     * objet_model
+     * Liste d'objet Objet
+     */
     private ArrayList<Objet_Model> objet_model;
+
+    /**
+     * jours_model
+     * Liste d'objet Jours
+     */
     private ArrayList<Jours_Model> jours_Model;
     private ArrayList<Semaine_Model> profilSemaine_model;
-
     private Handler myHandler;
 
     /**
-     * \var myEmission
+     * myEmission
      * Instance de la classe Emission.
      */
     private Emission myEmission;
+
+    /**
+     * ipServeur
+     * Stock l'adresse ip du serveur
+     */
     private String ipServeur;
+
+    /**
+     *  portServeur
+     *  Stock le numéro de port du serveur
+     */
     private int portServeur;
+
+    /**
+     * communication
+     * Permet d'utiliser les méthodes de communication
+     */
     private JsonUtil communication;
 
+    /**
+     * @brief Constructeur de la class
+     * @param ip l'adresse ip du serveur
+     */
     public Model(String ip){
        this.objet_model = new ArrayList<Objet_Model>();
        this.jours_Model = new ArrayList<Jours_Model>();
@@ -41,6 +71,7 @@ public class Model implements Parcelable {
 
         boolean testconnection = setConnection(ip,Constante.PORT_SERVEUR);
         System.out.println("Communication réussie ? " +testconnection);
+
         try
         {
             // Met le thread en attente que la connexion s'établisse
@@ -52,7 +83,7 @@ public class Model implements Parcelable {
         askJourList();
         try
         {
-            // Met le thread en attente que la connexion s'établisse
+            // Pause entre 2 requêtes
             Thread.sleep(1000);
         } catch (InterruptedException e)
         {
@@ -61,7 +92,7 @@ public class Model implements Parcelable {
         askSemaineList();
         try
         {
-            // Met le thread en attente que la connexion s'établisse
+            // Pause entre 2 requêtes
             Thread.sleep(1000);
         } catch (InterruptedException e)
         {
@@ -70,6 +101,9 @@ public class Model implements Parcelable {
         askObjetList();
     }
 
+    /**
+     * @brief Permet de créer un faux model à fin de tester l'application
+     */
     private void creerfakeModel(){
         Creneaux_Model creneauxModelTravail1 = new Creneaux_Model(6,8);
         Creneaux_Model creneauxModelTravail2 = new Creneaux_Model(16,21);
@@ -165,6 +199,51 @@ public class Model implements Parcelable {
     }
 
 
+    /**
+     * @brief Ouverture de la connexion
+     * Ouvre un socket et si la connexion est établie construction de Emission et Reception.
+     * @param ipServeur IP du serveur
+     * @param port Port du serveur
+     */
+    public boolean setConnection(String ipServeur, int port)
+    {
+
+        this.myHandler = new Handler();
+        // On créer une Connexion
+        new SocketCreation(ipServeur, port);
+        try
+        {
+            // Met le thread en attente que la connexion s'établisse
+            Thread.sleep(500);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        // Si la connexion est correcte, on instancie les classes Emission et Reception
+        if (SocketCreation.isConnected() == true)
+        {
+            Socket newSocket = SocketCreation.getSocket();
+            this.myEmission = new Emission(newSocket);
+            new Reception(newSocket, myHandler,objet_model,jours_Model,profilSemaine_model);
+        }
+
+        if (SocketCreation.isConnected() == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    /*****************************************************************
+     * Getter et setter
+     *****************************************************************/
+
     public JsonUtil getCommunication() {
         return communication;
     }
@@ -214,96 +293,163 @@ public class Model implements Parcelable {
     }
 
 
+
+
+
+    /***********************************************************
+     Méthodes pour envoyer des messages à la centrale.
+     ***********************************************************/
+
+
+    /**
+     * @brief Envoie le message JSON pour demander les profils jour enregistrés.
+     */
     public void askJourList()
     {
         //System.out.println("model ask jour list");
         this.myEmission.askJourList();
     }
-
+    /**
+     * @brief Envoie le message JSON pour demander les profils semaine enregistrés.
+     */
     public void askSemaineList()
     {
         //System.out.println("model ask jour list");
         this.myEmission.askSemaineList();
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander les objets enregistrés.
+     */
     public void askObjetList()
     {
         //System.out.println("model ask objet list");
         this.myEmission.askObjetList();
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander l'ajout d'un objet Jours_Model: "jour"
+     * @param jour : le jour en question.
+     */
     public void addJour(Jours_Model jour)
     {
-        //System.out.println("model add objett");
+        //System.out.println("model add objet");
         this.myEmission.addJourOnCentrale(jour);
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander l'ajout d'un objet Semaine_Model: "semaine"
+     * @param semaine : le jour en question.
+     */
     public void addSemaine(Semaine_Model semaine)
     {
         //System.out.println("model add semaine");
         this.myEmission.addSemaineOnCentrale(semaine);
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander la suppression de l'objet jour: "jour"
+     * @param jour : l'objet jour en question.
+     */
     public void removeJour(Jours_Model jour)
     {
         //System.out.println("model remove jour");
         this.myEmission.removeJoursModel(jour);
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander la suppression de la semaine: "semaine"
+     * @param semaine : l'objet semaine en question.
+     */
     public void removeSemaine(Semaine_Model semaine)
     {
         //System.out.println("model remove jour");
         this.myEmission.removeSemaineModel(semaine);
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander la suppression de l'objet: "objet"
+     * @param objet : l'objet en question.
+     */
     public void removeObjet(Objet_Model objet)
     {
         //System.out.println("model remove jour");
         this.myEmission.removeObjetModel(objet);
     }
 
+    /**
+     * @brief Envoie le message JSON pour indiquer la modification d'un jour
+     * @param jour : l'objet jour en question.
+     */
     public void modifiedJour(Jours_Model jour)
     {
         //System.out.println("model modifier jour");
         this.myEmission.modifiedJour(jour);
     }
 
+    /**
+     * @brief Envoie le message JSON pour indiquer la modification d'une semaine
+     * @param semaine : l'objet semaine en question.
+     */
     public void modifiedSemaine(Semaine_Model semaine)
     {
         //System.out.println("model modifier semaine");
         this.myEmission.modifiedSemaine(semaine);
     }
 
+    /**
+     * @brief Envoie le message JSON pour indiquer la modification d'un objet
+     * @param objet : l'objet en question.
+     */
     public void modifiedObjet(Objet_Model objet)
      {
          //System.out.println("model modifier objet");
          this.myEmission.modifiedObjet(objet);
      }
 
+    /**
+     * @brief Envoie le message JSON pour allumer la prise spécifiée.
+     * @param objet : l'objet que l'on veut allumer.
+     */
     public void powerOn(Objet_Model objet)
     {
         //System.out.println("model power on");
         this.myEmission.powerOn(objet);
     }
 
+    /**
+     * @brief Envoie le message JSON pour éteindre la prise spécifiée.
+     * @param objet : l'objet que l'on veut éteindre.
+     */
     public void powerOff(Objet_Model objet)
     {
         //System.out.println("model power off");
         this.myEmission.powerOff(objet);
     }
 
+    /**
+     * @brief Envoie le message JSON pour demander la consommation de l'objet: "objet"
+     * \param objet : l'objet en question.
+     */
     public void askConsommation(Objet_Model objet)
     {
         //System.out.println("model ask consommation");
         this.myEmission.askConsommation(objet);
     }
 
+    /**
+     * @brief Envoie le message JSON pour passer en mode inclusion.
+     */
     public void inclusionMode()
     {
         //System.out.println("model ask consommation");
         this.myEmission.inclusionMode();
     }
 
+
+    /*****************************************************************
+     * Methodes utilisées pour la serialisation des objets du package model
+     *****************************************************************/
 
     protected Model(Parcel in) {
         if (in.readByte() == 0x01) {
@@ -326,46 +472,7 @@ public class Model implements Parcelable {
         }
     }
 
-    /**
-     * \brief Ouverture de la connexion
-     *
-     * Ouvre un socket et si la connexion est établie construction de Emission et Reception.
-     *
-     * \param ipRobot IP du robot
-     * \param portRobot Port du robot
-     */
-    public boolean setConnection(String ipRobot, int portRobot)
-    {
 
-        this.myHandler = new Handler();
-        // On créer une Connexion
-        new SocketCreation(ipRobot, portRobot);
-        try
-        {
-            // Met le thread en attente que la connexion s'établisse
-            Thread.sleep(500);
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-
-        // Si la connexion est correcte, on instancie les classes Emission et Reception
-        if (SocketCreation.isConnected() == true)
-        {
-            Socket newSocket = SocketCreation.getSocket();
-            this.myEmission = new Emission(newSocket);
-            new Reception(newSocket, myHandler,objet_model,jours_Model,profilSemaine_model);
-        }
-
-        if (SocketCreation.isConnected() == true)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
     @Override
     public int describeContents() {

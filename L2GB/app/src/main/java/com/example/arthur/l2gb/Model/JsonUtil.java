@@ -12,7 +12,6 @@ import java.util.Map;
 /**
  * @file JsonUtil.java
  * @brief Cette classe permet de passer ou de recevoir des messages par le biais d'objet JSonObject
- * @version [0.1]
  * @date de création [19/01/2015]
  * @author(s) [Pierre Baranger]
  */
