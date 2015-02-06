@@ -13,7 +13,7 @@
 
 PowerPlug::PowerPlug(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_week, bool _connected, bool _unknown) : Object(_zwaveController, _deviceId, _instanceNum, _name, _week, _connected, _unknown), m_state(POWERPLUG_INIT)
 {
-	m_type("PRISE");
+	m_type = "PRISE";
 }
 
 PowerPlug::PowerPlug(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name) : Object(_zwaveController, _deviceId, _instanceNum, _name), m_level(OFF), m_state(POWERPLUG_INIT)
