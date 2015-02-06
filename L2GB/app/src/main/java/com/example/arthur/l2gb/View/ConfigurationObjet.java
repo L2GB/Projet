@@ -31,21 +31,31 @@ public class ConfigurationObjet extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration_objet);
         this.model = getIntent().getExtras().getParcelable("ListeObjet");
+        this.objet = new Objet_Model("sss");
         this.objet = getIntent().getExtras().getParcelable("NewObjet");
         this.idBouton= getIntent().getExtras().getInt("id");
-        this.model.getObjet_model().remove(this.objet);
+        for (int p = 0; p < this.model.getObjet_model().size(); p++) {
+            if (this.objet.getName().equals(this.model.getObjet_model().get(p).getName())) {
+               this.model.getObjet_model().remove(p);            }
+        }
+        //this.model.getObjet_model().remove(this.objet);
         afficherParamettreObjet();
         choixSemaineSpinner();
         if(this.objet.getType().equals("PRISE")){
             EditText saisi = (EditText) findViewById(R.id.editTextTemperatureConfort);
             saisi.setVisibility(View.GONE);
             saisi = (EditText) findViewById(R.id.editTextTemperatureEco);
+            saisi.setVisibility(View.GONE);
             TextView vu = (TextView) findViewById(R.id.textView10);
             vu.setVisibility(View.GONE);
             vu = (TextView) findViewById(R.id.textView2);
+            vu.setVisibility(View.GONE);
         }
     }
 
+    /**
+     * Affiche les paramettres de l'objet sur les champs adéquoite
+     */
     public void afficherParamettreObjet(){
         EditText nom = (EditText) findViewById(R.id.edit_name_objet);
         nom.setText(objet.getName());
@@ -58,6 +68,9 @@ public class ConfigurationObjet extends Activity {
         listeSemaine.add(this.objet.getProfilSemaine().getName());
     }
 
+    /**
+     * Met toute les semaine préenregistré dans le spiner
+     */
     public void choixSemaineSpinner(){
         final Spinner spinnerSemaine = (Spinner) findViewById(R.id.semaineListe);
         for(int i =0;i<this.model.getProfilSemaine_model().size();i++){
@@ -71,14 +84,21 @@ public class ConfigurationObjet extends Activity {
         spinnerSemaine.setAdapter(dataAdapterR);
     }
 
+    /**
+     * Retourne à la vu précédente
+     * @param v : appelé par l'appuis sur un bouton
+     */
     public void RetourObjetConfig(View v){
         finish();
     }
+    /**
+     * Sauve un objet si possible et retourne à la vue précédente
+     * @param v : appelé par l'appuis sur un bouton
+     */
     public void saveObjet(View v){
         boolean nomexistant=true;
         EditText nom = (EditText) findViewById(R.id.edit_name_objet);
         if(nom.getText().length()>0) {
-
             for (int p = 0; p < this.model.getObjet_model().size(); p++) {
                 if (nom.getText().toString().equals(this.model.getObjet_model().get(p).getName())) {
                     nomexistant = false;
