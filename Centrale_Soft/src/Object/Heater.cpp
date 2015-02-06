@@ -13,6 +13,7 @@
 
 Heater::Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name) : Object(_zwaveController, _deviceId, _instanceNum, _name), m_state(HEATER_INIT), m_Tconfort(0), m_Teco(0), m_allume(false)
 {
+	m_type("CHAUFFAGE");
 }
 
 Heater::Heater(ZWaveController *_zwaveController, int _deviceId, int _instanceNum, const std::string _name, Week *_week, bool _connected, bool _unknown, int _Tconfort, int _Teco) : Object(_zwaveController, _deviceId, _instanceNum, _name, _week, _connected, _unknown), m_state(HEATER_INIT), m_Tconfort(_Tconfort), m_Teco(_Teco), m_allume(false)
@@ -90,6 +91,8 @@ void Heater::print()
 	std::cout << "HEATER" << std::endl;
 	std::cout << "Name : " << m_name << std::endl;
 	std::cout << "Type : " << m_type << std::endl;
+	std::cout << "deviceId : " << m_deviceId << std::endl;
+	std::cout << "instanceNum : " << m_instanceNum << std::endl;
 	std::cout << "Connecté : " << m_connected << std::endl;
 	std::cout << "Inconnu : " << m_unknown << std::endl;
 	std::cout << "Allumé : " << m_allume << std::endl;

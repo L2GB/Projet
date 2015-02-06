@@ -549,7 +549,7 @@ Object *ObjectManager::getObject(int _deviceId, int _instanceNum)
 {
 	for(std::size_t i = 0 ; i < m_objects.size() ; i++)
 	{
-		if(m_objects[i]->getInstanceNum() == _instanceNum && m_objects[i]->getDeviceId())
+		if(m_objects[i]->getInstanceNum() == _instanceNum && m_objects[i]->getDeviceId() == _deviceId)
 		{
 			return m_objects[i];
 		}
@@ -581,12 +581,10 @@ void ObjectManager::powerPlug_switchON(int _deviceId, int _instanceNum)
 {
 	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
 	powerPlug->switchON();
-	powerPlug->print();
 }
 
 void ObjectManager::powerPlug_switchOFF(int _deviceId, int _instanceNum)
 {
 	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
 	powerPlug->switchOFF();
-	powerPlug->print();
 }
