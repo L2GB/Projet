@@ -47,6 +47,10 @@ public class PopUp_View extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Valide le choix de l'heure et l'envoie.
+     * @param view sur appuis sur un bouton
+     */
     public void okHeure(View view) {
         TimePicker tp = (TimePicker) findViewById(R.id.timePicker);
         int heure = tp.getCurrentHour();
@@ -63,6 +67,10 @@ public class PopUp_View extends Activity {
         finish();
     }
 
+    /**
+     * Permet de revenir en arriere.
+     * @param view
+     */
     public void annulerHeure(View view){
         finish();
     }
