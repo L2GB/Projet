@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 01:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.3)  6 FEB 2015 09:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -747,7 +747,7 @@ LaTeX Warning: Citation `IEEE_830' on page 2 undefined on input line 77.
 
 ]
 Chapitre 2.
-<Figures/diagDeploiLegende.jpg, id=216, 510.90875pt x 80.3pt>
+<Figures/diagDeploiLegende.jpg, id=203, 510.90875pt x 80.3pt>
 File: Figures/diagDeploiLegende.jpg Graphic file (type jpg)
 
 <use Figures/diagDeploiLegende.jpg>
@@ -756,14 +756,14 @@ Package pdftex.def Info: Figures/diagDeploiLegende.jpg used on input line 124.
  [3
 
 ]
-<Figures/diagArchiMatSof.jpg, id=226, 704.6325pt x 729.72626pt>
+<Figures/diagArchiMatSof.jpg, id=213, 704.6325pt x 729.72626pt>
 File: Figures/diagArchiMatSof.jpg Graphic file (type jpg)
 
 <use Figures/diagArchiMatSof.jpg>
 Package pdftex.def Info: Figures/diagArchiMatSof.jpg used on input line 132.
 (pdftex.def)             Requested size: 387.54909pt x 401.3507pt.
 
-<Figures/logoEseo.png, id=227, 486.8589pt x 350.2686pt>
+<Figures/logoEseo.png, id=214, 486.8589pt x 350.2686pt>
 File: Figures/logoEseo.png Graphic file (type png)
 
 <use Figures/logoEseo.png>
@@ -798,7 +798,7 @@ Package pdftex.def Info: Figures/logoEseo.png used on input line 156.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [5]
 Chapitre 3.
-<Figures/diagContexteLogique.jpg, id=238, 779.91376pt x 619.31375pt>
+<Figures/diagContexteLogique.jpg, id=225, 779.91376pt x 619.31375pt>
 File: Figures/diagContexteLogique.jpg Graphic file (type jpg)
 
 <use Figures/diagContexteLogique.jpg>
@@ -811,174 +811,180 @@ Package pdftex.def Info: Figures/diagContexteLogique.jpg used on input line 160
 File: Figures/logoEseo.png Graphic file (type png)
 
 <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 230.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 233.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [7]
 Chapitre 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--259
+Underfull \hbox (badness 10000) in paragraph at lines 262--262
 []|\T1/cmr/bx/n/10 Informations com-plé-men-
  []
 
 
-Underfull \vbox (badness 10000) detected at line 263
+Underfull \vbox (badness 10000) detected at line 266
  []
 
-<Figures/diagCU_ControlerConso.jpg, id=250, 923.45pt x 337.26pt>
+<Figures/diagCU_ControlerConso.jpg, id=237, 923.45pt x 337.26pt>
 File: Figures/diagCU_ControlerConso.jpg Graphic file (type jpg)
 
 <use Figures/diagCU_ControlerConso.jpg>
 Package pdftex.def Info: Figures/diagCU_ControlerConso.jpg used on input line 2
-70.
+73.
 (pdftex.def)             Requested size: 507.89906pt x 185.49356pt.
 
-Overfull \hbox (24.2022pt too wide) in paragraph at lines 270--271
+Overfull \hbox (24.2022pt too wide) in paragraph at lines 273--274
  [][] 
  []
 
 [8
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 339--339
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
 []|\T1/cmr/bx/n/10 Informations com-plé-men-
  []
 
 
-Underfull \vbox (badness 10000) detected at line 343
+Underfull \vbox (badness 10000) detected at line 346
  []
 
 File: Figures/logoEseo.png Graphic file (type png)
 <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 343.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 346.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [9 <./Figures/diagCU_ControlerConso.jpg (PNG copy)>] <Figures/diagCU_ModifAuto
-Scenar.png, id=264, 497.86pt x 218.8175pt>
+Scenar.png, id=251, 497.86pt x 218.8175pt>
 File: Figures/diagCU_ModifAutoScenar.png Graphic file (type png)
 
 <use Figures/diagCU_ModifAutoScenar.png>
 Package pdftex.def Info: Figures/diagCU_ModifAutoScenar.png used on input line 
-350.
+353.
 (pdftex.def)             Requested size: 273.82384pt x 120.34999pt.
 File: Figures/logoEseo.png Graphic file (type png)
  <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 354.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 357.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [10]
-Underfull \hbox (badness 10000) in paragraph at lines 386--386
+Underfull \hbox (badness 1173) in paragraph at lines 379--380
+[]\T1/cmr/m/n/10 Le sys-tème d'in-for-ma-tion en-voie des nou-veaux plan-ning d
+e
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--387
 []|\T1/cmr/bx/n/10 Informations com-plé-men-
  []
 
 
-Underfull \vbox (badness 10000) detected at line 390
+Underfull \vbox (badness 10000) detected at line 391
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 393--394
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--396
+Underfull \hbox (badness 10000) in paragraph at lines 396--397
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 400.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 401.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 400.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 401.
 File: Figures/logoEseo.png Graphic file (type png)
 
 <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 404.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 409.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [11 <./Figures/diagCU_ModifAutoScenar.png (PNG copy)>]
 File: Figures/logoEseo.png Graphic file (type png)
  <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 408.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 409.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [12]
 Chapitre 5.
-<Figures/Accueil.png, id=283, 174.6525pt x 110.4125pt>
+<Figures/Accueil.png, id=270, 174.6525pt x 110.4125pt>
 File: Figures/Accueil.png Graphic file (type png)
 
 <use Figures/Accueil.png>
-Package pdftex.def Info: Figures/Accueil.png used on input line 414.
+Package pdftex.def Info: Figures/Accueil.png used on input line 415.
 (pdftex.def)             Requested size: 96.05916pt x 60.72705pt.
 
-<Figures/Choix_objet.png, id=284, 292.09125pt x 128.48pt>
+<Figures/Choix_objet.png, id=271, 292.09125pt x 128.48pt>
 File: Figures/Choix_objet.png Graphic file (type png)
 
 <use Figures/Choix_objet.png>
-Package pdftex.def Info: Figures/Choix_objet.png used on input line 423.
+Package pdftex.def Info: Figures/Choix_objet.png used on input line 424.
 (pdftex.def)             Requested size: 160.65067pt x 70.6642pt.
 
-<Figures/Objet_Ajout.png, id=285, 152.57pt x 55.20625pt>
+<Figures/Objet_Ajout.png, id=272, 152.57pt x 55.20625pt>
 File: Figures/Objet_Ajout.png Graphic file (type png)
 
 <use Figures/Objet_Ajout.png>
-Package pdftex.def Info: Figures/Objet_Ajout.png used on input line 432.
+Package pdftex.def Info: Figures/Objet_Ajout.png used on input line 433.
 (pdftex.def)             Requested size: 83.91376pt x 30.36351pt.
 
-<Figures/Identification.png, id=286, 174.6525pt x 71.26625pt>
+<Figures/Identification.png, id=273, 174.6525pt x 71.26625pt>
 File: Figures/Identification.png Graphic file (type png)
 
 <use Figures/Identification.png>
-Package pdftex.def Info: Figures/Identification.png used on input line 441.
+Package pdftex.def Info: Figures/Identification.png used on input line 442.
 (pdftex.def)             Requested size: 96.05916pt x 39.19653pt.
 
-<Figures/Objet_profil_modif.png, id=287, 160.6pt x 55.20625pt>
+<Figures/Objet_profil_modif.png, id=274, 160.6pt x 55.20625pt>
 File: Figures/Objet_profil_modif.png Graphic file (type png)
 
 <use Figures/Objet_profil_modif.png>
-Package pdftex.def Info: Figures/Objet_profil_modif.png used on input line 450.
+Package pdftex.def Info: Figures/Objet_profil_modif.png used on input line 451.
 
 (pdftex.def)             Requested size: 88.33026pt x 30.36351pt.
  [13
 
  <./Figures/Accueil.png (PNG copy)> <./Figures/Choix_objet.png (PNG copy)> <./F
 igures/Objet_Ajout.png (PNG copy)> <./Figures/Identification.png (PNG copy)>]
-<Figures/Objet_profil.png, id=297, 138.5175pt x 51.19125pt>
+<Figures/Objet_profil.png, id=283, 138.5175pt x 51.19125pt>
 File: Figures/Objet_profil.png Graphic file (type png)
 
 <use Figures/Objet_profil.png>
-Package pdftex.def Info: Figures/Objet_profil.png used on input line 459.
+Package pdftex.def Info: Figures/Objet_profil.png used on input line 460.
 (pdftex.def)             Requested size: 76.18484pt x 28.15526pt.
 
-<Figures/Consommation.png, id=298, 186.6975pt x 106.3975pt>
+<Figures/Consommation.png, id=284, 186.6975pt x 106.3975pt>
 File: Figures/Consommation.png Graphic file (type png)
 
 <use Figures/Consommation.png>
-Package pdftex.def Info: Figures/Consommation.png used on input line 468.
+Package pdftex.def Info: Figures/Consommation.png used on input line 469.
 (pdftex.def)             Requested size: 102.68393pt x 58.5188pt.
 
-<Figures/Semaine.png, id=299, 935.495pt x 80.3pt>
+<Figures/Semaine.png, id=285, 935.495pt x 80.3pt>
 File: Figures/Semaine.png Graphic file (type png)
  <use Figures/Semaine.png>
-Package pdftex.def Info: Figures/Semaine.png used on input line 477.
+Package pdftex.def Info: Figures/Semaine.png used on input line 478.
 (pdftex.def)             Requested size: 514.52383pt x 44.16512pt.
 
-Overfull \hbox (30.82697pt too wide) in paragraph at lines 477--478
+Overfull \hbox (30.82697pt too wide) in paragraph at lines 478--479
  [][] 
  []
 
-<Figures/Mois.png, id=300, 289.08pt x 135.50626pt>
+<Figures/Mois.png, id=286, 289.08pt x 135.50626pt>
 File: Figures/Mois.png Graphic file (type png)
  <use Figures/Mois.png>
-Package pdftex.def Info: Figures/Mois.png used on input line 486.
+Package pdftex.def Info: Figures/Mois.png used on input line 487.
 (pdftex.def)             Requested size: 158.99448pt x 74.52866pt.
 
-<Figures/Jours.jpg, id=301, 217.81375pt x 155.58125pt>
+<Figures/Jours.jpg, id=287, 217.81375pt x 155.58125pt>
 File: Figures/Jours.jpg Graphic file (type jpg)
  <use Figures/Jours.jpg>
-Package pdftex.def Info: Figures/Jours.jpg used on input line 495.
+Package pdftex.def Info: Figures/Jours.jpg used on input line 496.
 (pdftex.def)             Requested size: 119.79791pt x 85.56993pt.
 File: Figures/logoEseo.png Graphic file (type png)
 
 <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 499.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 500.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [14 <./Figures/Objet_profil_modif.png (PNG copy)> <./Figures/Objet_profil.png 
 (PNG copy)> <./Figures/Consommation.png (PNG copy)> <./Figures/Semaine.png (PNG
@@ -986,17 +992,17 @@ Package pdftex.def Info: Figures/logoEseo.png used on input line 499.
 File: Figures/logoEseo.png Graphic file (type png)
 
 <use Figures/logoEseo.png>
-Package pdftex.def Info: Figures/logoEseo.png used on input line 500.
+Package pdftex.def Info: Figures/logoEseo.png used on input line 501.
 (pdftex.def)             Requested size: 42.67912pt x 30.70508pt.
  [15 <./Figures/Jours.jpg>]
 Chapitre 6.
 
-Overfull \hbox (32.53854pt too wide) in alignment at lines 504--528
+Overfull \hbox (32.53854pt too wide) in alignment at lines 505--529
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 528
+Underfull \vbox (badness 10000) detected at line 529
  []
 
 No file specs.bbl.
@@ -1018,31 +1024,31 @@ No file specs.bbl.
 \tf@lot=\write7
 \openout7 = `specs.lot'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 538.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 539.
  [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 538.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 539.
  (./specs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 538.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 538.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 539.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 539.
 Package rerunfilecheck Info: File `specs.out' has not changed.
-(rerunfilecheck)             Checksum: BDC405CA8F4735EE657788E0C8AF13B1;2839.
+(rerunfilecheck)             Checksum: 91385FA4C887204E6E18935DEDAB9822;2545.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 538.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 539.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 27 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8913 strings out of 493117
- 124993 string characters out of 6135434
+ 8907 strings out of 493117
+ 124901 string characters out of 6135434
  248107 words of memory out of 5000000
- 12110 multiletter control sequences out of 15000+600000
+ 12107 multiletter control sequences out of 15000+600000
  20930 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,43p,665b,4622s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1059,10 +1065,10 @@ b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb>
 usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/
 local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on specs.pdf (20 pages, 611982 bytes).
+Output written on specs.pdf (20 pages, 611810 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 401 compressed objects within 5 object streams
- 86 named destinations out of 1000 (max. 500000)
- 385 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 439 PDF objects out of 1000 (max. 8388607)
+ 384 compressed objects within 4 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 361 words of extra memory for PDF output out of 10000 (max. 10000000)
 

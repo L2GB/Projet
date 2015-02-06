@@ -163,22 +163,37 @@ Les évènements énoncés ci-dessous sont d’ordre logique, ils correspondent 
 \end{figure}
 \newpage
 
-		\section{Interface logique avec l'agent de maintenance}
-			\subsection{En provenance de l'agent de maintenance vers le SaE}
+		\section{Interface logique avec l'utilisateur}
+			\subsection{En provenance de l'utilisateur vers le SaE}
 			
 \begin{description}
-	\item[-] Valider: Permet à l'agent de maintenance de valider un choix
+	\item[-] ConfigurerJour: Permet à l'utilisateur de configurer un jour.
+	\item[-] ConfigurerSemaine: Permet à l'utilisateur configurer une semaine.
+	\item[-] ConfigurerObjet: Permet à l'utilisateur de configurer un objet.
+	\item[-] DemanderConsommation: Permet à l'utilisateur de voir la consommation de ses objets.
+	\item[-] DemanderProfilJour: Permet à l'utilisateur d'afficher ses profils jours enregistrés
+	\item[-] DemanderProfilSemaine: Permet à l'utilisateur d'afficher ses profils semaine 
+	\item[-] DemanderProfilObjet: Permet à l'utilisateur d'afficher les objets connectés 
+	\item[-] DemanderPlanning: Permet à l'utilisateur d'afficher le planning global des objets de sa maison
+	
+	
 \end{description}
 			
-			\subsection{En provenance du SaE vers l'agent de maintenance}
+			\subsection{En provenance du SaE vers l'utilisateur}
 			
 \begin{description}
 	\item[-] afficherEcranMenuPrincipal: affiche le menu principal du site
 	\item[-] afficherEcranConnexion: affiche l'écran de connexion du site 
-	\item[-] afficherEcranProgram: 
+	\item[-] afficherEcranPlanning: affiche l'écran de planning
+	\item[-] afficherEcranScenario: affiche l'écran scénario
 	\item[-] afficherEcranConsommation: affiche l'écran listant la consommation des différents objets connectés
-	\item[-] afficherEcranSuiviDesConsommables:
-	\item[-] afficherEcranSignalementIncident: affiche l'écran de relevé d'erreur 
+	\item[-] afficherEcranListeJour: affiche l'écran des profils jours enregistrés
+	\item[-] afficherEcranListeSemaine: affiche l'écran des profils semaine enregistrés
+	\item[-] afficherEcranListeObjet: affiche l'écran des objets enregistrés
+	\item[-] afficherEcranConfigurationObjet: affiche l'écran de configuration des objets.
+	\item[-] afficherEcranConfigurationJour: affiche l'écran de configuration des jours.
+	\item[-] afficherEcranConfigurationSemaine: affiche l'écran de configurations des semaines.
+	\item[-] afficherEcranConfigurationCreneau: affiche l'écran pour configurer un créneau horaire.
 \end{description}
 			
 		
@@ -186,44 +201,32 @@ Les évènements énoncés ci-dessous sont d’ordre logique, ils correspondent 
 			\subsection{En provenance du système d'information vers le SaE}
 			
 \begin{description}
-	\item[-] releverDonneeCapteur:
+	\item[-] EnregistrerDonnéeCapteur: stocke les données des capteurs sur la big data.
+	\item[-] EnregistrerDonnéeUtilisateur: Stocke les données de l'utilisateur sur la big data.
+	\item[-] modifierDonnéeUtilisateur: Modifie les données utilisateur sur la big data.
+	
 \end{description}
 			
-			\subsection{En provenance du SaE vers l'agent de maintenance}
+			\subsection{En provenance du SaE vers le système d'information}
 			
 \begin{description}
-	\item[-] envoiConsigneConsommation:
+	\item[-] envoiNouveauPlanning: Envoie un nouveau planning d'utilisation aux objets
 \end{description}
 			
-		\section{Inferface logique avec l'utilisateur}
-			\subsection{En provenance de l'utilisateur vers le SaE}
-			
-\begin{description}
-	\item[-] Valider:
-\end{description}
-			
-			\subsection{En provenance du SaE vers l'utilisateur}
-			
-\begin{description}
-	\item[-] afficherEcranMenuPrincipal: affiche le menu principal du site
-	\item[-] afficherEcranConnexion: affiche l'écran de connexion du site
-	\item[-] afficherEcranProgram:
-	\item[-] afficherEcranConsommation: affiche l'écran listant la consommation des différents objets
-	\item[-] afficherEcranSuiviDesConsommables: 
-	\item[-] afficherEcranSignalementIncident: affiche l'écran de relevé d'erreur
-\end{description}
 			
 		\section{Interface logique avec un objet connecté}
 			\subsection{En provenance de l'objet connecté vers le SaE}
 			
 \begin{description}
-	\item[-] releverDonneeCapteur
+	\item[-] releverDonneeCapteur: Envoie des données de l'objet connecté à la centrale.
 \end{description}
 			
 			\subsection{En provenance du SaE vers l'objet connecté}
 			
 \begin{description}
-	\item[-] ordreConsommation
+	\item[-] releverConsommation: Demande la consommation d'un objet à l'instant T
+	\item[-] éteindre: Demande à l'objet de se mettre sur off.
+	\item[-] allumer: Demander à l'objet de se mettre sur on.
 \end{description}
 
 
@@ -326,7 +329,7 @@ Les évènements énoncés ci-dessous sont d’ordre logique, ils correspondent 
 	\begin{description}
 		\item[6:] [L'utilisateur veut modifier les autorisations de contrôle]
 		\item[6.c.1] L'utilisateur choisit d'accéder à la configuration des autorisations de contrôle
-		\item[6.c.2] Central\_Soft affiche son écran "Autorisation de contrôle"
+		\item[6.c.2] Central\_Soft affiche son écran "Objets connectés"
 		\item[6.c.3] L'utilisateur choisit les autorisation de contrôle à modifier
 		\item[6.c.4] L'utilisateur modifie cette dernière
 		\item[6.c.5] L'utilisateur confirme la modification
@@ -373,10 +376,8 @@ Les évènements énoncés ci-dessous sont d’ordre logique, ils correspondent 
 	\textbf{Garantie en cas de succès} & Les objet connecté reçoivent les ordres de la centrale selon les consignes envoyées au système d'information\tabularnewline
 	\hline
 	\textbf{Scénario nominal} & \begin{description}
-		\item[1.] Le système d'information envoie des consignes de consommation 
-		\item[2.] La Central\_Soft recalcule les scénarios pour qu'ils correspondent aux consignes
-		\item[3.] La Central\_Soft met en application les nouveaux scénarios
-		\item[4.] La Central\_Soft envoie les ordres de consommation aux objets selon les scénarios prévus
+		\item[1.] Le système d'information envoie des nouveaux planning de consommation.
+		\item[2.] La Central\_Soft met en application les nouveaux scénarios
 	\end{description}\tabularnewline
 	\hline 
 	\textbf{Variantes} & \tabularnewline
