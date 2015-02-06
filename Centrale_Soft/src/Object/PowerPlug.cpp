@@ -83,7 +83,7 @@ void PowerPlug::run()
 			case POWERPLUG_RUNNING:
 				getCurrentTime();
 				checkTime();
-				sleep(1);
+				sleep(59);
 				break;
 		}
 	}

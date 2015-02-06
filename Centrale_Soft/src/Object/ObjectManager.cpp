@@ -581,10 +581,12 @@ void ObjectManager::powerPlug_switchON(int _deviceId, int _instanceNum)
 {
 	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
 	powerPlug->switchON();
+	powerPlug->print();
 }
 
 void ObjectManager::powerPlug_switchOFF(int _deviceId, int _instanceNum)
 {
 	PowerPlug *powerPlug = (PowerPlug *) getObject(_deviceId, _instanceNum);
 	powerPlug->switchOFF();
+	powerPlug->print();
 }
