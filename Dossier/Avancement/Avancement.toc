@@ -1,0 +1,8 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Avancement}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Objet}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Etat de l'art}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Travai \IeC {\`a} faire }{4}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Centrale soft}{4}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Application Android}{4}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Id\IeC {\'e}es pour de futures impl\IeC {\'e}mentations}{5}{section.1.4}
