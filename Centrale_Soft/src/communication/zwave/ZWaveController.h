@@ -60,6 +60,7 @@ public:
 	void zNetwork_set_thermostat_mode(char deviceId, char instanceNum, char mode);
 	void zNetwork_get_capabilities(char deviceId, char instanceNum);
 	int basic_get(int deviceNodeId, int instanceId);
+	void zdata_dump_device_data_holder(int deviceId);
 
 
 private:
