@@ -61,6 +61,10 @@ public class IpConfig extends Activity implements GestureDetector.OnGestureListe
         mGestureDetector = new GestureDetector(this);
     }
 
+    /**
+     * Permet de passer à la prochaine vue si ip validé
+     * @param v sur l'appuis d'un bouton
+     */
     public void connection(View v){
         EditText ip = (EditText) findViewById(R.id.editText);
         if (validIP(ip.getText().toString())) {
@@ -72,6 +76,12 @@ public class IpConfig extends Activity implements GestureDetector.OnGestureListe
         }
 
     }
+
+    /**
+     * Vérifie l'ip (format) et une petite surprise.
+     * @param ip à verifier
+     * @return
+     */
     public  boolean validIP(String ip) {
         if (ip == null || ip.isEmpty()) return false;
         ip = ip.trim();
