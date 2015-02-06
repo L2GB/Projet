@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Created by pierre on 12/01/2015.
+ * Class qui permet de créer les créneaux horraires
  */
 public class Creneaux_Model implements Parcelable {
 
@@ -14,6 +15,14 @@ public class Creneaux_Model implements Parcelable {
     private int mFin;
     private Boolean autorisation;
 
+    /**
+     * @brief Constructeur de la classe
+     * @param hDebut heure à laquelle débute le créneau
+     * @param mDebut minute à laquelle débute le créneau
+     * @param hFin heure à laquelle finie le créneau
+     * @param mFin minute à laquelle finie le créneau
+     * @param autorisation autorisation ou non de controle par la centrale durant ce créneau
+     */
     public Creneaux_Model(int hDebut, int mDebut, int hFin, int mFin, boolean autorisation)
     {
         this.hDebut=hDebut;
@@ -23,6 +32,12 @@ public class Creneaux_Model implements Parcelable {
         this.autorisation=autorisation;
     }
 
+    /**
+     * @brief Constructeur de la classe
+     * @param hDebut heure à laquelle débute le créneau
+     * @param hFin heure à laquelle finie le créneau
+     * @param autorisation autorisation ou non de controle par la centrale durant ce créneau
+     */
     public Creneaux_Model(int hDebut, int hFin, boolean autorisation)
     {
         this.hDebut=hDebut;
@@ -32,6 +47,11 @@ public class Creneaux_Model implements Parcelable {
         this.autorisation=autorisation;
     }
 
+    /**
+     * @brief Constructeur de la classe
+     * @param hDebut heure à laquelle débute le créneau
+     * @param hFin heure à laquelle finie le créneau
+     */
     public Creneaux_Model(int hDebut, int hFin)
     {
         this.hDebut=hDebut;
