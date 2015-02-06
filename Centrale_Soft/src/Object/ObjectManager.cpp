@@ -63,7 +63,7 @@ void ObjectManager::init_objects()
 	{
 		init_callback2(m_objects[i]);
 		m_objects[i]->launch();
-
+		m_objects[i]->print();
 	}
 }
 
@@ -224,7 +224,6 @@ void ObjectManager::newInstanceObject(json_t *_object)
 			Heater *heater;
 			heater = new Heater(&m_zwaveController, deviceId, instanceNum, nom, m_planningManager.week_get(planning), connecte, inconnu, tconfort, teco);
 			m_objects.push_back(heater);
-			heater->print();
 			break;
 	}
 }

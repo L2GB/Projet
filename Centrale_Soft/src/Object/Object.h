@@ -44,6 +44,7 @@ class Object : public Thread
 		Week *getPlanning(){return m_planning;}
 		void setPlanning(Week *_planning){m_planning = _planning;}
 		virtual json_t *json_transform_object() = 0;
+		virtual void print() = 0;
 		//--------------------------------------------------------
 		void automatic_initName_setting();
 		//std::string guessType();
